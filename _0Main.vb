@@ -78,65 +78,6 @@ Sub subMain
 	End If
 End Sub
 
-' subSaveIV: Saves the found IV
-Sub subSaveIV (aQuery As aFindIVParam, maIVs () As aStats)
-	Dim oDoc As Object, oSheet As Object, oRange As Object
-	Dim nI As Integer, aBaseStats As aStats
-	Dim mData (Ubound (maIVs) + 1) As Variant
-	Dim mProps () As New com.sun.star.beans.PropertyValue
-	Dim oColumns As Object
-	
-	oDoc = StarDesktop.loadComponentFromURL ( _
-		"private:factory/scalc", "_default", 0, mProps)
-	oSheet = oDoc.getSheets.getByIndex (0)
-	aBaseStats = fnGetBaseStats (aQuery.sPokemon)
-	mData (0) = Array ( _
-		"No", "Pokemon", "CP", "HP", _
-		"Lv", "Atk", "Def", "Sta", "IV", _
-		"Evolve Into", "Evolved CP", "Max CP")
-	mData (1) = Array ( _
-		aBaseStats.sNo, aQuery.sPokemon, aQuery.nCP, aQuery.nHP, _
-		maIVs (0).fLevel, maIVs (0).nAttack, maIVs (0).nDefense, _
-		maIVs (0).nStamina, maIVs (0).nTotal / 45, _
-		maIVs (0).sEvolveInto, maIVs (0).nEvolvedCP, _
-		maIVs (0).nMaxCP)
-	For nI = 1 To UBound (maIVs)
-		mData (nI + 1) = Array ( _
-			"", "", "", "", _
-			maIVs (nI).fLevel, maIVs (nI).nAttack, maIVs (nI).nDefense, _
-			maIVs (nI).nStamina, maIVs (nI).nTotal / 45, _
-			maIVs (nI).sEvolveInto, maIVs (nI).nEvolvedCP, _
-			maIVs (nI).nMaxCP)
-	Next nI
-	oRange = oSheet.getCellRangeByPosition ( _
-		0, 0, UBound (mData (0)), UBound (mData))
-	oRange.setDataArray (mData)
-	oRange.setPropertyValue ("VertJustify", _
-		com.sun.star.table.CellVertJustify.TOP)
-	
-	oRange = oSheet.getCellRangeByPosition ( _
-		0, 1, 0, UBound (mData))
-	oRange.merge (True)
-	oRange = oSheet.getCellRangeByPosition ( _
-		1, 1, 1, UBound (mData))
-	oRange.merge (True)
-	oRange = oSheet.getCellRangeByPosition ( _
-		2, 1, 2, UBound (mData))
-	oRange.merge (True)
-	oRange = oSheet.getCellRangeByPosition ( _
-		3, 1, 3, UBound (mData))
-	oRange.merge (True)
-	oRange = oSheet.getCellRangeByPosition ( _
-		8, 1, 8, UBound (mData))
-	oRange.setPropertyValue ("NumberFormat", 10)
-	
-	oColumns = oSheet.getColumns
-	For nI = 0 To UBound (mData (0))
-		oColumns.getByIndex (nI).setPropertyValue ( _
-			"OptimalWidth", True)
-	Next nI
-End Sub
-
 ' fnFindIV: Finds the possible individual values of the Pokémon
 Function fnFindIV (aQuery As aFindIVParam) As Variant
 	Dim aBaseStats As New aStats, maIV () As New aStats
@@ -171,6 +112,7 @@ Function fnFindIV (aQuery As aFindIVParam) As Variant
 								nCount = nCount +  1
 								ReDim Preserve maIV (nCount) As New aStats
 								With  maIV (nCount)
+									.sNo = aBaseStats.sNo
 									.sPokemon = aQuery.sPokemon
 									.fLevel = fLevel
 									.nAttack = nAttack
@@ -240,6 +182,7 @@ End Function
 ' subCopyIV: Copies one IV to another
 Function subCopyIV (aFrom As aStats, aTo As aStats) As Double
 	With aTo
+		.sNo = aFrom.sNo
 		.sPokemon = aFrom.sPokemon
 		.fLevel = aFrom.fLevel
 		.nAttack = aFrom.nAttack
@@ -248,8 +191,66 @@ Function subCopyIV (aFrom As aStats, aTo As aStats) As Double
 		.nTotal = aFrom.nTotal
 		.sEvolveInto = aFrom.sEvolveInto
 		.nEvolvedCP = aFrom.nEvolvedCP
+		.nMaxCP = aFrom.nMaxCP
 	End With
 End Function
+
+' subSaveIV: Saves the found IV
+Sub subSaveIV (aQuery As aFindIVParam, maIVs () As aStats)
+	Dim oDoc As Object, oSheet As Object, oRange As Object
+	Dim nI As Integer, oColumns As Object
+	Dim mData (Ubound (maIVs) + 1) As Variant
+	Dim mProps () As New com.sun.star.beans.PropertyValue
+	
+	oDoc = StarDesktop.loadComponentFromURL ( _
+		"private:factory/scalc", "_default", 0, mProps)
+	oSheet = oDoc.getSheets.getByIndex (0)
+	mData (0) = Array ( _
+		"No", "Pokemon", "CP", "HP", _
+		"Lv", "Atk", "Def", "Sta", "IV", _
+		"Evolve Into", "Evolved CP", "Max CP")
+	mData (1) = Array ( _
+		maIVs (0).sNo, aQuery.sPokemon, aQuery.nCP, aQuery.nHP, _
+		maIVs (0).fLevel, maIVs (0).nAttack, maIVs (0).nDefense, _
+		maIVs (0).nStamina, maIVs (0).nTotal / 45, _
+		maIVs (0).sEvolveInto, maIVs (0).nEvolvedCP, _
+		maIVs (0).nMaxCP)
+	For nI = 1 To UBound (maIVs)
+		mData (nI + 1) = Array ( _
+			"", "", "", "", _
+			maIVs (nI).fLevel, maIVs (nI).nAttack, maIVs (nI).nDefense, _
+			maIVs (nI).nStamina, maIVs (nI).nTotal / 45, _
+			maIVs (nI).sEvolveInto, maIVs (nI).nEvolvedCP, _
+			maIVs (nI).nMaxCP)
+	Next nI
+	oRange = oSheet.getCellRangeByPosition ( _
+		0, 0, UBound (mData (0)), UBound (mData))
+	oRange.setDataArray (mData)
+	oRange.setPropertyValue ("VertJustify", _
+		com.sun.star.table.CellVertJustify.TOP)
+	
+	oRange = oSheet.getCellRangeByPosition ( _
+		0, 1, 0, UBound (mData))
+	oRange.merge (True)
+	oRange = oSheet.getCellRangeByPosition ( _
+		1, 1, 1, UBound (mData))
+	oRange.merge (True)
+	oRange = oSheet.getCellRangeByPosition ( _
+		2, 1, 2, UBound (mData))
+	oRange.merge (True)
+	oRange = oSheet.getCellRangeByPosition ( _
+		3, 1, 3, UBound (mData))
+	oRange.merge (True)
+	oRange = oSheet.getCellRangeByPosition ( _
+		8, 1, 8, UBound (mData))
+	oRange.setPropertyValue ("NumberFormat", 10)
+	
+	oColumns = oSheet.getColumns
+	For nI = 0 To UBound (mData (0))
+		oColumns.getByIndex (nI).setPropertyValue ( _
+			"OptimalWidth", True)
+	Next nI
+End Sub
 
 ' fnFilterAppraisals: Filters the IV by the appraisals.
 Function fnFilterAppraisals (aQuery As aFindIVParam, nAttack As Integer, nDefense As Integer, nStamina As Integer) As Boolean
