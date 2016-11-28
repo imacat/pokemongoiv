@@ -1,9 +1,10 @@
-' _2Data: The Pokémon Go IV data
+' _2Data: The Pokémon Go data for IV calculation
 '   by imacat <imacat@mail.imacat.idv.tw>, 2016-11-28
+'   Generated with _3Load.subReadDataSheets ()
 
 Option Explicit
 
-' fnGetBaseStatsData: Returns the base stats table
+' fnGetBaseStatsData: Returns the base stats data.
 Function fnGetBaseStatsData As Variant
 	fnGetBaseStatsData = Array( _
 		Array ("Bulbasaur", "001", 90, 118, 118, "Venusaur"), _
@@ -159,7 +160,7 @@ Function fnGetBaseStatsData As Variant
 		Array ("Mew", "151", 200, 210, 209, "Mew"))
 End Function
 
-' fnGetCPMData: Returns the combat power multiplier table
+' fnGetCPMData: Returns the combat power multiplier data.
 Function fnGetCPMData As Variant
 	fnGetCPMData = Array( _
 		-1, _
@@ -205,7 +206,7 @@ Function fnGetCPMData As Variant
 		0.78463697)
 End Function
 
-' fnGetStarDustData: Returns the star dust table
+' fnGetStarDustData: Returns the star dust data.
 Function fnGetStarDustData As Variant
 	fnGetStarDustData = Array( _
 		-1, _

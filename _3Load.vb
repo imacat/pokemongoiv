@@ -9,8 +9,9 @@ Sub subReadDataSheets
 	Dim sOutput as String, mData As Variant
 	
 	sOutput = "" _
-		& "' _2Data: The Pokémon Go IV data" & Chr (10) _
+		& "' _2Data: The Pokémon Go data for IV calculation" & Chr (10) _
 		& "'   by imacat <imacat@mail.imacat.idv.tw>, " & Format (Date (), "yyyy-mm-dd") & Chr (10) _
+		& "'   Generated with _3Load.subReadDataSheets ()" & Chr (10) _
 		& Chr (10) _
 		& "Option Explicit"
 	sOutput = sOutput & Chr (10) & Chr (10) & fnReadBaseStatsSheet
@@ -75,7 +76,7 @@ Function fnReadBaseStatsSheet As String
 	mData = oRange.getDataArray
 	
 	sOutput = "" _
-		& "' fnGetBaseStatsData: Returns the base stats table" & Chr (10) _
+		& "' fnGetBaseStatsData: Returns the base stats data." & Chr (10) _
 		& "Function fnGetBaseStatsData As Variant" & Chr (10) _
 		& Chr (9) & "fnGetBaseStatsData = Array( _" & Chr (10)
 	For nI = 1 To UBound (mData) - 1
@@ -121,7 +122,7 @@ Function fnReadCPMSheet As String
 	mData = oRange.getDataArray
 	
 	sOutput = "" _
-		& "' fnGetCPMData: Returns the combat power multiplier table" & Chr (10) _
+		& "' fnGetCPMData: Returns the combat power multiplier data." & Chr (10) _
 		& "Function fnGetCPMData As Variant" & Chr (10) _
 		& Chr (9) & "fnGetCPMData = Array( _" & Chr (10) _
 		& Chr (9) & Chr (9) & "-1, _" & Chr (10)
@@ -146,7 +147,7 @@ Function fnReadStarDustSheet As String
 	mData = oRange.getDataArray
 	
 	sOutput = "" _
-		& "' fnGetStarDustData: Returns the star dust table" & Chr (10) _
+		& "' fnGetStarDustData: Returns the star dust data." & Chr (10) _
 		& "Function fnGetStarDustData As Variant" & Chr (10) _
 		& Chr (9) & "fnGetStarDustData = Array( _" & Chr (10) _
 		& Chr (9) & Chr (9) & "-1, _" & Chr (10)
