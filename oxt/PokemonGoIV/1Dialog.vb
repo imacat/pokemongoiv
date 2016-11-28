@@ -109,7 +109,7 @@ Function fnAskParam As aFindIVParam
 	oTextModel.setPropertyValue ("PositionY", 20)
 	oTextModel.setPropertyValue ("Height", 12)
 	oTextModel.setPropertyValue ("Width", 30)
-	oTextModel.setPropertyValue ("Label", "~Star dust:")
+	oTextModel.setPropertyValue ("Label", "Star ~dust:")
 	oDialogModel.insertByName ("txtStarDust", oTextModel)
 	
 	' Adds the star dust field.
@@ -184,10 +184,10 @@ Function fnAskParam As aFindIVParam
 	
 	' Adds the first appraisal list.
 	mListItems = Array ( _
-		"Amazed me/wonder/best", _
-		"Strong/caught my attention", _
-		"Decent/above average", _
-		"Not great/not make headway/has room")
+		"1. Amazed me/wonder/best", _
+		"2. Strong/caught my attention", _
+		"3. Decent/above average", _
+		"4. Not great/not make headway/has room")
 	oListModel = oDialogModel.createInstance ( _
 		"com.sun.star.awt.UnoControlListBoxModel")
 	oListModel.setPropertyValue ("PositionX", 10)
@@ -240,10 +240,10 @@ Function fnAskParam As aFindIVParam
 	
 	' Adds the second appraisal list.
 	mListItems = Array ( _
-		"WOW/incredible/stats are best", _
-		"Excellent/impressed/impressive", _
-		"Get the job done/noticeable/some good stats", _
-		"No greatness/not out of the norm/kinda basic")
+		"1. WOW/incredible/stats are best", _
+		"2. Excellent/impressed/impressive", _
+		"3. Get the job done/noticeable/some good stats", _
+		"4. No greatness/not out of the norm/kinda basic")
 	oListModel = oDialogModel.createInstance ( _
 		"com.sun.star.awt.UnoControlListBoxModel")
 	oListModel.setPropertyValue ("PositionX", 10)
