@@ -17,12 +17,6 @@ Type aStats
 	nMaxCP As Integer
 End Type
 
-' The combat power multiplier.
-Type aCPM
-	fLevel As Double
-	fCPM As Double
-End Type
-
 ' The amount of star dust to power-up.
 Type aStarDust
 	fLevel As Double
@@ -42,8 +36,8 @@ Type aFindIVParam
 	nAppraisal2 As Integer
 End Type
 
-Private maBaseStats () As New aStats, maCPM () As New aCPM
-Private maStarDust () As New aStarDust
+Private maBaseStats () As New aStats
+Private mCPM () As Double, mStarDust () As Integer
 
 ' subMain: The main program
 Sub subMain
@@ -84,7 +78,7 @@ Function fnFindIV (aQuery As aFindIVParam) As Variant
 	Dim fLevel As Double, nStamina As Integer
 	Dim nAttack As Integer, nDefense As integer
 	Dim nI As Integer, nJ As Integer
-	Dim nStep As Integer, nCount As Integer
+	Dim fStep As Double, nCount As Integer
 	Dim aEvBaseStats As new aStats, aTempIV As New aStats
 	
 	If aQuery.sPokemon = "" Then
@@ -92,26 +86,28 @@ Function fnFindIV (aQuery As aFindIVParam) As Variant
 		Exit Function
 	End If
 	If aQuery.bIsNew Then
-		nStep = 2
+		fStep = 1
 	Else
-		nStep = 1
+		fStep = 0.5
 	End If
 	aBaseStats = fnGetBaseStats (aQuery.sPokemon)
 	aEvBaseStats = fnGetBaseStats (aBaseStats.sEvolveInto)
 	subReadStarDust
 	nCount = -1
-	For nI = 0 To UBound (maStarDust) Step nStep
-		fLevel = maStarDust (nI).fLevel
-		If maStarDust (nI).nStarDust = aQuery.nStarDust Then
+	For fLevel = 1 To UBound (mStarDust) Step fStep
+		If mStarDust (CInt (fLevel - 0.5)) = aQuery.nStarDust Then
+	'For nI = 0 To UBound (maStarDust) Step nStep
+	'	fLevel = maStarDust (nI).fLevel
+	'	If maStarDust (nI).nStarDust = aQuery.nStarDust Then
 			For nStamina = 0 To 15
 				If fnCalcHP (aBaseStats, fLevel, nStamina) = aQuery.nHP Then
 					For nAttack = 0 To 15
 						For nDefense = 0 To 15
 							If fnCalcCP (aBaseStats, fLevel, nAttack, nDefense, nStamina) = aQuery.nCP _
 									And Not (fnFilterAppraisals (aQuery, nAttack, nDefense, nStamina)) Then
-								nCount = nCount +  1
+								nCount = nCount + 1
 								ReDim Preserve maIV (nCount) As New aStats
-								With  maIV (nCount)
+								With maIV (nCount)
 									.sNo = aBaseStats.sNo
 									.sPokemon = aQuery.sPokemon
 									.fLevel = fLevel
@@ -133,7 +129,7 @@ Function fnFindIV (aQuery As aFindIVParam) As Variant
 				End If
 			Next nStamina
 		End If
-	Next nI
+	Next fLevel
 	' Sorts the IVs
 	For nI = 0 To UBound (maIV) - 1
 		For nJ = nI + 1 To UBound (maIV)
@@ -343,20 +339,20 @@ Function fnGetBaseStats (sPokemon As String) As aStats
 			Exit Function
 		End If
 	Next nI
-End  Function
+End Function
 
 ' fnGetCPM: Returns the combat power multiplier.
 Function fnGetCPM (fLevel As Double) As Double
 	Dim nI As Integer
 	
 	subReadCPM
-	For nI = 0 To UBound (maCPM)
-		If maCPM (nI).fLevel = fLevel Then
-			fnGetCPM = maCPM (nI).fCPM
-			Exit Function
-		End If
-	Next nI
-End  Function
+	If CInt (fLevel) = fLevel Then
+		fnGetCPM = mCPM (fLevel)
+	Else
+		fnGetCPM = ((mCpm (fLevel - 0.5) ^ 2 _
+			+ mCpm (fLevel + 0.5) ^ 2) / 2) ^ 0.5
+	End If
+End Function
 
 ' fnFloor: Returns the floor of the number
 Function fnFloor (fNumber As Double) As Integer
@@ -365,72 +361,34 @@ End Function
 
 ' subReadBaseStats: Reads the base stats table.
 Sub subReadBaseStats
-	Dim oSheet As Object, oRange As Object, mData As Variant
-	Dim nCount As Integer, nRow As Integer, nColumn As Integer
+	Dim mData As Variant, nI As Integer
 	
 	If UBound (maBaseStats) = -1 Then
-		oSheet = ThisComponent.getSheets.getByName ("basestat")
-		oRange = oSheet.getCellRangeByName ("BaseStats")
-		mData = oRange.getDataArray
-		nCount = -1
-		For nRow = 1 To UBound (mData) - 1
-			nCount = nCount + 1
-			ReDim Preserve maBaseStats (nCount) As New aStats
-			With maBaseStats (nCount)
-				.sNo = mData (nRow) (1)
-				.sPokemon = mData (nRow) (0)
-				.nStamina = mData (nRow) (3)
-				.nAttack = mData (nRow) (4)
-				.nDefense = mData (nRow) (5)
+		mData = fnGetBaseStatsData
+		ReDim Preserve maBaseStats (UBound (mData)) As New aStats
+		For nI = 0 To UBound (mData)
+			With maBaseStats (nI)
+				.sNo = mData (nI) (1)
+				.sPokemon = mData (nI) (0)
+				.nStamina = mData (nI) (2)
+				.nAttack = mData (nI) (3)
+				.nDefense = mData (nI) (4)
+				.sEvolveInto = mData (nI) (5)
 			End With
-			For nColumn = 9 To 7 Step -1
-				If mData (nRow) (nColumn) <> "" Then
-					maBaseStats (nCount).sEvolveInto = mData (nRow) (nColumn)
-					nColumn = 6
-				End If
-			Next nColumn
-		Next nRow
+		Next nI
 	End If
-End  Sub
+End Sub
 
 ' subReadCPM: Reads the CPM table.
 Sub subReadCPM
-	Dim oSheet As Object, oRange As Object, mData As Variant
-	Dim nCount As Integer, nRow As Integer
-	
-	If UBound (maCPM) = -1 Then
-		oSheet = ThisComponent.getSheets.getByName ("cpm")
-		oRange = oSheet.getCellRangeByName ("CPM")
-		mData = oRange.getDataArray
-		nCount = -1
-		For nRow = 1 To UBound (mData) - 1
-			nCount = nCount + 1
-			ReDim Preserve maCPM (nCount) As New aCPM
-			With maCPM (nCount)
-				.fLevel = mData (nRow) (0)
-				.fCPM = mData (nRow) (1)
-			End With
-		Next nRow
+	If UBound (mCPM) = -1 Then
+		mCPM = fnGetCPMData
 	End If
-End  Sub
+End Sub
 
 ' subReadStarDust: Reads the star dust table.
 Sub subReadStarDust
-	Dim oSheet As Object, oRange As Object, mData As Variant
-	Dim nCount As Integer, nRow As Integer
-	
-	If UBound (maStarDust) = -1 Then
-		oSheet = ThisComponent.getSheets.getByName ("lvup")
-		oRange = oSheet.getCellRangeByName ("A2:D81")
-		mData = oRange.getDataArray
-		nCount = -1
-		For nRow = 1 To UBound (mData) - 1
-			nCount = nCount + 1
-			ReDim Preserve maStarDust (nCount) As New aStarDust
-			With maStarDust (nCount)
-				.fLevel = mData (nRow) (0)
-				.nStarDust = mData (nRow) (2)
-			End With
-		Next nRow
+	If UBound (mStarDust) = -1 Then
+		mStarDust = fnGetStarDustData
 	End If
-End  Sub
+End Sub

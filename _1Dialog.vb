@@ -29,13 +29,13 @@ Function fnAskParam As aFindIVParam
 	' Creates a dialog
 	oDialogModel = CreateUnoService ( _
 		"com.sun.star.awt.UnoControlDialogModel")
-	oDialogModel.setPropertyValue ("PositionX", 200)
-	oDialogModel.setPropertyValue ("PositionY", 200)
-	oDialogModel.setPropertyValue ("Height", 150)
+	oDialogModel.setPropertyValue ("PositionX", 100)
+	oDialogModel.setPropertyValue ("PositionY", 100)
+	oDialogModel.setPropertyValue ("Height", 140)
 	oDialogModel.setPropertyValue ("Width", 220)
 	oDialogModel.setPropertyValue ("Title", "Pokémon Parameters")
 	
-	' Adds the Pokémon list.
+	' Adds a text label for the Pokémon list.
 	oTextModel = oDialogModel.createInstance ( _
 		"com.sun.star.awt.UnoControlFixedTextModel")
 	oTextModel.setPropertyValue ("PositionX", 5)
@@ -116,13 +116,13 @@ Function fnAskParam As aFindIVParam
 	subReadStarDust
 	sTemp = " "
 	ReDim mListItems () As String
-	nCount =  -1
-	For nI = 0 To UBound (maStarDust)
-		If InStr (sTemp, " " & CStr (maStarDust (nI).nStarDust) & " ") = 0  Then
+	nCount = -1
+	For nI = 1 To UBound (mStarDust)
+		If InStr (sTemp, " " & CStr (mStarDust (nI)) & " ") = 0 Then
 			nCount = nCount + 1
 			ReDim Preserve mListItems (nCount) As String
-			mListItems (nCount) = CStr (maStarDust (nI).nStarDust)
-			sTemp = sTemp & CStr (maStarDust (nI).nStarDust) & " "
+			mListItems (nCount) = CStr (mStarDust (nI))
+			sTemp = sTemp & CStr (mStarDust (nI)) & " "
 		End If
 	Next nI
 	oListModel = oDialogModel.createInstance ( _
@@ -177,7 +177,7 @@ Function fnAskParam As aFindIVParam
 		"com.sun.star.awt.UnoControlGroupBoxModel")
 	oGroupModel.setPropertyValue ("PositionX", 5)
 	oGroupModel.setPropertyValue ("PositionY", 50)
-	oGroupModel.setPropertyValue ("Height", 60)
+	oGroupModel.setPropertyValue ("Height", 65)
 	oGroupModel.setPropertyValue ("Width", 210)
 	oGroupModel.setPropertyValue ("Label", "Apprasals")
 	oDialogModel.insertByName ("grpApprasals", oGroupModel)
@@ -257,19 +257,20 @@ Function fnAskParam As aFindIVParam
 	' Adds the OK button.
 	oButtonModel = oDialogModel.createInstance ( _
 		"com.sun.star.awt.UnoControlButtonModel")
-	oButtonModel.setPropertyValue ("PositionX", 10)
-	oButtonModel.setPropertyValue ("PositionY", 130)
+	oButtonModel.setPropertyValue ("PositionX", 35)
+	oButtonModel.setPropertyValue ("PositionY", 120)
 	oButtonModel.setPropertyValue ("Height", 15)
 	oButtonModel.setPropertyValue ("Width", 60)
 	oButtonModel.setPropertyValue ("PushButtonType", _
 		com.sun.star.awt.PushButtonType.OK)
+	oButtonModel.setPropertyValue ("DefaultButton", True)
 	oDialogModel.insertByName ("btnOK", oButtonModel)
 	
 	' Adds the cancel button.
 	oButtonModel = oDialogModel.createInstance ( _
 		"com.sun.star.awt.UnoControlButtonModel")
-	oButtonModel.setPropertyValue ("PositionX", 80)
-	oButtonModel.setPropertyValue ("PositionY", 130)
+	oButtonModel.setPropertyValue ("PositionX", 125)
+	oButtonModel.setPropertyValue ("PositionY", 120)
 	oButtonModel.setPropertyValue ("Height", 15)
 	oButtonModel.setPropertyValue ("Width", 60)
 	oButtonModel.setPropertyValue ("PushButtonType", _
