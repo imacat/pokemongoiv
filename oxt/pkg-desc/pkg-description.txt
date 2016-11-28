@@ -1,0 +1,4 @@
+PokemonGoIV - Pokémon Go IV Calculator
+Copyright (c) 2016 imacat 
+
+Calculates the individual values (IVs) of the Pokémon.

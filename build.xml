@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!-- build.xml: Ant build file for the PokemonGoIV project -->
+<!--   by imacat <imacat@mail.imacat.idv.tw>, 2016-09-09 -->
+<project name="pokemongoiv" default="help" basedir=".">
+<!-- property: The build variables -->
+<loadfile property="project.version" srcfile="${basedir}/VERSION">
+    <filterchain>
+        <striplinebreaks />
+    </filterchain>
+</loadfile>
+<property name="proj.name.basic" value="PokemonGoIV" />
+<property name="src.dir" value="${basedir}/oxt" />
+<property name="build.dir" value="build" />
+<property name="dist.build.dir" value="${build.dir}/dist" />
+<property name="dist.dir" value="${basedir}" />
+<property name="src.build.dir" value="${build.dir}/${proj.name.basic}" />
+
+<!-- help: Display the help information -->
+<target name="help">
+    <echo level="info" message="Available targets:" />
+    <echo level="info" message=" oxt:    Create the extension ${proj.name.basic}.oxt" />
+    <echo level="info" message=" dist:   Create the pacakge distribution as ${ant.project.name}-${project.version}.zip" />
+    <echo level="info" message=" clean:  Clean-up the build files" />
+    <echo level="info" message=" help:   Display this help" />
+</target>
+
+<!-- oxt: Create the extension -->
+<target name="oxt">
+    <copy todir="${src.build.dir}"
+            preservelastmodified="true">
+        <fileset dir="${src.dir}" />
+    </copy>
+    <replace file="${src.build.dir}/description.xml"
+        token="@VERSION@" value="${project.version}" />
+    <zip destfile="${basedir}/${proj.name.basic}.oxt"
+        basedir="${src.build.dir}" />
+</target>
+
+<!-- -distdir: Create the distribution directory -->
+<target name="-distdir" depends="oxt">
+    <copy todir="${dist.build.dir}/${ant.project.name}-${project.version}"
+            preservelastmodified="true">
+        <fileset dir="${basedir}"
+            excludes="${build.dir}/ ${ant.project.name}-*.zip excludes/" />
+    </copy>
+</target>
+
+<!-- dist: Create the pacakge distribution -->
+<target name="dist" depends="-distdir">
+    <zip destfile="${dist.dir}/${ant.project.name}-${project.version}.zip"
+        basedir="${dist.build.dir}" />
+</target>
+
+<!-- clean: Clean-up the build files -->
+<target name="clean">
+    <delete dir="${build.dir}" />
+    <delete verbose="true">
+        <fileset file="${dist.dir}/${ant.project.name}-*.zip*" />
+        <fileset file="${basedir}/${proj.name.basic}.oxt" />
+    </delete>
+</target>
+</project>

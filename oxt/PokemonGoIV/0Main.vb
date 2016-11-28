@@ -1,4 +1,4 @@
-' _0Main: The main module for the Pokémon Go IV calculator
+' 0Main: The main module for the Pokémon Go IV calculator
 '   by imacat <imacat@mail.imacat.idv.tw>, 2016-11-27
 
 Option Explicit

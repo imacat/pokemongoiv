@@ -1,4 +1,4 @@
-' _1Dialog: The UI of the Pokémon IV calculator
+' 1Dialog: The UI of the Pokémon IV calculator
 '   by imacat <imacat@mail.imacat.idv.tw>, 2016-11-27
 
 Option Explicit
