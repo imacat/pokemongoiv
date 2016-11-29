@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="3Load" script:language="StarBasic">&apos; 3Load: The Pokémon Go IV data
+&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2016-11-28
+
+Option Explicit
+
+&apos; subReadDataSheets: Reads the data sheets and shows the data as
+&apos;                    OpenOffice Basic arrays
+Sub subReadDataSheets
+	Dim sOutput as String, mData As Variant
+	
+	sOutput = &quot;&quot; _
+		&amp; &quot;&apos; 2Data: The Pokémon Go data for IV calculation&quot; &amp; Chr (10) _
+		&amp; &quot;&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, &quot; &amp; Format (Date (), &quot;yyyy-mm-dd&quot;) &amp; Chr (10) _
+		&amp; &quot;&apos;   Generated with _3Load.subReadDataSheets ()&quot; &amp; Chr (10) _
+		&amp; Chr (10) _
+		&amp; &quot;Option Explicit&quot;
+	sOutput = sOutput &amp; Chr (10) &amp; Chr (10) &amp; fnReadBaseStatsSheet
+	sOutput = sOutput &amp; Chr (10) &amp; Chr (10) &amp; fnReadCPMSheet
+	sOutput = sOutput &amp; Chr (10) &amp; Chr (10) &amp; fnReadStarDustSheet
+	subShowBasicData (sOutput)
+End Sub
+
+&apos; subShowBasicData: Shows the data table as Basic arrays
+Sub subShowBasicData (sContent As String)
+	Dim oDialog As Object, oDialogModel As Object
+	Dim oEditModel As Object, oButtonModel As Object
+	
+	&apos; Creates a dialog
+	oDialogModel = CreateUnoService ( _
+		&quot;com.sun.star.awt.UnoControlDialogModel&quot;)
+	oDialogModel.setPropertyValue (&quot;PositionX&quot;, 100)
+	oDialogModel.setPropertyValue (&quot;PositionY&quot;, 100)
+	oDialogModel.setPropertyValue (&quot;Height&quot;, 130)
+	oDialogModel.setPropertyValue (&quot;Width&quot;, 200)
+	oDialogModel.setPropertyValue (&quot;Title&quot;, &quot;Pokémon Go Data&quot;)
+	
+	&apos; Adds the content area
+	oEditModel = oDialogModel.createInstance ( _
+		&quot;com.sun.star.awt.UnoControlEditModel&quot;)
+	oEditModel.setPropertyValue (&quot;PositionX&quot;, 5)
+	oEditModel.setPropertyValue (&quot;PositionY&quot;, 5)
+	oEditModel.setPropertyValue (&quot;Height&quot;, 100)
+	oEditModel.setPropertyValue (&quot;Width&quot;, 190)
+	oEditModel.setPropertyValue (&quot;MultiLine&quot;, True)
+	oEditModel.setPropertyValue (&quot;Text&quot;, sContent)
+	oEditModel.setPropertyValue (&quot;ReadOnly&quot;, True)
+	oDialogModel.insertByName (&quot;edtContent&quot;, oEditModel)
+	
+	&apos; Adds the OK button.
+	oButtonModel = oDialogModel.createInstance ( _
+		&quot;com.sun.star.awt.UnoControlButtonModel&quot;)
+	oButtonModel.setPropertyValue (&quot;PositionX&quot;, 70)
+	oButtonModel.setPropertyValue (&quot;PositionY&quot;, 110)
+	oButtonModel.setPropertyValue (&quot;Height&quot;, 15)
+	oButtonModel.setPropertyValue (&quot;Width&quot;, 60)
+	oButtonModel.setPropertyValue (&quot;PushButtonType&quot;, _
+		com.sun.star.awt.PushButtonType.OK)
+	oButtonModel.setPropertyValue (&quot;DefaultButton&quot;, True)
+	oDialogModel.insertByName (&quot;btnOK&quot;, oButtonModel)
+	
+	&apos; Adds the dialog model to the control and runs it.
+	oDialog = CreateUnoService (&quot;com.sun.star.awt.UnoControlDialog&quot;)
+	oDialog.setModel (oDialogModel)
+	oDialog.setVisible (True)
+	oDialog.execute
+End Sub
+
+&apos; fnReadBaseStatsSheet: Reads the base stats sheet.
+Function fnReadBaseStatsSheet As String
+	Dim oSheet As Object, oRange As Object, mData As Variant
+	Dim nI As Integer, sOutput As String
+	Dim nJ As Integer, sEvolveInto As String
+	
+	oSheet = ThisComponent.getSheets.getByName (&quot;basestat&quot;)
+	oRange = oSheet.getCellRangeByName (&quot;BaseStats&quot;)
+	mData = oRange.getDataArray
+	
+	sOutput = &quot;&quot; _
+		&amp; &quot;&apos; fnGetBaseStatsData: Returns the base stats data.&quot; &amp; Chr (10) _
+		&amp; &quot;Function fnGetBaseStatsData As Variant&quot; &amp; Chr (10) _
+		&amp; Chr (9) &amp; &quot;fnGetBaseStatsData = Array( _&quot; &amp; Chr (10)
+	For nI = 1 To UBound (mData) - 1
+		For nJ = 9 To 7 Step -1
+			If mData (nI) (nJ) &lt;&gt; &quot;&quot; Then
+				sEvolveInto = mData (nI) (nJ)
+				nJ = 6
+			End If
+		Next nJ
+		sOutput = sOutput _
+			&amp; Chr (9) &amp; Chr (9) &amp; &quot;Array (&quot;&quot;&quot; &amp; mData (nI) (0) _
+				&amp; &quot;&quot;&quot;, &quot;&quot;&quot; &amp; mData (nI) (1) _
+				&amp; &quot;&quot;&quot;, &quot; &amp; mData (nI) (3) _
+				&amp; &quot;, &quot; &amp; mData (nI) (4) _
+				&amp; &quot;, &quot; &amp; mData (nI) (5) _
+				&amp; &quot;, &quot;&quot;&quot; &amp; sEvolveInto &amp; &quot;&quot;&quot;), _&quot; &amp; Chr (10)
+	Next nI
+	nI = UBound (mData)
+	For nJ = 9 To 7 Step -1
+		If mData (nI) (nJ) &lt;&gt; &quot;&quot; Then
+			sEvolveInto = mData (nI) (nJ)
+			nJ = 6
+		End If
+	Next nJ
+	sOutput = sOutput _
+		&amp; Chr (9) &amp; Chr (9) &amp; &quot;Array (&quot;&quot;&quot; &amp; mData (nI) (0) _
+			&amp; &quot;&quot;&quot;, &quot;&quot;&quot; &amp; mData (nI) (1) _
+			&amp; &quot;&quot;&quot;, &quot; &amp; mData (nI) (3) _
+			&amp; &quot;, &quot; &amp; mData (nI) (4) _
+			&amp; &quot;, &quot; &amp; mData (nI) (5) _
+			&amp; &quot;, &quot;&quot;&quot; &amp; sEvolveInto &amp; &quot;&quot;&quot;))&quot; &amp; Chr (10) _
+		&amp; &quot;End Function&quot;
+	fnReadBaseStatsSheet = sOutput
+End Function
+
+&apos; fnReadCPMSheet: Reads the combat power multiplier sheet.
+Function fnReadCPMSheet As String
+	Dim oSheet As Object, oRange As Object, mData As Variant
+	Dim nI As Integer, sOutput As String
+	
+	oSheet = ThisComponent.getSheets.getByName (&quot;cpm&quot;)
+	oRange = oSheet.getCellRangeByName (&quot;CPM&quot;)
+	mData = oRange.getDataArray
+	
+	sOutput = &quot;&quot; _
+		&amp; &quot;&apos; fnGetCPMData: Returns the combat power multiplier data.&quot; &amp; Chr (10) _
+		&amp; &quot;Function fnGetCPMData As Variant&quot; &amp; Chr (10) _
+		&amp; Chr (9) &amp; &quot;fnGetCPMData = Array( _&quot; &amp; Chr (10) _
+		&amp; Chr (9) &amp; Chr (9) &amp; &quot;-1, _&quot; &amp; Chr (10)
+	For nI = 1 To UBound (mData) - 2 Step 2
+		sOutput = sOutput _
+			&amp; Chr (9) &amp; Chr (9) &amp; mData (nI) (1) &amp; &quot;, _&quot; &amp; Chr (10)
+	Next nI
+	nI = UBound (mData) - 2
+	sOutput = sOutput _
+		&amp; Chr (9) &amp; Chr (9) &amp; mData (nI) (1) &amp; &quot;)&quot; &amp; Chr (10) _
+		&amp; &quot;End Function&quot;
+	fnReadCPMSheet = sOutput
+End Function
+
+&apos; fnReadStarDustSheet: Reads the star dust sheet.
+Function fnReadStarDustSheet As String
+	Dim oSheet As Object, oRange As Object, mData As Variant
+	Dim nI As Integer, sOutput As String
+	
+	oSheet = ThisComponent.getSheets.getByName (&quot;lvup&quot;)
+	oRange = oSheet.getCellRangeByName (&quot;A2:D81&quot;)
+	mData = oRange.getDataArray
+	
+	sOutput = &quot;&quot; _
+		&amp; &quot;&apos; fnGetStarDustData: Returns the star dust data.&quot; &amp; Chr (10) _
+		&amp; &quot;Function fnGetStarDustData As Variant&quot; &amp; Chr (10) _
+		&amp; Chr (9) &amp; &quot;fnGetStarDustData = Array( _&quot; &amp; Chr (10) _
+		&amp; Chr (9) &amp; Chr (9) &amp; &quot;-1, _&quot; &amp; Chr (10)
+	For nI = 1 To UBound (mData) - 1 Step 2
+		sOutput = sOutput _
+			&amp; Chr (9) &amp; Chr (9) &amp; mData (nI) (2) &amp; &quot;, _&quot; &amp; Chr (10)
+	Next nI
+	nI = UBound (mData)
+	sOutput = sOutput _
+		&amp; Chr (9) &amp; Chr (9) &amp; mData (nI) (2) &amp; &quot;)&quot; &amp; Chr (10) _
+		&amp; &quot;End Function&quot;
+	fnReadStarDustSheet = sOutput
+End Function
+</script:module>

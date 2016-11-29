@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="0Main" script:language="StarBasic">&apos; 0Main: The main module for the Pokémon Go IV calculator
+&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2016-11-27
+
+Option Explicit
+
+&apos; The stats of a Pokémon.
+Type aStats
+	sNo As String
+	sPokemon As String
+	fLevel As Double
+	nStamina As Integer
+	nAttack As Integer
+	nDefense As Integer
+	nTotal As Integer
+	sEvolveInto As String
+	nEvolvedCP As Integer
+	nMaxCP As Integer
+End Type
+
+&apos; The amount of star dust to power-up.
+Type aStarDust
+	fLevel As Double
+	nStarDust As Integer
+End Type
+
+&apos; The parameters to find the individual values.
+Type aFindIVParam
+	sPokemon As String
+	nCP As Integer
+	nHP As Integer
+	nStarDust As Integer
+	nPlayerLevel As Integer
+	bIsNew As Boolean
+	nAppraisal1 As Integer
+	sBest As String
+	nAppraisal2 As Integer
+	bIsCancelled As Boolean
+End Type
+
+Private maBaseStats () As New aStats
+Private mCPM () As Double, mStarDust () As Integer
+
+&apos; subMain: The main program
+Sub subMain
+	Dim maIVs As Variant, nI As Integer, sOutput As String
+	Dim aQuery As New aFindIVParam, aBaseStats As New aStats
+	
+	aQuery = fnAskParam
+	If aQuery.bIsCancelled Then
+		Exit Sub
+	End If
+	maIVs = fnFindIV (aQuery)
+	sOutput = &quot;&quot;
+	For nI = 0 To UBound (maIVs)
+		sOutput = sOutput _
+			&amp; &quot; Lv=&quot; &amp; maIVs (nI).fLevel _
+			&amp; &quot; Atk=&quot; &amp; maIVs (nI).nAttack _
+			&amp; &quot; Def=&quot; &amp; maIVs (nI).nDefense _
+			&amp; &quot; Sta=&quot; &amp; maIVs (nI).nStamina _
+			&amp; &quot; IV=&quot; &amp; fnFloor (maIVs (nI).nTotal * 100 / 45) &amp; &quot;%&quot;
+		If aQuery.sPokemon &lt;&gt; maIVs (nI).sEvolveInto Then
+			aBaseStats = fnGetBaseStats (maIVs (nI).sEvolveInto)
+			sOutput = sOutput &amp; &quot; Ev=&quot; &amp; maIVs (nI).sEvolveInto _
+				&amp; &quot; &quot; &amp; maIVs (nI).nEvolvedCP
+		End If
+		If aQuery.nPlayerLevel &lt;&gt; 0 Then
+			sOutput = sOutput &amp; &quot; XCP=&quot; &amp; maIVs (nI).nMaxCP
+		End If
+		sOutput = sOutput &amp; Chr (10)
+	Next nI
+	If sOutput = &quot;&quot; Then
+		MsgBox &quot;Found no matching IV.&quot;
+	Else
+		subSaveIV (aQuery, maIVs)
+	End If
+End Sub
+
+&apos; fnFindIV: Finds the possible individual values of the Pokémon
+Function fnFindIV (aQuery As aFindIVParam) As Variant
+	Dim aBaseStats As New aStats, maIV () As New aStats
+	Dim fLevel As Double, nStamina As Integer
+	Dim nAttack As Integer, nDefense As integer
+	Dim nI As Integer, nJ As Integer
+	Dim fStep As Double, nCount As Integer
+	Dim aEvBaseStats As new aStats, aTempIV As New aStats
+	
+	If aQuery.sPokemon = &quot;&quot; Then
+		fnFindIV = maIV
+		Exit Function
+	End If
+	If aQuery.bIsNew Then
+		fStep = 1
+	Else
+		fStep = 0.5
+	End If
+	aBaseStats = fnGetBaseStats (aQuery.sPokemon)
+	aEvBaseStats = fnGetBaseStats (aBaseStats.sEvolveInto)
+	subReadStarDust
+	nCount = -1
+	For fLevel = 1 To UBound (mStarDust) Step fStep
+		If mStarDust (CInt (fLevel - 0.5)) = aQuery.nStarDust Then
+	&apos;For nI = 0 To UBound (maStarDust) Step nStep
+	&apos;	fLevel = maStarDust (nI).fLevel
+	&apos;	If maStarDust (nI).nStarDust = aQuery.nStarDust Then
+			For nStamina = 0 To 15
+				If fnCalcHP (aBaseStats, fLevel, nStamina) = aQuery.nHP Then
+					For nAttack = 0 To 15
+						For nDefense = 0 To 15
+							If fnCalcCP (aBaseStats, fLevel, nAttack, nDefense, nStamina) = aQuery.nCP _
+									And Not (fnFilterAppraisals (aQuery, nAttack, nDefense, nStamina)) Then
+								nCount = nCount + 1
+								ReDim Preserve maIV (nCount) As New aStats
+								With maIV (nCount)
+									.sNo = aBaseStats.sNo
+									.sPokemon = aQuery.sPokemon
+									.fLevel = fLevel
+									.nAttack = nAttack
+									.nDefense = nDefense
+									.nStamina = nStamina
+									.nTotal = nAttack + nDefense + nStamina
+									.sEvolveInto = aBaseStats.sEvolveInto
+									.nEvolvedCP = fnCalcCP (aEvBaseStats, fLevel, nAttack, nDefense, nStamina)
+								End With
+								If aQuery.nPlayerLevel &lt;&gt; 0 Then
+									maIV (nCount).nMaxCP = fnCalcCP (aEvBaseStats, aQuery.nPlayerLevel + 1.5, nAttack, nDefense, nStamina)
+								Else
+									maIV (nCount).nMaxCP = -1
+								End If
+							End If
+						Next nDefense
+					Next nAttack
+				End If
+			Next nStamina
+		End If
+	Next fLevel
+	&apos; Sorts the IVs
+	For nI = 0 To UBound (maIV) - 1
+		For nJ = nI + 1 To UBound (maIV)
+			If fnCompareIV (maIV (nI), maIV (nJ)) &gt; 0 Then
+				subCopyIV (maIV (nI), aTempIV)
+				subCopyIV (maIV (nJ), maIV (nI))
+				subCopyIV (aTempIV, maIV (nJ))
+			End If
+		Next nJ
+	Next nI
+	fnFindIV = maIV
+End Function
+
+&apos; fnCompareIV: Compare two IVs for sorting
+Function fnCompareIV (aIVa As aStats, aIVb As aStats) As Double
+	fnCompareIV = aIVb.nMaxCP - aIVa.nMaxCP
+	If fnCompareIV &lt;&gt; 0 Then
+		Exit Function
+	End If
+	fnCompareIV = aIVb.nEvolvedCP - aIVa.nEvolvedCP
+	If fnCompareIV &lt;&gt; 0 Then
+		Exit Function
+	End If
+	fnCompareIV = aIVb.nTotal - aIVa.nTotal
+	If fnCompareIV &lt;&gt; 0 Then
+		Exit Function
+	End If
+	fnCompareIV = aIVb.fLevel - aIVa.fLevel
+	If fnCompareIV &lt;&gt; 0 Then
+		Exit Function
+	End If
+	fnCompareIV = aIVb.nStamina - aIVa.nStamina
+	If fnCompareIV &lt;&gt; 0 Then
+		Exit Function
+	End If
+	fnCompareIV = aIVb.nAttack - aIVa.nAttack
+	If fnCompareIV &lt;&gt; 0 Then
+		Exit Function
+	End If
+	fnCompareIV = aIVb.nDefense - aIVa.nDefense
+	If fnCompareIV &lt;&gt; 0 Then
+		Exit Function
+	End If
+End Function
+
+&apos; subCopyIV: Copies one IV to another
+Function subCopyIV (aFrom As aStats, aTo As aStats) As Double
+	With aTo
+		.sNo = aFrom.sNo
+		.sPokemon = aFrom.sPokemon
+		.fLevel = aFrom.fLevel
+		.nAttack = aFrom.nAttack
+		.nDefense = aFrom.nDefense
+		.nStamina = aFrom.nStamina
+		.nTotal = aFrom.nTotal
+		.sEvolveInto = aFrom.sEvolveInto
+		.nEvolvedCP = aFrom.nEvolvedCP
+		.nMaxCP = aFrom.nMaxCP
+	End With
+End Function
+
+&apos; subSaveIV: Saves the found IV
+Sub subSaveIV (aQuery As aFindIVParam, maIVs () As aStats)
+	Dim oDoc As Object, oSheet As Object, oRange As Object
+	Dim nI As Integer, oColumns As Object
+	Dim mData (Ubound (maIVs) + 1) As Variant
+	Dim mProps () As New com.sun.star.beans.PropertyValue
+	
+	oDoc = StarDesktop.loadComponentFromURL ( _
+		&quot;private:factory/scalc&quot;, &quot;_default&quot;, 0, mProps)
+	oSheet = oDoc.getSheets.getByIndex (0)
+	mData (0) = Array ( _
+		&quot;No&quot;, &quot;Pokemon&quot;, &quot;CP&quot;, &quot;HP&quot;, _
+		&quot;Lv&quot;, &quot;Atk&quot;, &quot;Def&quot;, &quot;Sta&quot;, &quot;IV&quot;, _
+		&quot;Evolve Into&quot;, &quot;Evolved CP&quot;, &quot;Max CP&quot;)
+	mData (1) = Array ( _
+		maIVs (0).sNo, aQuery.sPokemon, aQuery.nCP, aQuery.nHP, _
+		maIVs (0).fLevel, maIVs (0).nAttack, maIVs (0).nDefense, _
+		maIVs (0).nStamina, maIVs (0).nTotal / 45, _
+		maIVs (0).sEvolveInto, maIVs (0).nEvolvedCP, _
+		maIVs (0).nMaxCP)
+	For nI = 1 To UBound (maIVs)
+		mData (nI + 1) = Array ( _
+			&quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, _
+			maIVs (nI).fLevel, maIVs (nI).nAttack, maIVs (nI).nDefense, _
+			maIVs (nI).nStamina, maIVs (nI).nTotal / 45, _
+			maIVs (nI).sEvolveInto, maIVs (nI).nEvolvedCP, _
+			maIVs (nI).nMaxCP)
+	Next nI
+	oRange = oSheet.getCellRangeByPosition ( _
+		0, 0, UBound (mData (0)), UBound (mData))
+	oRange.setDataArray (mData)
+	oRange.setPropertyValue (&quot;VertJustify&quot;, _
+		com.sun.star.table.CellVertJustify.TOP)
+	
+	oRange = oSheet.getCellRangeByPosition ( _
+		0, 1, 0, UBound (mData))
+	oRange.merge (True)
+	oRange = oSheet.getCellRangeByPosition ( _
+		1, 1, 1, UBound (mData))
+	oRange.merge (True)
+	oRange = oSheet.getCellRangeByPosition ( _
+		2, 1, 2, UBound (mData))
+	oRange.merge (True)
+	oRange = oSheet.getCellRangeByPosition ( _
+		3, 1, 3, UBound (mData))
+	oRange.merge (True)
+	oRange = oSheet.getCellRangeByPosition ( _
+		8, 1, 8, UBound (mData))
+	oRange.setPropertyValue (&quot;NumberFormat&quot;, 10)
+	
+	oColumns = oSheet.getColumns
+	For nI = 0 To UBound (mData (0))
+		oColumns.getByIndex (nI).setPropertyValue ( _
+			&quot;OptimalWidth&quot;, True)
+	Next nI
+End Sub
+
+&apos; fnFilterAppraisals: Filters the IV by the appraisals.
+Function fnFilterAppraisals (aQuery As aFindIVParam, nAttack As Integer, nDefense As Integer, nStamina As Integer) As Boolean
+	Dim nTotal As Integer, nMax As Integer, sBest As String
+	
+	&apos; The first appraisal.
+	nTotal = nAttack + nDefense + nStamina
+	If aQuery.nAppraisal1 = 1 And Not (nTotal &gt;= 37) Then
+		fnFilterAppraisals = True
+		Exit Function
+	End If
+	If aQuery.nAppraisal1 = 2 And Not (nTotal &gt;= 30 And nTotal &lt;= 36) Then
+		fnFilterAppraisals = True
+		Exit Function
+	End If
+	If aQuery.nAppraisal1 = 3 And Not (nTotal &gt;= 23 And nTotal &lt;= 29) Then
+		fnFilterAppraisals = True
+		Exit Function
+	End If
+	If aQuery.nAppraisal1 = 4 And Not (nTotal &lt;= 22) Then
+		fnFilterAppraisals = True
+		Exit Function
+	End If
+	&apos; The best stats.
+	nMax = nAttack
+	If nDefense &gt; nMax Then
+		nMax = nDefense
+	End If
+	If nStamina &gt; nMax Then
+		nMax = nStamina
+	End If
+	If aQuery.sBest &lt;&gt; &quot;&quot; Then
+		sBest = &quot;&quot;
+		If nAttack = nMax Then
+			sBest = sBest &amp; &quot;Atk &quot;
+		End If
+		If nDefense = nMax Then
+			sBest = sBest &amp; &quot;Def &quot;
+		End If
+		If nStamina = nMax Then
+			sBest = sBest &amp; &quot;Sta &quot;
+		End If
+		If aQuery.sBest &lt;&gt; sBest Then
+			fnFilterAppraisals = True
+			Exit Function
+		End If
+	End If
+	&apos; The second appraisal.
+	If aQuery.nAppraisal2 = 1 And Not (nMax = 15) Then
+		fnFilterAppraisals = True
+		Exit Function
+	End If
+	If aQuery.nAppraisal2 = 2 And Not (nMax = 13 Or nMax = 14) Then
+		fnFilterAppraisals = True
+		Exit Function
+	End If
+	If aQuery.nAppraisal2 = 3 And Not (nMax &gt;= 8 And nMax &lt;= 12) Then
+		fnFilterAppraisals = True
+		Exit Function
+	End If
+	If aQuery.nAppraisal2 = 4 And Not (nMax &lt;= 7) Then
+		fnFilterAppraisals = True
+		Exit Function
+	End If
+	fnFilterAppraisals = False
+End Function
+
+&apos; fnCalcCP: Calculates the combat power of the Pokémon
+Function fnCalcCP (aBaseStats As aStats, fLevel As Double, nAttack As Integer, nDefense As Integer, nStamina As Integer) As Integer
+	fnCalcCP = fnFloor ((aBaseStats.nAttack + nAttack) _
+		* ((aBaseStats.nDefense + nDefense) ^ 0.5) _
+		* ((aBaseStats.nStamina + nStamina) ^ 0.5) _
+		* (fnGetCPM (fLevel) ^ 2) / 10)
+End Function
+
+&apos; fnCalcHP: Calculates the hit points of the Pokémon
+Function fnCalcHP (aBaseStats As aStats, fLevel As Double, nStamina As Integer) As Integer
+	fnCalcHP = fnFloor ((aBaseStats.nStamina + nStamina) _
+		* fnGetCPM (fLevel))
+End Function
+
+&apos; fnGetBaseStats: Returns the base stats of the Pokémon.
+Function fnGetBaseStats (sPokemon As String) As aStats
+	Dim nI As Integer
+	
+	subReadBaseStats
+	For nI = 0 To UBound (maBaseStats)
+		If maBaseStats (nI).sPokemon = sPokemon Then
+			fnGetBaseStats = maBaseStats (nI)
+			Exit Function
+		End If
+	Next nI
+End Function
+
+&apos; fnGetCPM: Returns the combat power multiplier.
+Function fnGetCPM (fLevel As Double) As Double
+	Dim nI As Integer
+	
+	subReadCPM
+	If CInt (fLevel) = fLevel Then
+		fnGetCPM = mCPM (fLevel)
+	Else
+		fnGetCPM = ((mCpm (fLevel - 0.5) ^ 2 _
+			+ mCpm (fLevel + 0.5) ^ 2) / 2) ^ 0.5
+	End If
+End Function
+
+&apos; fnFloor: Returns the floor of the number
+Function fnFloor (fNumber As Double) As Integer
+	fnFloor = CInt (fNumber - 0.5)
+End Function
+
+&apos; subReadBaseStats: Reads the base stats table.
+Sub subReadBaseStats
+	Dim mData As Variant, nI As Integer
+	
+	If UBound (maBaseStats) = -1 Then
+		mData = fnGetBaseStatsData
+		ReDim Preserve maBaseStats (UBound (mData)) As New aStats
+		For nI = 0 To UBound (mData)
+			With maBaseStats (nI)
+				.sNo = mData (nI) (1)
+				.sPokemon = mData (nI) (0)
+				.nStamina = mData (nI) (2)
+				.nAttack = mData (nI) (3)
+				.nDefense = mData (nI) (4)
+				.sEvolveInto = mData (nI) (5)
+			End With
+		Next nI
+	End If
+End Sub
+
+&apos; subReadCPM: Reads the CPM table.
+Sub subReadCPM
+	If UBound (mCPM) = -1 Then
+		mCPM = fnGetCPMData
+	End If
+End Sub
+
+&apos; subReadStarDust: Reads the star dust table.
+Sub subReadStarDust
+	If UBound (mStarDust) = -1 Then
+		mStarDust = fnGetStarDustData
+	End If
+End Sub
+</script:module>
