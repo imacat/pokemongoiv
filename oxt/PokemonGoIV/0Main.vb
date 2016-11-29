@@ -34,6 +34,7 @@ Type aFindIVParam
 	nAppraisal1 As Integer
 	sBest As String
 	nAppraisal2 As Integer
+	bIsCancelled As Boolean
 End Type
 
 Private maBaseStats () As New aStats
@@ -41,11 +42,13 @@ Private mCPM () As Double, mStarDust () As Integer
 
 ' subMain: The main program
 Sub subMain
-	BasicLibraries.loadLibrary "XrayTool"
 	Dim maIVs As Variant, nI As Integer, sOutput As String
 	Dim aQuery As New aFindIVParam, aBaseStats As New aStats
 	
 	aQuery = fnAskParam
+	If aQuery.bIsCancelled Then
+		Exit Sub
+	End If
 	maIVs = fnFindIV (aQuery)
 	sOutput = ""
 	For nI = 0 To UBound (maIVs)

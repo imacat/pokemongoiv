@@ -14,6 +14,7 @@ Type aFindIVParam
 	nAppraisal1 As Integer
 	sBest As String
 	nAppraisal2 As Integer
+	bIsCancelled As Boolean
 End Type
 
 ' fnAskParam: Asks the users for the parameters for the Pokémon.
@@ -33,7 +34,7 @@ Function fnAskParam As aFindIVParam
 	oDialogModel.setPropertyValue ("PositionY", 100)
 	oDialogModel.setPropertyValue ("Height", 140)
 	oDialogModel.setPropertyValue ("Width", 220)
-	oDialogModel.setPropertyValue ("Title", "Pokémon Parameters")
+	oDialogModel.setPropertyValue ("Title", "Pokémon Go IV Calculator")
 	
 	' Adds a text label for the Pokémon list.
 	oTextModel = oDialogModel.createInstance ( _
@@ -282,7 +283,11 @@ Function fnAskParam As aFindIVParam
 	oDialog.setModel (oDialogModel)
 	oDialog.setVisible (True)
 	oDialog.getControl ("lstPokemon").setFocus
-	oDialog.execute
+	If oDialog.execute = 0 Then
+		aQuery.bIsCancelled = True
+		fnAskParam = aQuery
+		Exit Function
+	End If
 	
 	With aQuery
 		.sPokemon = oDialog.getControl ("lstPokemon").getSelectedItem
@@ -292,6 +297,7 @@ Function fnAskParam As aFindIVParam
 		.nPlayerLevel = CInt (oDialog.getControl ("lstPlayerLevel").getSelectedItem)
 		.nAppraisal1 = oDialog.getControl ("lstApprasal1").getSelectedItemPos + 1
 		.nAppraisal2 = oDialog.getControl ("lstApprasal2").getSelectedItemPos + 1
+		.bIsCancelled = False
 	End With
 	If oDialog.getControl ("cbxIsNew").getState = 1 Then
 		aQuery.bIsNew = True
