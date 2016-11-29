@@ -110,7 +110,7 @@ Function fnAskParam As aFindIVParam
 	oTextModel.setPropertyValue ("PositionY", 20)
 	oTextModel.setPropertyValue ("Height", 12)
 	oTextModel.setPropertyValue ("Width", 30)
-	oTextModel.setPropertyValue ("Label", "Star ~dust:")
+	oTextModel.setPropertyValue ("Label", "S~tar dust:")
 	oDialogModel.insertByName ("txtStarDust", oTextModel)
 	
 	' Adds the star dust field.
