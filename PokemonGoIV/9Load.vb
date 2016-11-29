@@ -1,4 +1,4 @@
-' 3Load: The Pokémon Go IV data
+' 9Load: The Pokémon Go data sheets loader
 '   by imacat <imacat@mail.imacat.idv.tw>, 2016-11-28
 
 Option Explicit
@@ -9,9 +9,9 @@ Sub subReadDataSheets
 	Dim sOutput as String, mData As Variant
 	
 	sOutput = "" _
-		& "' 2Data: The Pokémon Go data for IV calculation" & Chr (10) _
+		& "' 1Data: The Pokémon Go data for IV calculation" & Chr (10) _
 		& "'   by imacat <imacat@mail.imacat.idv.tw>, " & Format (Date (), "yyyy-mm-dd") & Chr (10) _
-		& "'   Generated with _3Load.subReadDataSheets ()" & Chr (10) _
+		& "'   Generated with 9Load.subReadDataSheets ()" & Chr (10) _
 		& Chr (10) _
 		& "Option Explicit"
 	sOutput = sOutput & Chr (10) & Chr (10) & fnReadBaseStatsSheet
