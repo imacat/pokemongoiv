@@ -48,7 +48,7 @@ Sub subMain
 	Dim maIVs As Variant, nI As Integer, sOutput As String
 	Dim aQuery As New aFindIVParam, aBaseStats As New aStats
 	
-	aQuery = fnAskParam0
+	aQuery = fnAskParam
 	If aQuery.bIsCancelled Then
 		Exit Sub
 	End If
@@ -80,36 +80,19 @@ End Sub
 
 &apos; fnAskParam: Asks the users for the parameters for the Pokémon.
 Function fnAskParam As aFindIVParam
-	Dim aQuery As New aFindIVParam, oDialog As Object
-	Dim oDialogModel As Object, oListModel As Object
+	Dim oDialog As Object, oDialogModel As Object
+	Dim bIsBestAttack As Boolean, bIsBestDefense As Boolean
+	Dim bIsBestHP As Boolean
+	Dim aQuery As New aFindIVParam
 	
 	oDialog = CreateUnoDialog (DialogLibraries.PokemonGoIV.DlgMain)
-	oDialogModel = oDialog.getModel
-	
-	oListModel = oDialogModel.getByName (&quot;lstPokemon&quot;)
-	oListModel.setPropertyValue (&quot;Dropdown&quot;, True)
-	oDialogModel.removeByName (&quot;lstPokemon&quot;)
-	oDialogModel.insertByName (&quot;lstPokemon&quot;, oListModel)
-	
-	oListModel = oDialogModel.getByName (&quot;lstStarDust&quot;)
-	oListModel.setPropertyValue (&quot;Dropdown&quot;, True)
-	oDialogModel.removeByName (&quot;lstStarDust&quot;)
-	oDialogModel.insertByName (&quot;lstStarDust&quot;, oListModel)
-	
-	oListModel = oDialogModel.getByName (&quot;lstPlayerLevel&quot;)
-	oListModel.setPropertyValue (&quot;Dropdown&quot;, True)
-	oDialogModel.removeByName (&quot;lstPlayerLevel&quot;)
-	oDialogModel.insertByName (&quot;lstPlayerLevel&quot;, oListModel)
-	
-	oListModel = oDialogModel.getByName (&quot;lstApprasal1&quot;)
-	oListModel.setPropertyValue (&quot;Dropdown&quot;, True)
-	oDialogModel.removeByName (&quot;lstApprasal1&quot;)
-	oDialogModel.insertByName (&quot;lstApprasal1&quot;, oListModel)
-	
-	oListModel = oDialogModel.getByName (&quot;lstApprasal2&quot;)
-	oListModel.setPropertyValue (&quot;Dropdown&quot;, True)
-	oDialogModel.removeByName (&quot;lstApprasal2&quot;)
-	oDialogModel.insertByName (&quot;lstApprasal2&quot;, oListModel)
+	oDialog.getControl (&quot;lstApprasal1&quot;).setVisible (False)
+	oDialog.getControl (&quot;txtBestBefore&quot;).setVisible (False)
+	oDialog.getControl (&quot;lstBest&quot;).setVisible (False)
+	oDialog.getControl (&quot;txtBestAfter&quot;).setVisible (False)
+	oDialog.getControl (&quot;cbxBest2&quot;).setVisible (False)
+	oDialog.getControl (&quot;cbxBest3&quot;).setVisible (False)
+	oDialog.getControl (&quot;lstApprasal2&quot;).setVisible (False)
 	
 	If oDialog.execute = 0 Then
 		aQuery.bIsCancelled = True
@@ -132,14 +115,45 @@ Function fnAskParam As aFindIVParam
 	Else
 		aQuery.bIsNew = False
 	End If
+	&apos; The best stats
+	bIsBestAttack = False
+	bIsBestDefense = False
+	bIsBestHP = False
+	If oDialog.getControl (&quot;lstBest&quot;).getSelectedItem = &quot;Attack&quot; Then
+		bIsBestAttack = True
+		If oDialog.getControl (&quot;cbxBest2&quot;).getState = 1 Then
+			bIsBestDefense = True
+		End If
+		If oDialog.getControl (&quot;cbxBest3&quot;).getState = 1 Then
+			bIsBestHP = True
+		End If
+	End If
+	If oDialog.getControl (&quot;lstBest&quot;).getSelectedItem = &quot;Defense&quot; Then
+		bIsBestDefense = True
+		If oDialog.getControl (&quot;cbxBest2&quot;).getState = 1 Then
+			bIsBestAttack = True
+		End If
+		If oDialog.getControl (&quot;cbxBest3&quot;).getState = 1 Then
+			bIsBestHP = True
+		End If
+	End If
+	If oDialog.getControl (&quot;lstBest&quot;).getSelectedItem = &quot;HP&quot; Then
+		bIsBestHP = True
+		If oDialog.getControl (&quot;cbxBest2&quot;).getState = 1 Then
+			bIsBestAttack = True
+		End If
+		If oDialog.getControl (&quot;cbxBest3&quot;).getState = 1 Then
+			bIsBestDefense = True
+		End If
+	End If
 	aQuery.sBest = &quot;&quot;
-	If oDialog.getControl (&quot;cbxAttackBest&quot;).getState = 1 Then
+	If bIsBestAttack Then
 		aQuery.sBest = aQuery.sBest &amp; &quot;Atk &quot;
 	End If
-	If oDialog.getControl (&quot;cbxDefenseBest&quot;).getState = 1 Then
+	If bIsBestDefense Then
 		aQuery.sBest = aQuery.sBest &amp; &quot;Def &quot;
 	End If
-	If oDialog.getControl (&quot;cbxHPBest&quot;).getState = 1 Then
+	If bIsBestHP Then
 		aQuery.sBest = aQuery.sBest &amp; &quot;Sta &quot;
 	End If
 	fnAskParam = aQuery
@@ -339,7 +353,7 @@ Function fnAskParam0 As aFindIVParam
 	&apos; Adds the blue team radio button.
 	oRadioModel = oDialogModel.createInstance ( _
 		&quot;com.sun.star.awt.UnoControlRadioButtonModel&quot;)
-	oRadioModel.setPropertyValue (&quot;PositionX&quot;, 55)
+	oRadioModel.setPropertyValue (&quot;PositionX&quot;, 60)
 	oRadioModel.setPropertyValue (&quot;PositionY&quot;, 66)
 	oRadioModel.setPropertyValue (&quot;Height&quot;, 8)
 	oRadioModel.setPropertyValue (&quot;Width&quot;, 30)
@@ -351,7 +365,7 @@ Function fnAskParam0 As aFindIVParam
 	&apos; Adds the yellow team radio button.
 	oRadioModel = oDialogModel.createInstance ( _
 		&quot;com.sun.star.awt.UnoControlRadioButtonModel&quot;)
-	oRadioModel.setPropertyValue (&quot;PositionX&quot;, 85)
+	oRadioModel.setPropertyValue (&quot;PositionX&quot;, 95)
 	oRadioModel.setPropertyValue (&quot;PositionY&quot;, 66)
 	oRadioModel.setPropertyValue (&quot;Height&quot;, 8)
 	oRadioModel.setPropertyValue (&quot;Width&quot;, 30)
@@ -375,13 +389,13 @@ Function fnAskParam0 As aFindIVParam
 	oTextModel.setPropertyValue (&quot;PositionX&quot;, 10)
 	oTextModel.setPropertyValue (&quot;PositionY&quot;, 96)
 	oTextModel.setPropertyValue (&quot;Height&quot;, 8)
-	oTextModel.setPropertyValue (&quot;Width&quot;, 0)
+	oTextModel.setPropertyValue (&quot;Width&quot;, 20)
 	oDialogModel.insertByName (&quot;txtBestBefore&quot;, oTextModel)
 	
 	&apos; Adds the best stat field.
 	oListModel = oDialogModel.createInstance ( _
 		&quot;com.sun.star.awt.UnoControlListBoxModel&quot;)
-	oListModel.setPropertyValue (&quot;PositionX&quot;, 10)
+	oListModel.setPropertyValue (&quot;PositionX&quot;, 30)
 	oListModel.setPropertyValue (&quot;PositionY&quot;, 94)
 	oListModel.setPropertyValue (&quot;Height&quot;, 12)
 	oListModel.setPropertyValue (&quot;Width&quot;, 35)
@@ -391,7 +405,7 @@ Function fnAskParam0 As aFindIVParam
 	&apos; Adds a text label after the best stat.
 	oTextModel = oDialogModel.createInstance ( _
 		&quot;com.sun.star.awt.UnoControlFixedTextModel&quot;)
-	oTextModel.setPropertyValue (&quot;PositionX&quot;, 45)
+	oTextModel.setPropertyValue (&quot;PositionX&quot;, 65)
 	oTextModel.setPropertyValue (&quot;PositionY&quot;, 96)
 	oTextModel.setPropertyValue (&quot;Height&quot;, 8)
 	oTextModel.setPropertyValue (&quot;Width&quot;, 100)
@@ -403,7 +417,7 @@ Function fnAskParam0 As aFindIVParam
 	oCheckBoxModel.setPropertyValue (&quot;PositionX&quot;, 10)
 	oCheckBoxModel.setPropertyValue (&quot;PositionY&quot;, 111)
 	oCheckBoxModel.setPropertyValue (&quot;Height&quot;, 8)
-	oCheckBoxModel.setPropertyValue (&quot;Width&quot;, 210)
+	oCheckBoxModel.setPropertyValue (&quot;Width&quot;, 200)
 	oDialogModel.insertByName (&quot;cbxBest2&quot;, oCheckBoxModel)
 	
 	&apos; Adds the third best stat check box.
@@ -412,14 +426,14 @@ Function fnAskParam0 As aFindIVParam
 	oCheckBoxModel.setPropertyValue (&quot;PositionX&quot;, 10)
 	oCheckBoxModel.setPropertyValue (&quot;PositionY&quot;, 126)
 	oCheckBoxModel.setPropertyValue (&quot;Height&quot;, 8)
-	oCheckBoxModel.setPropertyValue (&quot;Width&quot;, 210)
+	oCheckBoxModel.setPropertyValue (&quot;Width&quot;, 200)
 	oDialogModel.insertByName (&quot;cbxBest3&quot;, oCheckBoxModel)
 	
 	&apos; Adds the second appraisal list.
 	oListModel = oDialogModel.createInstance ( _
 		&quot;com.sun.star.awt.UnoControlListBoxModel&quot;)
 	oListModel.setPropertyValue (&quot;PositionX&quot;, 10)
-	oListModel.setPropertyValue (&quot;PositionY&quot;, 140)
+	oListModel.setPropertyValue (&quot;PositionY&quot;, 139)
 	oListModel.setPropertyValue (&quot;Height&quot;, 12)
 	oListModel.setPropertyValue (&quot;Width&quot;, 200)
 	oListModel.setPropertyValue (&quot;Dropdown&quot;, True)
@@ -537,7 +551,7 @@ Function fnAskParam0 As aFindIVParam
 	fnAskParam0 = aQuery
 End Function
 
-&apos; subRdoTeamRedItemChanged_itemStateChanged: Dummy for the listener.
+&apos; subRdoTeamRedItemChanged_disposing: Dummy for the listener.
 Sub subRdoTeamRedItemChanged_disposing (oEvent As object)
 End Sub
 
@@ -547,10 +561,10 @@ Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
 	Dim mItems () As String
 	
 	mItems = Array ( _
-		&quot;1. Overall, your [Pokémon] simply amazes me. It can accomplish anything!&quot;, _
-		&quot;2. Overall, your [Pokémon] is a strong Pokémon. You should be proud!&quot;, _
-		&quot;3. Overall, your [Pokémon] is a decent Pokémon.&quot;, _
-		&quot;4. Overall, your [Pokémon] may not be great in battle, but I still like it!&quot;)
+		&quot;Overall, your [Pokémon] simply amazes me. It can accomplish anything!&quot;, _
+		&quot;Overall, your [Pokémon] is a strong Pokémon. You should be proud!&quot;, _
+		&quot;Overall, your [Pokémon] is a decent Pokémon.&quot;, _
+		&quot;Overall, your [Pokémon] may not be great in battle, but I still like it!&quot;)
 	oDialog = oEvent.Source.getContext
 	oList = oDialog.getControl (&quot;lstApprasal1&quot;)
 	oList.removeItems (0, oList.getItemCount())
@@ -584,10 +598,10 @@ Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
 	oList.setVisible (False)
 	
 	mItems = Array ( _
-		&quot;1. I&apos;m blown away by its stats. WOW!&quot;, _
-		&quot;2. It&apos;s got excellent stats! How exciting!&quot;, _
-		&quot;3. Its stats indicate that in battle, it&apos;ll get the job done.&quot;, _
-		&quot;4. Its stats don&apos;t point to greatness in battle.&quot;)
+		&quot;I&apos;m blown away by its stats. WOW!&quot;, _
+		&quot;It&apos;s got excellent stats! How exciting!&quot;, _
+		&quot;Its stats indicate that in battle, it&apos;ll get the job done.&quot;, _
+		&quot;Its stats don&apos;t point to greatness in battle.&quot;)
 	oDialog = oEvent.Source.getContext
 	oList = oDialog.getControl (&quot;lstApprasal2&quot;)
 	oList.removeItems (0, oList.getItemCount())
@@ -595,7 +609,7 @@ Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
 	oList.setVisible (True)
 End Sub
 
-&apos; subRdoTeamBlueItemChanged_itemStateChanged: Dummy for the listener.
+&apos; subRdoTeamBlueItemChanged_disposing: Dummy for the listener.
 Sub subRdoTeamBlueItemChanged_disposing (oEvent As object)
 End Sub
 
@@ -605,10 +619,10 @@ Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
 	Dim mItems () As String
 	
 	mItems = Array ( _
-		&quot;1. Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!&quot;, _
-		&quot;2. Overall, your [Pokémon] has certainly caught my attention.&quot;, _
-		&quot;3. Overall, your [Pokémon] is above average.&quot;, _
-		&quot;4. Overall, your [Pokémon] is not likely to make much headway in battle.&quot;)
+		&quot;Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!&quot;, _
+		&quot;Overall, your [Pokémon] has certainly caught my attention.&quot;, _
+		&quot;Overall, your [Pokémon] is above average.&quot;, _
+		&quot;Overall, your [Pokémon] is not likely to make much headway in battle.&quot;)
 	oDialog = oEvent.Source.getContext
 	oList = oDialog.getControl (&quot;lstApprasal1&quot;)
 	oList.removeItems (0, oList.getItemCount())
@@ -642,10 +656,10 @@ Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
 	oList.setVisible (False)
 	
 	mItems = Array ( _
-		&quot;1. Its stats exceed my calculations. It&apos;s incredible!&quot;, _
-		&quot;2. I am certainly impressed by its stats, I must say.&quot;, _
-		&quot;3. Its stats are noticeably trending to the positive.&quot;, _
-		&quot;4. Its stats are not out of the norm, in my opinion.&quot;)
+		&quot;Its stats exceed my calculations. It&apos;s incredible!&quot;, _
+		&quot;I am certainly impressed by its stats, I must say.&quot;, _
+		&quot;Its stats are noticeably trending to the positive.&quot;, _
+		&quot;Its stats are not out of the norm, in my opinion.&quot;)
 	oDialog = oEvent.Source.getContext
 	oList = oDialog.getControl (&quot;lstApprasal2&quot;)
 	oList.removeItems (0, oList.getItemCount())
@@ -653,7 +667,7 @@ Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
 	oList.setVisible (True)
 End Sub
 
-&apos; subRdoTeamYellowItemChanged_itemStateChanged: Dummy for the listener.
+&apos; subRdoTeamYellowItemChanged_disposing: Dummy for the listener.
 Sub subRdoTeamYellowItemChanged_disposing (oEvent As object)
 End Sub
 
@@ -663,10 +677,10 @@ Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
 	Dim mItems () As String
 	
 	mItems = Array ( _
-		&quot;1. Overall, your [Pokémon] looks like it can really battle with the best of them!&quot;, _
-		&quot;2. Overall, your [Pokémon] is really strong!&quot;, _
-		&quot;3. Overall, your [Pokémon] is pretty decent!&quot;, _
-		&quot;4. Overall, your [Pokémon] has room for improvement as far as battling goes.&quot;)
+		&quot;Overall, your [Pokémon] looks like it can really battle with the best of them!&quot;, _
+		&quot;Overall, your [Pokémon] is really strong!&quot;, _
+		&quot;Overall, your [Pokémon] is pretty decent!&quot;, _
+		&quot;Overall, your [Pokémon] has room for improvement as far as battling goes.&quot;)
 	oDialog = oEvent.Source.getContext
 	oList = oDialog.getControl (&quot;lstApprasal1&quot;)
 	oList.removeItems (0, oList.getItemCount())
@@ -700,10 +714,10 @@ Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
 	oList.setVisible (False)
 	
 	mItems = Array ( _
-		&quot;1. Its stats are the best I&apos;ve ever seen! No doubt about it!&quot;, _
-		&quot;2. Its stats are really strong! Impressive.&quot;, _
-		&quot;3. It&apos;s definitely got some good stats. Definitely!&quot;, _
-		&quot;4. Its stats are all right, but kinda basic, as far as I can see.&quot;)
+		&quot;Its stats are the best I&apos;ve ever seen! No doubt about it!&quot;, _
+		&quot;Its stats are really strong! Impressive.&quot;, _
+		&quot;It&apos;s definitely got some good stats. Definitely!&quot;, _
+		&quot;Its stats are all right, but kinda basic, as far as I can see.&quot;)
 	oDialog = oEvent.Source.getContext
 	oList = oDialog.getControl (&quot;lstApprasal2&quot;)
 	oList.removeItems (0, oList.getItemCount())
@@ -711,7 +725,7 @@ Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
 	oList.setVisible (True)
 End Sub
 
-&apos; subLstBestItemChanged_itemStateChanged: Dummy for the listener.
+&apos; subLstBestItemChanged_disposing: Dummy for the listener.
 Sub subLstBestItemChanged_disposing (oEvent As object)
 End Sub
 
@@ -725,25 +739,31 @@ Sub subLstBestItemChanged_itemStateChanged (oEvent As object)
 			oCheckBox = oDialog.getControl (&quot;cbxBest2&quot;)
 			oCheckBox.setLabel (&quot;I&apos;m just as impressed with its Defense.&quot;)
 			oCheckBox.setVisible (True)
+			oCheckBox.setState (0)
 			oCheckBox = oDialog.getControl (&quot;cbxBest3&quot;)
 			oCheckBox.setLabel (&quot;I&apos;m just as impressed with its HP.&quot;)
 			oCheckBox.setVisible (True)
+			oCheckBox.setState (0)
 		End If
 		If oDialog.getControl (&quot;lstBest&quot;).getSelectedItem = &quot;Defense&quot; Then
 			oCheckBox = oDialog.getControl (&quot;cbxBest2&quot;)
 			oCheckBox.setLabel (&quot;I&apos;m just as impressed with its Attack.&quot;)
 			oCheckBox.setVisible (True)
+			oCheckBox.setState (0)
 			oCheckBox = oDialog.getControl (&quot;cbxBest3&quot;)
 			oCheckBox.setLabel (&quot;I&apos;m just as impressed with its HP.&quot;)
 			oCheckBox.setVisible (True)
+			oCheckBox.setState (0)
 		End If
 		If oDialog.getControl (&quot;lstBest&quot;).getSelectedItem = &quot;HP&quot; Then
 			oCheckBox = oDialog.getControl (&quot;cbxBest2&quot;)
 			oCheckBox.setLabel (&quot;I&apos;m just as impressed with its Attack.&quot;)
 			oCheckBox.setVisible (True)
+			oCheckBox.setState (0)
 			oCheckBox = oDialog.getControl (&quot;cbxBest3&quot;)
 			oCheckBox.setLabel (&quot;I&apos;m just as impressed with its Defense.&quot;)
 			oCheckBox.setVisible (True)
+			oCheckBox.setState (0)
 		End If
 	End If
 	If oDialog.getControl (&quot;rdoTeamBlue&quot;).getState Then
@@ -751,25 +771,31 @@ Sub subLstBestItemChanged_itemStateChanged (oEvent As object)
 			oCheckBox = oDialog.getControl (&quot;cbxBest2&quot;)
 			oCheckBox.setLabel (&quot;It is matched equally by its Defense.&quot;)
 			oCheckBox.setVisible (True)
+			oCheckBox.setState (0)
 			oCheckBox = oDialog.getControl (&quot;cbxBest3&quot;)
 			oCheckBox.setLabel (&quot;It is matched equally by its HP.&quot;)
 			oCheckBox.setVisible (True)
+			oCheckBox.setState (0)
 		End If
 		If oDialog.getControl (&quot;lstBest&quot;).getSelectedItem = &quot;Defense&quot; Then
 			oCheckBox = oDialog.getControl (&quot;cbxBest2&quot;)
 			oCheckBox.setLabel (&quot;It is matched equally by its Attack.&quot;)
 			oCheckBox.setVisible (True)
+			oCheckBox.setState (0)
 			oCheckBox = oDialog.getControl (&quot;cbxBest3&quot;)
 			oCheckBox.setLabel (&quot;It is matched equally by its HP.&quot;)
 			oCheckBox.setVisible (True)
+			oCheckBox.setState (0)
 		End If
 		If oDialog.getControl (&quot;lstBest&quot;).getSelectedItem = &quot;HP&quot; Then
 			oCheckBox = oDialog.getControl (&quot;cbxBest2&quot;)
 			oCheckBox.setLabel (&quot;It is matched equally by its Attack.&quot;)
 			oCheckBox.setVisible (True)
+			oCheckBox.setState (0)
 			oCheckBox = oDialog.getControl (&quot;cbxBest3&quot;)
 			oCheckBox.setLabel (&quot;It is matched equally by its Defense.&quot;)
 			oCheckBox.setVisible (True)
+			oCheckBox.setState (0)
 		End If
 	End If
 	If oDialog.getControl (&quot;rdoTeamYellow&quot;).getState Then
@@ -785,17 +811,21 @@ Sub subLstBestItemChanged_itemStateChanged (oEvent As object)
 			oCheckBox = oDialog.getControl (&quot;cbxBest2&quot;)
 			oCheckBox.setLabel (&quot;Its Attack is great, too!&quot;)
 			oCheckBox.setVisible (True)
+			oCheckBox.setState (0)
 			oCheckBox = oDialog.getControl (&quot;cbxBest3&quot;)
 			oCheckBox.setLabel (&quot;Its HP is great, too!&quot;)
 			oCheckBox.setVisible (True)
+			oCheckBox.setState (0)
 		End If
 		If oDialog.getControl (&quot;lstBest&quot;).getSelectedItem = &quot;HP&quot; Then
 			oCheckBox = oDialog.getControl (&quot;cbxBest2&quot;)
 			oCheckBox.setLabel (&quot;Its Attack is great, too!&quot;)
 			oCheckBox.setVisible (True)
+			oCheckBox.setState (0)
 			oCheckBox = oDialog.getControl (&quot;cbxBest3&quot;)
 			oCheckBox.setLabel (&quot;Its Defense is great, too!&quot;)
 			oCheckBox.setVisible (True)
+			oCheckBox.setState (0)
 		End If
 	End If
 End Sub
