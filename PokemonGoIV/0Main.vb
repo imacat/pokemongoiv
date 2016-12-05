@@ -83,6 +83,7 @@ Function fnAskParam As aFindIVParam
 	Dim bIsBestHP As Boolean
 	Dim aQuery As New aFindIVParam
 	
+	DialogLibraries.loadLibrary "PokemonGoIV"
 	oDialog = CreateUnoDialog (DialogLibraries.PokemonGoIV.DlgMain)
 	oDialog.getControl ("lstApprasal1").setVisible (False)
 	oDialog.getControl ("txtBestBefore").setVisible (False)

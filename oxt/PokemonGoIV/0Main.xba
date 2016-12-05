@@ -85,6 +85,7 @@ Function fnAskParam As aFindIVParam
 	Dim bIsBestHP As Boolean
 	Dim aQuery As New aFindIVParam
 	
+	DialogLibraries.loadLibrary &quot;PokemonGoIV&quot;
 	oDialog = CreateUnoDialog (DialogLibraries.PokemonGoIV.DlgMain)
 	oDialog.getControl (&quot;lstApprasal1&quot;).setVisible (False)
 	oDialog.getControl (&quot;txtBestBefore&quot;).setVisible (False)
@@ -115,6 +116,7 @@ Function fnAskParam As aFindIVParam
 	Else
 		aQuery.bIsNew = False
 	End If
+	
 	&apos; The best stats
 	bIsBestAttack = False
 	bIsBestDefense = False
@@ -156,6 +158,7 @@ Function fnAskParam As aFindIVParam
 	If bIsBestHP Then
 		aQuery.sBest = aQuery.sBest &amp; &quot;Sta &quot;
 	End If
+	
 	fnAskParam = aQuery
 End Function
 
@@ -507,6 +510,7 @@ Function fnAskParam0 As aFindIVParam
 	Else
 		aQuery.bIsNew = False
 	End If
+	
 	&apos; The best stats
 	bIsBestAttack = False
 	bIsBestDefense = False
@@ -548,6 +552,7 @@ Function fnAskParam0 As aFindIVParam
 	If bIsBestHP Then
 		aQuery.sBest = aQuery.sBest &amp; &quot;Sta &quot;
 	End If
+	
 	fnAskParam0 = aQuery
 End Function
 
