@@ -1,4 +1,4 @@
-' 1Data: The Pokémon Go data for IV calculation
+' 1Data: The Pokémon GO data for IV calculation
 '   by imacat <imacat@mail.imacat.idv.tw>, 2016-11-28
 '   Generated with 9Load.subReadDataSheets ()
 

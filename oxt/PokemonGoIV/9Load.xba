@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
-<script:module xmlns:script="http://openoffice.org/2000/script" script:name="9Load" script:language="StarBasic">&apos; 9Load: The Pokémon Go data sheets loader
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="9Load" script:language="StarBasic">&apos; 9Load: The Pokémon GO data sheets loader
 &apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2016-11-28
 
 Option Explicit
@@ -11,7 +11,7 @@ Sub subReadDataSheets
 	Dim sOutput as String, mData As Variant
 	
 	sOutput = &quot;&quot; _
-		&amp; &quot;&apos; 1Data: The Pokémon Go data for IV calculation&quot; &amp; Chr (10) _
+		&amp; &quot;&apos; 1Data: The Pokémon GO data for IV calculation&quot; &amp; Chr (10) _
 		&amp; &quot;&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, &quot; &amp; Format (Date (), &quot;yyyy-mm-dd&quot;) &amp; Chr (10) _
 		&amp; &quot;&apos;   Generated with 9Load.subReadDataSheets ()&quot; &amp; Chr (10) _
 		&amp; Chr (10) _
@@ -34,7 +34,7 @@ Sub subShowBasicData (sContent As String)
 	oDialogModel.setPropertyValue (&quot;PositionY&quot;, 100)
 	oDialogModel.setPropertyValue (&quot;Height&quot;, 130)
 	oDialogModel.setPropertyValue (&quot;Width&quot;, 200)
-	oDialogModel.setPropertyValue (&quot;Title&quot;, &quot;Pokémon Go Data&quot;)
+	oDialogModel.setPropertyValue (&quot;Title&quot;, &quot;Pokémon GO Data&quot;)
 	
 	&apos; Adds the content area
 	oEditModel = oDialogModel.createInstance ( _
@@ -82,10 +82,10 @@ Function fnReadBaseStatsSheet As String
 		&amp; &quot;Function fnGetBaseStatsData As Variant&quot; &amp; Chr (10) _
 		&amp; Chr (9) &amp; &quot;fnGetBaseStatsData = Array( _&quot; &amp; Chr (10)
 	For nI = 1 To UBound (mData) - 1
-		For nJ = 9 To 7 Step -1
+		For nJ = 8 To 6 Step -1
 			If mData (nI) (nJ) &lt;&gt; &quot;&quot; Then
 				sEvolveInto = mData (nI) (nJ)
-				nJ = 6
+				nJ = 5
 			End If
 		Next nJ
 		sOutput = sOutput _
@@ -97,10 +97,10 @@ Function fnReadBaseStatsSheet As String
 				&amp; &quot;, &quot;&quot;&quot; &amp; sEvolveInto &amp; &quot;&quot;&quot;), _&quot; &amp; Chr (10)
 	Next nI
 	nI = UBound (mData)
-	For nJ = 9 To 7 Step -1
+	For nJ = 8 To 6 Step -1
 		If mData (nI) (nJ) &lt;&gt; &quot;&quot; Then
 			sEvolveInto = mData (nI) (nJ)
-			nJ = 6
+			nJ = 5
 		End If
 	Next nJ
 	sOutput = sOutput _

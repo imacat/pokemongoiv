@@ -1,4 +1,4 @@
-' 0Main: The main module for the Pokémon Go IV calculator
+' 0Main: The main module for the Pokémon GO IV calculator
 '   by imacat <imacat@mail.imacat.idv.tw>, 2016-11-27
 
 Option Explicit
@@ -42,10 +42,11 @@ Private mCPM () As Double, mStarDust () As Integer
 
 ' subMain: The main program
 Sub subMain
+	BasicLibraries.loadLibrary "XrayTool"
 	Dim maIVs As Variant, nI As Integer, sOutput As String
 	Dim aQuery As New aFindIVParam, aBaseStats As New aStats
 	
-	aQuery = fnAskParam
+	aQuery = fnAskParam0
 	If aQuery.bIsCancelled Then
 		Exit Sub
 	End If
@@ -77,270 +78,37 @@ End Sub
 
 ' fnAskParam: Asks the users for the parameters for the Pokémon.
 Function fnAskParam As aFindIVParam
-	Dim oDialog As Object, oDialogModel As Object
-	Dim oTextModel As Object, oListModel As Object
-	Dim oNumericModel As Object, oCheckBoxModel As Object
-	Dim oGroupModel As Object, oButtonModel As Object
-	Dim mListItems () As String, sTemp As String
-	Dim nI As Integer, nCount As Integer
-	Dim aQuery As New aFindIVParam
+	Dim aQuery As New aFindIVParam, oDialog As Object
+	Dim oDialogModel As Object, oListModel As Object
 	
-	' Creates a dialog
-	oDialogModel = CreateUnoService ( _
-		"com.sun.star.awt.UnoControlDialogModel")
-	oDialogModel.setPropertyValue ("PositionX", 100)
-	oDialogModel.setPropertyValue ("PositionY", 100)
-	oDialogModel.setPropertyValue ("Height", 140)
-	oDialogModel.setPropertyValue ("Width", 220)
-	oDialogModel.setPropertyValue ("Title", "Pokémon Go IV Calculator")
+	oDialog = CreateUnoDialog (DialogLibraries.PokemonGoIV.DlgMain)
+	oDialogModel = oDialog.getModel
 	
-	' Adds a text label for the Pokémon list.
-	oTextModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlFixedTextModel")
-	oTextModel.setPropertyValue ("PositionX", 5)
-	oTextModel.setPropertyValue ("PositionY", 5)
-	oTextModel.setPropertyValue ("Height", 12)
-	oTextModel.setPropertyValue ("Width", 30)
-	oTextModel.setPropertyValue ("Label", "~Pokémon:")
-	oDialogModel.insertByName ("txtPokemon", oTextModel)
-	
-	' Adds the Pokémon list.
-	subReadBaseStats
-	ReDim mListItems (UBound (maBaseStats)) As String
-	For nI = 0 To UBound (maBaseStats)
-		mListItems (nI) = maBaseStats (nI).sPokemon
-	Next nI
-	oListModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlListBoxModel")
-	oListModel.setPropertyValue ("PositionX", 35)
-	oListModel.setPropertyValue ("PositionY", 4)
-	oListModel.setPropertyValue ("Height", 12)
-	oListModel.setPropertyValue ("Width", 50)
-	oListModel.setPropertyValue ("TabIndex", 0)
+	oListModel = oDialogModel.getByName ("lstPokemon")
 	oListModel.setPropertyValue ("Dropdown", True)
-	oListModel.setPropertyValue ("StringItemList", mListItems)
+	oDialogModel.removeByName ("lstPokemon")
 	oDialogModel.insertByName ("lstPokemon", oListModel)
 	
-	' Adds a text label for the CP field.
-	oTextModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlFixedTextModel")
-	oTextModel.setPropertyValue ("PositionX", 5)
-	oTextModel.setPropertyValue ("PositionY", 20)
-	oTextModel.setPropertyValue ("Height", 12)
-	oTextModel.setPropertyValue ("Width", 15)
-	oTextModel.setPropertyValue ("Label", "~CP:")
-	oDialogModel.insertByName ("txtCP", oTextModel)
-	
-	' Adds the CP field.
-	oNumericModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlNumericFieldModel")
-	oNumericModel.setPropertyValue ("PositionX", 20)
-	oNumericModel.setPropertyValue ("PositionY", 19)
-	oNumericModel.setPropertyValue ("Height", 12)
-	oNumericModel.setPropertyValue ("Width", 20)
-	oNumericModel.setPropertyValue ("DecimalAccuracy", 0)
-	oDialogModel.insertByName ("numCP", oNumericModel)
-	
-	' Adds a text label for the HP field.
-	oTextModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlFixedTextModel")
-	oTextModel.setPropertyValue ("PositionX", 50)
-	oTextModel.setPropertyValue ("PositionY", 20)
-	oTextModel.setPropertyValue ("Height", 12)
-	oTextModel.setPropertyValue ("Width", 15)
-	oTextModel.setPropertyValue ("Label", "~HP:")
-	oDialogModel.insertByName ("txtHP", oTextModel)
-	
-	' Adds the HP field.
-	oNumericModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlNumericFieldModel")
-	oNumericModel.setPropertyValue ("PositionX", 65)
-	oNumericModel.setPropertyValue ("PositionY", 19)
-	oNumericModel.setPropertyValue ("Height", 12)
-	oNumericModel.setPropertyValue ("Width", 15)
-	oNumericModel.setPropertyValue ("DecimalAccuracy", 0)
-	oDialogModel.insertByName ("numHP", oNumericModel)
-	
-	' Adds a text label for the star dust field.
-	oTextModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlFixedTextModel")
-	oTextModel.setPropertyValue ("PositionX", 90)
-	oTextModel.setPropertyValue ("PositionY", 20)
-	oTextModel.setPropertyValue ("Height", 12)
-	oTextModel.setPropertyValue ("Width", 30)
-	oTextModel.setPropertyValue ("Label", "S~tar dust:")
-	oDialogModel.insertByName ("txtStarDust", oTextModel)
-	
-	' Adds the star dust field.
-	subReadStarDust
-	sTemp = " "
-	ReDim mListItems () As String
-	nCount = -1
-	For nI = 1 To UBound (mStarDust)
-		If InStr (sTemp, " " & CStr (mStarDust (nI)) & " ") = 0 Then
-			nCount = nCount + 1
-			ReDim Preserve mListItems (nCount) As String
-			mListItems (nCount) = CStr (mStarDust (nI))
-			sTemp = sTemp & CStr (mStarDust (nI)) & " "
-		End If
-	Next nI
-	oListModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlListBoxModel")
-	oListModel.setPropertyValue ("PositionX", 120)
-	oListModel.setPropertyValue ("PositionY", 19)
-	oListModel.setPropertyValue ("Height", 12)
-	oListModel.setPropertyValue ("Width", 30)
+	oListModel = oDialogModel.getByName ("lstStarDust")
 	oListModel.setPropertyValue ("Dropdown", True)
-	oListModel.setPropertyValue ("StringItemList", mListItems)
+	oDialogModel.removeByName ("lstStarDust")
 	oDialogModel.insertByName ("lstStarDust", oListModel)
 	
-	' Adds a text label for the player level field.
-	oTextModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlFixedTextModel")
-	oTextModel.setPropertyValue ("PositionX", 160)
-	oTextModel.setPropertyValue ("PositionY", 20)
-	oTextModel.setPropertyValue ("Height", 12)
-	oTextModel.setPropertyValue ("Width", 35)
-	oTextModel.setPropertyValue ("Label", "Player ~level:")
-	oDialogModel.insertByName ("txtPlayerLevel", oTextModel)
-	
-	' Adds the player level field.
-	ReDim mListItems (39) As String
-	For nI = 0 To UBound (mListItems)
-		mListItems (nI) = CStr (nI + 1)
-	Next nI
-	oListModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlListBoxModel")
-	oListModel.setPropertyValue ("PositionX", 195)
-	oListModel.setPropertyValue ("PositionY", 19)
-	oListModel.setPropertyValue ("Height", 12)
-	oListModel.setPropertyValue ("Width", 20)
+	oListModel = oDialogModel.getByName ("lstPlayerLevel")
 	oListModel.setPropertyValue ("Dropdown", True)
-	oListModel.setPropertyValue ("StringItemList", mListItems)
+	oDialogModel.removeByName ("lstPlayerLevel")
 	oDialogModel.insertByName ("lstPlayerLevel", oListModel)
 	
-	' Adds the whether powered-up check box.
-	oCheckBoxModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlCheckBoxModel")
-	oCheckBoxModel.setPropertyValue ("PositionX", 5)
-	oCheckBoxModel.setPropertyValue ("PositionY", 35)
-	oCheckBoxModel.setPropertyValue ("Height", 12)
-	oCheckBoxModel.setPropertyValue ("Width", 210)
-	oCheckBoxModel.setPropertyValue ("Label", _
-		"This Pokémon is ~newly-caught and was not powered-up yet.")
-	oCheckBoxModel.setPropertyValue ("State", 1)
-	oDialogModel.insertByName ("cbxIsNew", oCheckBoxModel)
-	
-	' Adds a group for the appraisals
-	oGroupModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlGroupBoxModel")
-	oGroupModel.setPropertyValue ("PositionX", 5)
-	oGroupModel.setPropertyValue ("PositionY", 50)
-	oGroupModel.setPropertyValue ("Height", 65)
-	oGroupModel.setPropertyValue ("Width", 210)
-	oGroupModel.setPropertyValue ("Label", "Apprasals")
-	oDialogModel.insertByName ("grpApprasals", oGroupModel)
-	
-	' Adds the first appraisal list.
-	mListItems = Array ( _
-		"1. Amazed me/wonder/best", _
-		"2. Strong/caught my attention", _
-		"3. Decent/above average", _
-		"4. Not great/not make headway/has room")
-	oListModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlListBoxModel")
-	oListModel.setPropertyValue ("PositionX", 10)
-	oListModel.setPropertyValue ("PositionY", 64)
-	oListModel.setPropertyValue ("Height", 12)
-	oListModel.setPropertyValue ("Width", 200)
+	oListModel = oDialogModel.getByName ("lstApprasal1")
 	oListModel.setPropertyValue ("Dropdown", True)
-	oListModel.setPropertyValue ("StringItemList", mListItems)
+	oDialogModel.removeByName ("lstApprasal1")
 	oDialogModel.insertByName ("lstApprasal1", oListModel)
 	
-	' Adds a text label for the HP field.
-	oTextModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlFixedTextModel")
-	oTextModel.setPropertyValue ("PositionX", 10)
-	oTextModel.setPropertyValue ("PositionY", 80)
-	oTextModel.setPropertyValue ("Height", 12)
-	oTextModel.setPropertyValue ("Width", 15)
-	oTextModel.setPropertyValue ("Label", "Best:")
-	oDialogModel.insertByName ("txtBest", oTextModel)
-	
-	' Adds the attack is best check box
-	oCheckBoxModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlCheckBoxModel")
-	oCheckBoxModel.setPropertyValue ("PositionX", 25)
-	oCheckBoxModel.setPropertyValue ("PositionY", 80)
-	oCheckBoxModel.setPropertyValue ("Height", 12)
-	oCheckBoxModel.setPropertyValue ("Width", 30)
-	oCheckBoxModel.setPropertyValue ("Label", "~Attack")
-	oDialogModel.insertByName ("cbxAttackBest", oCheckBoxModel)
-	
-	' Adds the defense is best check box
-	oCheckBoxModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlCheckBoxModel")
-	oCheckBoxModel.setPropertyValue ("PositionX", 55)
-	oCheckBoxModel.setPropertyValue ("PositionY", 80)
-	oCheckBoxModel.setPropertyValue ("Height", 12)
-	oCheckBoxModel.setPropertyValue ("Width", 35)
-	oCheckBoxModel.setPropertyValue ("Label", "~Defense")
-	oDialogModel.insertByName ("cbxDefenseBest", oCheckBoxModel)
-	
-	' Adds the defense is best check box
-	oCheckBoxModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlCheckBoxModel")
-	oCheckBoxModel.setPropertyValue ("PositionX", 90)
-	oCheckBoxModel.setPropertyValue ("PositionY", 80)
-	oCheckBoxModel.setPropertyValue ("Height", 12)
-	oCheckBoxModel.setPropertyValue ("Width", 45)
-	oCheckBoxModel.setPropertyValue ("Label", "HP (~Stamina)")
-	oDialogModel.insertByName ("cbxHPBest", oCheckBoxModel)
-	
-	' Adds the second appraisal list.
-	mListItems = Array ( _
-		"1. WOW/incredible/stats are best", _
-		"2. Excellent/impressed/impressive", _
-		"3. Get the job done/noticeable/some good stats", _
-		"4. No greatness/not out of the norm/kinda basic")
-	oListModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlListBoxModel")
-	oListModel.setPropertyValue ("PositionX", 10)
-	oListModel.setPropertyValue ("PositionY", 95)
-	oListModel.setPropertyValue ("Height", 12)
-	oListModel.setPropertyValue ("Width", 200)
+	oListModel = oDialogModel.getByName ("lstApprasal2")
 	oListModel.setPropertyValue ("Dropdown", True)
-	oListModel.setPropertyValue ("StringItemList", mListItems)
+	oDialogModel.removeByName ("lstApprasal2")
 	oDialogModel.insertByName ("lstApprasal2", oListModel)
 	
-	' Adds the OK button.
-	oButtonModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlButtonModel")
-	oButtonModel.setPropertyValue ("PositionX", 35)
-	oButtonModel.setPropertyValue ("PositionY", 120)
-	oButtonModel.setPropertyValue ("Height", 15)
-	oButtonModel.setPropertyValue ("Width", 60)
-	oButtonModel.setPropertyValue ("PushButtonType", _
-		com.sun.star.awt.PushButtonType.OK)
-	oButtonModel.setPropertyValue ("DefaultButton", True)
-	oDialogModel.insertByName ("btnOK", oButtonModel)
-	
-	' Adds the cancel button.
-	oButtonModel = oDialogModel.createInstance ( _
-		"com.sun.star.awt.UnoControlButtonModel")
-	oButtonModel.setPropertyValue ("PositionX", 125)
-	oButtonModel.setPropertyValue ("PositionY", 120)
-	oButtonModel.setPropertyValue ("Height", 15)
-	oButtonModel.setPropertyValue ("Width", 60)
-	oButtonModel.setPropertyValue ("PushButtonType", _
-		com.sun.star.awt.PushButtonType.CANCEL)
-	oDialogModel.insertByName ("btnCancel", oButtonModel)
-	
-	' Adds the dialog model to the control and runs it.
-	oDialog = CreateUnoService ("com.sun.star.awt.UnoControlDialog")
-	oDialog.setModel (oDialogModel)
-	oDialog.setVisible (True)
-	oDialog.getControl ("lstPokemon").setFocus
 	If oDialog.execute = 0 Then
 		aQuery.bIsCancelled = True
 		fnAskParam = aQuery
@@ -374,6 +142,661 @@ Function fnAskParam As aFindIVParam
 	End If
 	fnAskParam = aQuery
 End Function
+
+' fnAskParam: Asks the users for the parameters for the Pokémon.
+Function fnAskParam0 As aFindIVParam
+	Dim oDialog As Object, oDialogModel As Object
+	Dim oTextModel As Object, oListModel As Object
+	Dim oNumericModel As Object, oCheckBoxModel As Object
+	Dim oGroupModel As Object, oRadioModel As Object
+	Dim oButtonModel As Object, oListener As Object
+	Dim mListItems () As String, sTemp As String
+	Dim nI As Integer, nCount As Integer
+	Dim bIsBestAttack As Boolean, bIsBestDefense As Boolean
+	Dim bIsBestHP As Boolean
+	Dim aQuery As New aFindIVParam
+	
+	' Creates a dialog
+	oDialogModel = CreateUnoService ( _
+		"com.sun.star.awt.UnoControlDialogModel")
+	oDialogModel.setPropertyValue ("PositionX", 100)
+	oDialogModel.setPropertyValue ("PositionY", 100)
+	oDialogModel.setPropertyValue ("Height", 185)
+	oDialogModel.setPropertyValue ("Width", 220)
+	oDialogModel.setPropertyValue ("Title", "Pokémon GO IV Calculator")
+	
+	' Adds a text label for the Pokémon list.
+	oTextModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlFixedTextModel")
+	oTextModel.setPropertyValue ("PositionX", 5)
+	oTextModel.setPropertyValue ("PositionY", 6)
+	oTextModel.setPropertyValue ("Height", 8)
+	oTextModel.setPropertyValue ("Width", 30)
+	oTextModel.setPropertyValue ("Label", "~Pokémon:")
+	oDialogModel.insertByName ("txtPokemon", oTextModel)
+	
+	' Adds the Pokémon list.
+	subReadBaseStats
+	ReDim mListItems (UBound (maBaseStats)) As String
+	For nI = 0 To UBound (maBaseStats)
+		mListItems (nI) = maBaseStats (nI).sPokemon
+	Next nI
+	oListModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlListBoxModel")
+	oListModel.setPropertyValue ("PositionX", 35)
+	oListModel.setPropertyValue ("PositionY", 4)
+	oListModel.setPropertyValue ("Height", 12)
+	oListModel.setPropertyValue ("Width", 50)
+	oListModel.setPropertyValue ("TabIndex", 0)
+	oListModel.setPropertyValue ("Dropdown", True)
+	oListModel.setPropertyValue ("StringItemList", mListItems)
+	oDialogModel.insertByName ("lstPokemon", oListModel)
+	
+	' Adds a text label for the CP field.
+	oTextModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlFixedTextModel")
+	oTextModel.setPropertyValue ("PositionX", 5)
+	oTextModel.setPropertyValue ("PositionY", 21)
+	oTextModel.setPropertyValue ("Height", 8)
+	oTextModel.setPropertyValue ("Width", 15)
+	oTextModel.setPropertyValue ("Label", "~CP:")
+	oDialogModel.insertByName ("txtCP", oTextModel)
+	
+	' Adds the CP field.
+	oNumericModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlNumericFieldModel")
+	oNumericModel.setPropertyValue ("PositionX", 20)
+	oNumericModel.setPropertyValue ("PositionY", 19)
+	oNumericModel.setPropertyValue ("Height", 12)
+	oNumericModel.setPropertyValue ("Width", 20)
+	oNumericModel.setPropertyValue ("DecimalAccuracy", 0)
+	oDialogModel.insertByName ("numCP", oNumericModel)
+	
+	' Adds a text label for the HP field.
+	oTextModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlFixedTextModel")
+	oTextModel.setPropertyValue ("PositionX", 50)
+	oTextModel.setPropertyValue ("PositionY", 21)
+	oTextModel.setPropertyValue ("Height", 8)
+	oTextModel.setPropertyValue ("Width", 15)
+	oTextModel.setPropertyValue ("Label", "~HP:")
+	oDialogModel.insertByName ("txtHP", oTextModel)
+	
+	' Adds the HP field.
+	oNumericModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlNumericFieldModel")
+	oNumericModel.setPropertyValue ("PositionX", 65)
+	oNumericModel.setPropertyValue ("PositionY", 19)
+	oNumericModel.setPropertyValue ("Height", 12)
+	oNumericModel.setPropertyValue ("Width", 15)
+	oNumericModel.setPropertyValue ("DecimalAccuracy", 0)
+	oDialogModel.insertByName ("numHP", oNumericModel)
+	
+	' Adds a text label for the star dust field.
+	oTextModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlFixedTextModel")
+	oTextModel.setPropertyValue ("PositionX", 90)
+	oTextModel.setPropertyValue ("PositionY", 21)
+	oTextModel.setPropertyValue ("Height", 8)
+	oTextModel.setPropertyValue ("Width", 30)
+	oTextModel.setPropertyValue ("Label", "S~tar dust:")
+	oDialogModel.insertByName ("txtStarDust", oTextModel)
+	
+	' Adds the star dust field.
+	subReadStarDust
+	sTemp = " "
+	ReDim mListItems () As String
+	nCount = -1
+	For nI = 1 To UBound (mStarDust)
+		If InStr (sTemp, " " & CStr (mStarDust (nI)) & " ") = 0 Then
+			nCount = nCount + 1
+			ReDim Preserve mListItems (nCount) As String
+			mListItems (nCount) = CStr (mStarDust (nI))
+			sTemp = sTemp & CStr (mStarDust (nI)) & " "
+		End If
+	Next nI
+	oListModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlListBoxModel")
+	oListModel.setPropertyValue ("PositionX", 120)
+	oListModel.setPropertyValue ("PositionY", 19)
+	oListModel.setPropertyValue ("Height", 12)
+	oListModel.setPropertyValue ("Width", 30)
+	oListModel.setPropertyValue ("Dropdown", True)
+	oListModel.setPropertyValue ("StringItemList", mListItems)
+	oDialogModel.insertByName ("lstStarDust", oListModel)
+	
+	' Adds a text label for the player level field.
+	oTextModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlFixedTextModel")
+	oTextModel.setPropertyValue ("PositionX", 160)
+	oTextModel.setPropertyValue ("PositionY", 21)
+	oTextModel.setPropertyValue ("Height", 8)
+	oTextModel.setPropertyValue ("Width", 35)
+	oTextModel.setPropertyValue ("Label", "Player ~level:")
+	oDialogModel.insertByName ("txtPlayerLevel", oTextModel)
+	
+	' Adds the player level field.
+	ReDim mListItems (39) As String
+	For nI = 0 To UBound (mListItems)
+		mListItems (nI) = CStr (nI + 1)
+	Next nI
+	oListModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlListBoxModel")
+	oListModel.setPropertyValue ("PositionX", 195)
+	oListModel.setPropertyValue ("PositionY", 19)
+	oListModel.setPropertyValue ("Height", 12)
+	oListModel.setPropertyValue ("Width", 20)
+	oListModel.setPropertyValue ("Dropdown", True)
+	oListModel.setPropertyValue ("StringItemList", mListItems)
+	oDialogModel.insertByName ("lstPlayerLevel", oListModel)
+	
+	' Adds the whether powered-up check box.
+	oCheckBoxModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlCheckBoxModel")
+	oCheckBoxModel.setPropertyValue ("PositionX", 5)
+	oCheckBoxModel.setPropertyValue ("PositionY", 36)
+	oCheckBoxModel.setPropertyValue ("Height", 8)
+	oCheckBoxModel.setPropertyValue ("Width", 210)
+	oCheckBoxModel.setPropertyValue ("Label", _
+		"This Pokémon is ~newly-caught and was not powered-up yet.")
+	oCheckBoxModel.setPropertyValue ("State", 1)
+	oDialogModel.insertByName ("cbxIsNew", oCheckBoxModel)
+	
+	' Adds a group for the appraisals
+	oGroupModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlGroupBoxModel")
+	oGroupModel.setPropertyValue ("PositionX", 5)
+	oGroupModel.setPropertyValue ("PositionY", 50)
+	oGroupModel.setPropertyValue ("Height", 110)
+	oGroupModel.setPropertyValue ("Width", 210)
+	oGroupModel.setPropertyValue ("Label", "Team Leader Apprasal")
+	oDialogModel.insertByName ("grpApprasals", oGroupModel)
+	
+	' Adds a text label for the team.
+	oTextModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlFixedTextModel")
+	oTextModel.setPropertyValue ("PositionX", 10)
+	oTextModel.setPropertyValue ("PositionY", 66)
+	oTextModel.setPropertyValue ("Height", 8)
+	oTextModel.setPropertyValue ("Width", 20)
+	oTextModel.setPropertyValue ("Label", "Team:")
+	oDialogModel.insertByName ("txtTeam", oTextModel)
+	
+	' Adds the red team radio button.
+	oRadioModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlRadioButtonModel")
+	oRadioModel.setPropertyValue ("PositionX", 30)
+	oRadioModel.setPropertyValue ("PositionY", 66)
+	oRadioModel.setPropertyValue ("Height", 8)
+	oRadioModel.setPropertyValue ("Width", 25)
+	oRadioModel.setPropertyValue ("Label", "~Valor")
+	oRadioModel.setPropertyValue ("TextColor", RGB (255, 255, 255))
+	oRadioModel.setPropertyValue ("BackgroundColor", RGB (255, 0, 0))
+	oDialogModel.insertByName ("rdoTeamRed", oRadioModel)
+	
+	' Adds the blue team radio button.
+	oRadioModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlRadioButtonModel")
+	oRadioModel.setPropertyValue ("PositionX", 55)
+	oRadioModel.setPropertyValue ("PositionY", 66)
+	oRadioModel.setPropertyValue ("Height", 8)
+	oRadioModel.setPropertyValue ("Width", 30)
+	oRadioModel.setPropertyValue ("Label", "~Mystic")
+	oRadioModel.setPropertyValue ("TextColor", RGB (255, 255, 255))
+	oRadioModel.setPropertyValue ("BackgroundColor", RGB (0, 0, 255))
+	oDialogModel.insertByName ("rdoTeamBlue", oRadioModel)
+	
+	' Adds the yellow team radio button.
+	oRadioModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlRadioButtonModel")
+	oRadioModel.setPropertyValue ("PositionX", 85)
+	oRadioModel.setPropertyValue ("PositionY", 66)
+	oRadioModel.setPropertyValue ("Height", 8)
+	oRadioModel.setPropertyValue ("Width", 30)
+	oRadioModel.setPropertyValue ("Label", "~Instinct")
+	oRadioModel.setPropertyValue ("BackgroundColor", RGB (255, 255, 0))
+	oDialogModel.insertByName ("rdoTeamYellow", oRadioModel)
+	
+	' Adds the first appraisal list.
+	oListModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlListBoxModel")
+	oListModel.setPropertyValue ("PositionX", 10)
+	oListModel.setPropertyValue ("PositionY", 79)
+	oListModel.setPropertyValue ("Height", 12)
+	oListModel.setPropertyValue ("Width", 200)
+	oListModel.setPropertyValue ("Dropdown", True)
+	oDialogModel.insertByName ("lstApprasal1", oListModel)
+	
+	' Adds a text label before the best stat.
+	oTextModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlFixedTextModel")
+	oTextModel.setPropertyValue ("PositionX", 10)
+	oTextModel.setPropertyValue ("PositionY", 96)
+	oTextModel.setPropertyValue ("Height", 8)
+	oTextModel.setPropertyValue ("Width", 0)
+	oDialogModel.insertByName ("txtBestBefore", oTextModel)
+	
+	' Adds the best stat field.
+	oListModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlListBoxModel")
+	oListModel.setPropertyValue ("PositionX", 10)
+	oListModel.setPropertyValue ("PositionY", 94)
+	oListModel.setPropertyValue ("Height", 12)
+	oListModel.setPropertyValue ("Width", 35)
+	oListModel.setPropertyValue ("Dropdown", True)
+	oDialogModel.insertByName ("lstBest", oListModel)
+	
+	' Adds a text label after the best stat.
+	oTextModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlFixedTextModel")
+	oTextModel.setPropertyValue ("PositionX", 45)
+	oTextModel.setPropertyValue ("PositionY", 96)
+	oTextModel.setPropertyValue ("Height", 8)
+	oTextModel.setPropertyValue ("Width", 100)
+	oDialogModel.insertByName ("txtBestAfter", oTextModel)
+	
+	' Adds the second best stat check box.
+	oCheckBoxModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlCheckBoxModel")
+	oCheckBoxModel.setPropertyValue ("PositionX", 10)
+	oCheckBoxModel.setPropertyValue ("PositionY", 111)
+	oCheckBoxModel.setPropertyValue ("Height", 8)
+	oCheckBoxModel.setPropertyValue ("Width", 210)
+	oDialogModel.insertByName ("cbxBest2", oCheckBoxModel)
+	
+	' Adds the third best stat check box.
+	oCheckBoxModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlCheckBoxModel")
+	oCheckBoxModel.setPropertyValue ("PositionX", 10)
+	oCheckBoxModel.setPropertyValue ("PositionY", 126)
+	oCheckBoxModel.setPropertyValue ("Height", 8)
+	oCheckBoxModel.setPropertyValue ("Width", 210)
+	oDialogModel.insertByName ("cbxBest3", oCheckBoxModel)
+	
+	' Adds the second appraisal list.
+	oListModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlListBoxModel")
+	oListModel.setPropertyValue ("PositionX", 10)
+	oListModel.setPropertyValue ("PositionY", 140)
+	oListModel.setPropertyValue ("Height", 12)
+	oListModel.setPropertyValue ("Width", 200)
+	oListModel.setPropertyValue ("Dropdown", True)
+	oDialogModel.insertByName ("lstApprasal2", oListModel)
+	
+	' Adds the OK button.
+	oButtonModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlButtonModel")
+	oButtonModel.setPropertyValue ("PositionX", 35)
+	oButtonModel.setPropertyValue ("PositionY", 165)
+	oButtonModel.setPropertyValue ("Height", 15)
+	oButtonModel.setPropertyValue ("Width", 60)
+	oButtonModel.setPropertyValue ("PushButtonType", _
+		com.sun.star.awt.PushButtonType.OK)
+	oButtonModel.setPropertyValue ("DefaultButton", True)
+	oDialogModel.insertByName ("btnOK", oButtonModel)
+	
+	' Adds the cancel button.
+	oButtonModel = oDialogModel.createInstance ( _
+		"com.sun.star.awt.UnoControlButtonModel")
+	oButtonModel.setPropertyValue ("PositionX", 125)
+	oButtonModel.setPropertyValue ("PositionY", 165)
+	oButtonModel.setPropertyValue ("Height", 15)
+	oButtonModel.setPropertyValue ("Width", 60)
+	oButtonModel.setPropertyValue ("PushButtonType", _
+		com.sun.star.awt.PushButtonType.CANCEL)
+	oDialogModel.insertByName ("btnCancel", oButtonModel)
+	
+	' Adds the dialog model to the control and runs it.
+	oDialog = CreateUnoService ("com.sun.star.awt.UnoControlDialog")
+	oDialog.setModel (oDialogModel)
+	oDialog.setVisible (True)
+	oDialog.getControl ("lstPokemon").setFocus
+	oListener = CreateUnoListener ("subRdoTeamRedItemChanged_", _
+		"com.sun.star.awt.XItemListener")
+	oDialog.getControl ("rdoTeamRed").addItemListener (oListener)
+	oListener = CreateUnoListener ("subRdoTeamBlueItemChanged_", _
+		"com.sun.star.awt.XItemListener")
+	oDialog.getControl ("rdoTeamBlue").addItemListener (oListener)
+	oListener = CreateUnoListener ("subRdoTeamYellowItemChanged_", _
+		"com.sun.star.awt.XItemListener")
+	oDialog.getControl ("rdoTeamYellow").addItemListener (oListener)
+	oListener = CreateUnoListener ("subLstBestItemChanged_", _
+		"com.sun.star.awt.XItemListener")
+	oDialog.getControl ("lstBest").addItemListener (oListener)
+	oDialog.getControl ("lstApprasal1").setVisible (False)
+	oDialog.getControl ("txtBestBefore").setVisible (False)
+	oDialog.getControl ("lstBest").setVisible (False)
+	oDialog.getControl ("txtBestAfter").setVisible (False)
+	oDialog.getControl ("cbxBest2").setVisible (False)
+	oDialog.getControl ("cbxBest3").setVisible (False)
+	oDialog.getControl ("lstApprasal2").setVisible (False)
+	If oDialog.execute = 0 Then
+		aQuery.bIsCancelled = True
+		fnAskParam0 = aQuery
+		Exit Function
+	End If
+	
+	With aQuery
+		.sPokemon = oDialog.getControl ("lstPokemon").getSelectedItem
+		.nCP = oDialog.getControl ("numCP").getValue
+		.nHP = oDialog.getControl ("numHP").getValue
+		.nStarDust = CInt (oDialog.getControl ("lstStarDust").getSelectedItem)
+		.nPlayerLevel = CInt (oDialog.getControl ("lstPlayerLevel").getSelectedItem)
+		.nAppraisal1 = oDialog.getControl ("lstApprasal1").getSelectedItemPos + 1
+		.nAppraisal2 = oDialog.getControl ("lstApprasal2").getSelectedItemPos + 1
+		.bIsCancelled = False
+	End With
+	If oDialog.getControl ("cbxIsNew").getState = 1 Then
+		aQuery.bIsNew = True
+	Else
+		aQuery.bIsNew = False
+	End If
+	' The best stats
+	bIsBestAttack = False
+	bIsBestDefense = False
+	bIsBestHP = False
+	If oDialog.getControl ("lstBest").getSelectedItem = "Attack" Then
+		bIsBestAttack = True
+		If oDialog.getControl ("cbxBest2").getState = 1 Then
+			bIsBestDefense = True
+		End If
+		If oDialog.getControl ("cbxBest3").getState = 1 Then
+			bIsBestHP = True
+		End If
+	End If
+	If oDialog.getControl ("lstBest").getSelectedItem = "Defense" Then
+		bIsBestDefense = True
+		If oDialog.getControl ("cbxBest2").getState = 1 Then
+			bIsBestAttack = True
+		End If
+		If oDialog.getControl ("cbxBest3").getState = 1 Then
+			bIsBestHP = True
+		End If
+	End If
+	If oDialog.getControl ("lstBest").getSelectedItem = "HP" Then
+		bIsBestHP = True
+		If oDialog.getControl ("cbxBest2").getState = 1 Then
+			bIsBestAttack = True
+		End If
+		If oDialog.getControl ("cbxBest3").getState = 1 Then
+			bIsBestDefense = True
+		End If
+	End If
+	aQuery.sBest = ""
+	If bIsBestAttack Then
+		aQuery.sBest = aQuery.sBest & "Atk "
+	End If
+	If bIsBestDefense Then
+		aQuery.sBest = aQuery.sBest & "Def "
+	End If
+	If bIsBestHP Then
+		aQuery.sBest = aQuery.sBest & "Sta "
+	End If
+	fnAskParam0 = aQuery
+End Function
+
+' subRdoTeamRedItemChanged_itemStateChanged: Dummy for the listener.
+Sub subRdoTeamRedItemChanged_disposing (oEvent As object)
+End Sub
+
+' subRdoTeamRedItemChanged_itemStateChanged: When the team is selected.
+Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
+	Dim oDialog As Object, oList As Object, oText As Object
+	Dim mItems () As String
+	
+	mItems = Array ( _
+		"1. Overall, your [Pokémon] simply amazes me. It can accomplish anything!", _
+		"2. Overall, your [Pokémon] is a strong Pokémon. You should be proud!", _
+		"3. Overall, your [Pokémon] is a decent Pokémon.", _
+		"4. Overall, your [Pokémon] may not be great in battle, but I still like it!")
+	oDialog = oEvent.Source.getContext
+	oList = oDialog.getControl ("lstApprasal1")
+	oList.removeItems (0, oList.getItemCount())
+	oList.addItems (mItems, 0)
+	oList.setVisible (True)
+	
+	oText = oDialog.getControl ("txtBestBefore")
+	oText.setPosSize (30, 96, 20, 8, _
+		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
+	oText.setVisible (True)
+	oText.setText ("Its")
+	
+	mItems = Array ("Attack", "Defense", "HP")
+	oList = oDialog.getControl ("lstBest")
+	oList.removeItems (0, oList.getItemCount())
+	oList.addItems (mItems, 0)
+	oList.setPosSize (50, 96, 35, 8, _
+		com.sun.star.awt.PosSize.X)
+	oList.setVisible (True)
+	
+	oText = oDialog.getControl ("txtBestAfter")
+	oText.setPosSize (145, 96, 160, 8, _
+		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
+	oText.setVisible (True)
+	oText.setText ("is its strongest feature.")
+	
+	oList = oDialog.getControl ("cbxBest2")
+	oList.setVisible (False)
+	
+	oList = oDialog.getControl ("cbxBest3")
+	oList.setVisible (False)
+	
+	mItems = Array ( _
+		"1. I'm blown away by its stats. WOW!", _
+		"2. It's got excellent stats! How exciting!", _
+		"3. Its stats indicate that in battle, it'll get the job done.", _
+		"4. Its stats don't point to greatness in battle.")
+	oDialog = oEvent.Source.getContext
+	oList = oDialog.getControl ("lstApprasal2")
+	oList.removeItems (0, oList.getItemCount())
+	oList.addItems (mItems, 0)
+	oList.setVisible (True)
+End Sub
+
+' subRdoTeamBlueItemChanged_itemStateChanged: Dummy for the listener.
+Sub subRdoTeamBlueItemChanged_disposing (oEvent As object)
+End Sub
+
+' subRdoTeamBlueItemChanged_itemStateChanged: When the blue team is selected.
+Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
+	Dim oDialog As Object, oList As Object, oText As Object
+	Dim mItems () As String
+	
+	mItems = Array ( _
+		"1. Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!", _
+		"2. Overall, your [Pokémon] has certainly caught my attention.", _
+		"3. Overall, your [Pokémon] is above average.", _
+		"4. Overall, your [Pokémon] is not likely to make much headway in battle.")
+	oDialog = oEvent.Source.getContext
+	oList = oDialog.getControl ("lstApprasal1")
+	oList.removeItems (0, oList.getItemCount())
+	oList.addItems (mItems, 0)
+	oList.setVisible (True)
+	
+	oText = oDialog.getControl ("txtBestBefore")
+	oText.setPosSize (30, 96, 200, 8, _
+		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
+	oText.setVisible (True)
+	oText.setText ("I see that its best attribute is its")
+	
+	mItems = Array ("Attack", "Defense", "HP")
+	oList = oDialog.getControl ("lstBest")
+	oList.removeItems (0, oList.getItemCount())
+	oList.addItems (mItems, 0)
+	oList.setPosSize (230, 96, 35, 8, _
+		com.sun.star.awt.PosSize.X)
+	oList.setVisible (True)
+	
+	oText = oDialog.getControl ("txtBestAfter")
+	oText.setPosSize (325, 96, 5, 8, _
+		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
+	oText.setVisible (True)
+	oText.setText (".")
+	
+	oList = oDialog.getControl ("cbxBest2")
+	oList.setVisible (False)
+	
+	oList = oDialog.getControl ("cbxBest3")
+	oList.setVisible (False)
+	
+	mItems = Array ( _
+		"1. Its stats exceed my calculations. It's incredible!", _
+		"2. I am certainly impressed by its stats, I must say.", _
+		"3. Its stats are noticeably trending to the positive.", _
+		"4. Its stats are not out of the norm, in my opinion.")
+	oDialog = oEvent.Source.getContext
+	oList = oDialog.getControl ("lstApprasal2")
+	oList.removeItems (0, oList.getItemCount())
+	oList.addItems (mItems, 0)
+	oList.setVisible (True)
+End Sub
+
+' subRdoTeamYellowItemChanged_itemStateChanged: Dummy for the listener.
+Sub subRdoTeamYellowItemChanged_disposing (oEvent As object)
+End Sub
+
+' subRdoTeamYellowItemChanged_itemStateChanged: When the yellow team is selected.
+Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
+	Dim oDialog As Object, oList As Object, oText As Object
+	Dim mItems () As String
+	
+	mItems = Array ( _
+		"1. Overall, your [Pokémon] looks like it can really battle with the best of them!", _
+		"2. Overall, your [Pokémon] is really strong!", _
+		"3. Overall, your [Pokémon] is pretty decent!", _
+		"4. Overall, your [Pokémon] has room for improvement as far as battling goes.")
+	oDialog = oEvent.Source.getContext
+	oList = oDialog.getControl ("lstApprasal1")
+	oList.removeItems (0, oList.getItemCount())
+	oList.addItems (mItems, 0)
+	oList.setVisible (True)
+	
+	oText = oDialog.getControl ("txtBestBefore")
+	oText.setPosSize (30, 96, 115, 8, _
+		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
+	oText.setVisible (True)
+	oText.setText ("Its best quality is")
+	
+	mItems = Array ("Attack", "Defense", "HP")
+	oList = oDialog.getControl ("lstBest")
+	oList.removeItems (0, oList.getItemCount())
+	oList.addItems (mItems, 0)
+	oList.setPosSize (145, 96, 35, 8, _
+		com.sun.star.awt.PosSize.X)
+	oList.setVisible (True)
+	
+	oText = oDialog.getControl ("txtBestAfter")
+	oText.setPosSize (240, 96, 5, 8, _
+		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
+	oText.setVisible (True)
+	oText.setText (".")
+	
+	oList = oDialog.getControl ("cbxBest2")
+	oList.setVisible (False)
+	
+	oList = oDialog.getControl ("cbxBest3")
+	oList.setVisible (False)
+	
+	mItems = Array ( _
+		"1. Its stats are the best I've ever seen! No doubt about it!", _
+		"2. Its stats are really strong! Impressive.", _
+		"3. It's definitely got some good stats. Definitely!", _
+		"4. Its stats are all right, but kinda basic, as far as I can see.")
+	oDialog = oEvent.Source.getContext
+	oList = oDialog.getControl ("lstApprasal2")
+	oList.removeItems (0, oList.getItemCount())
+	oList.addItems (mItems, 0)
+	oList.setVisible (True)
+End Sub
+
+' subLstBestItemChanged_itemStateChanged: Dummy for the listener.
+Sub subLstBestItemChanged_disposing (oEvent As object)
+End Sub
+
+' subLstBestItemChanged_itemStateChanged: When the best stat is selected.
+Sub subLstBestItemChanged_itemStateChanged (oEvent As object)
+	Dim oDialog As Object, oCheckBox As Object
+	
+	oDialog = oEvent.Source.getContext
+	If oDialog.getControl ("rdoTeamRed").getState Then
+		If oDialog.getControl ("lstBest").getSelectedItem = "Attack" Then
+			oCheckBox = oDialog.getControl ("cbxBest2")
+			oCheckBox.setLabel ("I'm just as impressed with its Defense.")
+			oCheckBox.setVisible (True)
+			oCheckBox = oDialog.getControl ("cbxBest3")
+			oCheckBox.setLabel ("I'm just as impressed with its HP.")
+			oCheckBox.setVisible (True)
+		End If
+		If oDialog.getControl ("lstBest").getSelectedItem = "Defense" Then
+			oCheckBox = oDialog.getControl ("cbxBest2")
+			oCheckBox.setLabel ("I'm just as impressed with its Attack.")
+			oCheckBox.setVisible (True)
+			oCheckBox = oDialog.getControl ("cbxBest3")
+			oCheckBox.setLabel ("I'm just as impressed with its HP.")
+			oCheckBox.setVisible (True)
+		End If
+		If oDialog.getControl ("lstBest").getSelectedItem = "HP" Then
+			oCheckBox = oDialog.getControl ("cbxBest2")
+			oCheckBox.setLabel ("I'm just as impressed with its Attack.")
+			oCheckBox.setVisible (True)
+			oCheckBox = oDialog.getControl ("cbxBest3")
+			oCheckBox.setLabel ("I'm just as impressed with its Defense.")
+			oCheckBox.setVisible (True)
+		End If
+	End If
+	If oDialog.getControl ("rdoTeamBlue").getState Then
+		If oDialog.getControl ("lstBest").getSelectedItem = "Attack" Then
+			oCheckBox = oDialog.getControl ("cbxBest2")
+			oCheckBox.setLabel ("It is matched equally by its Defense.")
+			oCheckBox.setVisible (True)
+			oCheckBox = oDialog.getControl ("cbxBest3")
+			oCheckBox.setLabel ("It is matched equally by its HP.")
+			oCheckBox.setVisible (True)
+		End If
+		If oDialog.getControl ("lstBest").getSelectedItem = "Defense" Then
+			oCheckBox = oDialog.getControl ("cbxBest2")
+			oCheckBox.setLabel ("It is matched equally by its Attack.")
+			oCheckBox.setVisible (True)
+			oCheckBox = oDialog.getControl ("cbxBest3")
+			oCheckBox.setLabel ("It is matched equally by its HP.")
+			oCheckBox.setVisible (True)
+		End If
+		If oDialog.getControl ("lstBest").getSelectedItem = "HP" Then
+			oCheckBox = oDialog.getControl ("cbxBest2")
+			oCheckBox.setLabel ("It is matched equally by its Attack.")
+			oCheckBox.setVisible (True)
+			oCheckBox = oDialog.getControl ("cbxBest3")
+			oCheckBox.setLabel ("It is matched equally by its Defense.")
+			oCheckBox.setVisible (True)
+		End If
+	End If
+	If oDialog.getControl ("rdoTeamYellow").getState Then
+		If oDialog.getControl ("lstBest").getSelectedItem = "Attack" Then
+			oCheckBox = oDialog.getControl ("cbxBest2")
+			oCheckBox.setLabel ("Its Defense is great, too!")
+			oCheckBox.setVisible (True)
+			oCheckBox = oDialog.getControl ("cbxBest3")
+			oCheckBox.setLabel ("Its HP is great, too!")
+			oCheckBox.setVisible (True)
+		End If
+		If oDialog.getControl ("lstBest").getSelectedItem = "Defense" Then
+			oCheckBox = oDialog.getControl ("cbxBest2")
+			oCheckBox.setLabel ("Its Attack is great, too!")
+			oCheckBox.setVisible (True)
+			oCheckBox = oDialog.getControl ("cbxBest3")
+			oCheckBox.setLabel ("Its HP is great, too!")
+			oCheckBox.setVisible (True)
+		End If
+		If oDialog.getControl ("lstBest").getSelectedItem = "HP" Then
+			oCheckBox = oDialog.getControl ("cbxBest2")
+			oCheckBox.setLabel ("Its Attack is great, too!")
+			oCheckBox.setVisible (True)
+			oCheckBox = oDialog.getControl ("cbxBest3")
+			oCheckBox.setLabel ("Its Defense is great, too!")
+			oCheckBox.setVisible (True)
+		End If
+	End If
+End Sub
 
 ' fnFindIV: Finds the possible individual values of the Pokémon
 Function fnFindIV (aQuery As aFindIVParam) As Variant

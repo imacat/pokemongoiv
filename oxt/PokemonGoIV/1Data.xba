@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
-<script:module xmlns:script="http://openoffice.org/2000/script" script:name="1Data" script:language="StarBasic">&apos; 1Data: The Pokémon Go data for IV calculation
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="1Data" script:language="StarBasic">&apos; 1Data: The Pokémon GO data for IV calculation
 &apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2016-11-28
 &apos;   Generated with 9Load.subReadDataSheets ()
 

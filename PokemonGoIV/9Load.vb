@@ -1,4 +1,4 @@
-' 9Load: The Pokémon Go data sheets loader
+' 9Load: The Pokémon GO data sheets loader
 '   by imacat <imacat@mail.imacat.idv.tw>, 2016-11-28
 
 Option Explicit
@@ -9,7 +9,7 @@ Sub subReadDataSheets
 	Dim sOutput as String, mData As Variant
 	
 	sOutput = "" _
-		& "' 1Data: The Pokémon Go data for IV calculation" & Chr (10) _
+		& "' 1Data: The Pokémon GO data for IV calculation" & Chr (10) _
 		& "'   by imacat <imacat@mail.imacat.idv.tw>, " & Format (Date (), "yyyy-mm-dd") & Chr (10) _
 		& "'   Generated with 9Load.subReadDataSheets ()" & Chr (10) _
 		& Chr (10) _
@@ -32,7 +32,7 @@ Sub subShowBasicData (sContent As String)
 	oDialogModel.setPropertyValue ("PositionY", 100)
 	oDialogModel.setPropertyValue ("Height", 130)
 	oDialogModel.setPropertyValue ("Width", 200)
-	oDialogModel.setPropertyValue ("Title", "Pokémon Go Data")
+	oDialogModel.setPropertyValue ("Title", "Pokémon GO Data")
 	
 	' Adds the content area
 	oEditModel = oDialogModel.createInstance ( _
@@ -80,10 +80,10 @@ Function fnReadBaseStatsSheet As String
 		& "Function fnGetBaseStatsData As Variant" & Chr (10) _
 		& Chr (9) & "fnGetBaseStatsData = Array( _" & Chr (10)
 	For nI = 1 To UBound (mData) - 1
-		For nJ = 9 To 7 Step -1
+		For nJ = 8 To 6 Step -1
 			If mData (nI) (nJ) <> "" Then
 				sEvolveInto = mData (nI) (nJ)
-				nJ = 6
+				nJ = 5
 			End If
 		Next nJ
 		sOutput = sOutput _
@@ -95,10 +95,10 @@ Function fnReadBaseStatsSheet As String
 				& ", """ & sEvolveInto & """), _" & Chr (10)
 	Next nI
 	nI = UBound (mData)
-	For nJ = 9 To 7 Step -1
+	For nJ = 8 To 6 Step -1
 		If mData (nI) (nJ) <> "" Then
 			sEvolveInto = mData (nI) (nJ)
-			nJ = 6
+			nJ = 5
 		End If
 	Next nJ
 	sOutput = sOutput _

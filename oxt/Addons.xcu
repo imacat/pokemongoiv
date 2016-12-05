@@ -8,8 +8,8 @@
 		<node oor:name="OfficeToolBar">
 			<node oor:name="PokemonGoIV.OfficeToolBar" oor:op="replace">
 				<prop oor:name="Title">
-					<value>Pok&#233;mon Go IV Calculator</value>
-					<value xml:lang="zh-TW">寶可夢 Go IV 計算機</value>
+					<value>Pok&#233;mon GO IV Calculator</value>
+					<value xml:lang="zh-TW">寶可夢 GO IV 計算機</value>
 				</prop>
 				<node oor:name="ToolBarItems">
 					<node oor:name="m001" oor:op="replace">
