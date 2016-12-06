@@ -36,17 +36,17 @@
 	<node oor:name="FileResources">
 		<node oor:name="TeamValor" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/team-valor.png</value>
+				<value>%origin%/icons/team-valor.svg</value>
 			</prop>
 		</node>
 		<node oor:name="TeamMystic" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/team-mystic.png</value>
+				<value>%origin%/icons/team-mystic.svg</value>
 			</prop>
 		</node>
 		<node oor:name="TeamInstinct" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/team-instinct.png</value>
+				<value>%origin%/icons/team-instinct.svg</value>
 			</prop>
 		</node>
 	</node>

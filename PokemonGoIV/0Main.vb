@@ -93,9 +93,6 @@ Function fnAskParam As aFindIVParam
 	oDialog.getControl ("cbxBest3").setVisible (False)
 	oDialog.getControl ("lstApprasal2").setVisible (False)
 	
-	' TODO: To be removed.
-	oDialog.getControl ("imgTeam").getModel.setPropertyValue ("ImageURL", fnGetImageUrl ("TeamValor"))
-	
 	If oDialog.execute = 0 Then
 		aQuery.bIsCancelled = True
 		fnAskParam = aQuery
@@ -609,9 +606,14 @@ End Sub
 ' subRdoTeamRedItemChanged_itemStateChanged: When the team is selected.
 Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
+	Dim oImageModel As Object
 	Dim mItems () As String
 	
 	oDialog = oEvent.Source.getContext
+	
+	oImageModel = oDialog.getControl ("imgTeam").getModel
+	oImageModel.setPropertyValue ("ImageURL", _
+	    fnGetImageUrl ("TeamValor"))
 	
 	mItems = Array ( _
 		"Overall, your [Pokémon] simply amazes me. It can accomplish anything!", _
@@ -667,9 +669,14 @@ End Sub
 ' subRdoTeamBlueItemChanged_itemStateChanged: When the blue team is selected.
 Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
+	Dim oImageModel As Object
 	Dim mItems () As String
 	
 	oDialog = oEvent.Source.getContext
+	
+	oImageModel = oDialog.getControl ("imgTeam").getModel
+	oImageModel.setPropertyValue ("ImageURL", _
+	    fnGetImageUrl ("TeamMystic"))
 	
 	mItems = Array ( _
 		"Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!", _
@@ -725,9 +732,14 @@ End Sub
 ' subRdoTeamYellowItemChanged_itemStateChanged: When the yellow team is selected.
 Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
+	Dim oImageModel As Object
 	Dim mItems () As String
 	
 	oDialog = oEvent.Source.getContext
+	
+	oImageModel = oDialog.getControl ("imgTeam").getModel
+	oImageModel.setPropertyValue ("ImageURL", _
+	    fnGetImageUrl ("TeamInstinct"))
 	
 	mItems = Array ( _
 		"Overall, your [Pokémon] looks like it can really battle with the best of them!", _

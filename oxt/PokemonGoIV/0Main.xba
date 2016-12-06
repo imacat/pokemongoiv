@@ -95,9 +95,6 @@ Function fnAskParam As aFindIVParam
 	oDialog.getControl (&quot;cbxBest3&quot;).setVisible (False)
 	oDialog.getControl (&quot;lstApprasal2&quot;).setVisible (False)
 	
-	&apos; TODO: To be removed.
-	oDialog.getControl (&quot;imgTeam&quot;).getModel.setPropertyValue (&quot;ImageURL&quot;, fnGetImageUrl (&quot;TeamValor&quot;))
-	
 	If oDialog.execute = 0 Then
 		aQuery.bIsCancelled = True
 		fnAskParam = aQuery
@@ -611,9 +608,14 @@ End Sub
 &apos; subRdoTeamRedItemChanged_itemStateChanged: When the team is selected.
 Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
+	Dim oImageModel As Object
 	Dim mItems () As String
 	
 	oDialog = oEvent.Source.getContext
+	
+	oImageModel = oDialog.getControl (&quot;imgTeam&quot;).getModel
+	oImageModel.setPropertyValue (&quot;ImageURL&quot;, _
+	    fnGetImageUrl (&quot;TeamValor&quot;))
 	
 	mItems = Array ( _
 		&quot;Overall, your [Pokémon] simply amazes me. It can accomplish anything!&quot;, _
@@ -669,9 +671,14 @@ End Sub
 &apos; subRdoTeamBlueItemChanged_itemStateChanged: When the blue team is selected.
 Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
+	Dim oImageModel As Object
 	Dim mItems () As String
 	
 	oDialog = oEvent.Source.getContext
+	
+	oImageModel = oDialog.getControl (&quot;imgTeam&quot;).getModel
+	oImageModel.setPropertyValue (&quot;ImageURL&quot;, _
+	    fnGetImageUrl (&quot;TeamMystic&quot;))
 	
 	mItems = Array ( _
 		&quot;Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!&quot;, _
@@ -727,9 +734,14 @@ End Sub
 &apos; subRdoTeamYellowItemChanged_itemStateChanged: When the yellow team is selected.
 Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
+	Dim oImageModel As Object
 	Dim mItems () As String
 	
 	oDialog = oEvent.Source.getContext
+	
+	oImageModel = oDialog.getControl (&quot;imgTeam&quot;).getModel
+	oImageModel.setPropertyValue (&quot;ImageURL&quot;, _
+	    fnGetImageUrl (&quot;TeamInstinct&quot;))
 	
 	mItems = Array ( _
 		&quot;Overall, your [Pokémon] looks like it can really battle with the best of them!&quot;, _
