@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="8Registry" script:language="StarBasic">&apos; 8Registry: Utilities used from other modules to access to PokemonGoIV private configuration
+&apos;   Taken from TextToColumns, 2016-12-07
+
+Option Explicit
+
+Const BASE_KEY As String = &quot;/org.openoffice.Office.Addons.PokemonGoIV.AddonConfiguration/&quot;
+
+&apos; fnGetImageUrl: Returns the image URL for the UNO image controls.
+Function fnGetImageUrl (sName As String) As String
+    Dim oRegKey As Object
+
+	oRegKey = fnGetRegistryKeyContent (BASE_KEY &amp; &quot;FileResources/&quot; &amp; sName)
+	fnGetImageUrl = fnExpandMacroFieldExpression (oRegKey.Url)
+End Function
+
+&apos; fnGetRegistryKeyContent: Returns the registry key content
+Function fnGetRegistryKeyContent (sKeyName as string, Optional bforUpdate as Boolean)
+    Dim oConfigProvider As Object
+    Dim aNodePath (0) As New com.sun.star.beans.PropertyValue
+    
+	oConfigProvider = createUnoService ( _
+	    &quot;com.sun.star.configuration.ConfigurationProvider&quot;)
+	aNodePath(0).Name = &quot;nodepath&quot;
+	aNodePath(0).Value = sKeyName
+	If IsMissing (bForUpdate) Then
+		fnGetRegistryKeyContent = oConfigProvider.createInstanceWithArguments (&quot;com.sun.star.configuration.ConfigurationAccess&quot;, aNodePath())
+	Else
+		If bForUpdate Then
+			fnGetRegistryKeyContent = oConfigProvider.createInstanceWithArguments (&quot;com.sun.star.configuration.ConfigurationUpdateAccess&quot;, aNodePath())
+		Else
+			fnGetRegistryKeyContent = oConfigProvider.createInstanceWithArguments (&quot;com.sun.star.configuration.ConfigurationAccess&quot;, aNodePath())
+		End If
+	End If
+End Function
+
+&apos; fnExpandMacroFieldExpression
+Function fnExpandMacroFieldExpression (sURL As String) As String
+    Dim sTemp As String
+    Dim oSM As Object
+    Dim oMacroExpander As Object
+	
+	&apos; Gets the service manager
+	oSM = getProcessServiceManager
+	&apos; Gets the macro expander
+	oMacroExpander = oSM.DefaultContext.getValueByName ( _
+	    &quot;/singletons/com.sun.star.util.theMacroExpander&quot;)
+	
+	&apos;cut the vnd.sun.star.expand: part
+	sTemp = Join (Split (sURL, &quot;vnd.sun.star.expand:&quot;))
+	
+	&apos;Expand the macrofield expression
+	sTemp = oMacroExpander.ExpandMacros (sTemp)
+	sTemp = Trim (sTemp)
+	fnExpandMacroFieldExpression = sTemp
+End Function
+</script:module>

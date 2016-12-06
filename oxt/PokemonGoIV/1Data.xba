@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
-<script:module xmlns:script="http://openoffice.org/2000/script" script:name="1Data" script:language="StarBasic">&apos; 1Data: The Pokémon GO data for IV calculation
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="1Data" script:language="StarBasic">&apos; Copyright (c) 2016 imacat.
+&apos; 
+&apos; Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+&apos; you may not use this file except in compliance with the License.
+&apos; You may obtain a copy of the License at
+&apos; 
+&apos;     http://www.apache.org/licenses/LICENSE-2.0
+&apos; 
+&apos; Unless required by applicable law or agreed to in writing, software
+&apos; distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+&apos; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+&apos; See the License for the specific language governing permissions and
+&apos; limitations under the License.
+
+&apos; 1Data: The Pokémon GO data for IV calculation
 &apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2016-12-06
 &apos;   Generated with 9Load.subReadDataSheets ()
 

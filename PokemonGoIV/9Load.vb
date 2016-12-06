@@ -1,3 +1,17 @@
+' Copyright (c) 2016 imacat.
+' 
+' Licensed under the Apache License, Version 2.0 (the "License");
+' you may not use this file except in compliance with the License.
+' You may obtain a copy of the License at
+' 
+'     http://www.apache.org/licenses/LICENSE-2.0
+' 
+' Unless required by applicable law or agreed to in writing, software
+' distributed under the License is distributed on an "AS IS" BASIS,
+' WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+' See the License for the specific language governing permissions and
+' limitations under the License.
+
 ' 9Load: The Pokémon GO data sheets loader
 '   by imacat <imacat@mail.imacat.idv.tw>, 2016-11-28
 
@@ -9,6 +23,20 @@ Sub subReadDataSheets
 	Dim sOutput as String, mData As Variant
 	
 	sOutput = "" _
+		& "' Copyright (c) 2016 imacat." & Chr (10) _
+		& "' " & Chr (10) _
+		& "' Licensed under the Apache License, Version 2.0 (the ""License"");" & Chr (10) _
+		& "' you may not use this file except in compliance with the License." & Chr (10) _
+		& "' You may obtain a copy of the License at" & Chr (10) _
+		& "' " & Chr (10) _
+		& "'     http://www.apache.org/licenses/LICENSE-2.0" & Chr (10) _
+		& "' " & Chr (10) _
+		& "' Unless required by applicable law or agreed to in writing, software" & Chr (10) _
+		& "' distributed under the License is distributed on an ""AS IS"" BASIS," & Chr (10) _
+		& "' WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied." & Chr (10) _
+		& "' See the License for the specific language governing permissions and" & Chr (10) _
+		& "' limitations under the License." & Chr (10) _
+		& Chr (10) _
 		& "' 1Data: The Pokémon GO data for IV calculation" & Chr (10) _
 		& "'   by imacat <imacat@mail.imacat.idv.tw>, " & Format (Date (), "yyyy-mm-dd") & Chr (10) _
 		& "'   Generated with 9Load.subReadDataSheets ()" & Chr (10) _

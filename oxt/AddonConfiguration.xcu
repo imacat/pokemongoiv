@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<oor:component-data xmlns:oor="http://openoffice.org/2001/registry" xmlns:xs="http://www.w3.org/2001/XMLSchema" oor:name="AddonConfiguration" oor:package="org.openoffice.Office.Addons.PokemonGoIV">
+
+<!--  General infos -->
+	<node oor:name="ProductInfo">
+		<prop oor:name="ProductName" oor:type="xs:string">
+			<value>PokemonGoIV</value>
+		</prop>
+		<prop oor:name="Description" oor:type="xs:string" oor:localized="true">
+			<value>Calculates the individual values (IVs) of the Pokémon.</value>
+			<value xml:lang="zh-TW">計算寶可夢的 IV 值。</value>
+		</prop>
+		<prop oor:name="Version" oor:type="xs:string">
+			<value>@VERSION@</value>
+		</prop>
+		<prop oor:name="License" oor:type="xs:string">
+			<value>Apache License</value>
+		</prop>
+		<prop oor:name="AuthorName" oor:type="xs:string" oor:localized="true">
+			<value>imacat</value>
+			<value xml:lang="zh-TW">依瑪貓</value>
+		</prop>
+		<prop oor:name="AuthorEmail" oor:type="xs:string">
+			<value>imacat@mail.imacat.idv.tw</value>
+		</prop>
+		<prop oor:name="Copyright" oor:type="xs:string" oor:localized="true">
+			<value>Copyright &#169; 2016 imacat</value>
+			<value xml:lang="zh-TW">版權所有 &#169; 2016 依瑪貓</value>
+		</prop>
+		<node oor:name="Contributors"/>
+		<node oor:name="Translators"/>
+	</node>
+	
+<!--  File resources (supports localization) -->
+	<node oor:name="FileResources">
+		<node oor:name="TeamValor" oor:op="replace">
+			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
+				<value>%origin%/icons/team-valor.png</value>
+			</prop>
+		</node>
+		<node oor:name="TeamMystic" oor:op="replace">
+			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
+				<value>%origin%/icons/team-mystic.png</value>
+			</prop>
+		</node>
+		<node oor:name="TeamInstinct" oor:op="replace">
+			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
+				<value>%origin%/icons/team-instinct.png</value>
+			</prop>
+		</node>
+	</node>
+	
+<!--  Localized messages -->	
+	<node oor:name="Messages">
+		<node oor:name="msg1000" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Found no matching IV.</value>
+				<value xml:lang="zh-TW">找不出符合的 IV 值。</value>
+			</prop>
+		</node>
+	</node>
+</oor:component-data>

@@ -4,4 +4,5 @@
  <library:element library:name="0Main"/>
  <library:element library:name="1Data"/>
  <library:element library:name="9Load"/>
+ <library:element library:name="8Registry"/>
 </library:library>

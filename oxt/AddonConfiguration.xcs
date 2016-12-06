@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<oor:component-schema oor:name="AddonConfiguration" oor:package="org.openoffice.Office.Addons.PokemonGoIV" xml:lang="en-US" xmlns:oor="http://openoffice.org/2001/registry" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<templates>
+		<group oor:name="Contributor">
+			<prop oor:name="ContributorName" oor:type="xs:string"/>
+			<prop oor:name="Email" oor:type="xs:string"/>
+			<prop oor:name="Copyright" oor:type="xs:string"/>
+		</group>
+		<group oor:name="Translator">
+			<prop oor:name="TranslatorName" oor:type="xs:string"/>
+			<prop oor:name="Email" oor:type="xs:string"/>
+			<prop oor:name="Language" oor:type="xs:string"/>
+		</group>
+		<group oor:name="Message">
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true"/>
+		</group>
+		<group oor:name="FileResource">
+			<prop oor:name="Url" oor:type="xs:string" oor:localized="true"/>
+		</group>
+	</templates>
+	<component>
+		<group oor:name="ProductInfo">
+			<prop oor:name="ProductName" oor:type="xs:string"/>
+			<prop oor:name="Description" oor:type="xs:string" oor:localized="true"/>
+			<prop oor:name="Version" oor:type="xs:string"/>
+			<prop oor:name="License" oor:type="xs:string"/>
+			<prop oor:name="AuthorName" oor:type="xs:string" oor:localized="true"/>
+			<prop oor:name="AuthorEmail" oor:type="xs:string"/>
+			<prop oor:name="Copyright" oor:type="xs:string" oor:localized="true"/>
+			<set oor:name="Contributors" oor:node-type="Contributor"/>
+			<set oor:name="Translators" oor:node-type="Translator"/>
+		</group>
+		<set oor:name="FileResources" oor:node-type="FileResource"/>
+		<set oor:name="Messages" oor:node-type="Message"/>
+	</component>
+</oor:component-schema>
