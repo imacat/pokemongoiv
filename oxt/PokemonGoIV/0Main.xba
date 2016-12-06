@@ -49,7 +49,6 @@ Private mCPM () As Double, mStarDust () As Integer
 
 &apos; subMain: The main program
 Sub subMain
-	BasicLibraries.loadLibrary &quot;XrayTool&quot;
 	Dim maIVs As Variant, nI As Integer
 	Dim aQuery As New aFindIVParam, aBaseStats As New aStats
 	
