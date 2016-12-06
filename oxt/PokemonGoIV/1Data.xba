@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="1Data" script:language="StarBasic">&apos; 1Data: The Pokémon GO data for IV calculation
-&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2016-11-28
+&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2016-12-06
 &apos;   Generated with 9Load.subReadDataSheets ()
 
 Option Explicit
@@ -9,157 +9,157 @@ Option Explicit
 &apos; fnGetBaseStatsData: Returns the base stats data.
 Function fnGetBaseStatsData As Variant
 	fnGetBaseStatsData = Array( _
-		Array (&quot;Bulbasaur&quot;, &quot;001&quot;, 90, 118, 118, &quot;Venusaur&quot;), _
-		Array (&quot;Ivysaur&quot;, &quot;002&quot;, 120, 151, 151, &quot;Venusaur&quot;), _
-		Array (&quot;Venusaur&quot;, &quot;003&quot;, 160, 198, 198, &quot;Venusaur&quot;), _
-		Array (&quot;Charmander&quot;, &quot;004&quot;, 78, 116, 96, &quot;Charizard&quot;), _
-		Array (&quot;Charmeleon&quot;, &quot;005&quot;, 116, 158, 129, &quot;Charizard&quot;), _
-		Array (&quot;Charizard&quot;, &quot;006&quot;, 156, 223, 176, &quot;Charizard&quot;), _
-		Array (&quot;Squirtle&quot;, &quot;007&quot;, 88, 94, 122, &quot;Blastoise&quot;), _
-		Array (&quot;Wartortle&quot;, &quot;008&quot;, 118, 126, 155, &quot;Blastoise&quot;), _
-		Array (&quot;Blastoise&quot;, &quot;009&quot;, 158, 171, 210, &quot;Blastoise&quot;), _
-		Array (&quot;Caterpie&quot;, &quot;010&quot;, 90, 55, 62, &quot;Butterfree&quot;), _
-		Array (&quot;Metapod&quot;, &quot;011&quot;, 100, 45, 64, &quot;Butterfree&quot;), _
-		Array (&quot;Butterfree&quot;, &quot;012&quot;, 120, 167, 151, &quot;Butterfree&quot;), _
-		Array (&quot;Weedle&quot;, &quot;013&quot;, 80, 63, 55, &quot;Beedrill&quot;), _
-		Array (&quot;Kakuna&quot;, &quot;014&quot;, 90, 46, 86, &quot;Beedrill&quot;), _
-		Array (&quot;Beedrill&quot;, &quot;015&quot;, 130, 169, 150, &quot;Beedrill&quot;), _
-		Array (&quot;Pidgey&quot;, &quot;016&quot;, 80, 85, 76, &quot;Pidgeot&quot;), _
-		Array (&quot;Pidgeotto&quot;, &quot;017&quot;, 126, 117, 108, &quot;Pidgeot&quot;), _
-		Array (&quot;Pidgeot&quot;, &quot;018&quot;, 166, 166, 157, &quot;Pidgeot&quot;), _
-		Array (&quot;Rattata&quot;, &quot;019&quot;, 60, 103, 70, &quot;Raticate&quot;), _
-		Array (&quot;Raticate&quot;, &quot;020&quot;, 110, 161, 144, &quot;Raticate&quot;), _
-		Array (&quot;Spearow&quot;, &quot;021&quot;, 80, 112, 61, &quot;Fearow&quot;), _
-		Array (&quot;Fearow&quot;, &quot;022&quot;, 130, 182, 135, &quot;Fearow&quot;), _
-		Array (&quot;Ekans&quot;, &quot;023&quot;, 70, 110, 102, &quot;Arbok&quot;), _
-		Array (&quot;Arbok&quot;, &quot;024&quot;, 120, 167, 158, &quot;Arbok&quot;), _
-		Array (&quot;Pikachu&quot;, &quot;025&quot;, 70, 112, 101, &quot;Raichu&quot;), _
-		Array (&quot;Raichu&quot;, &quot;026&quot;, 120, 193, 165, &quot;Raichu&quot;), _
-		Array (&quot;Sandshrew&quot;, &quot;027&quot;, 100, 126, 145, &quot;Sandslash&quot;), _
-		Array (&quot;Sandslash&quot;, &quot;028&quot;, 150, 182, 202, &quot;Sandslash&quot;), _
-		Array (&quot;Nidoran♀&quot;, &quot;029&quot;, 110, 86, 94, &quot;Nidoqueen&quot;), _
-		Array (&quot;Nidorina&quot;, &quot;030&quot;, 140, 117, 126, &quot;Nidoqueen&quot;), _
-		Array (&quot;Nidoqueen&quot;, &quot;031&quot;, 180, 180, 174, &quot;Nidoqueen&quot;), _
-		Array (&quot;Nidoran♂&quot;, &quot;032&quot;, 92, 105, 76, &quot;Nidoking&quot;), _
-		Array (&quot;Nidorino&quot;, &quot;033&quot;, 122, 137, 112, &quot;Nidoking&quot;), _
-		Array (&quot;Nidoking&quot;, &quot;034&quot;, 162, 204, 157, &quot;Nidoking&quot;), _
-		Array (&quot;Clefairy&quot;, &quot;035&quot;, 140, 107, 116, &quot;Clefable&quot;), _
-		Array (&quot;Clefable&quot;, &quot;036&quot;, 190, 178, 171, &quot;Clefable&quot;), _
-		Array (&quot;Vulpix&quot;, &quot;037&quot;, 76, 96, 122, &quot;Ninetales&quot;), _
-		Array (&quot;Ninetales&quot;, &quot;038&quot;, 146, 169, 204, &quot;Ninetales&quot;), _
-		Array (&quot;Jigglypuff&quot;, &quot;039&quot;, 230, 80, 44, &quot;Wigglytuff&quot;), _
-		Array (&quot;Wigglytuff&quot;, &quot;040&quot;, 280, 156, 93, &quot;Wigglytuff&quot;), _
-		Array (&quot;Zubat&quot;, &quot;041&quot;, 80, 83, 76, &quot;Golbat&quot;), _
-		Array (&quot;Golbat&quot;, &quot;042&quot;, 150, 161, 153, &quot;Golbat&quot;), _
-		Array (&quot;Oddish&quot;, &quot;043&quot;, 90, 131, 116, &quot;Vileplume&quot;), _
-		Array (&quot;Gloom&quot;, &quot;044&quot;, 120, 153, 139, &quot;Vileplume&quot;), _
-		Array (&quot;Vileplume&quot;, &quot;045&quot;, 150, 202, 170, &quot;Vileplume&quot;), _
-		Array (&quot;Paras&quot;, &quot;046&quot;, 70, 121, 99, &quot;Parasect&quot;), _
-		Array (&quot;Parasect&quot;, &quot;047&quot;, 120, 165, 146, &quot;Parasect&quot;), _
-		Array (&quot;Venonat&quot;, &quot;048&quot;, 120, 100, 102, &quot;Venomoth&quot;), _
-		Array (&quot;Venomoth&quot;, &quot;049&quot;, 140, 179, 150, &quot;Venomoth&quot;), _
-		Array (&quot;Diglett&quot;, &quot;050&quot;, 20, 109, 88, &quot;Dugtrio&quot;), _
-		Array (&quot;Dugtrio&quot;, &quot;051&quot;, 70, 167, 147, &quot;Dugtrio&quot;), _
-		Array (&quot;Meowth&quot;, &quot;052&quot;, 80, 92, 81, &quot;Persian&quot;), _
-		Array (&quot;Persian&quot;, &quot;053&quot;, 130, 150, 139, &quot;Persian&quot;), _
-		Array (&quot;Psyduck&quot;, &quot;054&quot;, 100, 122, 96, &quot;Golduck&quot;), _
-		Array (&quot;Golduck&quot;, &quot;055&quot;, 160, 191, 163, &quot;Golduck&quot;), _
-		Array (&quot;Mankey&quot;, &quot;056&quot;, 80, 148, 87, &quot;Primeape&quot;), _
-		Array (&quot;Primeape&quot;, &quot;057&quot;, 130, 207, 144, &quot;Primeape&quot;), _
-		Array (&quot;Growlithe&quot;, &quot;058&quot;, 110, 136, 96, &quot;Arcanine&quot;), _
-		Array (&quot;Arcanine&quot;, &quot;059&quot;, 180, 227, 166, &quot;Arcanine&quot;), _
-		Array (&quot;Poliwag&quot;, &quot;060&quot;, 80, 101, 82, &quot;Poliwrath&quot;), _
-		Array (&quot;Poliwhirl&quot;, &quot;061&quot;, 130, 130, 130, &quot;Poliwrath&quot;), _
-		Array (&quot;Poliwrath&quot;, &quot;062&quot;, 180, 182, 187, &quot;Poliwrath&quot;), _
-		Array (&quot;Abra&quot;, &quot;063&quot;, 50, 195, 103, &quot;Alakazam&quot;), _
-		Array (&quot;Kadabra&quot;, &quot;064&quot;, 80, 232, 138, &quot;Alakazam&quot;), _
-		Array (&quot;Alakazam&quot;, &quot;065&quot;, 110, 271, 194, &quot;Alakazam&quot;), _
-		Array (&quot;Machop&quot;, &quot;066&quot;, 140, 137, 88, &quot;Machamp&quot;), _
-		Array (&quot;Machoke&quot;, &quot;067&quot;, 160, 177, 130, &quot;Machamp&quot;), _
-		Array (&quot;Machamp&quot;, &quot;068&quot;, 180, 234, 162, &quot;Machamp&quot;), _
-		Array (&quot;Bellsprout&quot;, &quot;069&quot;, 100, 139, 64, &quot;Victreebel&quot;), _
-		Array (&quot;Weepinbell&quot;, &quot;070&quot;, 130, 172, 95, &quot;Victreebel&quot;), _
-		Array (&quot;Victreebel&quot;, &quot;071&quot;, 160, 207, 138, &quot;Victreebel&quot;), _
-		Array (&quot;Tentacool&quot;, &quot;072&quot;, 80, 97, 182, &quot;Tentacruel&quot;), _
-		Array (&quot;Tentacruel&quot;, &quot;073&quot;, 160, 166, 237, &quot;Tentacruel&quot;), _
-		Array (&quot;Geodude&quot;, &quot;074&quot;, 80, 132, 163, &quot;Golem&quot;), _
-		Array (&quot;Graveler&quot;, &quot;075&quot;, 110, 164, 196, &quot;Golem&quot;), _
-		Array (&quot;Golem&quot;, &quot;076&quot;, 160, 211, 229, &quot;Golem&quot;), _
-		Array (&quot;Ponyta&quot;, &quot;077&quot;, 100, 170, 132, &quot;Rapidash&quot;), _
-		Array (&quot;Rapidash&quot;, &quot;078&quot;, 130, 207, 167, &quot;Rapidash&quot;), _
-		Array (&quot;Slowpoke&quot;, &quot;079&quot;, 180, 109, 109, &quot;Slowbro&quot;), _
-		Array (&quot;Slowbro&quot;, &quot;080&quot;, 190, 177, 194, &quot;Slowbro&quot;), _
-		Array (&quot;Magnemite&quot;, &quot;081&quot;, 50, 165, 128, &quot;Magneton&quot;), _
-		Array (&quot;Magneton&quot;, &quot;082&quot;, 100, 223, 182, &quot;Magneton&quot;), _
-		Array (&quot;Farfetch&apos;d&quot;, &quot;083&quot;, 104, 124, 118, &quot;Farfetch&apos;d&quot;), _
-		Array (&quot;Doduo&quot;, &quot;084&quot;, 70, 158, 88, &quot;Dodrio&quot;), _
-		Array (&quot;Dodrio&quot;, &quot;085&quot;, 120, 218, 145, &quot;Dodrio&quot;), _
-		Array (&quot;Seel&quot;, &quot;086&quot;, 130, 85, 128, &quot;Dewgong&quot;), _
-		Array (&quot;Dewgong&quot;, &quot;087&quot;, 180, 139, 184, &quot;Dewgong&quot;), _
-		Array (&quot;Grimer&quot;, &quot;088&quot;, 160, 135, 90, &quot;Muk&quot;), _
-		Array (&quot;Muk&quot;, &quot;089&quot;, 210, 190, 184, &quot;Muk&quot;), _
-		Array (&quot;Shellder&quot;, &quot;090&quot;, 60, 116, 168, &quot;Cloyster&quot;), _
-		Array (&quot;Cloyster&quot;, &quot;091&quot;, 100, 186, 323, &quot;Cloyster&quot;), _
-		Array (&quot;Gastly&quot;, &quot;092&quot;, 60, 186, 70, &quot;Gengar&quot;), _
-		Array (&quot;Haunter&quot;, &quot;093&quot;, 90, 223, 112, &quot;Gengar&quot;), _
-		Array (&quot;Gengar&quot;, &quot;094&quot;, 120, 261, 156, &quot;Gengar&quot;), _
-		Array (&quot;Onix&quot;, &quot;095&quot;, 70, 85, 288, &quot;Onix&quot;), _
-		Array (&quot;Drowzee&quot;, &quot;096&quot;, 120, 89, 158, &quot;Hypno&quot;), _
-		Array (&quot;Hypno&quot;, &quot;097&quot;, 170, 144, 215, &quot;Hypno&quot;), _
-		Array (&quot;Krabby&quot;, &quot;098&quot;, 60, 181, 156, &quot;Kingler&quot;), _
-		Array (&quot;Kingler&quot;, &quot;099&quot;, 110, 240, 214, &quot;Kingler&quot;), _
-		Array (&quot;Voltorb&quot;, &quot;100&quot;, 80, 109, 114, &quot;Electrode&quot;), _
-		Array (&quot;Electrode&quot;, &quot;101&quot;, 120, 173, 179, &quot;Electrode&quot;), _
-		Array (&quot;Exeggcute&quot;, &quot;102&quot;, 120, 107, 140, &quot;Exeggutor&quot;), _
-		Array (&quot;Exeggutor&quot;, &quot;103&quot;, 190, 233, 158, &quot;Exeggutor&quot;), _
-		Array (&quot;Cubone&quot;, &quot;104&quot;, 100, 90, 165, &quot;Marowak&quot;), _
-		Array (&quot;Marowak&quot;, &quot;105&quot;, 120, 144, 200, &quot;Marowak&quot;), _
-		Array (&quot;Hitmonlee&quot;, &quot;106&quot;, 100, 224, 211, &quot;Hitmonlee&quot;), _
-		Array (&quot;Hitmonchan&quot;, &quot;107&quot;, 100, 193, 212, &quot;Hitmonchan&quot;), _
-		Array (&quot;Lickitung&quot;, &quot;108&quot;, 180, 108, 137, &quot;Lickitung&quot;), _
-		Array (&quot;Koffing&quot;, &quot;109&quot;, 80, 119, 164, &quot;Weezing&quot;), _
-		Array (&quot;Weezing&quot;, &quot;110&quot;, 130, 174, 221, &quot;Weezing&quot;), _
-		Array (&quot;Rhyhorn&quot;, &quot;111&quot;, 160, 140, 157, &quot;Rhydon&quot;), _
-		Array (&quot;Rhydon&quot;, &quot;112&quot;, 210, 222, 206, &quot;Rhydon&quot;), _
-		Array (&quot;Chansey&quot;, &quot;113&quot;, 500, 60, 176, &quot;Chansey&quot;), _
-		Array (&quot;Tangela&quot;, &quot;114&quot;, 130, 183, 205, &quot;Tangela&quot;), _
-		Array (&quot;Kangaskhan&quot;, &quot;115&quot;, 210, 181, 165, &quot;Kangaskhan&quot;), _
-		Array (&quot;Horsea&quot;, &quot;116&quot;, 60, 129, 125, &quot;Seadra&quot;), _
-		Array (&quot;Seadra&quot;, &quot;117&quot;, 110, 187, 182, &quot;Seadra&quot;), _
-		Array (&quot;Goldeen&quot;, &quot;118&quot;, 90, 123, 115, &quot;Seaking&quot;), _
-		Array (&quot;Seaking&quot;, &quot;119&quot;, 160, 175, 154, &quot;Seaking&quot;), _
-		Array (&quot;Staryu&quot;, &quot;120&quot;, 60, 137, 112, &quot;Starmie&quot;), _
-		Array (&quot;Starmie&quot;, &quot;121&quot;, 120, 210, 184, &quot;Starmie&quot;), _
-		Array (&quot;Mr. Mime&quot;, &quot;122&quot;, 80, 192, 233, &quot;Mr. Mime&quot;), _
-		Array (&quot;Scyther&quot;, &quot;123&quot;, 140, 218, 170, &quot;Scyther&quot;), _
-		Array (&quot;Jynx&quot;, &quot;124&quot;, 130, 223, 182, &quot;Jynx&quot;), _
-		Array (&quot;Electabuzz&quot;, &quot;125&quot;, 130, 198, 173, &quot;Electabuzz&quot;), _
-		Array (&quot;Magmar&quot;, &quot;126&quot;, 130, 206, 169, &quot;Magmar&quot;), _
-		Array (&quot;Pinsir&quot;, &quot;127&quot;, 130, 238, 197, &quot;Pinsir&quot;), _
-		Array (&quot;Tauros&quot;, &quot;128&quot;, 150, 198, 197, &quot;Tauros&quot;), _
-		Array (&quot;Magikarp&quot;, &quot;129&quot;, 40, 29, 102, &quot;Gyarados&quot;), _
-		Array (&quot;Gyarados&quot;, &quot;130&quot;, 190, 237, 197, &quot;Gyarados&quot;), _
-		Array (&quot;Lapras&quot;, &quot;131&quot;, 260, 186, 190, &quot;Lapras&quot;), _
-		Array (&quot;Ditto&quot;, &quot;132&quot;, 96, 91, 91, &quot;Ditto&quot;), _
-		Array (&quot;Eevee&quot;, &quot;133&quot;, 110, 104, 121, &quot;Vaporeon&quot;), _
-		Array (&quot;Vaporeon&quot;, &quot;134&quot;, 260, 205, 177, &quot;Vaporeon&quot;), _
-		Array (&quot;Jolteon&quot;, &quot;135&quot;, 130, 232, 201, &quot;Jolteon&quot;), _
-		Array (&quot;Flareon&quot;, &quot;136&quot;, 130, 246, 204, &quot;Flareon&quot;), _
-		Array (&quot;Porygon&quot;, &quot;137&quot;, 130, 153, 139, &quot;Porygon&quot;), _
-		Array (&quot;Omanyte&quot;, &quot;138&quot;, 70, 155, 174, &quot;Omastar&quot;), _
-		Array (&quot;Omastar&quot;, &quot;139&quot;, 140, 207, 227, &quot;Omastar&quot;), _
-		Array (&quot;Kabuto&quot;, &quot;140&quot;, 60, 148, 162, &quot;Kabutops&quot;), _
-		Array (&quot;Kabutops&quot;, &quot;141&quot;, 120, 220, 203, &quot;Kabutops&quot;), _
-		Array (&quot;Aerodactyl&quot;, &quot;142&quot;, 160, 221, 164, &quot;Aerodactyl&quot;), _
-		Array (&quot;Snorlax&quot;, &quot;143&quot;, 320, 190, 190, &quot;Snorlax&quot;), _
-		Array (&quot;Articuno&quot;, &quot;144&quot;, 180, 192, 249, &quot;Articuno&quot;), _
-		Array (&quot;Zapdos&quot;, &quot;145&quot;, 180, 253, 188, &quot;Zapdos&quot;), _
-		Array (&quot;Moltres&quot;, &quot;146&quot;, 180, 251, 184, &quot;Moltres&quot;), _
-		Array (&quot;Dratini&quot;, &quot;147&quot;, 82, 119, 94, &quot;Dragonite&quot;), _
-		Array (&quot;Dragonair&quot;, &quot;148&quot;, 122, 163, 138, &quot;Dragonite&quot;), _
-		Array (&quot;Dragonite&quot;, &quot;149&quot;, 182, 263, 201, &quot;Dragonite&quot;), _
-		Array (&quot;Mewtwo&quot;, &quot;150&quot;, 212, 330, 200, &quot;Mewtwo&quot;), _
-		Array (&quot;Mew&quot;, &quot;151&quot;, 200, 210, 209, &quot;Mew&quot;))
+		Array (&quot;Bulbasaur&quot;, &quot;001&quot;, 90, 118, 118, Array (&quot;Ivysaur&quot;, &quot;Venusaur&quot;)), _
+		Array (&quot;Ivysaur&quot;, &quot;002&quot;, 120, 151, 151, Array (&quot;Venusaur&quot;)), _
+		Array (&quot;Venusaur&quot;, &quot;003&quot;, 160, 198, 198, Array ()), _
+		Array (&quot;Charmander&quot;, &quot;004&quot;, 78, 116, 96, Array (&quot;Charmeleon&quot;, &quot;Charizard&quot;)), _
+		Array (&quot;Charmeleon&quot;, &quot;005&quot;, 116, 158, 129, Array (&quot;Charizard&quot;)), _
+		Array (&quot;Charizard&quot;, &quot;006&quot;, 156, 223, 176, Array ()), _
+		Array (&quot;Squirtle&quot;, &quot;007&quot;, 88, 94, 122, Array (&quot;Wartortle&quot;, &quot;Blastoise&quot;)), _
+		Array (&quot;Wartortle&quot;, &quot;008&quot;, 118, 126, 155, Array (&quot;Blastoise&quot;)), _
+		Array (&quot;Blastoise&quot;, &quot;009&quot;, 158, 171, 210, Array ()), _
+		Array (&quot;Caterpie&quot;, &quot;010&quot;, 90, 55, 62, Array (&quot;Metapod&quot;, &quot;Butterfree&quot;)), _
+		Array (&quot;Metapod&quot;, &quot;011&quot;, 100, 45, 64, Array (&quot;Butterfree&quot;)), _
+		Array (&quot;Butterfree&quot;, &quot;012&quot;, 120, 167, 151, Array ()), _
+		Array (&quot;Weedle&quot;, &quot;013&quot;, 80, 63, 55, Array (&quot;Kakuna&quot;, &quot;Beedrill&quot;)), _
+		Array (&quot;Kakuna&quot;, &quot;014&quot;, 90, 46, 86, Array (&quot;Beedrill&quot;)), _
+		Array (&quot;Beedrill&quot;, &quot;015&quot;, 130, 169, 150, Array ()), _
+		Array (&quot;Pidgey&quot;, &quot;016&quot;, 80, 85, 76, Array (&quot;Pidgeotto&quot;, &quot;Pidgeot&quot;)), _
+		Array (&quot;Pidgeotto&quot;, &quot;017&quot;, 126, 117, 108, Array (&quot;Pidgeot&quot;)), _
+		Array (&quot;Pidgeot&quot;, &quot;018&quot;, 166, 166, 157, Array ()), _
+		Array (&quot;Rattata&quot;, &quot;019&quot;, 60, 103, 70, Array (&quot;Raticate&quot;)), _
+		Array (&quot;Raticate&quot;, &quot;020&quot;, 110, 161, 144, Array ()), _
+		Array (&quot;Spearow&quot;, &quot;021&quot;, 80, 112, 61, Array (&quot;Fearow&quot;)), _
+		Array (&quot;Fearow&quot;, &quot;022&quot;, 130, 182, 135, Array ()), _
+		Array (&quot;Ekans&quot;, &quot;023&quot;, 70, 110, 102, Array (&quot;Arbok&quot;)), _
+		Array (&quot;Arbok&quot;, &quot;024&quot;, 120, 167, 158, Array ()), _
+		Array (&quot;Pikachu&quot;, &quot;025&quot;, 70, 112, 101, Array (&quot;Raichu&quot;)), _
+		Array (&quot;Raichu&quot;, &quot;026&quot;, 120, 193, 165, Array ()), _
+		Array (&quot;Sandshrew&quot;, &quot;027&quot;, 100, 126, 145, Array (&quot;Sandslash&quot;)), _
+		Array (&quot;Sandslash&quot;, &quot;028&quot;, 150, 182, 202, Array ()), _
+		Array (&quot;Nidoran♀&quot;, &quot;029&quot;, 110, 86, 94, Array (&quot;Nidorina&quot;, &quot;Nidoqueen&quot;)), _
+		Array (&quot;Nidorina&quot;, &quot;030&quot;, 140, 117, 126, Array (&quot;Nidoqueen&quot;)), _
+		Array (&quot;Nidoqueen&quot;, &quot;031&quot;, 180, 180, 174, Array ()), _
+		Array (&quot;Nidoran♂&quot;, &quot;032&quot;, 92, 105, 76, Array (&quot;Nidorino&quot;, &quot;Nidoking&quot;)), _
+		Array (&quot;Nidorino&quot;, &quot;033&quot;, 122, 137, 112, Array (&quot;Nidoking&quot;)), _
+		Array (&quot;Nidoking&quot;, &quot;034&quot;, 162, 204, 157, Array ()), _
+		Array (&quot;Clefairy&quot;, &quot;035&quot;, 140, 107, 116, Array (&quot;Clefable&quot;)), _
+		Array (&quot;Clefable&quot;, &quot;036&quot;, 190, 178, 171, Array ()), _
+		Array (&quot;Vulpix&quot;, &quot;037&quot;, 76, 96, 122, Array (&quot;Ninetales&quot;)), _
+		Array (&quot;Ninetales&quot;, &quot;038&quot;, 146, 169, 204, Array ()), _
+		Array (&quot;Jigglypuff&quot;, &quot;039&quot;, 230, 80, 44, Array (&quot;Wigglytuff&quot;)), _
+		Array (&quot;Wigglytuff&quot;, &quot;040&quot;, 280, 156, 93, Array ()), _
+		Array (&quot;Zubat&quot;, &quot;041&quot;, 80, 83, 76, Array (&quot;Golbat&quot;)), _
+		Array (&quot;Golbat&quot;, &quot;042&quot;, 150, 161, 153, Array ()), _
+		Array (&quot;Oddish&quot;, &quot;043&quot;, 90, 131, 116, Array (&quot;Gloom&quot;, &quot;Vileplume&quot;)), _
+		Array (&quot;Gloom&quot;, &quot;044&quot;, 120, 153, 139, Array (&quot;Vileplume&quot;)), _
+		Array (&quot;Vileplume&quot;, &quot;045&quot;, 150, 202, 170, Array ()), _
+		Array (&quot;Paras&quot;, &quot;046&quot;, 70, 121, 99, Array (&quot;Parasect&quot;)), _
+		Array (&quot;Parasect&quot;, &quot;047&quot;, 120, 165, 146, Array ()), _
+		Array (&quot;Venonat&quot;, &quot;048&quot;, 120, 100, 102, Array (&quot;Venomoth&quot;)), _
+		Array (&quot;Venomoth&quot;, &quot;049&quot;, 140, 179, 150, Array ()), _
+		Array (&quot;Diglett&quot;, &quot;050&quot;, 20, 109, 88, Array (&quot;Dugtrio&quot;)), _
+		Array (&quot;Dugtrio&quot;, &quot;051&quot;, 70, 167, 147, Array ()), _
+		Array (&quot;Meowth&quot;, &quot;052&quot;, 80, 92, 81, Array (&quot;Persian&quot;)), _
+		Array (&quot;Persian&quot;, &quot;053&quot;, 130, 150, 139, Array ()), _
+		Array (&quot;Psyduck&quot;, &quot;054&quot;, 100, 122, 96, Array (&quot;Golduck&quot;)), _
+		Array (&quot;Golduck&quot;, &quot;055&quot;, 160, 191, 163, Array ()), _
+		Array (&quot;Mankey&quot;, &quot;056&quot;, 80, 148, 87, Array (&quot;Primeape&quot;)), _
+		Array (&quot;Primeape&quot;, &quot;057&quot;, 130, 207, 144, Array ()), _
+		Array (&quot;Growlithe&quot;, &quot;058&quot;, 110, 136, 96, Array (&quot;Arcanine&quot;)), _
+		Array (&quot;Arcanine&quot;, &quot;059&quot;, 180, 227, 166, Array ()), _
+		Array (&quot;Poliwag&quot;, &quot;060&quot;, 80, 101, 82, Array (&quot;Poliwhirl&quot;, &quot;Poliwrath&quot;)), _
+		Array (&quot;Poliwhirl&quot;, &quot;061&quot;, 130, 130, 130, Array (&quot;Poliwrath&quot;)), _
+		Array (&quot;Poliwrath&quot;, &quot;062&quot;, 180, 182, 187, Array ()), _
+		Array (&quot;Abra&quot;, &quot;063&quot;, 50, 195, 103, Array (&quot;Kadabra&quot;, &quot;Alakazam&quot;)), _
+		Array (&quot;Kadabra&quot;, &quot;064&quot;, 80, 232, 138, Array (&quot;Alakazam&quot;)), _
+		Array (&quot;Alakazam&quot;, &quot;065&quot;, 110, 271, 194, Array ()), _
+		Array (&quot;Machop&quot;, &quot;066&quot;, 140, 137, 88, Array (&quot;Machoke&quot;, &quot;Machamp&quot;)), _
+		Array (&quot;Machoke&quot;, &quot;067&quot;, 160, 177, 130, Array (&quot;Machamp&quot;)), _
+		Array (&quot;Machamp&quot;, &quot;068&quot;, 180, 234, 162, Array ()), _
+		Array (&quot;Bellsprout&quot;, &quot;069&quot;, 100, 139, 64, Array (&quot;Weepinbell&quot;, &quot;Victreebel&quot;)), _
+		Array (&quot;Weepinbell&quot;, &quot;070&quot;, 130, 172, 95, Array (&quot;Victreebel&quot;)), _
+		Array (&quot;Victreebel&quot;, &quot;071&quot;, 160, 207, 138, Array ()), _
+		Array (&quot;Tentacool&quot;, &quot;072&quot;, 80, 97, 182, Array (&quot;Tentacruel&quot;)), _
+		Array (&quot;Tentacruel&quot;, &quot;073&quot;, 160, 166, 237, Array ()), _
+		Array (&quot;Geodude&quot;, &quot;074&quot;, 80, 132, 163, Array (&quot;Graveler&quot;, &quot;Golem&quot;)), _
+		Array (&quot;Graveler&quot;, &quot;075&quot;, 110, 164, 196, Array (&quot;Golem&quot;)), _
+		Array (&quot;Golem&quot;, &quot;076&quot;, 160, 211, 229, Array ()), _
+		Array (&quot;Ponyta&quot;, &quot;077&quot;, 100, 170, 132, Array (&quot;Rapidash&quot;)), _
+		Array (&quot;Rapidash&quot;, &quot;078&quot;, 130, 207, 167, Array ()), _
+		Array (&quot;Slowpoke&quot;, &quot;079&quot;, 180, 109, 109, Array (&quot;Slowbro&quot;)), _
+		Array (&quot;Slowbro&quot;, &quot;080&quot;, 190, 177, 194, Array ()), _
+		Array (&quot;Magnemite&quot;, &quot;081&quot;, 50, 165, 128, Array (&quot;Magneton&quot;)), _
+		Array (&quot;Magneton&quot;, &quot;082&quot;, 100, 223, 182, Array ()), _
+		Array (&quot;Farfetch&apos;d&quot;, &quot;083&quot;, 104, 124, 118, Array ()), _
+		Array (&quot;Doduo&quot;, &quot;084&quot;, 70, 158, 88, Array (&quot;Dodrio&quot;)), _
+		Array (&quot;Dodrio&quot;, &quot;085&quot;, 120, 218, 145, Array ()), _
+		Array (&quot;Seel&quot;, &quot;086&quot;, 130, 85, 128, Array (&quot;Dewgong&quot;)), _
+		Array (&quot;Dewgong&quot;, &quot;087&quot;, 180, 139, 184, Array ()), _
+		Array (&quot;Grimer&quot;, &quot;088&quot;, 160, 135, 90, Array (&quot;Muk&quot;)), _
+		Array (&quot;Muk&quot;, &quot;089&quot;, 210, 190, 184, Array ()), _
+		Array (&quot;Shellder&quot;, &quot;090&quot;, 60, 116, 168, Array (&quot;Cloyster&quot;)), _
+		Array (&quot;Cloyster&quot;, &quot;091&quot;, 100, 186, 323, Array ()), _
+		Array (&quot;Gastly&quot;, &quot;092&quot;, 60, 186, 70, Array (&quot;Haunter&quot;, &quot;Gengar&quot;)), _
+		Array (&quot;Haunter&quot;, &quot;093&quot;, 90, 223, 112, Array (&quot;Gengar&quot;)), _
+		Array (&quot;Gengar&quot;, &quot;094&quot;, 120, 261, 156, Array ()), _
+		Array (&quot;Onix&quot;, &quot;095&quot;, 70, 85, 288, Array ()), _
+		Array (&quot;Drowzee&quot;, &quot;096&quot;, 120, 89, 158, Array (&quot;Hypno&quot;)), _
+		Array (&quot;Hypno&quot;, &quot;097&quot;, 170, 144, 215, Array ()), _
+		Array (&quot;Krabby&quot;, &quot;098&quot;, 60, 181, 156, Array (&quot;Kingler&quot;)), _
+		Array (&quot;Kingler&quot;, &quot;099&quot;, 110, 240, 214, Array ()), _
+		Array (&quot;Voltorb&quot;, &quot;100&quot;, 80, 109, 114, Array (&quot;Electrode&quot;)), _
+		Array (&quot;Electrode&quot;, &quot;101&quot;, 120, 173, 179, Array ()), _
+		Array (&quot;Exeggcute&quot;, &quot;102&quot;, 120, 107, 140, Array (&quot;Exeggutor&quot;)), _
+		Array (&quot;Exeggutor&quot;, &quot;103&quot;, 190, 233, 158, Array ()), _
+		Array (&quot;Cubone&quot;, &quot;104&quot;, 100, 90, 165, Array (&quot;Marowak&quot;)), _
+		Array (&quot;Marowak&quot;, &quot;105&quot;, 120, 144, 200, Array ()), _
+		Array (&quot;Hitmonlee&quot;, &quot;106&quot;, 100, 224, 211, Array ()), _
+		Array (&quot;Hitmonchan&quot;, &quot;107&quot;, 100, 193, 212, Array ()), _
+		Array (&quot;Lickitung&quot;, &quot;108&quot;, 180, 108, 137, Array ()), _
+		Array (&quot;Koffing&quot;, &quot;109&quot;, 80, 119, 164, Array (&quot;Weezing&quot;)), _
+		Array (&quot;Weezing&quot;, &quot;110&quot;, 130, 174, 221, Array ()), _
+		Array (&quot;Rhyhorn&quot;, &quot;111&quot;, 160, 140, 157, Array (&quot;Rhydon&quot;)), _
+		Array (&quot;Rhydon&quot;, &quot;112&quot;, 210, 222, 206, Array ()), _
+		Array (&quot;Chansey&quot;, &quot;113&quot;, 500, 60, 176, Array ()), _
+		Array (&quot;Tangela&quot;, &quot;114&quot;, 130, 183, 205, Array ()), _
+		Array (&quot;Kangaskhan&quot;, &quot;115&quot;, 210, 181, 165, Array ()), _
+		Array (&quot;Horsea&quot;, &quot;116&quot;, 60, 129, 125, Array (&quot;Seadra&quot;)), _
+		Array (&quot;Seadra&quot;, &quot;117&quot;, 110, 187, 182, Array ()), _
+		Array (&quot;Goldeen&quot;, &quot;118&quot;, 90, 123, 115, Array (&quot;Seaking&quot;)), _
+		Array (&quot;Seaking&quot;, &quot;119&quot;, 160, 175, 154, Array ()), _
+		Array (&quot;Staryu&quot;, &quot;120&quot;, 60, 137, 112, Array (&quot;Starmie&quot;)), _
+		Array (&quot;Starmie&quot;, &quot;121&quot;, 120, 210, 184, Array ()), _
+		Array (&quot;Mr. Mime&quot;, &quot;122&quot;, 80, 192, 233, Array ()), _
+		Array (&quot;Scyther&quot;, &quot;123&quot;, 140, 218, 170, Array ()), _
+		Array (&quot;Jynx&quot;, &quot;124&quot;, 130, 223, 182, Array ()), _
+		Array (&quot;Electabuzz&quot;, &quot;125&quot;, 130, 198, 173, Array ()), _
+		Array (&quot;Magmar&quot;, &quot;126&quot;, 130, 206, 169, Array ()), _
+		Array (&quot;Pinsir&quot;, &quot;127&quot;, 130, 238, 197, Array ()), _
+		Array (&quot;Tauros&quot;, &quot;128&quot;, 150, 198, 197, Array ()), _
+		Array (&quot;Magikarp&quot;, &quot;129&quot;, 40, 29, 102, Array (&quot;Gyarados&quot;)), _
+		Array (&quot;Gyarados&quot;, &quot;130&quot;, 190, 237, 197, Array ()), _
+		Array (&quot;Lapras&quot;, &quot;131&quot;, 260, 186, 190, Array ()), _
+		Array (&quot;Ditto&quot;, &quot;132&quot;, 96, 91, 91, Array ()), _
+		Array (&quot;Eevee&quot;, &quot;133&quot;, 110, 104, 121, Array (&quot;Vaporeon&quot;, &quot;Jolteon&quot;, &quot;Flareon&quot;)), _
+		Array (&quot;Vaporeon&quot;, &quot;134&quot;, 260, 205, 177, Array ()), _
+		Array (&quot;Jolteon&quot;, &quot;135&quot;, 130, 232, 201, Array ()), _
+		Array (&quot;Flareon&quot;, &quot;136&quot;, 130, 246, 204, Array ()), _
+		Array (&quot;Porygon&quot;, &quot;137&quot;, 130, 153, 139, Array ()), _
+		Array (&quot;Omanyte&quot;, &quot;138&quot;, 70, 155, 174, Array (&quot;Omastar&quot;)), _
+		Array (&quot;Omastar&quot;, &quot;139&quot;, 140, 207, 227, Array ()), _
+		Array (&quot;Kabuto&quot;, &quot;140&quot;, 60, 148, 162, Array (&quot;Kabutops&quot;)), _
+		Array (&quot;Kabutops&quot;, &quot;141&quot;, 120, 220, 203, Array ()), _
+		Array (&quot;Aerodactyl&quot;, &quot;142&quot;, 160, 221, 164, Array ()), _
+		Array (&quot;Snorlax&quot;, &quot;143&quot;, 320, 190, 190, Array ()), _
+		Array (&quot;Articuno&quot;, &quot;144&quot;, 180, 192, 249, Array ()), _
+		Array (&quot;Zapdos&quot;, &quot;145&quot;, 180, 253, 188, Array ()), _
+		Array (&quot;Moltres&quot;, &quot;146&quot;, 180, 251, 184, Array ()), _
+		Array (&quot;Dratini&quot;, &quot;147&quot;, 82, 119, 94, Array (&quot;Dragonair&quot;, &quot;Dragonite&quot;)), _
+		Array (&quot;Dragonair&quot;, &quot;148&quot;, 122, 163, 138, Array (&quot;Dragonite&quot;)), _
+		Array (&quot;Dragonite&quot;, &quot;149&quot;, 182, 263, 201, Array ()), _
+		Array (&quot;Mewtwo&quot;, &quot;150&quot;, 212, 330, 200, Array ()), _
+		Array (&quot;Mew&quot;, &quot;151&quot;, 200, 210, 209, Array ()))
 End Function
 
 &apos; fnGetCPMData: Returns the combat power multiplier data.

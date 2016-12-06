@@ -71,7 +71,8 @@ End Sub
 Function fnReadBaseStatsSheet As String
 	Dim oSheet As Object, oRange As Object, mData As Variant
 	Dim nI As Integer, sOutput As String
-	Dim nJ As Integer, sEvolveInto As String
+	Dim nJ As Integer, nStart As Integer, nEnd As Integer
+	Dim sEvolveForms As String
 	
 	oSheet = ThisComponent.getSheets.getByName (&quot;basestat&quot;)
 	oRange = oSheet.getCellRangeByName (&quot;BaseStats&quot;)
@@ -82,36 +83,68 @@ Function fnReadBaseStatsSheet As String
 		&amp; &quot;Function fnGetBaseStatsData As Variant&quot; &amp; Chr (10) _
 		&amp; Chr (9) &amp; &quot;fnGetBaseStatsData = Array( _&quot; &amp; Chr (10)
 	For nI = 1 To UBound (mData) - 1
-		For nJ = 8 To 6 Step -1
-			If mData (nI) (nJ) &lt;&gt; &quot;&quot; Then
-				sEvolveInto = mData (nI) (nJ)
-				nJ = 5
-			End If
-		Next nJ
+		sEvolveForms = fnFindEvolveForms (mData (nI))
 		sOutput = sOutput _
 			&amp; Chr (9) &amp; Chr (9) &amp; &quot;Array (&quot;&quot;&quot; &amp; mData (nI) (0) _
 				&amp; &quot;&quot;&quot;, &quot;&quot;&quot; &amp; mData (nI) (1) _
 				&amp; &quot;&quot;&quot;, &quot; &amp; mData (nI) (3) _
 				&amp; &quot;, &quot; &amp; mData (nI) (4) _
 				&amp; &quot;, &quot; &amp; mData (nI) (5) _
-				&amp; &quot;, &quot;&quot;&quot; &amp; sEvolveInto &amp; &quot;&quot;&quot;), _&quot; &amp; Chr (10)
+				&amp; &quot;, &quot; &amp; sEvolveForms &amp; &quot;), _&quot; &amp; Chr (10)
 	Next nI
 	nI = UBound (mData)
-	For nJ = 8 To 6 Step -1
-		If mData (nI) (nJ) &lt;&gt; &quot;&quot; Then
-			sEvolveInto = mData (nI) (nJ)
-			nJ = 5
-		End If
-	Next nJ
+	sEvolveForms = fnFindEvolveForms (mData (nI))
 	sOutput = sOutput _
 		&amp; Chr (9) &amp; Chr (9) &amp; &quot;Array (&quot;&quot;&quot; &amp; mData (nI) (0) _
 			&amp; &quot;&quot;&quot;, &quot;&quot;&quot; &amp; mData (nI) (1) _
 			&amp; &quot;&quot;&quot;, &quot; &amp; mData (nI) (3) _
 			&amp; &quot;, &quot; &amp; mData (nI) (4) _
 			&amp; &quot;, &quot; &amp; mData (nI) (5) _
-			&amp; &quot;, &quot;&quot;&quot; &amp; sEvolveInto &amp; &quot;&quot;&quot;))&quot; &amp; Chr (10) _
+			&amp; &quot;, &quot; &amp; sEvolveForms &amp; &quot;))&quot; &amp; Chr (10) _
 		&amp; &quot;End Function&quot;
 	fnReadBaseStatsSheet = sOutput
+End Function
+
+Function fnFindEvolveForms (mData () As Variant) As String
+	Dim nJ As Integer, nStart As Integer, nEnd As Integer
+	Dim sEvolveForms As String
+	
+	If mData (0) = &quot;Eevee&quot; Then
+		sEvolveForms = &quot;Array (&quot;&quot;Vaporeon&quot;&quot;, &quot;&quot;Jolteon&quot;&quot;, &quot;&quot;Flareon&quot;&quot;)&quot;
+	Else
+		For nJ = 6 To 8
+			If mData (nJ) = mData (0) Then
+				nStart = nJ + 1
+				nJ = 9
+			End If
+		Next nJ
+		If nStart = 9 Then
+			nEnd = 8
+		Else
+			For nJ = nStart To 8
+				If mData (nJ) = &quot;&quot; Then
+					nEnd = nJ - 1
+					nJ = 9
+				Else
+					If nJ = 8 Then
+						nEnd = 8
+						nJ = 9
+					End If
+				End If
+			Next nJ
+		End If
+		If nEnd = nStart - 1 Then
+			sEvolveForms = &quot;Array ()&quot;
+		Else
+			sEvolveForms = &quot;&quot;&quot;&quot; &amp; mData (nStart) &amp; &quot;&quot;&quot;&quot;
+			For nJ = nStart + 1 To nEnd
+				sEvolveForms = sEvolveForms _
+					&amp; &quot;, &quot;&quot;&quot; &amp; mData (nJ) &amp; &quot;&quot;&quot;&quot;
+			Next nJ
+			sEvolveForms = &quot;Array (&quot; &amp; sEvolveForms &amp; &quot;)&quot;
+		End If
+	End If
+	fnFindEvolveForms = sEvolveForms
 End Function
 
 &apos; fnReadCPMSheet: Reads the combat power multiplier sheet.

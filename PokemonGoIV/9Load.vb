@@ -69,7 +69,8 @@ End Sub
 Function fnReadBaseStatsSheet As String
 	Dim oSheet As Object, oRange As Object, mData As Variant
 	Dim nI As Integer, sOutput As String
-	Dim nJ As Integer, sEvolveInto As String
+	Dim nJ As Integer, nStart As Integer, nEnd As Integer
+	Dim sEvolveForms As String
 	
 	oSheet = ThisComponent.getSheets.getByName ("basestat")
 	oRange = oSheet.getCellRangeByName ("BaseStats")
@@ -80,36 +81,68 @@ Function fnReadBaseStatsSheet As String
 		& "Function fnGetBaseStatsData As Variant" & Chr (10) _
 		& Chr (9) & "fnGetBaseStatsData = Array( _" & Chr (10)
 	For nI = 1 To UBound (mData) - 1
-		For nJ = 8 To 6 Step -1
-			If mData (nI) (nJ) <> "" Then
-				sEvolveInto = mData (nI) (nJ)
-				nJ = 5
-			End If
-		Next nJ
+		sEvolveForms = fnFindEvolveForms (mData (nI))
 		sOutput = sOutput _
 			& Chr (9) & Chr (9) & "Array (""" & mData (nI) (0) _
 				& """, """ & mData (nI) (1) _
 				& """, " & mData (nI) (3) _
 				& ", " & mData (nI) (4) _
 				& ", " & mData (nI) (5) _
-				& ", """ & sEvolveInto & """), _" & Chr (10)
+				& ", " & sEvolveForms & "), _" & Chr (10)
 	Next nI
 	nI = UBound (mData)
-	For nJ = 8 To 6 Step -1
-		If mData (nI) (nJ) <> "" Then
-			sEvolveInto = mData (nI) (nJ)
-			nJ = 5
-		End If
-	Next nJ
+	sEvolveForms = fnFindEvolveForms (mData (nI))
 	sOutput = sOutput _
 		& Chr (9) & Chr (9) & "Array (""" & mData (nI) (0) _
 			& """, """ & mData (nI) (1) _
 			& """, " & mData (nI) (3) _
 			& ", " & mData (nI) (4) _
 			& ", " & mData (nI) (5) _
-			& ", """ & sEvolveInto & """))" & Chr (10) _
+			& ", " & sEvolveForms & "))" & Chr (10) _
 		& "End Function"
 	fnReadBaseStatsSheet = sOutput
+End Function
+
+Function fnFindEvolveForms (mData () As Variant) As String
+	Dim nJ As Integer, nStart As Integer, nEnd As Integer
+	Dim sEvolveForms As String
+	
+	If mData (0) = "Eevee" Then
+		sEvolveForms = "Array (""Vaporeon"", ""Jolteon"", ""Flareon"")"
+	Else
+		For nJ = 6 To 8
+			If mData (nJ) = mData (0) Then
+				nStart = nJ + 1
+				nJ = 9
+			End If
+		Next nJ
+		If nStart = 9 Then
+			nEnd = 8
+		Else
+			For nJ = nStart To 8
+				If mData (nJ) = "" Then
+					nEnd = nJ - 1
+					nJ = 9
+				Else
+					If nJ = 8 Then
+						nEnd = 8
+						nJ = 9
+					End If
+				End If
+			Next nJ
+		End If
+		If nEnd = nStart - 1 Then
+			sEvolveForms = "Array ()"
+		Else
+			sEvolveForms = """" & mData (nStart) & """"
+			For nJ = nStart + 1 To nEnd
+				sEvolveForms = sEvolveForms _
+					& ", """ & mData (nJ) & """"
+			Next nJ
+			sEvolveForms = "Array (" & sEvolveForms & ")"
+		End If
+	End If
+	fnFindEvolveForms = sEvolveForms
 End Function
 
 ' fnReadCPMSheet: Reads the combat power multiplier sheet.
