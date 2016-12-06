@@ -437,6 +437,7 @@ Function fnAskParam0 As aFindIVParam
 	oButtonModel.setPropertyValue ("PushButtonType", _
 		com.sun.star.awt.PushButtonType.OK)
 	oButtonModel.setPropertyValue ("DefaultButton", True)
+	oButtonModel.setPropertyValue ("Enabled", False)
 	oDialogModel.insertByName ("btnOK", oButtonModel)
 	
 	' Adds the cancel button.
@@ -455,6 +456,18 @@ Function fnAskParam0 As aFindIVParam
 	oDialog.setModel (oDialogModel)
 	oDialog.setVisible (True)
 	oDialog.getControl ("lstPokemon").setFocus
+	oListener = CreateUnoListener ("subBtnOKCheck_", _
+		"com.sun.star.awt.XItemListener")
+	oDialog.getControl ("lstPokemon").addItemListener (oListener)
+	oListener = CreateUnoListener ("subBtnOKCheck_", _
+		"com.sun.star.awt.XTextListener")
+	oDialog.getControl ("numCP").addTextListener (oListener)
+	oListener = CreateUnoListener ("subBtnOKCheck_", _
+		"com.sun.star.awt.XTextListener")
+	oDialog.getControl ("numHP").addTextListener (oListener)
+	oListener = CreateUnoListener ("subBtnOKCheck_", _
+		"com.sun.star.awt.XItemListener")
+	oDialog.getControl ("lstStarDust").addItemListener (oListener)
 	oListener = CreateUnoListener ("subRdoTeamRedItemChanged_", _
 		"com.sun.star.awt.XItemListener")
 	oDialog.getControl ("rdoTeamRed").addItemListener (oListener)
@@ -541,6 +554,38 @@ Function fnAskParam0 As aFindIVParam
 	fnAskParam0 = aQuery
 End Function
 
+' subBtnOKCheck_disposing: Dummy for the listener.
+Sub subBtnOKCheck_disposing (oEvent As object)
+End Sub
+
+' subBtnOKCheck_itemStateChanged: When the Pokémon or star dust is selected.
+Sub subBtnOKCheck_itemStateChanged (oEvent As object)
+	Dim oDialog As Object
+	Dim oPokemon As Object, oCP As Object
+	Dim oHP As Object, oStarDust As Object, oOK As Object
+	
+	oDialog = oEvent.Source.getContext
+	oPokemon = oDialog.getControl ("lstPokemon")
+	oCP = oDialog.getControl ("numCP")
+	oHP = oDialog.getControl ("numHP")
+	oStarDust = oDialog.getControl ("lstStarDust")
+	oOK = oDialog.getControl ("btnOK")
+	
+	If oPokemon.getSelectedItemPos <> -1 _
+			And oCP.getText <> "" _
+			And oHP.getText <> "" _
+			And oStarDust.getSelectedItemPos <> -1 Then
+		oOK.setEnable (True)
+	Else
+		oOK.setEnable (False)
+	End If
+End Sub
+
+' subBtnOKCheck_textChanged: When the CP or HP is filled
+Sub subBtnOKCheck_textChanged (oEvent As object)
+	subBtnOKCheck_itemStateChanged (oEvent)
+End Sub
+
 ' subRdoTeamRedItemChanged_disposing: Dummy for the listener.
 Sub subRdoTeamRedItemChanged_disposing (oEvent As object)
 End Sub
@@ -550,12 +595,13 @@ Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
 	Dim mItems () As String
 	
+	oDialog = oEvent.Source.getContext
+	
 	mItems = Array ( _
 		"Overall, your [Pokémon] simply amazes me. It can accomplish anything!", _
 		"Overall, your [Pokémon] is a strong Pokémon. You should be proud!", _
 		"Overall, your [Pokémon] is a decent Pokémon.", _
 		"Overall, your [Pokémon] may not be great in battle, but I still like it!")
-	oDialog = oEvent.Source.getContext
 	oList = oDialog.getControl ("lstApprasal1")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
@@ -592,7 +638,6 @@ Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
 		"It's got excellent stats! How exciting!", _
 		"Its stats indicate that in battle, it'll get the job done.", _
 		"Its stats don't point to greatness in battle.")
-	oDialog = oEvent.Source.getContext
 	oList = oDialog.getControl ("lstApprasal2")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
@@ -608,12 +653,13 @@ Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
 	Dim mItems () As String
 	
+	oDialog = oEvent.Source.getContext
+	
 	mItems = Array ( _
 		"Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!", _
 		"Overall, your [Pokémon] has certainly caught my attention.", _
 		"Overall, your [Pokémon] is above average.", _
 		"Overall, your [Pokémon] is not likely to make much headway in battle.")
-	oDialog = oEvent.Source.getContext
 	oList = oDialog.getControl ("lstApprasal1")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
@@ -650,7 +696,6 @@ Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
 		"I am certainly impressed by its stats, I must say.", _
 		"Its stats are noticeably trending to the positive.", _
 		"Its stats are not out of the norm, in my opinion.")
-	oDialog = oEvent.Source.getContext
 	oList = oDialog.getControl ("lstApprasal2")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
@@ -666,12 +711,13 @@ Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
 	Dim mItems () As String
 	
+	oDialog = oEvent.Source.getContext
+	
 	mItems = Array ( _
 		"Overall, your [Pokémon] looks like it can really battle with the best of them!", _
 		"Overall, your [Pokémon] is really strong!", _
 		"Overall, your [Pokémon] is pretty decent!", _
 		"Overall, your [Pokémon] has room for improvement as far as battling goes.")
-	oDialog = oEvent.Source.getContext
 	oList = oDialog.getControl ("lstApprasal1")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
@@ -708,7 +754,6 @@ Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
 		"Its stats are really strong! Impressive.", _
 		"It's definitely got some good stats. Definitely!", _
 		"Its stats are all right, but kinda basic, as far as I can see.")
-	oDialog = oEvent.Source.getContext
 	oList = oDialog.getControl ("lstApprasal2")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)

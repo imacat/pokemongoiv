@@ -163,11 +163,16 @@
     <dlg:menuitem dlg:value="Mewtwo"/>
     <dlg:menuitem dlg:value="Mew"/>
    </dlg:menupopup>
+   <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subBtnOKCheck_itemStateChanged?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:menulist>
   <dlg:text dlg:id="txtCP" dlg:tab-index="17" dlg:left="5" dlg:top="21" dlg:width="15" dlg:height="8" dlg:help-text="&amp;26.DlgMain.txtCP.HelpText" dlg:value="&amp;27.DlgMain.txtCP.Label"/>
-  <dlg:numericfield dlg:id="numCP" dlg:tab-index="1" dlg:left="20" dlg:top="19" dlg:width="20" dlg:height="12" dlg:help-text="&amp;28.DlgMain.numCP.HelpText" dlg:decimal-accuracy="0" dlg:value-min="10" dlg:value-max="5000"/>
+  <dlg:numericfield dlg:id="numCP" dlg:tab-index="1" dlg:left="20" dlg:top="19" dlg:width="20" dlg:height="12" dlg:help-text="&amp;28.DlgMain.numCP.HelpText" dlg:decimal-accuracy="0" dlg:value-min="10" dlg:value-max="5000">
+   <script:event script:event-name="on-textchange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subBtnOKCheck_textChanged?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:numericfield>
   <dlg:text dlg:id="txtHP" dlg:tab-index="18" dlg:left="50" dlg:top="21" dlg:width="15" dlg:height="8" dlg:help-text="&amp;29.DlgMain.txtHP.HelpText" dlg:value="&amp;30.DlgMain.txtHP.Label"/>
-  <dlg:numericfield dlg:id="numHP" dlg:tab-index="2" dlg:left="65" dlg:top="19" dlg:width="15" dlg:height="12" dlg:help-text="&amp;31.DlgMain.numHP.HelpText" dlg:decimal-accuracy="0" dlg:value-min="0" dlg:value-max="200"/>
+  <dlg:numericfield dlg:id="numHP" dlg:tab-index="2" dlg:left="65" dlg:top="19" dlg:width="15" dlg:height="12" dlg:help-text="&amp;31.DlgMain.numHP.HelpText" dlg:decimal-accuracy="0" dlg:value-min="0" dlg:value-max="200">
+   <script:event script:event-name="on-textchange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subBtnOKCheck_textChanged?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:numericfield>
   <dlg:text dlg:id="txtStarDust" dlg:tab-index="19" dlg:left="90" dlg:top="21" dlg:width="30" dlg:height="8" dlg:help-text="&amp;32.DlgMain.txtStarDust.HelpText" dlg:value="&amp;33.DlgMain.txtStarDust.Label"/>
   <dlg:menulist dlg:id="lstStarDust" dlg:tab-index="3" dlg:left="120" dlg:top="19" dlg:width="30" dlg:height="12" dlg:help-text="&amp;162.DlgMain.lstStarDust.HelpText" dlg:spin="true">
    <dlg:menupopup>
@@ -192,6 +197,7 @@
     <dlg:menuitem dlg:value="9000"/>
     <dlg:menuitem dlg:value="10000"/>
    </dlg:menupopup>
+   <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subBtnOKCheck_itemStateChanged?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:menulist>
   <dlg:text dlg:id="txtPlayerLevel" dlg:tab-index="20" dlg:left="160" dlg:top="21" dlg:width="35" dlg:height="8" dlg:help-text="&amp;40.DlgMain.txtPlayerLevel.HelpText" dlg:value="&amp;41.DlgMain.txtPlayerLevel.Label"/>
   <dlg:menulist dlg:id="lstPlayerLevel" dlg:tab-index="4" dlg:left="195" dlg:top="19" dlg:width="20" dlg:height="12" dlg:help-text="&amp;163.DlgMain.lstPlayerLevel.HelpText" dlg:spin="true">
@@ -263,7 +269,7 @@
   <dlg:checkbox dlg:id="cbxBest2" dlg:tab-index="11" dlg:left="10" dlg:top="111" dlg:width="200" dlg:height="8" dlg:help-text="&amp;201.DlgMain.cbxBest2.HelpText" dlg:checked="false"/>
   <dlg:checkbox dlg:id="cbxBest3" dlg:tab-index="12" dlg:left="10" dlg:top="126" dlg:width="200" dlg:height="8" dlg:help-text="&amp;203.DlgMain.cbxBest3.HelpText" dlg:checked="false"/>
   <dlg:menulist dlg:id="lstApprasal2" dlg:tab-index="13" dlg:left="10" dlg:top="139" dlg:width="200" dlg:height="12" dlg:help-text="&amp;165.DlgMain.lstApprasal2.HelpText" dlg:spin="true"/>
-  <dlg:button dlg:id="btnOK" dlg:tab-index="14" dlg:left="35" dlg:top="165" dlg:width="60" dlg:height="15" dlg:help-text="&amp;85.DlgMain.btnOK.HelpText" dlg:default="true" dlg:button-type="ok"/>
+  <dlg:button dlg:id="btnOK" dlg:tab-index="14" dlg:disabled="true" dlg:left="35" dlg:top="165" dlg:width="60" dlg:height="15" dlg:help-text="&amp;85.DlgMain.btnOK.HelpText" dlg:default="true" dlg:button-type="ok"/>
   <dlg:button dlg:id="btnCancel" dlg:tab-index="15" dlg:left="125" dlg:top="165" dlg:width="60" dlg:height="15" dlg:help-text="&amp;87.DlgMain.btnCancel.HelpText" dlg:button-type="cancel"/>
  </dlg:bulletinboard>
 </dlg:window>
