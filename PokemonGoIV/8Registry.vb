@@ -8,9 +8,17 @@ Const BASE_KEY As String = "/org.openoffice.Office.Addons.PokemonGoIV.AddonConfi
 ' fnGetImageUrl: Returns the image URL for the UNO image controls.
 Function fnGetImageUrl (sName As String) As String
     Dim oRegKey As Object
-
+	
 	oRegKey = fnGetRegistryKeyContent (BASE_KEY & "FileResources/" & sName)
 	fnGetImageUrl = fnExpandMacroFieldExpression (oRegKey.Url)
+End Function
+
+' fnGetResString: Returns the localized text string.
+Function fnGetResString (sID As String) As String
+	Dim oRegKey As Object
+	
+	oRegKey = fnGetRegistryKeyContent (BASE_KEY & "Messages/" & sID)
+	fnGetResString = oRegKey.Text
 End Function
 
 ' fnGetRegistryKeyContent: Returns the registry key content
@@ -23,12 +31,18 @@ Function fnGetRegistryKeyContent (sKeyName as string, Optional bforUpdate as Boo
 	aNodePath(0).Name = "nodepath"
 	aNodePath(0).Value = sKeyName
 	If IsMissing (bForUpdate) Then
-		fnGetRegistryKeyContent = oConfigProvider.createInstanceWithArguments ("com.sun.star.configuration.ConfigurationAccess", aNodePath())
+		fnGetRegistryKeyContent = oConfigProvider.createInstanceWithArguments ( _
+			"com.sun.star.configuration.ConfigurationAccess", _
+			aNodePath())
 	Else
 		If bForUpdate Then
-			fnGetRegistryKeyContent = oConfigProvider.createInstanceWithArguments ("com.sun.star.configuration.ConfigurationUpdateAccess", aNodePath())
+			fnGetRegistryKeyContent = oConfigProvider.createInstanceWithArguments ( _
+				"com.sun.star.configuration.ConfigurationUpdateAccess", _
+				aNodePath())
 		Else
-			fnGetRegistryKeyContent = oConfigProvider.createInstanceWithArguments ("com.sun.star.configuration.ConfigurationAccess", aNodePath())
+			fnGetRegistryKeyContent = oConfigProvider.createInstanceWithArguments ( _
+				"com.sun.star.configuration.ConfigurationAccess", _
+				aNodePath())
 		End If
 	End If
 End Function

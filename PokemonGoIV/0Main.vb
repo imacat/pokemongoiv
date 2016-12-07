@@ -70,7 +70,8 @@ Sub subMain
 	End If
 	maIVs = fnFindIV (aQuery)
 	If UBound (maIVs) = -1 Then
-		MsgBox "Found no matching IV."
+		'MsgBox "Found no matching IV."
+		MsgBox fnGetResString ("msg1000")
 	Else
 		subSaveIV (aQuery, maIVs)
 	End If
