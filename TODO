@@ -1,5 +1,6 @@
 PokemonGoIV TODO
 
+* Added the lower limit (10) of CP.
 * Fix layout on MacOSX and MS-Windows.
 * LibreOffice compability.
 * Center the dialog.
