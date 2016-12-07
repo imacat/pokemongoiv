@@ -70,8 +70,7 @@ Sub subMain
 	End If
 	maIVs = fnFindIV (aQuery)
 	If UBound (maIVs) = -1 Then
-		'MsgBox "Found no matching IV."
-		MsgBox fnGetResString ("msg1000")
+		MsgBox fnGetResString ("ErrorNotFound")
 	Else
 		subSaveIV (aQuery, maIVs)
 	End If
@@ -93,6 +92,11 @@ Function fnAskParam As aFindIVParam
 	oDialog.getControl ("cbxBest2").setVisible (False)
 	oDialog.getControl ("cbxBest3").setVisible (False)
 	oDialog.getControl ("lstApprasal2").setVisible (False)
+	
+	oDialog.getControl ("imgPokemon").getModel.setPropertyValue ( _
+	    "ImageURL", fnGetImageUrl ("Unknown"))
+	oDialog.getControl ("imgTeamLogo").getModel.setPropertyValue ( _
+	    "ImageURL", fnGetImageUrl ("Unknown"))
 	
 	If oDialog.execute = 0 Then
 		aQuery.bIsCancelled = True
@@ -233,9 +237,17 @@ Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
 	
 	oDialog = oEvent.Source.getContext
 	
-	oImageModel = oDialog.getControl ("imgTeam").getModel
+	oImageModel = oDialog.getControl ("imgTeamLogo").getModel
 	oImageModel.setPropertyValue ("ImageURL", _
-		fnGetImageUrl ("TeamValor"))
+		fnGetImageUrl ("TeamLogoValor"))
+	oDialog.getControl ("imgTeamLeader").setVisible (True)
+	oImageModel = oDialog.getControl ("imgTeamLeader").getModel
+	oImageModel.setPropertyValue ("ImageURL", _
+		fnGetImageUrl ("TeamLeaderCandela"))
+	
+	oText = oDialog.getControl ("txtLeaderAppraise")
+	oText.setVisible (True)
+	oText.setText (fnGetResString ("AppraiseFromCandela"))
 	
 	mItems = Array ( _
 		"Overall, your [Pokémon] simply amazes me. It can accomplish anything!", _
@@ -248,8 +260,8 @@ Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
 	oList.setVisible (True)
 	
 	oText = oDialog.getControl ("txtBestBefore")
-	oText.setPosSize (30, 96, 20, 8, _
-		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
+	oText.setPosSize (-1, -1, 20, -1, _
+		com.sun.star.awt.PosSize.WIDTH)
 	oText.setVisible (True)
 	oText.setText ("Its")
 	
@@ -257,12 +269,12 @@ Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
 	oList = oDialog.getControl ("lstBest")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
-	oList.setPosSize (50, 96, 35, 8, _
+	oList.setPosSize (140, -1, -1, -1, _
 		com.sun.star.awt.PosSize.X)
 	oList.setVisible (True)
 	
 	oText = oDialog.getControl ("txtBestAfter")
-	oText.setPosSize (145, 96, 160, 8, _
+	oText.setPosSize (240, -1, 160, -1, _
 		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
 	oText.setVisible (True)
 	oText.setText ("is its strongest feature.")
@@ -296,9 +308,17 @@ Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
 	
 	oDialog = oEvent.Source.getContext
 	
-	oImageModel = oDialog.getControl ("imgTeam").getModel
+	oImageModel = oDialog.getControl ("imgTeamLogo").getModel
 	oImageModel.setPropertyValue ("ImageURL", _
-		fnGetImageUrl ("TeamMystic"))
+		fnGetImageUrl ("TeamLogoMystic"))
+	oDialog.getControl ("imgTeamLeader").setVisible (True)
+	oImageModel = oDialog.getControl ("imgTeamLeader").getModel
+	oImageModel.setPropertyValue ("ImageURL", _
+		fnGetImageUrl ("TeamLeaderBlanche"))
+	
+	oText = oDialog.getControl ("txtLeaderAppraise")
+	oText.setVisible (True)
+	oText.setText (fnGetResString ("AppraiseFromBlanche"))
 	
 	mItems = Array ( _
 		"Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!", _
@@ -311,8 +331,8 @@ Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
 	oList.setVisible (True)
 	
 	oText = oDialog.getControl ("txtBestBefore")
-	oText.setPosSize (30, 96, 200, 8, _
-		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
+	oText.setPosSize (-1, -1, 200, -1, _
+		com.sun.star.awt.PosSize.WIDTH)
 	oText.setVisible (True)
 	oText.setText ("I see that its best attribute is its")
 	
@@ -320,12 +340,12 @@ Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
 	oList = oDialog.getControl ("lstBest")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
-	oList.setPosSize (230, 96, 35, 8, _
+	oList.setPosSize (320, -1, -1, -1, _
 		com.sun.star.awt.PosSize.X)
 	oList.setVisible (True)
 	
 	oText = oDialog.getControl ("txtBestAfter")
-	oText.setPosSize (325, 96, 5, 8, _
+	oText.setPosSize (415, -1, 5, -1, _
 		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
 	oText.setVisible (True)
 	oText.setText (".")
@@ -359,9 +379,17 @@ Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
 	
 	oDialog = oEvent.Source.getContext
 	
-	oImageModel = oDialog.getControl ("imgTeam").getModel
+	oImageModel = oDialog.getControl ("imgTeamLogo").getModel
 	oImageModel.setPropertyValue ("ImageURL", _
-		fnGetImageUrl ("TeamInstinct"))
+		fnGetImageUrl ("TeamLogoInstinct"))
+	oDialog.getControl ("imgTeamLeader").setVisible (True)
+	oImageModel = oDialog.getControl ("imgTeamLeader").getModel
+	oImageModel.setPropertyValue ("ImageURL", _
+		fnGetImageUrl ("TeamLeaderSpark"))
+	
+	oText = oDialog.getControl ("txtLeaderAppraise")
+	oText.setVisible (True)
+	oText.setText (fnGetResString ("AppraiseFromSpark"))
 	
 	mItems = Array ( _
 		"Overall, your [Pokémon] looks like it can really battle with the best of them!", _
@@ -374,8 +402,8 @@ Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
 	oList.setVisible (True)
 	
 	oText = oDialog.getControl ("txtBestBefore")
-	oText.setPosSize (30, 96, 115, 8, _
-		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
+	oText.setPosSize (-1, -1, 115, -1, _
+		com.sun.star.awt.PosSize.WIDTH)
 	oText.setVisible (True)
 	oText.setText ("Its best quality is")
 	
@@ -383,12 +411,12 @@ Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
 	oList = oDialog.getControl ("lstBest")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
-	oList.setPosSize (145, 96, 35, 8, _
+	oList.setPosSize (240, -1, -1, -1, _
 		com.sun.star.awt.PosSize.X)
 	oList.setVisible (True)
 	
 	oText = oDialog.getControl ("txtBestAfter")
-	oText.setPosSize (240, 96, 5, 8, _
+	oText.setPosSize (335, -1, 5, -1, _
 		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
 	oText.setVisible (True)
 	oText.setText (".")

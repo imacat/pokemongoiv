@@ -34,24 +34,39 @@
 	
 <!--  File resources (supports localization) -->
 	<node oor:name="FileResources">
-		<node oor:name="Black" oor:op="replace">
+		<node oor:name="Unknown" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/black.png</value>
+				<value>%origin%/icons/unknown.png</value>
 			</prop>
 		</node>
-		<node oor:name="TeamValor" oor:op="replace">
+		<node oor:name="TeamLogoValor" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/team-valor.png</value>
+				<value>%origin%/icons/team-logo-valor.png</value>
 			</prop>
 		</node>
-		<node oor:name="TeamMystic" oor:op="replace">
+		<node oor:name="TeamLogoMystic" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/team-mystic.png</value>
+				<value>%origin%/icons/team-logo-mystic.png</value>
 			</prop>
 		</node>
-		<node oor:name="TeamInstinct" oor:op="replace">
+		<node oor:name="TeamLogoInstinct" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/team-instinct.png</value>
+				<value>%origin%/icons/team-logo-instinct.png</value>
+			</prop>
+		</node>
+		<node oor:name="TeamLeaderCandela" oor:op="replace">
+			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
+				<value>%origin%/icons/team-leader-candela.png</value>
+			</prop>
+		</node>
+		<node oor:name="TeamLeaderBlanche" oor:op="replace">
+			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
+				<value>%origin%/icons/team-leader-blanche.png</value>
+			</prop>
+		</node>
+		<node oor:name="TeamLeaderSpark" oor:op="replace">
+			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
+				<value>%origin%/icons/team-leader-spark.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonBulbasaur" oor:op="replace">
@@ -813,10 +828,28 @@
 	
 <!--  Localized messages -->	
 	<node oor:name="Messages">
-		<node oor:name="msg1000" oor:op="replace">		
+		<node oor:name="ErrorNotFound" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Found no matching IV.</value>
 				<value xml:lang="zh-TW">找不出符合的 IV 值。</value>
+			</prop>
+		</node>
+		<node oor:name="AppraiseFromCandela" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Candela, leader of Team Valor, says:</value>
+				<value xml:lang="zh-TW">Valor 隊隊長 Candela 說：</value>
+			</prop>
+		</node>
+		<node oor:name="AppraiseFromBlanche" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Blanche, leader of Team Mystic, says:</value>
+				<value xml:lang="zh-TW">Mystic 隊隊長 Blanche 說：</value>
+			</prop>
+		</node>
+		<node oor:name="AppraiseFromSpark" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Spark, leader of Team Instinct, says:</value>
+				<value xml:lang="zh-TW">Instinct 隊隊長 Spark 說：</value>
 			</prop>
 		</node>
 	</node>

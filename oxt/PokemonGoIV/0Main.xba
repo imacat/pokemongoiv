@@ -72,8 +72,7 @@ Sub subMain
 	End If
 	maIVs = fnFindIV (aQuery)
 	If UBound (maIVs) = -1 Then
-		&apos;MsgBox &quot;Found no matching IV.&quot;
-		MsgBox fnGetResString (&quot;msg1000&quot;)
+		MsgBox fnGetResString (&quot;ErrorNotFound&quot;)
 	Else
 		subSaveIV (aQuery, maIVs)
 	End If
@@ -95,6 +94,11 @@ Function fnAskParam As aFindIVParam
 	oDialog.getControl (&quot;cbxBest2&quot;).setVisible (False)
 	oDialog.getControl (&quot;cbxBest3&quot;).setVisible (False)
 	oDialog.getControl (&quot;lstApprasal2&quot;).setVisible (False)
+	
+	oDialog.getControl (&quot;imgPokemon&quot;).getModel.setPropertyValue ( _
+	    &quot;ImageURL&quot;, fnGetImageUrl (&quot;Unknown&quot;))
+	oDialog.getControl (&quot;imgTeamLogo&quot;).getModel.setPropertyValue ( _
+	    &quot;ImageURL&quot;, fnGetImageUrl (&quot;Unknown&quot;))
 	
 	If oDialog.execute = 0 Then
 		aQuery.bIsCancelled = True
@@ -235,9 +239,17 @@ Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
 	
 	oDialog = oEvent.Source.getContext
 	
-	oImageModel = oDialog.getControl (&quot;imgTeam&quot;).getModel
+	oImageModel = oDialog.getControl (&quot;imgTeamLogo&quot;).getModel
 	oImageModel.setPropertyValue (&quot;ImageURL&quot;, _
-		fnGetImageUrl (&quot;TeamValor&quot;))
+		fnGetImageUrl (&quot;TeamLogoValor&quot;))
+	oDialog.getControl (&quot;imgTeamLeader&quot;).setVisible (True)
+	oImageModel = oDialog.getControl (&quot;imgTeamLeader&quot;).getModel
+	oImageModel.setPropertyValue (&quot;ImageURL&quot;, _
+		fnGetImageUrl (&quot;TeamLeaderCandela&quot;))
+	
+	oText = oDialog.getControl (&quot;txtLeaderAppraise&quot;)
+	oText.setVisible (True)
+	oText.setText (fnGetResString (&quot;AppraiseFromCandela&quot;))
 	
 	mItems = Array ( _
 		&quot;Overall, your [Pokémon] simply amazes me. It can accomplish anything!&quot;, _
@@ -250,8 +262,8 @@ Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
 	oList.setVisible (True)
 	
 	oText = oDialog.getControl (&quot;txtBestBefore&quot;)
-	oText.setPosSize (30, 96, 20, 8, _
-		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
+	oText.setPosSize (-1, -1, 20, -1, _
+		com.sun.star.awt.PosSize.WIDTH)
 	oText.setVisible (True)
 	oText.setText (&quot;Its&quot;)
 	
@@ -259,12 +271,12 @@ Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
 	oList = oDialog.getControl (&quot;lstBest&quot;)
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
-	oList.setPosSize (50, 96, 35, 8, _
+	oList.setPosSize (140, -1, -1, -1, _
 		com.sun.star.awt.PosSize.X)
 	oList.setVisible (True)
 	
 	oText = oDialog.getControl (&quot;txtBestAfter&quot;)
-	oText.setPosSize (145, 96, 160, 8, _
+	oText.setPosSize (240, -1, 160, -1, _
 		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
 	oText.setVisible (True)
 	oText.setText (&quot;is its strongest feature.&quot;)
@@ -298,9 +310,17 @@ Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
 	
 	oDialog = oEvent.Source.getContext
 	
-	oImageModel = oDialog.getControl (&quot;imgTeam&quot;).getModel
+	oImageModel = oDialog.getControl (&quot;imgTeamLogo&quot;).getModel
 	oImageModel.setPropertyValue (&quot;ImageURL&quot;, _
-		fnGetImageUrl (&quot;TeamMystic&quot;))
+		fnGetImageUrl (&quot;TeamLogoMystic&quot;))
+	oDialog.getControl (&quot;imgTeamLeader&quot;).setVisible (True)
+	oImageModel = oDialog.getControl (&quot;imgTeamLeader&quot;).getModel
+	oImageModel.setPropertyValue (&quot;ImageURL&quot;, _
+		fnGetImageUrl (&quot;TeamLeaderBlanche&quot;))
+	
+	oText = oDialog.getControl (&quot;txtLeaderAppraise&quot;)
+	oText.setVisible (True)
+	oText.setText (fnGetResString (&quot;AppraiseFromBlanche&quot;))
 	
 	mItems = Array ( _
 		&quot;Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!&quot;, _
@@ -313,8 +333,8 @@ Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
 	oList.setVisible (True)
 	
 	oText = oDialog.getControl (&quot;txtBestBefore&quot;)
-	oText.setPosSize (30, 96, 200, 8, _
-		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
+	oText.setPosSize (-1, -1, 200, -1, _
+		com.sun.star.awt.PosSize.WIDTH)
 	oText.setVisible (True)
 	oText.setText (&quot;I see that its best attribute is its&quot;)
 	
@@ -322,12 +342,12 @@ Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
 	oList = oDialog.getControl (&quot;lstBest&quot;)
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
-	oList.setPosSize (230, 96, 35, 8, _
+	oList.setPosSize (320, -1, -1, -1, _
 		com.sun.star.awt.PosSize.X)
 	oList.setVisible (True)
 	
 	oText = oDialog.getControl (&quot;txtBestAfter&quot;)
-	oText.setPosSize (325, 96, 5, 8, _
+	oText.setPosSize (415, -1, 5, -1, _
 		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
 	oText.setVisible (True)
 	oText.setText (&quot;.&quot;)
@@ -361,9 +381,17 @@ Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
 	
 	oDialog = oEvent.Source.getContext
 	
-	oImageModel = oDialog.getControl (&quot;imgTeam&quot;).getModel
+	oImageModel = oDialog.getControl (&quot;imgTeamLogo&quot;).getModel
 	oImageModel.setPropertyValue (&quot;ImageURL&quot;, _
-		fnGetImageUrl (&quot;TeamInstinct&quot;))
+		fnGetImageUrl (&quot;TeamLogoInstinct&quot;))
+	oDialog.getControl (&quot;imgTeamLeader&quot;).setVisible (True)
+	oImageModel = oDialog.getControl (&quot;imgTeamLeader&quot;).getModel
+	oImageModel.setPropertyValue (&quot;ImageURL&quot;, _
+		fnGetImageUrl (&quot;TeamLeaderSpark&quot;))
+	
+	oText = oDialog.getControl (&quot;txtLeaderAppraise&quot;)
+	oText.setVisible (True)
+	oText.setText (fnGetResString (&quot;AppraiseFromSpark&quot;))
 	
 	mItems = Array ( _
 		&quot;Overall, your [Pokémon] looks like it can really battle with the best of them!&quot;, _
@@ -376,8 +404,8 @@ Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
 	oList.setVisible (True)
 	
 	oText = oDialog.getControl (&quot;txtBestBefore&quot;)
-	oText.setPosSize (30, 96, 115, 8, _
-		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
+	oText.setPosSize (-1, -1, 115, -1, _
+		com.sun.star.awt.PosSize.WIDTH)
 	oText.setVisible (True)
 	oText.setText (&quot;Its best quality is&quot;)
 	
@@ -385,12 +413,12 @@ Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
 	oList = oDialog.getControl (&quot;lstBest&quot;)
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
-	oList.setPosSize (145, 96, 35, 8, _
+	oList.setPosSize (240, -1, -1, -1, _
 		com.sun.star.awt.PosSize.X)
 	oList.setVisible (True)
 	
 	oText = oDialog.getControl (&quot;txtBestAfter&quot;)
-	oText.setPosSize (240, 96, 5, 8, _
+	oText.setPosSize (335, -1, 5, -1, _
 		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
 	oText.setVisible (True)
 	oText.setText (&quot;.&quot;)
