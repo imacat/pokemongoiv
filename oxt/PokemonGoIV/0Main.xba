@@ -970,10 +970,16 @@ End Function
 
 &apos; fnCalcCP: Calculates the combat power of the Pokémon
 Function fnCalcCP (aBaseStats As aStats, fLevel As Double, nAttack As Integer, nDefense As Integer, nStamina As Integer) As Integer
-	fnCalcCP = fnFloor ((aBaseStats.nAttack + nAttack) _
+    Dim nCP As Integer
+    
+	nCP = fnFloor ((aBaseStats.nAttack + nAttack) _
 		* ((aBaseStats.nDefense + nDefense) ^ 0.5) _
 		* ((aBaseStats.nStamina + nStamina) ^ 0.5) _
 		* (fnGetCPM (fLevel) ^ 2) / 10)
+	If nCP &lt; 10 Then
+	    nCP = 10
+	End If
+	fnCalcCP = nCP
 End Function
 
 &apos; fnCalcHP: Calculates the hit points of the Pokémon
