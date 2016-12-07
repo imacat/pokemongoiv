@@ -85,13 +85,13 @@ Function fnAskParam As aFindIVParam
 	
 	DialogLibraries.loadLibrary "PokemonGoIV"
 	oDialog = CreateUnoDialog (DialogLibraries.PokemonGoIV.DlgMain)
-	oDialog.getControl ("lstApprasal1").setVisible (False)
+	oDialog.getControl ("lstAppraisal1").setVisible (False)
 	oDialog.getControl ("txtBestBefore").setVisible (False)
 	oDialog.getControl ("lstBest").setVisible (False)
 	oDialog.getControl ("txtBestAfter").setVisible (False)
 	oDialog.getControl ("cbxBest2").setVisible (False)
 	oDialog.getControl ("cbxBest3").setVisible (False)
-	oDialog.getControl ("lstApprasal2").setVisible (False)
+	oDialog.getControl ("lstAppraisal2").setVisible (False)
 	
 	oDialog.getControl ("imgPokemon").getModel.setPropertyValue ( _
 	    "ImageURL", fnGetImageUrl ("Unknown"))
@@ -110,8 +110,8 @@ Function fnAskParam As aFindIVParam
 		.nHP = oDialog.getControl ("numHP").getValue
 		.nStarDust = CInt (oDialog.getControl ("lstStarDust").getSelectedItem)
 		.nPlayerLevel = CInt (oDialog.getControl ("lstPlayerLevel").getSelectedItem)
-		.nAppraisal1 = oDialog.getControl ("lstApprasal1").getSelectedItemPos + 1
-		.nAppraisal2 = oDialog.getControl ("lstApprasal2").getSelectedItemPos + 1
+		.nAppraisal1 = oDialog.getControl ("lstAppraisal1").getSelectedItemPos + 1
+		.nAppraisal2 = oDialog.getControl ("lstAppraisal2").getSelectedItemPos + 1
 		.bIsCancelled = False
 	End With
 	If oDialog.getControl ("cbxIsNew").getState = 1 Then
@@ -165,7 +165,7 @@ Function fnAskParam As aFindIVParam
 	fnAskParam = aQuery
 End Function
 
-' subBtnOKCheck: Checks whether Pokémon, CP, HP and star dust are all filled.
+' subBtnOKCheck: Checks whether the required columns are filled.
 Sub subBtnOKCheck (oEvent As object)
 	Dim oDialog As Object
 	Dim oPokemon As Object, oCP As Object
@@ -195,6 +195,7 @@ Sub subLstPokemonSelected (oEvent As object)
 	
 	oDialog = oEvent.Source.getContext
 	
+	' Updates the Pokémon image.
 	sPokemon = oDialog.getControl ("lstPokemon").getSelectedItem
 	sImageId = ""
 	If sPokemon = "Farfetch'd" Then
@@ -212,25 +213,18 @@ Sub subLstPokemonSelected (oEvent As object)
 	If sImageId = "" Then
 		sImageId = "Pokemon" & sPokemon
 	End If
-	
 	oImageModel = oDialog.getControl ("imgPokemon").getModel
 	oImageModel.setPropertyValue ("ImageURL", _
 		fnGetImageUrl (sImageId))
 	
+	' Updates the text of the first appraisal.
+	subUpdateAppraisal1 (oEvent, True)
+	' Checks if the required columns are filled.
 	subBtnOKCheck (oEvent)
 End Sub
 
-' subBtnOKCheck_textChanged: When the CP or HP is filled
-Sub subBtnOKCheck_textChanged (oEvent As object)
-	subBtnOKCheck_itemStateChanged (oEvent)
-End Sub
-
-' subRdoTeamRedItemChanged_disposing: Dummy for the listener.
-Sub subRdoTeamRedItemChanged_disposing (oEvent As object)
-End Sub
-
-' subRdoTeamRedItemChanged_itemStateChanged: When the team is selected.
-Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
+' subRdoTeamRedItemChanged: When the red team is selected.
+Sub subRdoTeamRedItemChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
 	Dim oImageModel As Object
 	Dim mItems () As String
@@ -240,7 +234,6 @@ Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
 	oImageModel = oDialog.getControl ("imgTeamLogo").getModel
 	oImageModel.setPropertyValue ("ImageURL", _
 		fnGetImageUrl ("TeamLogoValor"))
-	oDialog.getControl ("imgTeamLeader").setVisible (True)
 	oImageModel = oDialog.getControl ("imgTeamLeader").getModel
 	oImageModel.setPropertyValue ("ImageURL", _
 		fnGetImageUrl ("TeamLeaderCandela"))
@@ -249,15 +242,8 @@ Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
 	oText.setVisible (True)
 	oText.setText (fnGetResString ("AppraiseFromCandela"))
 	
-	mItems = Array ( _
-		"Overall, your [Pokémon] simply amazes me. It can accomplish anything!", _
-		"Overall, your [Pokémon] is a strong Pokémon. You should be proud!", _
-		"Overall, your [Pokémon] is a decent Pokémon.", _
-		"Overall, your [Pokémon] may not be great in battle, but I still like it!")
-	oList = oDialog.getControl ("lstApprasal1")
-	oList.removeItems (0, oList.getItemCount())
-	oList.addItems (mItems, 0)
-	oList.setVisible (True)
+	' Updates the text of the first appraisal.
+	subUpdateAppraisal1 (oEvent, False)
 	
 	oText = oDialog.getControl ("txtBestBefore")
 	oText.setPosSize (-1, -1, 20, -1, _
@@ -290,18 +276,14 @@ Sub subRdoTeamRedItemChanged_itemStateChanged (oEvent As object)
 		"It's got excellent stats! How exciting!", _
 		"Its stats indicate that in battle, it'll get the job done.", _
 		"Its stats don't point to greatness in battle.")
-	oList = oDialog.getControl ("lstApprasal2")
+	oList = oDialog.getControl ("lstAppraisal2")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
 	oList.setVisible (True)
 End Sub
 
-' subRdoTeamBlueItemChanged_disposing: Dummy for the listener.
-Sub subRdoTeamBlueItemChanged_disposing (oEvent As object)
-End Sub
-
-' subRdoTeamBlueItemChanged_itemStateChanged: When the blue team is selected.
-Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
+' subRdoTeamBlueItemChanged: When the blue team is selected.
+Sub subRdoTeamBlueItemChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
 	Dim oImageModel As Object
 	Dim mItems () As String
@@ -311,7 +293,6 @@ Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
 	oImageModel = oDialog.getControl ("imgTeamLogo").getModel
 	oImageModel.setPropertyValue ("ImageURL", _
 		fnGetImageUrl ("TeamLogoMystic"))
-	oDialog.getControl ("imgTeamLeader").setVisible (True)
 	oImageModel = oDialog.getControl ("imgTeamLeader").getModel
 	oImageModel.setPropertyValue ("ImageURL", _
 		fnGetImageUrl ("TeamLeaderBlanche"))
@@ -320,15 +301,8 @@ Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
 	oText.setVisible (True)
 	oText.setText (fnGetResString ("AppraiseFromBlanche"))
 	
-	mItems = Array ( _
-		"Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!", _
-		"Overall, your [Pokémon] has certainly caught my attention.", _
-		"Overall, your [Pokémon] is above average.", _
-		"Overall, your [Pokémon] is not likely to make much headway in battle.")
-	oList = oDialog.getControl ("lstApprasal1")
-	oList.removeItems (0, oList.getItemCount())
-	oList.addItems (mItems, 0)
-	oList.setVisible (True)
+	' Updates the text of the first appraisal.
+	subUpdateAppraisal1 (oEvent, False)
 	
 	oText = oDialog.getControl ("txtBestBefore")
 	oText.setPosSize (-1, -1, 200, -1, _
@@ -361,18 +335,14 @@ Sub subRdoTeamBlueItemChanged_itemStateChanged (oEvent As object)
 		"I am certainly impressed by its stats, I must say.", _
 		"Its stats are noticeably trending to the positive.", _
 		"Its stats are not out of the norm, in my opinion.")
-	oList = oDialog.getControl ("lstApprasal2")
+	oList = oDialog.getControl ("lstAppraisal2")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
 	oList.setVisible (True)
 End Sub
 
-' subRdoTeamYellowItemChanged_disposing: Dummy for the listener.
-Sub subRdoTeamYellowItemChanged_disposing (oEvent As object)
-End Sub
-
-' subRdoTeamYellowItemChanged_itemStateChanged: When the yellow team is selected.
-Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
+' subRdoTeamYellowItemChanged: When the yellow team is selected.
+Sub subRdoTeamYellowItemChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
 	Dim oImageModel As Object
 	Dim mItems () As String
@@ -382,7 +352,6 @@ Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
 	oImageModel = oDialog.getControl ("imgTeamLogo").getModel
 	oImageModel.setPropertyValue ("ImageURL", _
 		fnGetImageUrl ("TeamLogoInstinct"))
-	oDialog.getControl ("imgTeamLeader").setVisible (True)
 	oImageModel = oDialog.getControl ("imgTeamLeader").getModel
 	oImageModel.setPropertyValue ("ImageURL", _
 		fnGetImageUrl ("TeamLeaderSpark"))
@@ -391,15 +360,8 @@ Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
 	oText.setVisible (True)
 	oText.setText (fnGetResString ("AppraiseFromSpark"))
 	
-	mItems = Array ( _
-		"Overall, your [Pokémon] looks like it can really battle with the best of them!", _
-		"Overall, your [Pokémon] is really strong!", _
-		"Overall, your [Pokémon] is pretty decent!", _
-		"Overall, your [Pokémon] has room for improvement as far as battling goes.")
-	oList = oDialog.getControl ("lstApprasal1")
-	oList.removeItems (0, oList.getItemCount())
-	oList.addItems (mItems, 0)
-	oList.setVisible (True)
+	' Updates the text of the first appraisal.
+	subUpdateAppraisal1 (oEvent, False)
 	
 	oText = oDialog.getControl ("txtBestBefore")
 	oText.setPosSize (-1, -1, 115, -1, _
@@ -432,18 +394,14 @@ Sub subRdoTeamYellowItemChanged_itemStateChanged (oEvent As object)
 		"Its stats are really strong! Impressive.", _
 		"It's definitely got some good stats. Definitely!", _
 		"Its stats are all right, but kinda basic, as far as I can see.")
-	oList = oDialog.getControl ("lstApprasal2")
+	oList = oDialog.getControl ("lstAppraisal2")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
 	oList.setVisible (True)
 End Sub
 
-' subLstBestItemChanged_disposing: Dummy for the listener.
-Sub subLstBestItemChanged_disposing (oEvent As object)
-End Sub
-
-' subLstBestItemChanged_itemStateChanged: When the best stat is selected.
-Sub subLstBestItemChanged_itemStateChanged (oEvent As object)
+' subLstBestItemChanged: When the best stat is selected.
+Sub subLstBestItemChanged (oEvent As object)
 	Dim oDialog As Object, oCheckBox As Object
 	
 	oDialog = oEvent.Source.getContext
@@ -541,6 +499,60 @@ Sub subLstBestItemChanged_itemStateChanged (oEvent As object)
 			oCheckBox.setState (0)
 		End If
 	End If
+End Sub
+
+' subUpdateAppraisal1: Updates the text of the first appraisal.
+Sub subUpdateAppraisal1 (oEvent As Object, bIsKeepSelected As Boolean)
+	Dim oDialog As Object, sPokemon As String
+	Dim oList As Object, nSelected As Integer
+	Dim mItems () As String, nI As Integer
+	
+	oDialog = oEvent.Source.getContext
+	
+	If oDialog.getControl ("rdoTeamRed").getState Then
+	    mItems = Array ( _
+		    "Overall, your [Pokémon] simply amazes me. It can accomplish anything!", _
+		    "Overall, your [Pokémon] is a strong Pokémon. You should be proud!", _
+		    "Overall, your [Pokémon] is a decent Pokémon.", _
+		    "Overall, your [Pokémon] may not be great in battle, but I still like it!")
+	End If
+	If oDialog.getControl ("rdoTeamBlue").getState Then
+	    mItems = Array ( _
+		    "Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!", _
+		    "Overall, your [Pokémon] has certainly caught my attention.", _
+		    "Overall, your [Pokémon] is above average.", _
+		    "Overall, your [Pokémon] is not likely to make much headway in battle.")
+	End If
+	If oDialog.getControl ("rdoTeamYellow").getState Then
+	    mItems = Array ( _
+		    "Overall, your [Pokémon] looks like it can really battle with the best of them!", _
+		    "Overall, your [Pokémon] is really strong!", _
+		    "Overall, your [Pokémon] is pretty decent!", _
+		    "Overall, your [Pokémon] has room for improvement as far as battling goes.")
+	End If
+	' The team was not selected yet.
+	If UBound (mItems) = -1 Then
+	    Exit sub
+	End If
+	
+	sPokemon = oDialog.getControl ("lstPokemon").getSelectedItem
+	If sPokemon <> "" Then
+	    For nI = 0 To UBound (mItems)
+	        mItems (nI) = fnReplace (mItems (nI), _
+	            "[Pokémon]", sPokemon)
+	    Next nI
+	End If
+	
+	oList = oDialog.getControl ("lstAppraisal1")
+	If bIsKeepSelected Then
+	    nSelected = oList.getSelectedItemPos
+	End If
+	oList.removeItems (0, oList.getItemCount())
+	oList.addItems (mItems, 0)
+	If bIsKeepSelected Then
+	    oList.selectItemPos (nSelected, True)
+	End If
+	oList.setVisible (True)
 End Sub
 
 ' fnFindIV: Finds the possible individual values of the Pokémon
@@ -1047,6 +1059,19 @@ Function fnGetEmptyEvolvedFormArray () As Variant
 	Dim mData () As New aEvolveForm
 	
 	fnGetEmptyEvolvedFormArray = mData
+End Function
+
+' fnReplace: Replaces all occurrances of a term to another.
+Function fnReplace (sText As String, sFrom As String, sTo As String) As String
+    Dim nPos As Integer
+    
+    nPos = InStr (sText, sFrom)
+    Do While nPos <> 0
+        sText = Left (sText, nPos - 1) & sTo _
+            & Right (sText, Len (sText) - nPos - Len (sFrom) + 1)
+        nPos = InStr (nPos + Len (sTo), sText, sFrom)
+    Loop
+    fnReplace = sText
 End Function
 
 ' subReadCPM: Reads the CPM table.
