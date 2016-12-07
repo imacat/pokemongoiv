@@ -56,757 +56,757 @@
 		</node>
 		<node oor:name="PokemonBulbasaur" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/bulbasaur-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/bulbasaur.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonIvysaur" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/ivysaur-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/ivysaur.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonVenusaur" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/venusaur-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/venusaur.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonCharmander" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/charmander-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/charmander.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonCharmeleon" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/charmeleon-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/charmeleon.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonCharizard" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/charizard-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/charizard.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonSquirtle" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/squirtle-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/squirtle.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonWartortle" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/wartortle-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/wartortle.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonBlastoise" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/blastoise-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/blastoise.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonCaterpie" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/caterpie-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/caterpie.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonMetapod" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/metapod-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/metapod.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonButterfree" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/butterfree-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/butterfree.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonWeedle" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/weedle-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/weedle.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonKakuna" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/kakuna-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/kakuna.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonBeedrill" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/beedrill-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/beedrill.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonPidgey" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/pidgey-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/pidgey.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonPidgeotto" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/pidgeotto-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/pidgeotto.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonPidgeot" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/pidgeot-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/pidgeot.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonRattata" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/rattata-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/rattata.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonRaticate" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/raticate-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/raticate.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonSpearow" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/spearow-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/spearow.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonFearow" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/fearow-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/fearow.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonEkans" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/ekans-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/ekans.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonArbok" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/arbok-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/arbok.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonPikachu" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/pikachu-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/pikachu.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonRaichu" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/raichu-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/raichu.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonSandshrew" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/sandshrew-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/sandshrew.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonSandslash" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/sandslash-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/sandslash.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonNidoranFemale" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/nidoran-female-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/nidoran-female.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonNidorina" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/nidorina-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/nidorina.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonNidoqueen" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/nidoqueen-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/nidoqueen.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonNidoranMale" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/nidoran-male-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/nidoran-male.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonNidorino" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/nidorino-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/nidorino.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonNidoking" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/nidoking-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/nidoking.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonClefairy" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/clefairy-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/clefairy.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonClefable" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/clefable-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/clefable.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonVulpix" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/vulpix-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/vulpix.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonNinetales" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/ninetales-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/ninetales.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonJigglypuff" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/jigglypuff-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/jigglypuff.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonWigglytuff" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/wigglytuff-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/wigglytuff.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonZubat" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/zubat-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/zubat.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonGolbat" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/golbat-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/golbat.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonOddish" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/oddish-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/oddish.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonGloom" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/gloom-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/gloom.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonVileplume" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/vileplume-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/vileplume.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonParas" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/paras-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/paras.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonParasect" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/parasect-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/parasect.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonVenonat" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/venonat-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/venonat.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonVenomoth" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/venomoth-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/venomoth.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonDiglett" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/diglett-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/diglett.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonDugtrio" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/dugtrio-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/dugtrio.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonMeowth" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/meowth-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/meowth.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonPersian" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/persian-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/persian.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonPsyduck" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/psyduck-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/psyduck.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonGolduck" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/golduck-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/golduck.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonMankey" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/mankey-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/mankey.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonPrimeape" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/primeape-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/primeape.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonGrowlithe" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/growlithe-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/growlithe.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonArcanine" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/arcanine-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/arcanine.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonPoliwag" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/poliwag-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/poliwag.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonPoliwhirl" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/poliwhirl-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/poliwhirl.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonPoliwrath" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/poliwrath-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/poliwrath.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonAbra" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/abra-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/abra.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonKadabra" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/kadabra-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/kadabra.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonAlakazam" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/alakazam-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/alakazam.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonMachop" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/machop-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/machop.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonMachoke" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/machoke-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/machoke.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonMachamp" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/machamp-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/machamp.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonBellsprout" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/bellsprout-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/bellsprout.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonWeepinbell" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/weepinbell-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/weepinbell.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonVictreebel" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/victreebel-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/victreebel.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonTentacool" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/tentacool-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/tentacool.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonTentacruel" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/tentacruel-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/tentacruel.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonGeodude" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/geodude-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/geodude.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonGraveler" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/graveler-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/graveler.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonGolem" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/golem-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/golem.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonPonyta" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/ponyta-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/ponyta.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonRapidash" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/rapidash-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/rapidash.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonSlowpoke" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/slowpoke-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/slowpoke.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonSlowbro" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/slowbro-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/slowbro.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonMagnemite" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/magnemite-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/magnemite.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonMagneton" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/magneton-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/magneton.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonFarfetchd" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/farfetchd-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/farfetchd.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonDoduo" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/doduo-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/doduo.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonDodrio" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/dodrio-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/dodrio.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonSeel" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/seel-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/seel.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonDewgong" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/dewgong-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/dewgong.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonGrimer" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/grimer-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/grimer.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonMuk" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/muk-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/muk.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonShellder" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/shellder-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/shellder.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonCloyster" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/cloyster-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/cloyster.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonGastly" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/gastly-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/gastly.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonHaunter" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/haunter-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/haunter.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonGengar" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/gengar-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/gengar.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonOnix" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/onix-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/onix.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonDrowzee" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/drowzee-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/drowzee.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonHypno" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/hypno-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/hypno.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonKrabby" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/krabby-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/krabby.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonKingler" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/kingler-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/kingler.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonVoltorb" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/voltorb-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/voltorb.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonElectrode" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/electrode-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/electrode.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonExeggcute" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/exeggcute-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/exeggcute.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonExeggutor" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/exeggutor-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/exeggutor.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonCubone" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/cubone-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/cubone.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonMarowak" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/marowak-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/marowak.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonHitmonlee" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/hitmonlee-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/hitmonlee.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonHitmonchan" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/hitmonchan-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/hitmonchan.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonLickitung" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/lickitung-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/lickitung.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonKoffing" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/koffing-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/koffing.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonWeezing" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/weezing-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/weezing.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonRhyhorn" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/rhyhorn-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/rhyhorn.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonRhydon" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/rhydon-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/rhydon.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonChansey" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/chansey-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/chansey.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonTangela" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/tangela-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/tangela.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonKangaskhan" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/kangaskhan-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/kangaskhan.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonHorsea" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/horsea-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/horsea.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonSeadra" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/seadra-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/seadra.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonGoldeen" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/goldeen-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/goldeen.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonSeaking" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/seaking-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/seaking.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonStaryu" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/staryu-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/staryu.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonStarmie" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/starmie-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/starmie.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonMrMime" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/mr-mime-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/mr-mime.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonScyther" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/scyther-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/scyther.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonJynx" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/jynx-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/jynx.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonElectabuzz" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/electabuzz-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/electabuzz.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonMagmar" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/magmar-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/magmar.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonPinsir" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/pinsir-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/pinsir.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonTauros" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/tauros-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/tauros.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonMagikarp" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/magikarp-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/magikarp.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonGyarados" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/gyarados-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/gyarados.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonLapras" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/lapras-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/lapras.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonDitto" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/ditto-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/ditto.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonEevee" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/eevee-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/eevee.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonVaporeon" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/vaporeon-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/vaporeon.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonJolteon" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/jolteon-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/jolteon.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonFlareon" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/flareon-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/flareon.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonPorygon" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/porygon-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/porygon.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonOmanyte" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/omanyte-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/omanyte.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonOmastar" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/omastar-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/omastar.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonKabuto" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/kabuto-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/kabuto.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonKabutops" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/kabutops-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/kabutops.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonAerodactyl" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/aerodactyl-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/aerodactyl.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonSnorlax" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/snorlax-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/snorlax.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonArticuno" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/articuno-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/articuno.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonZapdos" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/zapdos-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/zapdos.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonMoltres" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/moltres-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/moltres.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonDratini" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/dratini-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/dratini.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonDragonair" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/dragonair-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/dragonair.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonDragonite" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/dragonite-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/dragonite.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonMewtwo" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/mewtwo-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/mewtwo.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonMew" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/pokemons/mew-pokemon-go.png</value>
+				<value>%origin%/icons/pokemons/mew.png</value>
 			</prop>
 		</node>
 	</node>
