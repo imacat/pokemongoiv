@@ -218,7 +218,7 @@ Sub subLstPokemonSelected (oEvent As object)
 		fnGetImageUrl (sImageId))
 	
 	' Updates the text of the first appraisal.
-	subUpdateAppraisal1 (oEvent, True)
+	subUpdateAppraisal1 (oDialog, True)
 	' Checks if the required columns are filled.
 	subBtnOKCheck (oEvent)
 End Sub
@@ -243,33 +243,11 @@ Sub subRdoTeamRedItemChanged (oEvent As object)
 	oText.setText (fnGetResString ("AppraiseFromCandela"))
 	
 	' Updates the text of the first appraisal.
-	subUpdateAppraisal1 (oEvent, False)
+	subUpdateAppraisal1 (oDialog, False)
 	
-	oText = oDialog.getControl ("txtBestBefore")
-	oText.setPosSize (-1, -1, 20, -1, _
-		com.sun.star.awt.PosSize.WIDTH)
-	oText.setVisible (True)
-	oText.setText ("Its")
-	
-	mItems = Array ("Attack", "Defense", "HP")
-	oList = oDialog.getControl ("lstBest")
-	oList.removeItems (0, oList.getItemCount())
-	oList.addItems (mItems, 0)
-	oList.setPosSize (140, -1, -1, -1, _
-		com.sun.star.awt.PosSize.X)
-	oList.setVisible (True)
-	
-	oText = oDialog.getControl ("txtBestAfter")
-	oText.setPosSize (240, -1, 160, -1, _
-		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
-	oText.setVisible (True)
-	oText.setText ("is its strongest feature.")
-	
-	oList = oDialog.getControl ("cbxBest2")
-	oList.setVisible (False)
-	
-	oList = oDialog.getControl ("cbxBest3")
-	oList.setVisible (False)
+	' Updates the text of the best stat appraisal.
+	subUpdateBestStatAppraisal (oDialog, _
+		"Its", 8, "is its strongest feature.", 65)
 	
 	mItems = Array ( _
 		"I'm blown away by its stats. WOW!", _
@@ -302,33 +280,11 @@ Sub subRdoTeamBlueItemChanged (oEvent As object)
 	oText.setText (fnGetResString ("AppraiseFromBlanche"))
 	
 	' Updates the text of the first appraisal.
-	subUpdateAppraisal1 (oEvent, False)
+	subUpdateAppraisal1 (oDialog, False)
 	
-	oText = oDialog.getControl ("txtBestBefore")
-	oText.setPosSize (-1, -1, 200, -1, _
-		com.sun.star.awt.PosSize.WIDTH)
-	oText.setVisible (True)
-	oText.setText ("I see that its best attribute is its")
-	
-	mItems = Array ("Attack", "Defense", "HP")
-	oList = oDialog.getControl ("lstBest")
-	oList.removeItems (0, oList.getItemCount())
-	oList.addItems (mItems, 0)
-	oList.setPosSize (320, -1, -1, -1, _
-		com.sun.star.awt.PosSize.X)
-	oList.setVisible (True)
-	
-	oText = oDialog.getControl ("txtBestAfter")
-	oText.setPosSize (415, -1, 5, -1, _
-		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
-	oText.setVisible (True)
-	oText.setText (".")
-	
-	oList = oDialog.getControl ("cbxBest2")
-	oList.setVisible (False)
-	
-	oList = oDialog.getControl ("cbxBest3")
-	oList.setVisible (False)
+	' Updates the text of the best stat appraisal.
+	subUpdateBestStatAppraisal (oDialog, _
+		"I see that its best attribute is its", 85, ".", 5)
 	
 	mItems = Array ( _
 		"Its stats exceed my calculations. It's incredible!", _
@@ -361,33 +317,11 @@ Sub subRdoTeamYellowItemChanged (oEvent As object)
 	oText.setText (fnGetResString ("AppraiseFromSpark"))
 	
 	' Updates the text of the first appraisal.
-	subUpdateAppraisal1 (oEvent, False)
+	subUpdateAppraisal1 (oDialog, False)
 	
-	oText = oDialog.getControl ("txtBestBefore")
-	oText.setPosSize (-1, -1, 115, -1, _
-		com.sun.star.awt.PosSize.WIDTH)
-	oText.setVisible (True)
-	oText.setText ("Its best quality is")
-	
-	mItems = Array ("Attack", "Defense", "HP")
-	oList = oDialog.getControl ("lstBest")
-	oList.removeItems (0, oList.getItemCount())
-	oList.addItems (mItems, 0)
-	oList.setPosSize (240, -1, -1, -1, _
-		com.sun.star.awt.PosSize.X)
-	oList.setVisible (True)
-	
-	oText = oDialog.getControl ("txtBestAfter")
-	oText.setPosSize (335, -1, 5, -1, _
-		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
-	oText.setVisible (True)
-	oText.setText (".")
-	
-	oList = oDialog.getControl ("cbxBest2")
-	oList.setVisible (False)
-	
-	oList = oDialog.getControl ("cbxBest3")
-	oList.setVisible (False)
+	' Updates the text of the best stat appraisal.
+	subUpdateBestStatAppraisal (oDialog, _
+		"Its best quality is", 45, ".", 5)
 	
 	mItems = Array ( _
 		"Its stats are the best I've ever seen! No doubt about it!", _
@@ -398,6 +332,40 @@ Sub subRdoTeamYellowItemChanged (oEvent As object)
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
 	oList.setVisible (True)
+End Sub
+
+' subUpdateBestStatAppraisal: Updates the text of the best stat appraisal.
+Sub subUpdateBestStatAppraisal (oDialog As Object, _
+		sBefore As String, nBeforeWidth As Integer, _
+		sAfter As String, nAfterWidth As Integer)
+	Dim oText As Object, oList As Object, nX As Integer
+	Dim mItems () As String
+	
+	oText = oDialog.getControl ("txtBestBefore")
+	oText.getModel.setPropertyValue ("Width", nBeforeWidth)
+	oText.setVisible (True)
+	oText.setText (sBefore)
+	nX = oText.getModel.getPropertyValue ("PositionX") + nBeforeWidth
+	
+	mItems = Array ("Attack", "Defense", "HP")
+	oList = oDialog.getControl ("lstBest")
+	oList.removeItems (0, oList.getItemCount())
+	oList.addItems (mItems, 0)
+	oList.getModel.setPropertyValue ("PositionX", nX)
+	oList.setVisible (True)
+	nX = nX + oList.getModel.getPropertyValue ("Width") + 2
+	
+	oText = oDialog.getControl ("txtBestAfter")
+	oText.getModel.setPropertyValue ("PositionX", nX)
+	oText.getModel.setPropertyValue ("Width", nAfterWidth)
+	oText.setVisible (True)
+	oText.setText (sAfter)
+	
+	oList = oDialog.getControl ("cbxBest2")
+	oList.setVisible (False)
+	
+	oList = oDialog.getControl ("cbxBest3")
+	oList.setVisible (False)
 End Sub
 
 ' subLstBestItemChanged: When the best stat is selected.
@@ -502,12 +470,9 @@ Sub subLstBestItemChanged (oEvent As object)
 End Sub
 
 ' subUpdateAppraisal1: Updates the text of the first appraisal.
-Sub subUpdateAppraisal1 (oEvent As Object, bIsKeepSelected As Boolean)
-	Dim oDialog As Object, sPokemon As String
-	Dim oList As Object, nSelected As Integer
+Sub subUpdateAppraisal1 (oDialog As Object, bIsKeepSelected As Boolean)
+	Dim sPokemon As String, oList As Object, nSelected As Integer
 	Dim mItems () As String, nI As Integer
-	
-	oDialog = oEvent.Source.getContext
 	
 	If oDialog.getControl ("rdoTeamRed").getState Then
 	    mItems = Array ( _

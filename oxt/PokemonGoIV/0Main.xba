@@ -220,7 +220,7 @@ Sub subLstPokemonSelected (oEvent As object)
 		fnGetImageUrl (sImageId))
 	
 	&apos; Updates the text of the first appraisal.
-	subUpdateAppraisal1 (oEvent, True)
+	subUpdateAppraisal1 (oDialog, True)
 	&apos; Checks if the required columns are filled.
 	subBtnOKCheck (oEvent)
 End Sub
@@ -245,33 +245,11 @@ Sub subRdoTeamRedItemChanged (oEvent As object)
 	oText.setText (fnGetResString (&quot;AppraiseFromCandela&quot;))
 	
 	&apos; Updates the text of the first appraisal.
-	subUpdateAppraisal1 (oEvent, False)
+	subUpdateAppraisal1 (oDialog, False)
 	
-	oText = oDialog.getControl (&quot;txtBestBefore&quot;)
-	oText.setPosSize (-1, -1, 20, -1, _
-		com.sun.star.awt.PosSize.WIDTH)
-	oText.setVisible (True)
-	oText.setText (&quot;Its&quot;)
-	
-	mItems = Array (&quot;Attack&quot;, &quot;Defense&quot;, &quot;HP&quot;)
-	oList = oDialog.getControl (&quot;lstBest&quot;)
-	oList.removeItems (0, oList.getItemCount())
-	oList.addItems (mItems, 0)
-	oList.setPosSize (140, -1, -1, -1, _
-		com.sun.star.awt.PosSize.X)
-	oList.setVisible (True)
-	
-	oText = oDialog.getControl (&quot;txtBestAfter&quot;)
-	oText.setPosSize (240, -1, 160, -1, _
-		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
-	oText.setVisible (True)
-	oText.setText (&quot;is its strongest feature.&quot;)
-	
-	oList = oDialog.getControl (&quot;cbxBest2&quot;)
-	oList.setVisible (False)
-	
-	oList = oDialog.getControl (&quot;cbxBest3&quot;)
-	oList.setVisible (False)
+	&apos; Updates the text of the best stat appraisal.
+	subUpdateBestStatAppraisal (oDialog, _
+		&quot;Its&quot;, 8, &quot;is its strongest feature.&quot;, 65)
 	
 	mItems = Array ( _
 		&quot;I&apos;m blown away by its stats. WOW!&quot;, _
@@ -304,33 +282,11 @@ Sub subRdoTeamBlueItemChanged (oEvent As object)
 	oText.setText (fnGetResString (&quot;AppraiseFromBlanche&quot;))
 	
 	&apos; Updates the text of the first appraisal.
-	subUpdateAppraisal1 (oEvent, False)
+	subUpdateAppraisal1 (oDialog, False)
 	
-	oText = oDialog.getControl (&quot;txtBestBefore&quot;)
-	oText.setPosSize (-1, -1, 200, -1, _
-		com.sun.star.awt.PosSize.WIDTH)
-	oText.setVisible (True)
-	oText.setText (&quot;I see that its best attribute is its&quot;)
-	
-	mItems = Array (&quot;Attack&quot;, &quot;Defense&quot;, &quot;HP&quot;)
-	oList = oDialog.getControl (&quot;lstBest&quot;)
-	oList.removeItems (0, oList.getItemCount())
-	oList.addItems (mItems, 0)
-	oList.setPosSize (320, -1, -1, -1, _
-		com.sun.star.awt.PosSize.X)
-	oList.setVisible (True)
-	
-	oText = oDialog.getControl (&quot;txtBestAfter&quot;)
-	oText.setPosSize (415, -1, 5, -1, _
-		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
-	oText.setVisible (True)
-	oText.setText (&quot;.&quot;)
-	
-	oList = oDialog.getControl (&quot;cbxBest2&quot;)
-	oList.setVisible (False)
-	
-	oList = oDialog.getControl (&quot;cbxBest3&quot;)
-	oList.setVisible (False)
+	&apos; Updates the text of the best stat appraisal.
+	subUpdateBestStatAppraisal (oDialog, _
+		&quot;I see that its best attribute is its&quot;, 85, &quot;.&quot;, 5)
 	
 	mItems = Array ( _
 		&quot;Its stats exceed my calculations. It&apos;s incredible!&quot;, _
@@ -363,33 +319,11 @@ Sub subRdoTeamYellowItemChanged (oEvent As object)
 	oText.setText (fnGetResString (&quot;AppraiseFromSpark&quot;))
 	
 	&apos; Updates the text of the first appraisal.
-	subUpdateAppraisal1 (oEvent, False)
+	subUpdateAppraisal1 (oDialog, False)
 	
-	oText = oDialog.getControl (&quot;txtBestBefore&quot;)
-	oText.setPosSize (-1, -1, 115, -1, _
-		com.sun.star.awt.PosSize.WIDTH)
-	oText.setVisible (True)
-	oText.setText (&quot;Its best quality is&quot;)
-	
-	mItems = Array (&quot;Attack&quot;, &quot;Defense&quot;, &quot;HP&quot;)
-	oList = oDialog.getControl (&quot;lstBest&quot;)
-	oList.removeItems (0, oList.getItemCount())
-	oList.addItems (mItems, 0)
-	oList.setPosSize (240, -1, -1, -1, _
-		com.sun.star.awt.PosSize.X)
-	oList.setVisible (True)
-	
-	oText = oDialog.getControl (&quot;txtBestAfter&quot;)
-	oText.setPosSize (335, -1, 5, -1, _
-		com.sun.star.awt.PosSize.X + com.sun.star.awt.PosSize.WIDTH)
-	oText.setVisible (True)
-	oText.setText (&quot;.&quot;)
-	
-	oList = oDialog.getControl (&quot;cbxBest2&quot;)
-	oList.setVisible (False)
-	
-	oList = oDialog.getControl (&quot;cbxBest3&quot;)
-	oList.setVisible (False)
+	&apos; Updates the text of the best stat appraisal.
+	subUpdateBestStatAppraisal (oDialog, _
+		&quot;Its best quality is&quot;, 45, &quot;.&quot;, 5)
 	
 	mItems = Array ( _
 		&quot;Its stats are the best I&apos;ve ever seen! No doubt about it!&quot;, _
@@ -400,6 +334,40 @@ Sub subRdoTeamYellowItemChanged (oEvent As object)
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
 	oList.setVisible (True)
+End Sub
+
+&apos; subUpdateBestStatAppraisal: Updates the text of the best stat appraisal.
+Sub subUpdateBestStatAppraisal (oDialog As Object, _
+		sBefore As String, nBeforeWidth As Integer, _
+		sAfter As String, nAfterWidth As Integer)
+	Dim oText As Object, oList As Object, nX As Integer
+	Dim mItems () As String
+	
+	oText = oDialog.getControl (&quot;txtBestBefore&quot;)
+	oText.getModel.setPropertyValue (&quot;Width&quot;, nBeforeWidth)
+	oText.setVisible (True)
+	oText.setText (sBefore)
+	nX = oText.getModel.getPropertyValue (&quot;PositionX&quot;) + nBeforeWidth
+	
+	mItems = Array (&quot;Attack&quot;, &quot;Defense&quot;, &quot;HP&quot;)
+	oList = oDialog.getControl (&quot;lstBest&quot;)
+	oList.removeItems (0, oList.getItemCount())
+	oList.addItems (mItems, 0)
+	oList.getModel.setPropertyValue (&quot;PositionX&quot;, nX)
+	oList.setVisible (True)
+	nX = nX + oList.getModel.getPropertyValue (&quot;Width&quot;) + 2
+	
+	oText = oDialog.getControl (&quot;txtBestAfter&quot;)
+	oText.getModel.setPropertyValue (&quot;PositionX&quot;, nX)
+	oText.getModel.setPropertyValue (&quot;Width&quot;, nAfterWidth)
+	oText.setVisible (True)
+	oText.setText (sAfter)
+	
+	oList = oDialog.getControl (&quot;cbxBest2&quot;)
+	oList.setVisible (False)
+	
+	oList = oDialog.getControl (&quot;cbxBest3&quot;)
+	oList.setVisible (False)
 End Sub
 
 &apos; subLstBestItemChanged: When the best stat is selected.
@@ -504,12 +472,9 @@ Sub subLstBestItemChanged (oEvent As object)
 End Sub
 
 &apos; subUpdateAppraisal1: Updates the text of the first appraisal.
-Sub subUpdateAppraisal1 (oEvent As Object, bIsKeepSelected As Boolean)
-	Dim oDialog As Object, sPokemon As String
-	Dim oList As Object, nSelected As Integer
+Sub subUpdateAppraisal1 (oDialog As Object, bIsKeepSelected As Boolean)
+	Dim sPokemon As String, oList As Object, nSelected As Integer
 	Dim mItems () As String, nI As Integer
-	
-	oDialog = oEvent.Source.getContext
 	
 	If oDialog.getControl (&quot;rdoTeamRed&quot;).getState Then
 	    mItems = Array ( _
