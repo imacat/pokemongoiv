@@ -7,6 +7,7 @@
 	<node oor:name="AddonUI">
 		<node oor:name="OfficeToolBar">
 			<node oor:name="PokemonGoIV.OfficeToolBar" oor:op="replace">
+				<!-- Start of OpenOffice 4.x compatibility -->
 				<prop oor:name="Title">
 					<value>Pok&#233;mon GO IV Calculator</value>
 					<value xml:lang="zh-TW">寶可夢 GO IV 計算機</value>
@@ -31,6 +32,27 @@
 						</prop>
 					</node>
 				</node>
+				<!-- End of OpenOffice 4.x compatibility -->
+				<!-- Start of OpenOffice 3.x and LibreOffce compatibility -->
+				<node oor:name="m001" oor:op="replace">
+					<prop oor:name="Context" oor:type="xs:string">
+						<value></value>
+					</prop>
+					<prop oor:name="URL" oor:type="xs:string">
+						<value>vnd.sun.star.script:PokemonGoIV.0Main.subMain?language=Basic&amp;location=application</value>
+					</prop>
+					<prop oor:name="ImageIdentifier" oor:type="xs:string">
+						<value>%origin%/icons/image1</value>
+					</prop>
+					<prop oor:name="Title" oor:type="xs:string">
+						<value>Calculates Pok&#233;mon IV</value>
+						<value xml:lang="zh-TW">計算寶可夢 IV</value>
+					</prop>
+					<prop oor:name="Target" oor:type="xs:string">
+						<value>_self</value>
+					</prop>
+				</node>
+				<!-- End of OpenOffice 3.x and LibreOffce compatibility -->
 			</node>
 		</node>
 	</node>

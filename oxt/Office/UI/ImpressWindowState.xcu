@@ -7,7 +7,7 @@
 		<node oor:name="States">
 			<node oor:name="private:resource/toolbar/addon_PokemonGoIV.OfficeToolBar" oor:op="replace">
 				<prop oor:name="UIName" oor:type="xs:string">
-					<value>Pok&#233;mon Go IV Calculator</value>
+					<value>Pok&#233;mon GO IV Calculator</value>
 				</prop>
 			</node>
 		</node>
