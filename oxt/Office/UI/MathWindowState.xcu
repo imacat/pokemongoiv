@@ -8,6 +8,7 @@
 			<node oor:name="private:resource/toolbar/addon_PokemonGoIV.OfficeToolBar" oor:op="replace">
 				<prop oor:name="UIName" oor:type="xs:string">
 					<value>Pok&#233;mon GO IV Calculator</value>
+					<value xml:lang="zh-TW">寶可夢 GO IV 計算機</value>
 				</prop>
 			</node>
 		</node>
