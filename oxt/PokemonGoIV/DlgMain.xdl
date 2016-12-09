@@ -252,14 +252,14 @@
   <dlg:img dlg:style-id="0" dlg:id="imgTeamLogo" dlg:tab-index="25" dlg:left="10" dlg:top="80" dlg:width="30" dlg:height="30"/>
   <dlg:text dlg:id="txtTeam" dlg:tab-index="22" dlg:left="45" dlg:top="101" dlg:width="20" dlg:height="8" dlg:value="&amp;181.DlgMain.txtTeam.Label"/>
   <dlg:radiogroup>
-   <dlg:radio dlg:style-id="1" dlg:id="rdoTeamRed" dlg:tab-index="6" dlg:left="65" dlg:top="101" dlg:width="30" dlg:height="8" dlg:value="&amp;183.DlgMain.rdoTeamRed.Label">
-    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subRdoTeamRedItemChanged?language=Basic&amp;location=application" script:language="Script"/>
+   <dlg:radio dlg:style-id="1" dlg:id="rdoTeamValor" dlg:tab-index="6" dlg:left="65" dlg:top="101" dlg:width="30" dlg:height="8" dlg:value="&amp;183.DlgMain.rdoTeamValor.Label">
+    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subRdoTeamValorItemChanged?language=Basic&amp;location=application" script:language="Script"/>
    </dlg:radio>
-   <dlg:radio dlg:style-id="2" dlg:id="rdoTeamBlue" dlg:tab-index="7" dlg:left="100" dlg:top="101" dlg:width="35" dlg:height="8" dlg:value="&amp;185.DlgMain.rdoTeamBlue.Label">
-    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subRdoTeamBlueItemChanged?language=Basic&amp;location=application" script:language="Script"/>
+   <dlg:radio dlg:style-id="2" dlg:id="rdoTeamMystic" dlg:tab-index="7" dlg:left="100" dlg:top="101" dlg:width="35" dlg:height="8" dlg:value="&amp;185.DlgMain.rdoTeamMystic.Label">
+    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subRdoTeamMysticItemChanged?language=Basic&amp;location=application" script:language="Script"/>
    </dlg:radio>
-   <dlg:radio dlg:style-id="3" dlg:id="rdoTeamYellow" dlg:tab-index="8" dlg:left="140" dlg:top="101" dlg:width="35" dlg:height="8" dlg:value="&amp;187.DlgMain.rdoTeamYellow.Label">
-    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subRdoTeamYellowItemChanged?language=Basic&amp;location=application" script:language="Script"/>
+   <dlg:radio dlg:style-id="3" dlg:id="rdoTeamInstinct" dlg:tab-index="8" dlg:left="140" dlg:top="101" dlg:width="35" dlg:height="8" dlg:value="&amp;187.DlgMain.rdoTeamInstinct.Label">
+    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subRdoTeamInstinctItemChanged?language=Basic&amp;location=application" script:language="Script"/>
    </dlg:radio>
   </dlg:radiogroup>
   <dlg:img dlg:style-id="0" dlg:id="imgTeamLeader" dlg:tab-index="28" dlg:left="10" dlg:top="110" dlg:width="30" dlg:height="35"/>

@@ -223,8 +223,8 @@ Sub subLstPokemonSelected (oEvent As object)
 	subBtnOKCheck (oEvent)
 End Sub
 
-' subRdoTeamRedItemChanged: When the red team is selected.
-Sub subRdoTeamRedItemChanged (oEvent As object)
+' subRdoTeamValorItemChanged: When Team Valor is selected.
+Sub subRdoTeamValorItemChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
 	Dim oImageModel As Object
 	Dim mItems () As String
@@ -260,8 +260,8 @@ Sub subRdoTeamRedItemChanged (oEvent As object)
 	oList.setVisible (True)
 End Sub
 
-' subRdoTeamBlueItemChanged: When the blue team is selected.
-Sub subRdoTeamBlueItemChanged (oEvent As object)
+' subRdoTeamMysticItemChanged: When Team Mystic is selected.
+Sub subRdoTeamMysticItemChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
 	Dim oImageModel As Object
 	Dim mItems () As String
@@ -297,8 +297,8 @@ Sub subRdoTeamBlueItemChanged (oEvent As object)
 	oList.setVisible (True)
 End Sub
 
-' subRdoTeamYellowItemChanged: When the yellow team is selected.
-Sub subRdoTeamYellowItemChanged (oEvent As object)
+' subRdoTeamInstinctItemChanged: When Team Instinct is selected.
+Sub subRdoTeamInstinctItemChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
 	Dim oImageModel As Object
 	Dim mItems () As String
@@ -373,7 +373,7 @@ Sub subLstBestItemChanged (oEvent As object)
 	Dim oDialog As Object, oCheckBox As Object
 	
 	oDialog = oEvent.Source.getContext
-	If oDialog.getControl ("rdoTeamRed").getState Then
+	If oDialog.getControl ("rdoTeamValor").getState Then
 		If oDialog.getControl ("lstBest").getSelectedItem = "Attack" Then
 			oCheckBox = oDialog.getControl ("cbxBest2")
 			oCheckBox.setLabel ("I'm just as impressed with its Defense.")
@@ -405,7 +405,7 @@ Sub subLstBestItemChanged (oEvent As object)
 			oCheckBox.setState (0)
 		End If
 	End If
-	If oDialog.getControl ("rdoTeamBlue").getState Then
+	If oDialog.getControl ("rdoTeamMystic").getState Then
 		If oDialog.getControl ("lstBest").getSelectedItem = "Attack" Then
 			oCheckBox = oDialog.getControl ("cbxBest2")
 			oCheckBox.setLabel ("It is matched equally by its Defense.")
@@ -437,7 +437,7 @@ Sub subLstBestItemChanged (oEvent As object)
 			oCheckBox.setState (0)
 		End If
 	End If
-	If oDialog.getControl ("rdoTeamYellow").getState Then
+	If oDialog.getControl ("rdoTeamInstinct").getState Then
 		If oDialog.getControl ("lstBest").getSelectedItem = "Attack" Then
 			oCheckBox = oDialog.getControl ("cbxBest2")
 			oCheckBox.setLabel ("Its Defense is great, too!")
@@ -474,21 +474,21 @@ Sub subUpdateAppraisal1 (oDialog As Object, bIsKeepSelected As Boolean)
 	Dim sPokemon As String, oList As Object, nSelected As Integer
 	Dim mItems () As String, nI As Integer
 	
-	If oDialog.getControl ("rdoTeamRed").getState Then
+	If oDialog.getControl ("rdoTeamValor").getState Then
 	    mItems = Array ( _
 		    "Overall, your [Pokémon] simply amazes me. It can accomplish anything!", _
 		    "Overall, your [Pokémon] is a strong Pokémon. You should be proud!", _
 		    "Overall, your [Pokémon] is a decent Pokémon.", _
 		    "Overall, your [Pokémon] may not be great in battle, but I still like it!")
 	End If
-	If oDialog.getControl ("rdoTeamBlue").getState Then
+	If oDialog.getControl ("rdoTeamMystic").getState Then
 	    mItems = Array ( _
 		    "Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!", _
 		    "Overall, your [Pokémon] has certainly caught my attention.", _
 		    "Overall, your [Pokémon] is above average.", _
 		    "Overall, your [Pokémon] is not likely to make much headway in battle.")
 	End If
-	If oDialog.getControl ("rdoTeamYellow").getState Then
+	If oDialog.getControl ("rdoTeamInstinct").getState Then
 	    mItems = Array ( _
 		    "Overall, your [Pokémon] looks like it can really battle with the best of them!", _
 		    "Overall, your [Pokémon] is really strong!", _

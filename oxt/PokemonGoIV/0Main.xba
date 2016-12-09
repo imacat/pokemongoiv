@@ -225,8 +225,8 @@ Sub subLstPokemonSelected (oEvent As object)
 	subBtnOKCheck (oEvent)
 End Sub
 
-&apos; subRdoTeamRedItemChanged: When the red team is selected.
-Sub subRdoTeamRedItemChanged (oEvent As object)
+&apos; subRdoTeamValorItemChanged: When Team Valor is selected.
+Sub subRdoTeamValorItemChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
 	Dim oImageModel As Object
 	Dim mItems () As String
@@ -262,8 +262,8 @@ Sub subRdoTeamRedItemChanged (oEvent As object)
 	oList.setVisible (True)
 End Sub
 
-&apos; subRdoTeamBlueItemChanged: When the blue team is selected.
-Sub subRdoTeamBlueItemChanged (oEvent As object)
+&apos; subRdoTeamMysticItemChanged: When Team Mystic is selected.
+Sub subRdoTeamMysticItemChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
 	Dim oImageModel As Object
 	Dim mItems () As String
@@ -299,8 +299,8 @@ Sub subRdoTeamBlueItemChanged (oEvent As object)
 	oList.setVisible (True)
 End Sub
 
-&apos; subRdoTeamYellowItemChanged: When the yellow team is selected.
-Sub subRdoTeamYellowItemChanged (oEvent As object)
+&apos; subRdoTeamInstinctItemChanged: When Team Instinct is selected.
+Sub subRdoTeamInstinctItemChanged (oEvent As object)
 	Dim oDialog As Object, oList As Object, oText As Object
 	Dim oImageModel As Object
 	Dim mItems () As String
@@ -375,7 +375,7 @@ Sub subLstBestItemChanged (oEvent As object)
 	Dim oDialog As Object, oCheckBox As Object
 	
 	oDialog = oEvent.Source.getContext
-	If oDialog.getControl (&quot;rdoTeamRed&quot;).getState Then
+	If oDialog.getControl (&quot;rdoTeamValor&quot;).getState Then
 		If oDialog.getControl (&quot;lstBest&quot;).getSelectedItem = &quot;Attack&quot; Then
 			oCheckBox = oDialog.getControl (&quot;cbxBest2&quot;)
 			oCheckBox.setLabel (&quot;I&apos;m just as impressed with its Defense.&quot;)
@@ -407,7 +407,7 @@ Sub subLstBestItemChanged (oEvent As object)
 			oCheckBox.setState (0)
 		End If
 	End If
-	If oDialog.getControl (&quot;rdoTeamBlue&quot;).getState Then
+	If oDialog.getControl (&quot;rdoTeamMystic&quot;).getState Then
 		If oDialog.getControl (&quot;lstBest&quot;).getSelectedItem = &quot;Attack&quot; Then
 			oCheckBox = oDialog.getControl (&quot;cbxBest2&quot;)
 			oCheckBox.setLabel (&quot;It is matched equally by its Defense.&quot;)
@@ -439,7 +439,7 @@ Sub subLstBestItemChanged (oEvent As object)
 			oCheckBox.setState (0)
 		End If
 	End If
-	If oDialog.getControl (&quot;rdoTeamYellow&quot;).getState Then
+	If oDialog.getControl (&quot;rdoTeamInstinct&quot;).getState Then
 		If oDialog.getControl (&quot;lstBest&quot;).getSelectedItem = &quot;Attack&quot; Then
 			oCheckBox = oDialog.getControl (&quot;cbxBest2&quot;)
 			oCheckBox.setLabel (&quot;Its Defense is great, too!&quot;)
@@ -476,21 +476,21 @@ Sub subUpdateAppraisal1 (oDialog As Object, bIsKeepSelected As Boolean)
 	Dim sPokemon As String, oList As Object, nSelected As Integer
 	Dim mItems () As String, nI As Integer
 	
-	If oDialog.getControl (&quot;rdoTeamRed&quot;).getState Then
+	If oDialog.getControl (&quot;rdoTeamValor&quot;).getState Then
 	    mItems = Array ( _
 		    &quot;Overall, your [Pokémon] simply amazes me. It can accomplish anything!&quot;, _
 		    &quot;Overall, your [Pokémon] is a strong Pokémon. You should be proud!&quot;, _
 		    &quot;Overall, your [Pokémon] is a decent Pokémon.&quot;, _
 		    &quot;Overall, your [Pokémon] may not be great in battle, but I still like it!&quot;)
 	End If
-	If oDialog.getControl (&quot;rdoTeamBlue&quot;).getState Then
+	If oDialog.getControl (&quot;rdoTeamMystic&quot;).getState Then
 	    mItems = Array ( _
 		    &quot;Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!&quot;, _
 		    &quot;Overall, your [Pokémon] has certainly caught my attention.&quot;, _
 		    &quot;Overall, your [Pokémon] is above average.&quot;, _
 		    &quot;Overall, your [Pokémon] is not likely to make much headway in battle.&quot;)
 	End If
-	If oDialog.getControl (&quot;rdoTeamYellow&quot;).getState Then
+	If oDialog.getControl (&quot;rdoTeamInstinct&quot;).getState Then
 	    mItems = Array ( _
 		    &quot;Overall, your [Pokémon] looks like it can really battle with the best of them!&quot;, _
 		    &quot;Overall, your [Pokémon] is really strong!&quot;, _
