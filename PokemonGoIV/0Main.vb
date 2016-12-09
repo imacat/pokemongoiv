@@ -947,8 +947,14 @@ End Function
 
 ' fnCalcHP: Calculates the hit points of the Pokémon
 Function fnCalcHP (aBaseStats As aStats, fLevel As Double, nStamina As Integer) As Integer
-	fnCalcHP = fnFloor ((aBaseStats.nStamina + nStamina) _
+	Dim nHP As Integer
+	
+	nHP = fnFloor ((aBaseStats.nStamina + nStamina) _
 		* fnGetCPM (fLevel))
+	If nHP < 10 Then
+		nHP = 10
+	End If
+	fnCalcHP = nHP
 End Function
 
 ' fnGetBaseStats: Returns the base stats of the Pokémon.
