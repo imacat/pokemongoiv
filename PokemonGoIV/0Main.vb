@@ -17,23 +17,31 @@
 
 Option Explicit
 
-' The stats of a Pokémon.
+' The base stats of a Pokémon.
 Type aStats
 	sNo As String
 	sPokemon As String
+	nStamina As Integer
+	nAttack As Integer
+	nDefense As Integer
+	mEvolved () As String
+End Type
+
+' The individual values of a Pokémon.
+Type aIV
 	fLevel As Double
 	nStamina As Integer
 	nAttack As Integer
 	nDefense As Integer
 	nTotal As Integer
 	nMaxCP As Integer
-	maEvolvedForms () As aEvolveForm
+	maEvolved () As aEvolvedStats
 End Type
 
-' The amount of star dust to power-up.
-Type aStarDust
-	fLevel As Double
-	nStarDust As Integer
+' The calculated evolved stats of a Pokémon.
+Type aEvolvedStats
+	nCP As Integer
+	nMaxCP As Integer
 End Type
 
 ' The parameters to find the individual values.
@@ -50,29 +58,24 @@ Type aFindIVParam
 	bIsCancelled As Boolean
 End Type
 
-Type aEvolveForm
-	sPokemon As String
-	nCP As Integer
-	nMaxCP As Integer
-End Type
-
 Private maBaseStats () As New aStats
 Private mCPM () As Double, mStarDust () As Integer
 
 ' subMain: The main program
 Sub subMain
-	Dim maIVs As Variant, nI As Integer
-	Dim aQuery As New aFindIVParam, aBaseStats As New aStats
+	Dim aBaseStats As New aStats, maIVs As Variant, nI As Integer
+	Dim aQuery As New aFindIVParam
 	
 	aQuery = fnAskParam
 	If aQuery.bIsCancelled Then
 		Exit Sub
 	End If
-	maIVs = fnFindIV (aQuery)
+	aBaseStats = fnGetBaseStats (aQuery.sPokemon)
+	maIVs = fnFindIV (aBaseStats, aQuery)
 	If UBound (maIVs) = -1 Then
 		MsgBox fnGetResString ("ErrorNotFound")
 	Else
-		subSaveIV (aQuery, maIVs)
+		subSaveIV (aBaseStats, aQuery, maIVs)
 	End If
 End Sub
 
@@ -94,9 +97,9 @@ Function fnAskParam As aFindIVParam
 	oDialog.getControl ("lstAppraisal2").setVisible (False)
 	
 	oDialog.getControl ("imgPokemon").getModel.setPropertyValue ( _
-	    "ImageURL", fnGetImageUrl ("Unknown"))
+		"ImageURL", fnGetImageUrl ("Unknown"))
 	oDialog.getControl ("imgTeamLogo").getModel.setPropertyValue ( _
-	    "ImageURL", fnGetImageUrl ("Unknown"))
+		"ImageURL", fnGetImageUrl ("Unknown"))
 	
 	If oDialog.execute = 0 Then
 		aQuery.bIsCancelled = True
@@ -475,60 +478,61 @@ Sub subUpdateAppraisal1 (oDialog As Object, bIsKeepSelected As Boolean)
 	Dim mItems () As String, nI As Integer
 	
 	If oDialog.getControl ("rdoTeamValor").getState Then
-	    mItems = Array ( _
-		    "Overall, your [Pokémon] simply amazes me. It can accomplish anything!", _
-		    "Overall, your [Pokémon] is a strong Pokémon. You should be proud!", _
-		    "Overall, your [Pokémon] is a decent Pokémon.", _
-		    "Overall, your [Pokémon] may not be great in battle, but I still like it!")
+		mItems = Array ( _
+			"Overall, your [Pokémon] simply amazes me. It can accomplish anything!", _
+			"Overall, your [Pokémon] is a strong Pokémon. You should be proud!", _
+			"Overall, your [Pokémon] is a decent Pokémon.", _
+			"Overall, your [Pokémon] may not be great in battle, but I still like it!")
 	End If
 	If oDialog.getControl ("rdoTeamMystic").getState Then
-	    mItems = Array ( _
-		    "Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!", _
-		    "Overall, your [Pokémon] has certainly caught my attention.", _
-		    "Overall, your [Pokémon] is above average.", _
-		    "Overall, your [Pokémon] is not likely to make much headway in battle.")
+		mItems = Array ( _
+			"Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!", _
+			"Overall, your [Pokémon] has certainly caught my attention.", _
+			"Overall, your [Pokémon] is above average.", _
+			"Overall, your [Pokémon] is not likely to make much headway in battle.")
 	End If
 	If oDialog.getControl ("rdoTeamInstinct").getState Then
-	    mItems = Array ( _
-		    "Overall, your [Pokémon] looks like it can really battle with the best of them!", _
-		    "Overall, your [Pokémon] is really strong!", _
-		    "Overall, your [Pokémon] is pretty decent!", _
-		    "Overall, your [Pokémon] has room for improvement as far as battling goes.")
+		mItems = Array ( _
+			"Overall, your [Pokémon] looks like it can really battle with the best of them!", _
+			"Overall, your [Pokémon] is really strong!", _
+			"Overall, your [Pokémon] is pretty decent!", _
+			"Overall, your [Pokémon] has room for improvement as far as battling goes.")
 	End If
 	' The team was not selected yet.
 	If UBound (mItems) = -1 Then
-	    Exit sub
+		Exit sub
 	End If
 	
 	sPokemon = oDialog.getControl ("lstPokemon").getSelectedItem
 	If sPokemon <> "" Then
-	    For nI = 0 To UBound (mItems)
-	        mItems (nI) = fnReplace (mItems (nI), _
-	            "[Pokémon]", sPokemon)
-	    Next nI
+		For nI = 0 To UBound (mItems)
+			mItems (nI) = fnReplace (mItems (nI), _
+				"[Pokémon]", sPokemon)
+		Next nI
 	End If
 	
 	oList = oDialog.getControl ("lstAppraisal1")
 	If bIsKeepSelected Then
-	    nSelected = oList.getSelectedItemPos
+		nSelected = oList.getSelectedItemPos
 	End If
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
 	If bIsKeepSelected Then
-	    oList.selectItemPos (nSelected, True)
+		oList.selectItemPos (nSelected, True)
 	End If
 	oList.setVisible (True)
 End Sub
 
 ' fnFindIV: Finds the possible individual values of the Pokémon
-Function fnFindIV (aQuery As aFindIVParam) As Variant
-	Dim aBaseStats As New aStats, maIV () As New aStats
+Function fnFindIV ( _
+		aBaseStats As aStats, aQuery As aFindIVParam) As Variant
+	Dim nEvolved As Integer
+	Dim maEvBaseStats () As New aStats, aTempStats As New aStats
+	Dim maIV () As New aIV, aTempIV As New aIV
 	Dim fLevel As Double, nStamina As Integer
 	Dim nAttack As Integer, nDefense As integer
 	Dim nI As Integer, nJ As Integer
-	Dim fStep As Double, nCount As Integer
-	Dim aEvBaseStats As new aStats, aTempIV As New aStats
-	Dim maEvolvedForms () As New aEvolveForm
+	Dim fStep As Double, nN As Integer
 	
 	If aQuery.sPokemon = "" Then
 		fnFindIV = maIV
@@ -539,9 +543,18 @@ Function fnFindIV (aQuery As aFindIVParam) As Variant
 	Else
 		fStep = 0.5
 	End If
-	aBaseStats = fnGetBaseStats (aQuery.sPokemon)
 	subReadStarDust
-	nCount = -1
+	nEvolved = UBound (aBaseStats.mEvolved)
+	ReDim maEvBaseStats (nEvolved) As New aStats
+	For nI = 0 To nEvolved
+		aTempStats = fnGetBaseStats (aBaseStats.mEvolved (nI))
+		With maEvBaseStats (nI)
+			.nAttack = aTempStats.nAttack
+			.nDefense = aTempStats.nDefense
+			.nStamina = aTempStats.nStamina
+		End With
+	Next nI
+	nN = -1
 	For fLevel = 1 To UBound (mStarDust) Step fStep
 		If mStarDust (CInt (fLevel - 0.5)) = aQuery.nStarDust Then
 			For nStamina = 0 To 15
@@ -549,32 +562,33 @@ Function fnFindIV (aQuery As aFindIVParam) As Variant
 					For nAttack = 0 To 15
 						For nDefense = 0 To 15
 							If fnCalcCP (aBaseStats, fLevel, nAttack, nDefense, nStamina) = aQuery.nCP _
-									And Not (fnFilterAppraisals (aQuery, nAttack, nDefense, nStamina)) Then
-								nCount = nCount + 1
-								ReDim Preserve maIV (nCount) As New aStats
-								With maIV (nCount)
-									.sNo = aBaseStats.sNo
-									.sPokemon = aQuery.sPokemon
+									And Not fnFilterAppraisals (aQuery, nAttack, nDefense, nStamina) Then
+								nN = nN + 1
+								ReDim Preserve maIV (nN) As New aIV
+								With maIV (nN)
 									.fLevel = fLevel
 									.nAttack = nAttack
 									.nDefense = nDefense
 									.nStamina = nStamina
-									.nTotal = nAttack + nDefense + nStamina
+									.nTotal = nAttack _
+										+ nDefense + nStamina
 								End With
 								If aQuery.nPlayerLevel <> 0 Then
-									maIV (nCount).nMaxCP = fnCalcCP (aBaseStats, aQuery.nPlayerLevel + 1.5, nAttack, nDefense, nStamina)
-								Else
-									maIV (nCount).nMaxCP = -1
+									maIV (nN).nMaxCP = fnCalcCP ( _
+										aBaseStats, _
+										aQuery.nPlayerLevel + 1.5, _
+										nAttack, nDefense, nStamina)
 								End If
-								maIV (nCount).maEvolvedForms = fnGetEvolvedFormArray (UBound (aBaseStats.maEvolvedForms))
-								For nI = 0 To UBound (aBaseStats.maEvolvedForms)
-									maIV (nCount).maEvolvedForms (nI).sPokemon = aBaseStats.maEvolvedForms (nI).sPokemon
-									aEvBaseStats = fnGetBaseStats (aBaseStats.maEvolvedForms (nI).sPokemon)
-									maIV (nCount).maEvolvedForms (nI).nCP = fnCalcCP (aEvBaseStats, fLevel, nAttack, nDefense, nStamina)
+								maIV (nN).maEvolved _
+									= fnGetEvolvedArray (nEvolved)
+								For nI = 0 To nEvolved
+									maIV (nN).maEvolved (nI).nCP _
+										= fnCalcCP ( _
+											maEvBaseStats (nI), _
+											fLevel, nAttack, _
+											nDefense, nStamina)
 									If aQuery.nPlayerLevel <> 0 Then
-										maIV (nCount).maEvolvedForms (nI).nMaxCP = fnCalcCP (aEvBaseStats, aQuery.nPlayerLevel + 1.5, nAttack, nDefense, nStamina)
-									Else
-										maIV (nCount).maEvolvedForms (nI).nMaxCP = -1
+										maIV (nN).maEvolved (nI).nMaxCP = fnCalcCP (maEvBaseStats (nI), aQuery.nPlayerLevel + 1.5, nAttack, nDefense, nStamina)
 									End If
 								Next nI
 							End If
@@ -588,6 +602,9 @@ Function fnFindIV (aQuery As aFindIVParam) As Variant
 	For nI = 0 To UBound (maIV) - 1
 		For nJ = nI + 1 To UBound (maIV)
 			If fnCompareIV (maIV (nI), maIV (nJ)) > 0 Then
+				' This is an array of data.  The data are actually
+				' allocated in sequences.  maIV (nI) is not a
+				' reference.  They cannot simply be assigned.
 				subCopyIV (maIV (nI), aTempIV)
 				subCopyIV (maIV (nJ), maIV (nI))
 				subCopyIV (aTempIV, maIV (nJ))
@@ -598,19 +615,19 @@ Function fnFindIV (aQuery As aFindIVParam) As Variant
 End Function
 
 ' fnCompareIV: Compare two IVs for sorting
-Function fnCompareIV (aIVa As aStats, aIVb As aStats) As Double
+Function fnCompareIV (aIVa As aIV, aIVb As aIV) As Double
 	Dim nCPa As Integer, nCPb As Integer, nI As Integer
 	
 	nCPa = aIVa.nMaxCP
-	For nI = 0 To UBound (aIVa.maEvolvedForms)
-		If nCPa < aIVa.maEvolvedForms (nI).nMaxCP Then
-			nCPa = aIVa.maEvolvedForms (nI).nMaxCP
+	For nI = 0 To UBound (aIVa.maEvolved)
+		If nCPa < aIVa.maEvolved (nI).nMaxCP Then
+			nCPa = aIVa.maEvolved (nI).nMaxCP
 		End If
 	Next nI
 	nCPb = aIVb.nMaxCP
-	For nI = 0 To UBound (aIVb.maEvolvedForms)
-		If nCPb < aIVb.maEvolvedForms (nI).nMaxCP Then
-			nCPb = aIVb.maEvolvedForms (nI).nMaxCP
+	For nI = 0 To UBound (aIVb.maEvolved)
+		If nCPb < aIVb.maEvolved (nI).nMaxCP Then
+			nCPb = aIVb.maEvolved (nI).nMaxCP
 		End If
 	Next nI
 	fnCompareIV = nCPb - nCPa
@@ -619,15 +636,15 @@ Function fnCompareIV (aIVa As aStats, aIVb As aStats) As Double
 	End If
 	
 	nCPa = 0
-	For nI = 0 To UBound (aIVa.maEvolvedForms)
-		If nCPa < aIVa.maEvolvedForms (nI).nCP Then
-			nCPa = aIVa.maEvolvedForms (nI).nCP
+	For nI = 0 To UBound (aIVa.maEvolved)
+		If nCPa < aIVa.maEvolved (nI).nCP Then
+			nCPa = aIVa.maEvolved (nI).nCP
 		End If
 	Next nI
 	nCPb = 0
-	For nI = 0 To UBound (aIVb.maEvolvedForms)
-		If nCPb < aIVb.maEvolvedForms (nI).nCP Then
-			nCPb = aIVb.maEvolvedForms (nI).nCP
+	For nI = 0 To UBound (aIVb.maEvolved)
+		If nCPb < aIVb.maEvolved (nI).nCP Then
+			nCPb = aIVb.maEvolved (nI).nCP
 		End If
 	Next nI
 	fnCompareIV = nCPb - nCPa
@@ -658,77 +675,88 @@ Function fnCompareIV (aIVa As aStats, aIVb As aStats) As Double
 End Function
 
 ' subCopyIV: Copies one IV to another
-Function subCopyIV (aFrom As aStats, aTo As aStats) As Double
-	Dim nI As Integer, maEvolvedForms () As New aEvolveForm
+Function subCopyIV (aFrom As aIV, aTo As aIV) As Double
+	Dim nI As Integer
 	
 	With aTo
-		.sNo = aFrom.sNo
-		.sPokemon = aFrom.sPokemon
-		.fLevel = aFrom.fLevel
 		.nAttack = aFrom.nAttack
 		.nDefense = aFrom.nDefense
 		.nStamina = aFrom.nStamina
 		.nTotal = aFrom.nTotal
 		.nMaxCP = aFrom.nMaxCP
 	End With
-	aTo.maEvolvedForms = fnGetEvolvedFormArray (UBound (aFrom.maEvolvedForms))
-	For nI = 0 To UBound (aFrom.maEvolvedForms)
-		With aTo.maEvolvedForms (nI)
-			.sPokemon = aFrom.maEvolvedForms (nI).sPokemon
-			.nCP = aFrom.maEvolvedForms (nI).nCP
-			.nMaxCP = aFrom.maEvolvedForms (nI).nMaxCP
+	aTo.maEvolved = fnGetEvolvedArray (UBound (aFrom.maEvolved))
+	For nI = 0 To UBound (aFrom.maEvolved)
+		With aTo.maEvolved (nI)
+			.nCP = aFrom.maEvolved (nI).nCP
+			.nMaxCP = aFrom.maEvolved (nI).nMaxCP
 		End With
 	Next nI
 End Function
 
 ' subSaveIV: Saves the found IV
-Sub subSaveIV (aQuery As aFindIVParam, maIVs () As aStats)
+Sub subSaveIV ( _
+		aBaseStats As aStats, aQuery As aFindIVParam, maIVs () As aIV)
 	Dim oDoc As Object, oSheet As Object
 	Dim oRange As Object, oColumns As Object, oRows As Object
-	Dim nI As Integer, nJ As Integer, nFrontCols As Integer
+	Dim nI As Integer, nJ As Integer, nFront As Integer
+	Dim nEvolved As Integer
 	Dim mData (Ubound (maIVs) + 1) As Variant, mRow () As Variant
 	Dim mProps () As New com.sun.star.beans.PropertyValue
 	
 	oDoc = StarDesktop.loadComponentFromURL ( _
 		"private:factory/scalc", "_default", 0, mProps)
 	oSheet = oDoc.getSheets.getByIndex (0)
+	nEvolved = UBound (maIVs (0).maEvolved) + 1
 	
 	mRow = Array ( _
 		"No", "Pokemon", "CP", "HP", "Star dust", _
 		"Lv", "Atk", "Def", "Sta", "IV")
-	nFrontCols = UBound (mRow)
+	nFront = UBound (mRow)
 	If aQuery.sPokemon = "Eevee" Then
 		If aQuery.nPlayerLevel <> 0 Then
-			ReDim Preserve mRow (nFrontCols + 6) As Variant
-			mRow (nFrontCols + 1) = "CP as " & maIVs (0).maEvolvedForms (0).sPokemon
-			mRow (nFrontCols + 2) = "Powered-up as " & maIVs (0).maEvolvedForms (0).sPokemon
-			mRow (nFrontCols + 3) = "CP as " & maIVs (0).maEvolvedForms (1).sPokemon
-			mRow (nFrontCols + 4) = "Powered-up as " & maIVs (0).maEvolvedForms (1).sPokemon
-			mRow (nFrontCols + 5) = "CP as " & maIVs (0).maEvolvedForms (2).sPokemon
-			mRow (nFrontCols + 6) = "Powered-up as " & maIVs (0).maEvolvedForms (2).sPokemon
+			ReDim Preserve mRow (nFront + 6) As Variant
+			mRow (nFront + 1) = "CP as " _
+				& aBaseStats.mEvolved (0)
+			mRow (nFront + 2) = "Powered-up as " _
+				& aBaseStats.mEvolved (0)
+			mRow (nFront + 3) = "CP as " _
+				& aBaseStats.mEvolved (1)
+			mRow (nFront + 4) = "Powered-up as " _
+				& aBaseStats.mEvolved (1)
+			mRow (nFront + 5) = "CP as " _
+				& aBaseStats.mEvolved (2)
+			mRow (nFront + 6) = "Powered-up as " _
+				& aBaseStats.mEvolved (2)
 		Else
-			ReDim Preserve mRow (nFrontCols + 3) As Variant
-			mRow (nFrontCols + 1) = "CP as " & maIVs (0).maEvolvedForms (0).sPokemon
-			mRow (nFrontCols + 2) = "CP as " & maIVs (0).maEvolvedForms (1).sPokemon
-			mRow (nFrontCols + 3) = "CP as " & maIVs (0).maEvolvedForms (2).sPokemon
+			ReDim Preserve mRow (nFront + 3) As Variant
+			mRow (nFront + 1) = "CP as " _
+				& aBaseStats.mEvolved (0)
+			mRow (nFront + 2) = "CP as " _
+				& aBaseStats.mEvolved (1)
+			mRow (nFront + 3) = "CP as " _
+				& aBaseStats.mEvolved (2)
 		End If
 	Else
-		If UBound (maIVs (0).maEvolvedForms) = -1 Then
+		If nEvolved = 0 Then
 			If aQuery.nPlayerLevel <> 0 Then
-				ReDim Preserve mRow (nFrontCols + 1) As Variant
-				mRow (nFrontCols + 1) = "Powered-up"
+				ReDim Preserve mRow (nFront + 1) As Variant
+				mRow (nFront + 1) = "Powered-up"
 			End If
 		Else
 			If aQuery.nPlayerLevel <> 0 Then
-				ReDim Preserve mRow (nFrontCols + UBound (maIVs (0).maEvolvedForms) + 2) As Variant
-				For nJ = 0 To UBound (maIVs (0).maEvolvedForms)
-					mRow (nFrontCols + nJ + 1) = "CP as " & maIVs (0).maEvolvedForms (nJ).sPokemon
+				ReDim Preserve mRow (nFront + nEvolved + 1) As Variant
+				For nJ = 0 To nEvolved - 1
+					mRow (nFront + nJ + 1) = "CP as " _
+						& aBaseStats.mEvolved (nJ)
 				Next nJ
-				mRow (UBound (mRow)) = "Powered-up as " & maIVs (0).maEvolvedForms (UBound (maIVs (0).maEvolvedForms)).sPokemon
+				mRow (UBound (mRow)) = "Powered-up as " _
+					& aBaseStats.mEvolved (nEvolved - 1)
 			Else
-				ReDim Preserve mRow (nFrontCols + UBound (maIVs (0).maEvolvedForms) + 1) As Variant
-				For nJ = 0 To UBound (maIVs (0).maEvolvedForms)
-					mRow (nFrontCols + nJ + 1) = "CP as " & maIVs (0).maEvolvedForms (nJ).sPokemon
+				ReDim Preserve mRow (nFront + nEvolved) As Variant
+				For nJ = 0 To nEvolved - 1
+					mRow (nFront + nJ + 1) = "CP as " _
+						& aBaseStats.mEvolved (nJ)
 				Next nJ
 			End If
 		End If
@@ -738,40 +766,41 @@ Sub subSaveIV (aQuery As aFindIVParam, maIVs () As aStats)
 	For nI = 0 To UBound (maIVs)
 		mRow = Array ( _
 			"", "", "", "", "", _
-			maIVs (nI).fLevel, maIVs (nI).nAttack, maIVs (nI).nDefense, _
-			maIVs (nI).nStamina, maIVs (nI).nTotal / 45)
+			maIVs (nI).fLevel, maIVs (nI).nAttack, _
+			maIVs (nI).nDefense, maIVs (nI).nStamina, _
+			maIVs (nI).nTotal / 45)
 		If aQuery.sPokemon = "Eevee" Then
 			If aQuery.nPlayerLevel <> 0 Then
-				ReDim Preserve mRow (nFrontCols + 6) As Variant
-				mRow (nFrontCols + 1) = maIVs (nI).maEvolvedForms (0).nCP
-				mRow (nFrontCols + 2) = maIVs (nI).maEvolvedForms (0).nMaxCP
-				mRow (nFrontCols + 3) = maIVs (nI).maEvolvedForms (1).nCP
-				mRow (nFrontCols + 4) = maIVs (nI).maEvolvedForms (1).nMaxCP
-				mRow (nFrontCols + 5) = maIVs (nI).maEvolvedForms (2).nCP
-				mRow (nFrontCols + 6) = maIVs (nI).maEvolvedForms (2).nMaxCP
+				ReDim Preserve mRow (nFront + 6) As Variant
+				mRow (nFront + 1) = maIVs (nI).maEvolved (0).nCP
+				mRow (nFront + 2) = maIVs (nI).maEvolved (0).nMaxCP
+				mRow (nFront + 3) = maIVs (nI).maEvolved (1).nCP
+				mRow (nFront + 4) = maIVs (nI).maEvolved (1).nMaxCP
+				mRow (nFront + 5) = maIVs (nI).maEvolved (2).nCP
+				mRow (nFront + 6) = maIVs (nI).maEvolved (2).nMaxCP
 			Else
-				ReDim Preserve mRow (nFrontCols + 3) As Variant
-				mRow (nFrontCols + 1) = maIVs (nI).maEvolvedForms (0).nCP
-				mRow (nFrontCols + 2) = maIVs (nI).maEvolvedForms (1).nCP
-				mRow (nFrontCols + 3) = maIVs (nI).maEvolvedForms (2).nCP
+				ReDim Preserve mRow (nFront + 3) As Variant
+				mRow (nFront + 1) = maIVs (nI).maEvolved (0).nCP
+				mRow (nFront + 2) = maIVs (nI).maEvolved (1).nCP
+				mRow (nFront + 3) = maIVs (nI).maEvolved (2).nCP
 			End If
 		Else
-			If UBound (maIVs (nI).maEvolvedForms) = -1 Then
+			If nEvolved = 0 Then
 				If aQuery.nPlayerLevel <> 0 Then
-					ReDim Preserve mRow (nFrontCols + 1) As Variant
-					mRow (nFrontCols + 1) = maIVs (nI).nMaxCP
+					ReDim Preserve mRow (nFront + 1) As Variant
+					mRow (nFront + 1) = maIVs (nI).nMaxCP
 				End If
 			Else
 				If aQuery.nPlayerLevel <> 0 Then
-					ReDim Preserve mRow (nFrontCols + UBound (maIVs (nI).maEvolvedForms) + 2) As Variant
-					For nJ = 0 To UBound (maIVs (nI).maEvolvedForms)
-						mRow (nFrontCols + nJ + 1) = maIVs (nI).maEvolvedForms (nJ).nCP
+					ReDim Preserve mRow (nFront + nEvolved + 1) As Variant
+					For nJ = 0 To nEvolved - 1
+						mRow (nFront + nJ + 1) = maIVs (nI).maEvolved (nJ).nCP
 					Next nJ
-					mRow (UBound (mRow)) = maIVs (nI).maEvolvedForms (UBound (maIVs (nI).maEvolvedForms)).nMaxCP
+					mRow (UBound (mRow)) = maIVs (nI).maEvolved (nEvolved - 1).nMaxCP
 				Else
-					ReDim Preserve mRow (nFrontCols + UBound (maIVs (nI).maEvolvedForms) + 1) As Variant
-					For nJ = 0 To UBound (maIVs (nI).maEvolvedForms)
-						mRow (nFrontCols + nJ + 1) = maIVs (nI).maEvolvedForms (nJ).nCP
+					ReDim Preserve mRow (nFront + nEvolved) As Variant
+					For nJ = 0 To nEvolved - 1
+						mRow (nFront + nJ + 1) = maIVs (nI).maEvolved (nJ).nCP
 					Next nJ
 				End If
 			End If
@@ -780,7 +809,7 @@ Sub subSaveIV (aQuery As aFindIVParam, maIVs () As aStats)
 	Next nI
 	
 	' Fills the query information at the first row
-	mData (1) (0) = maIVs (0).sNo
+	mData (1) (0) = aBaseStats.sNo
 	mData (1) (1) = aQuery.sPokemon
 	mData (1) (2) = aQuery.nCP
 	mData (1) (3) = aQuery.nHP
@@ -815,12 +844,12 @@ Sub subSaveIV (aQuery As aFindIVParam, maIVs () As aStats)
 		oRange = oSheet.getCellRangeByPosition ( _
 			10, 0, 15, 0)
 	Else
-		If UBound (maIVs (0).maEvolvedForms) = -1 Then
+		If nEvolved = 0 Then
 			oRange = oSheet.getCellRangeByPosition ( _
 				10, 0, 10, 0)
 		Else
 			oRange = oSheet.getCellRangeByPosition ( _
-				10, 0, 10 + UBound (maIVs (0).maEvolvedForms) + 2, 0)
+				10, 0, 10 + nEvolved + 1, 0)
 		End If
 	End If
 	oRange.setPropertyValue ("IsTextWrapped", True)
@@ -841,49 +870,62 @@ Sub subSaveIV (aQuery As aFindIVParam, maIVs () As aStats)
 	If aQuery.sPokemon = "Eevee" Then
 		If aQuery.nPlayerLevel <> 0 Then
 			For nI = 0 To 5 Step 2
-				oColumns.getByIndex (10 + nI).setPropertyValue ("Width", 2310)
-				oColumns.getByIndex (10 + nI + 1).setPropertyValue ("Width", 2810)
+				oColumns.getByIndex (10 + nI).setPropertyValue ( _
+					"Width", 2310)
+				oColumns.getByIndex (10 + nI + 1).setPropertyValue ( _
+					"Width", 2810)
 			Next nI
 		Else
 			For nI = 0 To 2
-				oColumns.getByIndex (10 + nI).setPropertyValue ("Width", 2310)
+				oColumns.getByIndex (10 + nI).setPropertyValue ( _
+					"Width", 2310)
 			Next nI
 		End If
 	Else
-		If UBound (maIVs (0).maEvolvedForms) = -1 Then
+		If nEvolved = 0 Then
 			If aQuery.nPlayerLevel <> 0 Then
-				oColumns.getByIndex (10).setPropertyValue ("Width", 2200)
+				oColumns.getByIndex (10).setPropertyValue ( _
+					"Width", 2200)
 			End If
 		Else
-			For nI = 0 To UBound (maIVs (0).maEvolvedForms)
-				oColumns.getByIndex (10 + nI).setPropertyValue ("Width", 2310)
+			For nI = 0 To nEvolved - 1
+				oColumns.getByIndex (10 + nI).setPropertyValue ( _
+					"Width", 2310)
 			Next nI
 			If aQuery.nPlayerLevel <> 0 Then
-				oColumns.getByIndex (10 + UBound (maIVs (0).maEvolvedForms) + 1).setPropertyValue ("Width", 2810)
+				oColumns.getByIndex ( _
+					10 + nEvolved).setPropertyValue ( _
+					"Width", 2810)
 			End If
 		End If
 	End If
 End Sub
 
 ' fnFilterAppraisals: Filters the IV by the appraisals.
-Function fnFilterAppraisals (aQuery As aFindIVParam, nAttack As Integer, nDefense As Integer, nStamina As Integer) As Boolean
+Function fnFilterAppraisals (aQuery As aFindIVParam, _
+		nAttack As Integer, nDefense As Integer, _
+		nStamina As Integer) As Boolean
 	Dim nTotal As Integer, nMax As Integer, sBest As String
 	
 	' The first appraisal.
 	nTotal = nAttack + nDefense + nStamina
-	If aQuery.nAppraisal1 = 1 And Not (nTotal >= 37) Then
+	If aQuery.nAppraisal1 = 1 _
+			And Not (nTotal >= 37) Then
 		fnFilterAppraisals = True
 		Exit Function
 	End If
-	If aQuery.nAppraisal1 = 2 And Not (nTotal >= 30 And nTotal <= 36) Then
+	If aQuery.nAppraisal1 = 2 _
+			And Not (nTotal >= 30 And nTotal <= 36) Then
 		fnFilterAppraisals = True
 		Exit Function
 	End If
-	If aQuery.nAppraisal1 = 3 And Not (nTotal >= 23 And nTotal <= 29) Then
+	If aQuery.nAppraisal1 = 3 _
+			And Not (nTotal >= 23 And nTotal <= 29) Then
 		fnFilterAppraisals = True
 		Exit Function
 	End If
-	If aQuery.nAppraisal1 = 4 And Not (nTotal <= 22) Then
+	If aQuery.nAppraisal1 = 4 _
+			And Not (nTotal <= 22) Then
 		fnFilterAppraisals = True
 		Exit Function
 	End If
@@ -932,21 +974,24 @@ Function fnFilterAppraisals (aQuery As aFindIVParam, nAttack As Integer, nDefens
 End Function
 
 ' fnCalcCP: Calculates the combat power of the Pokémon
-Function fnCalcCP (aBaseStats As aStats, fLevel As Double, nAttack As Integer, nDefense As Integer, nStamina As Integer) As Integer
-    Dim nCP As Integer
-    
+Function fnCalcCP (aBaseStats As aStats, fLevel As Double, _
+		nAttack As Integer, nDefense As Integer, _
+		nStamina As Integer) As Integer
+	Dim nCP As Integer
+		
 	nCP = fnFloor ((aBaseStats.nAttack + nAttack) _
 		* ((aBaseStats.nDefense + nDefense) ^ 0.5) _
 		* ((aBaseStats.nStamina + nStamina) ^ 0.5) _
 		* (fnGetCPM (fLevel) ^ 2) / 10)
 	If nCP < 10 Then
-	    nCP = 10
+		nCP = 10
 	End If
 	fnCalcCP = nCP
 End Function
 
 ' fnCalcHP: Calculates the hit points of the Pokémon
-Function fnCalcHP (aBaseStats As aStats, fLevel As Double, nStamina As Integer) As Integer
+Function fnCalcHP (aBaseStats As aStats, _
+		fLevel As Double, nStamina As Integer) As Integer
 	Dim nHP As Integer
 	
 	nHP = fnFloor ((aBaseStats.nStamina + nStamina) _
@@ -991,6 +1036,7 @@ End Function
 ' subReadBaseStats: Reads the base stats table.
 Sub subReadBaseStats
 	Dim mData As Variant, nI As Integer, nJ As Integer
+	DIm nEvolved As Integer
 	
 	If UBound (maBaseStats) = -1 Then
 		mData = fnGetBaseStatsData
@@ -1003,52 +1049,47 @@ Sub subReadBaseStats
 				.nAttack = mData (nI) (3)
 				.nDefense = mData (nI) (4)
 			End With
-			maBaseStats (nI).maEvolvedForms = fnGetEvolvedFormArray (UBound (mData (nI) (5)))
-			For nJ = 0 To UBound (maBaseStats (nI).maEvolvedForms)
-				With maBaseStats (nI).maEvolvedForms (nJ)
-					.sPokemon = mData (nI) (5) (nJ)
-					.nCP = -1
-					.nMaxCP = -1
-				End With
+			nEvolved = UBound (mData (nI) (5))
+			maBaseStats (nI).mEvolved = fnGetStringArray (nEvolved)
+			For nJ = 0 To nEvolved
+				maBaseStats (nI).mEvolved (nJ) = mData (nI) (5) (nJ)
 			Next nJ
 		Next nI
 	End If
 End Sub
 
-' fnGetEvolvedFormArray: Obtains a blank aEvolveForm array
-Function fnGetEvolvedFormArray (nUBound As Integer) As Variant
-	If nUBound = -1 Then
-		fnGetEvolvedFormArray = fnGetEmptyEvolvedFormArray
-	Else
-		fnGetEvolvedFormArray = fnGetNumberedEvolvedFormArray (nUBound)
+' fnGetStringArray: Obtains a blank string array
+Function fnGetStringArray (nUBound As Integer) As Variant
+	Dim mData () As String
+	
+	If nUBound >= 0 Then
+		ReDim Preserve mData (nUBound) As String
 	End If
+	fnGetStringArray = mData
 End Function
 
-' fnGetNumberedEvolvedFormArray: Obtains a numbered aEvolveForm array
-Function fnGetNumberedEvolvedFormArray (nUBound As Integer) As Variant
-	Dim mData (nUBound) As New aEvolveForm
+' fnGetEvolvedArray: Obtains a blank aEvolvedStats array
+Function fnGetEvolvedArray (nUBound As Integer) As Variant
+	Dim mData () As New aEvolvedStats
 	
-	fnGetNumberedEvolvedFormArray = mData
-End Function
-
-' fnGetEmptyEvolvedFormArray: Obtains an empty aEvolveForm array
-Function fnGetEmptyEvolvedFormArray () As Variant
-	Dim mData () As New aEvolveForm
-	
-	fnGetEmptyEvolvedFormArray = mData
+	If nUBound >= 0 Then
+		ReDim Preserve mData (nUBound) As New aEvolvedStats
+	End If
+	fnGetEvolvedArray = mData
 End Function
 
 ' fnReplace: Replaces all occurrances of a term to another.
-Function fnReplace (sText As String, sFrom As String, sTo As String) As String
-    Dim nPos As Integer
-    
-    nPos = InStr (sText, sFrom)
-    Do While nPos <> 0
-        sText = Left (sText, nPos - 1) & sTo _
-            & Right (sText, Len (sText) - nPos - Len (sFrom) + 1)
-        nPos = InStr (nPos + Len (sTo), sText, sFrom)
-    Loop
-    fnReplace = sText
+Function fnReplace ( _
+		sText As String, sFrom As String, sTo As String) As String
+	Dim nPos As Integer
+	
+	nPos = InStr (sText, sFrom)
+	Do While nPos <> 0
+		sText = Left (sText, nPos - 1) & sTo _
+			& Right (sText, Len (sText) - nPos - Len (sFrom) + 1)
+		nPos = InStr (nPos + Len (sTo), sText, sFrom)
+	Loop
+	fnReplace = sText
 End Function
 
 ' subReadCPM: Reads the CPM table.
