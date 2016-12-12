@@ -52,9 +52,9 @@ Type aFindIVParam
 	nStarDust As Integer
 	nPlayerLevel As Integer
 	bIsNew As Boolean
-	nAppraisal1 As Integer
+	nTotal As Integer
 	sBest As String
-	nAppraisal2 As Integer
+	nMax As Integer
 	bIsCancelled As Boolean
 End Type
 
@@ -88,13 +88,13 @@ Function fnAskParam As aFindIVParam
 	
 	DialogLibraries.loadLibrary "PokemonGoIV"
 	oDialog = CreateUnoDialog (DialogLibraries.PokemonGoIV.DlgMain)
-	oDialog.getControl ("lstAppraisal1").setVisible (False)
+	oDialog.getControl ("lstTotal").setVisible (False)
 	oDialog.getControl ("txtBestBefore").setVisible (False)
 	oDialog.getControl ("lstBest").setVisible (False)
 	oDialog.getControl ("txtBestAfter").setVisible (False)
 	oDialog.getControl ("cbxBest2").setVisible (False)
 	oDialog.getControl ("cbxBest3").setVisible (False)
-	oDialog.getControl ("lstAppraisal2").setVisible (False)
+	oDialog.getControl ("lstMax").setVisible (False)
 	
 	oDialog.getControl ("imgPokemon").getModel.setPropertyValue ( _
 		"ImageURL", fnGetImageUrl ("Unknown"))
@@ -113,8 +113,8 @@ Function fnAskParam As aFindIVParam
 		.nHP = oDialog.getControl ("numHP").getValue
 		.nStarDust = CInt (oDialog.getControl ("lstStarDust").getSelectedItem)
 		.nPlayerLevel = CInt (oDialog.getControl ("lstPlayerLevel").getSelectedItem)
-		.nAppraisal1 = oDialog.getControl ("lstAppraisal1").getSelectedItemPos + 1
-		.nAppraisal2 = oDialog.getControl ("lstAppraisal2").getSelectedItemPos + 1
+		.nTotal = oDialog.getControl ("lstTotal").getSelectedItemPos + 1
+		.nMax = oDialog.getControl ("lstMax").getSelectedItemPos + 1
 		.bIsCancelled = False
 	End With
 	If oDialog.getControl ("cbxIsNew").getState = 1 Then
@@ -220,8 +220,8 @@ Sub subLstPokemonSelected (oEvent As object)
 	oImageModel.setPropertyValue ("ImageURL", _
 		fnGetImageUrl (sImageId))
 	
-	' Updates the text of the first appraisal.
-	subUpdateAppraisal1 (oDialog, True)
+	' Updates the text of the stats total appraisal.
+	subUpdateTotalAppraisal (oDialog, True)
 	' Checks if the required columns are filled.
 	subBtnOKCheck (oEvent)
 End Sub
@@ -245,8 +245,8 @@ Sub subRdoTeamValorItemChanged (oEvent As object)
 	oText.setVisible (True)
 	oText.setText (fnGetResString ("AppraiseFromCandela"))
 	
-	' Updates the text of the first appraisal.
-	subUpdateAppraisal1 (oDialog, False)
+	' Updates the text of the stats total appraisal.
+	subUpdateTotalAppraisal (oDialog, False)
 	
 	' Updates the text of the best stat appraisal.
 	subUpdateBestStatAppraisal (oDialog, _
@@ -257,7 +257,7 @@ Sub subRdoTeamValorItemChanged (oEvent As object)
 		"It's got excellent stats! How exciting!", _
 		"Its stats indicate that in battle, it'll get the job done.", _
 		"Its stats don't point to greatness in battle.")
-	oList = oDialog.getControl ("lstAppraisal2")
+	oList = oDialog.getControl ("lstMax")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
 	oList.setVisible (True)
@@ -282,8 +282,8 @@ Sub subRdoTeamMysticItemChanged (oEvent As object)
 	oText.setVisible (True)
 	oText.setText (fnGetResString ("AppraiseFromBlanche"))
 	
-	' Updates the text of the first appraisal.
-	subUpdateAppraisal1 (oDialog, False)
+	' Updates the text of the stats total appraisal.
+	subUpdateTotalAppraisal (oDialog, False)
 	
 	' Updates the text of the best stat appraisal.
 	subUpdateBestStatAppraisal (oDialog, _
@@ -294,7 +294,7 @@ Sub subRdoTeamMysticItemChanged (oEvent As object)
 		"I am certainly impressed by its stats, I must say.", _
 		"Its stats are noticeably trending to the positive.", _
 		"Its stats are not out of the norm, in my opinion.")
-	oList = oDialog.getControl ("lstAppraisal2")
+	oList = oDialog.getControl ("lstMax")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
 	oList.setVisible (True)
@@ -319,8 +319,8 @@ Sub subRdoTeamInstinctItemChanged (oEvent As object)
 	oText.setVisible (True)
 	oText.setText (fnGetResString ("AppraiseFromSpark"))
 	
-	' Updates the text of the first appraisal.
-	subUpdateAppraisal1 (oDialog, False)
+	' Updates the text of the stats total appraisal.
+	subUpdateTotalAppraisal (oDialog, False)
 	
 	' Updates the text of the best stat appraisal.
 	subUpdateBestStatAppraisal (oDialog, _
@@ -331,7 +331,7 @@ Sub subRdoTeamInstinctItemChanged (oEvent As object)
 		"Its stats are really strong! Impressive.", _
 		"It's definitely got some good stats. Definitely!", _
 		"Its stats are all right, but kinda basic, as far as I can see.")
-	oList = oDialog.getControl ("lstAppraisal2")
+	oList = oDialog.getControl ("lstMax")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
 	oList.setVisible (True)
@@ -472,8 +472,10 @@ Sub subLstBestItemChanged (oEvent As object)
 	End If
 End Sub
 
-' subUpdateAppraisal1: Updates the text of the first appraisal.
-Sub subUpdateAppraisal1 (oDialog As Object, bIsKeepSelected As Boolean)
+' subUpdateTotalAppraisal: Updates the text of the stats total
+'						   appraisal.
+Sub subUpdateTotalAppraisal ( _
+		oDialog As Object, bIsKeepSelected As Boolean)
 	Dim sPokemon As String, oList As Object, nSelected As Integer
 	Dim mItems () As String, nI As Integer
 	
@@ -511,7 +513,7 @@ Sub subUpdateAppraisal1 (oDialog As Object, bIsKeepSelected As Boolean)
 		Next nI
 	End If
 	
-	oList = oDialog.getControl ("lstAppraisal1")
+	oList = oDialog.getControl ("lstTotal")
 	If bIsKeepSelected Then
 		nSelected = oList.getSelectedItemPos
 	End If
@@ -545,7 +547,7 @@ Function fnFindIV ( _
 	End If
 	subReadStarDust
 	nEvolved = UBound (aBaseStats.mEvolved)
-	ReDim maEvBaseStats (nEvolved) As New aStats
+	ReDim Preserve maEvBaseStats (nEvolved) As New aStats
 	For nI = 0 To nEvolved
 		aTempStats = fnGetBaseStats (aBaseStats.mEvolved (nI))
 		With maEvBaseStats (nI)
@@ -907,25 +909,21 @@ Function fnFilterAppraisals (aQuery As aFindIVParam, _
 		nStamina As Integer) As Boolean
 	Dim nTotal As Integer, nMax As Integer, sBest As String
 	
-	' The first appraisal.
+	' The stats total.
 	nTotal = nAttack + nDefense + nStamina
-	If aQuery.nAppraisal1 = 1 _
-			And Not (nTotal >= 37) Then
+	If aQuery.nTotal = 1 And Not (nTotal >= 37) Then
 		fnFilterAppraisals = True
 		Exit Function
 	End If
-	If aQuery.nAppraisal1 = 2 _
-			And Not (nTotal >= 30 And nTotal <= 36) Then
+	If aQuery.nTotal = 2 And Not (nTotal >= 30 And nTotal <= 36) Then
 		fnFilterAppraisals = True
 		Exit Function
 	End If
-	If aQuery.nAppraisal1 = 3 _
-			And Not (nTotal >= 23 And nTotal <= 29) Then
+	If aQuery.nTotal = 3 And Not (nTotal >= 23 And nTotal <= 29) Then
 		fnFilterAppraisals = True
 		Exit Function
 	End If
-	If aQuery.nAppraisal1 = 4 _
-			And Not (nTotal <= 22) Then
+	If aQuery.nTotal = 4 And Not (nTotal <= 22) Then
 		fnFilterAppraisals = True
 		Exit Function
 	End If
@@ -953,20 +951,20 @@ Function fnFilterAppraisals (aQuery As aFindIVParam, _
 			Exit Function
 		End If
 	End If
-	' The second appraisal.
-	If aQuery.nAppraisal2 = 1 And Not (nMax = 15) Then
+	' The max stat value.
+	If aQuery.nMax = 1 And Not (nMax = 15) Then
 		fnFilterAppraisals = True
 		Exit Function
 	End If
-	If aQuery.nAppraisal2 = 2 And Not (nMax = 13 Or nMax = 14) Then
+	If aQuery.nMax = 2 And Not (nMax = 13 Or nMax = 14) Then
 		fnFilterAppraisals = True
 		Exit Function
 	End If
-	If aQuery.nAppraisal2 = 3 And Not (nMax >= 8 And nMax <= 12) Then
+	If aQuery.nMax = 3 And Not (nMax >= 8 And nMax <= 12) Then
 		fnFilterAppraisals = True
 		Exit Function
 	End If
-	If aQuery.nAppraisal2 = 4 And Not (nMax <= 7) Then
+	If aQuery.nMax = 4 And Not (nMax <= 7) Then
 		fnFilterAppraisals = True
 		Exit Function
 	End If

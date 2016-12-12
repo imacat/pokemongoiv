@@ -264,7 +264,7 @@
   </dlg:radiogroup>
   <dlg:img dlg:style-id="0" dlg:id="imgTeamLeader" dlg:tab-index="28" dlg:left="10" dlg:top="110" dlg:width="30" dlg:height="35"/>
   <dlg:text dlg:id="txtLeaderAppraise" dlg:tab-index="27" dlg:left="45" dlg:top="116" dlg:width="180" dlg:height="8"/>
-  <dlg:menulist dlg:id="lstAppraisal1" dlg:tab-index="9" dlg:left="45" dlg:top="129" dlg:width="180" dlg:height="12" dlg:spin="true"/>
+  <dlg:menulist dlg:id="lstTotal" dlg:tab-index="9" dlg:left="45" dlg:top="129" dlg:width="180" dlg:height="12" dlg:spin="true"/>
   <dlg:text dlg:id="txtBestBefore" dlg:tab-index="23" dlg:left="45" dlg:top="146" dlg:width="20" dlg:height="8"/>
   <dlg:menulist dlg:id="lstBest" dlg:tab-index="10" dlg:left="65" dlg:top="144" dlg:width="45" dlg:height="12" dlg:spin="true">
    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subLstBestItemChanged?language=Basic&amp;location=application" script:language="Script"/>
@@ -272,7 +272,7 @@
   <dlg:text dlg:id="txtBestAfter" dlg:tab-index="24" dlg:left="110" dlg:top="146" dlg:width="100" dlg:height="8"/>
   <dlg:checkbox dlg:id="cbxBest2" dlg:tab-index="11" dlg:left="45" dlg:top="161" dlg:width="180" dlg:height="8" dlg:checked="false"/>
   <dlg:checkbox dlg:id="cbxBest3" dlg:tab-index="12" dlg:left="45" dlg:top="176" dlg:width="180" dlg:height="8" dlg:checked="false"/>
-  <dlg:menulist dlg:id="lstAppraisal2" dlg:tab-index="13" dlg:left="45" dlg:top="189" dlg:width="180" dlg:height="12" dlg:spin="true"/>
+  <dlg:menulist dlg:id="lstMax" dlg:tab-index="13" dlg:left="45" dlg:top="189" dlg:width="180" dlg:height="12" dlg:spin="true"/>
   <dlg:button dlg:id="btnOK" dlg:tab-index="14" dlg:disabled="true" dlg:left="40" dlg:top="215" dlg:width="60" dlg:height="15" dlg:default="true" dlg:button-type="ok"/>
   <dlg:button dlg:id="btnCancel" dlg:tab-index="15" dlg:left="135" dlg:top="215" dlg:width="60" dlg:height="15" dlg:button-type="cancel"/>
  </dlg:bulletinboard>
