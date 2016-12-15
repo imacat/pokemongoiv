@@ -13,7 +13,7 @@
 ' limitations under the License.
 
 ' 1Data: The Pokémon GO data for IV calculation
-'   by imacat <imacat@mail.imacat.idv.tw>, 2016-12-06
+'   by imacat <imacat@mail.imacat.idv.tw>, 2016-12-15
 '   Generated with 9Load.subReadDataSheets ()
 
 Option Explicit
@@ -171,7 +171,8 @@ Function fnGetBaseStatsData As Variant
 		Array ("Dragonair", "148", 122, 163, 138, Array ("Dragonite")), _
 		Array ("Dragonite", "149", 182, 263, 201, Array ()), _
 		Array ("Mewtwo", "150", 212, 330, 200, Array ()), _
-		Array ("Mew", "151", 200, 210, 209, Array ()))
+		Array ("Mew", "151", 200, 210, 209, Array ()), _
+		Array ("Igglybuff", "174", 180, 69, 34, Array ("Jigglypuff", "Wigglytuff")))
 End Function
 
 ' fnGetCPMData: Returns the combat power multiplier data.

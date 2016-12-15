@@ -549,15 +549,17 @@ Function fnFindIV ( _
 	End If
 	subReadStarDust
 	nEvolved = UBound (aBaseStats.mEvolved)
-	ReDim Preserve maEvBaseStats (nEvolved) As New aStats
-	For nI = 0 To nEvolved
-		aTempStats = fnGetBaseStats (aBaseStats.mEvolved (nI))
-		With maEvBaseStats (nI)
-			.nAttack = aTempStats.nAttack
-			.nDefense = aTempStats.nDefense
-			.nStamina = aTempStats.nStamina
-		End With
-	Next nI
+	If nEvolved &gt; -1 Then
+		ReDim Preserve maEvBaseStats (nEvolved) As New aStats
+		For nI = 0 To nEvolved
+			aTempStats = fnGetBaseStats (aBaseStats.mEvolved (nI))
+			With maEvBaseStats (nI)
+				.nAttack = aTempStats.nAttack
+				.nDefense = aTempStats.nDefense
+				.nStamina = aTempStats.nStamina
+			End With
+		Next nI
+	End If
 	nN = -1
 	For fLevel = 1 To UBound (mStarDust) Step fStep
 		If mStarDust (CInt (fLevel - 0.5)) = aQuery.nStarDust Then

@@ -824,6 +824,11 @@
 				<value>%origin%/icons/pokemons/mew.png</value>
 			</prop>
 		</node>
+		<node oor:name="PokemonIgglybuff" oor:op="replace">
+			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
+				<value>%origin%/icons/pokemons/igglybuff.png</value>
+			</prop>
+		</node>
 	</node>
 	
 <!--  Localized messages -->	
