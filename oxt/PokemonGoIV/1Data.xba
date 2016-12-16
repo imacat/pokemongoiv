@@ -15,7 +15,7 @@
 &apos; limitations under the License.
 
 &apos; 1Data: The Pokémon GO data for IV calculation
-&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2016-12-15
+&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2016-12-16
 &apos;   Generated with 9Load.subReadDataSheets ()
 
 Option Explicit
@@ -174,7 +174,13 @@ Function fnGetBaseStatsData As Variant
 		Array (&quot;Dragonite&quot;, &quot;149&quot;, 182, 263, 201, Array ()), _
 		Array (&quot;Mewtwo&quot;, &quot;150&quot;, 212, 330, 200, Array ()), _
 		Array (&quot;Mew&quot;, &quot;151&quot;, 200, 210, 209, Array ()), _
-		Array (&quot;Igglybuff&quot;, &quot;174&quot;, 180, 69, 34, Array (&quot;Jigglypuff&quot;, &quot;Wigglytuff&quot;)))
+		Array (&quot;Pichu&quot;, &quot;172&quot;, 40, 77, 63, Array (&quot;Pikachu&quot;, &quot;Raichu&quot;)), _
+		Array (&quot;Cleffa&quot;, &quot;173&quot;, 100, 75, 91, Array (&quot;Clefairy&quot;, &quot;Clefable&quot;)), _
+		Array (&quot;Igglybuff&quot;, &quot;174&quot;, 180, 69, 34, Array (&quot;Jigglypuff&quot;, &quot;Wigglytuff&quot;)), _
+		Array (&quot;Togepi&quot;, &quot;175&quot;, 70, 67, 116, Array ()), _
+		Array (&quot;Smoochum&quot;, &quot;238&quot;, 90, 153, 116, Array (&quot;Jynx&quot;)), _
+		Array (&quot;Elekid&quot;, &quot;239&quot;, 90, 135, 110, Array (&quot;Electabuzz&quot;)), _
+		Array (&quot;Magby&quot;, &quot;240&quot;, 90, 151, 108, Array (&quot;Magmar&quot;)))
 End Function
 
 &apos; fnGetCPMData: Returns the combat power multiplier data.

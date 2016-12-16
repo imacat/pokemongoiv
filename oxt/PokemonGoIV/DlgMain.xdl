@@ -162,7 +162,13 @@
     <dlg:menuitem dlg:value="Dragonite"/>
     <dlg:menuitem dlg:value="Mewtwo"/>
     <dlg:menuitem dlg:value="Mew"/>
+    <dlg:menuitem dlg:value="Pichu"/>
+    <dlg:menuitem dlg:value="Cleffa"/>
     <dlg:menuitem dlg:value="Igglybuff"/>
+    <dlg:menuitem dlg:value="Togepi"/>
+    <dlg:menuitem dlg:value="Smoochum"/>
+    <dlg:menuitem dlg:value="Elekid"/>
+    <dlg:menuitem dlg:value="Magby"/>
    </dlg:menupopup>
    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subLstPokemonSelected?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:menulist>
