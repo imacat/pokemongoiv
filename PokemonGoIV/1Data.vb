@@ -13,7 +13,7 @@
 ' limitations under the License.
 
 ' 1Data: The Pokémon GO data for IV calculation
-'   by imacat <imacat@mail.imacat.idv.tw>, 2016-12-16
+'   by imacat <imacat@mail.imacat.idv.tw>, 2016-12-23
 '   Generated with 9Load.subReadDataSheets ()
 
 Option Explicit
@@ -175,7 +175,8 @@ Function fnGetBaseStatsData As Variant
 		Array ("Pichu", "172", 40, 77, 63, Array ("Pikachu", "Raichu")), _
 		Array ("Cleffa", "173", 100, 75, 91, Array ("Clefairy", "Clefable")), _
 		Array ("Igglybuff", "174", 180, 69, 34, Array ("Jigglypuff", "Wigglytuff")), _
-		Array ("Togepi", "175", 70, 67, 116, Array ()), _
+		Array ("Togepi", "175", 70, 67, 116, Array ("Togetic")), _
+		Array ("Togetic", "176", 110, 140, 191, Array ()), _
 		Array ("Smoochum", "238", 90, 153, 116, Array ("Jynx")), _
 		Array ("Elekid", "239", 90, 135, 110, Array ("Electabuzz")), _
 		Array ("Magby", "240", 90, 151, 108, Array ("Magmar")))

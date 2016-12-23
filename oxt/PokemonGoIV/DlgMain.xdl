@@ -166,6 +166,7 @@
     <dlg:menuitem dlg:value="Cleffa"/>
     <dlg:menuitem dlg:value="Igglybuff"/>
     <dlg:menuitem dlg:value="Togepi"/>
+    <dlg:menuitem dlg:value="Togetic"/>
     <dlg:menuitem dlg:value="Smoochum"/>
     <dlg:menuitem dlg:value="Elekid"/>
     <dlg:menuitem dlg:value="Magby"/>
