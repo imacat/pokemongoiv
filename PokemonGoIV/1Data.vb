@@ -13,7 +13,7 @@
 ' limitations under the License.
 
 ' 1Data: The Pokémon GO data for IV calculation
-'   by imacat <imacat@mail.imacat.idv.tw>, 2016-12-23
+'   by imacat <imacat@mail.imacat.idv.tw>, 2017-01-03
 '   Generated with 9Load.subReadDataSheets ()
 
 Option Explicit
@@ -31,7 +31,7 @@ Function fnGetBaseStatsData As Variant
 		Array ("Wartortle", "008", 118, 126, 155, Array ("Blastoise")), _
 		Array ("Blastoise", "009", 158, 171, 210, Array ()), _
 		Array ("Caterpie", "010", 90, 55, 62, Array ("Metapod", "Butterfree")), _
-		Array ("Metapod", "011", 100, 45, 64, Array ("Butterfree")), _
+		Array ("Metapod", "011", 100, 45, 94, Array ("Butterfree")), _
 		Array ("Butterfree", "012", 120, 167, 151, Array ()), _
 		Array ("Weedle", "013", 80, 63, 55, Array ("Kakuna", "Beedrill")), _
 		Array ("Kakuna", "014", 90, 46, 86, Array ("Beedrill")), _
