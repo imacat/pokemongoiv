@@ -68,6 +68,9 @@ Sub subMain
 	Dim aBaseStats As New aStats, maIVs As Variant, nI As Integer
 	Dim aQuery As New aFindIVParam
 	
+	&apos; TODO: To be removed.
+	BasicLibraries.loadLibrary &quot;XrayTool&quot;
+	
 	aQuery = fnAskParam
 	If aQuery.bIsCancelled Then
 		Exit Sub
@@ -83,13 +86,26 @@ End Sub
 
 &apos; fnAskParam: Asks the users for the parameters for the Pokémon.
 Function fnAskParam As aFindIVParam
-	Dim oDialog As Object, oDialogModel As Object
+	Dim oDialog As Object
+	Dim oListPokemons As Object, mPokemons () As String, nI As Integer
 	Dim bIsBestAttack As Boolean, bIsBestDefense As Boolean
 	Dim bIsBestHP As Boolean
 	Dim aQuery As New aFindIVParam
 	
 	DialogLibraries.loadLibrary &quot;PokemonGoIV&quot;
 	oDialog = CreateUnoDialog (DialogLibraries.PokemonGoIV.DlgMain)
+	
+	&apos; Sets the Pokémons list
+	oListPokemons = oDialog.getControl (&quot;lstPokemon&quot;)
+	oListPokemons.removeItems (0, oListPokemons.getItemCount)
+	subReadBaseStats
+	ReDim mPokemons (UBound (maBaseStats)) As String
+	For nI = 0 To UBound (maBaseStats)
+		mPokemons (nI) = _
+			fnMapPokemonIdToName (maBaseStats (nI).sPokemon)
+	Next nI
+	oListPokemons.addItems (mPokemons, 0)
+	
 	oDialog.getControl (&quot;lstTotal&quot;).setVisible (False)
 	oDialog.getControl (&quot;txtBestBefore&quot;).setVisible (False)
 	oDialog.getControl (&quot;lstBest&quot;).setVisible (False)
@@ -108,6 +124,7 @@ Function fnAskParam As aFindIVParam
 		fnAskParam = aQuery
 		Exit Function
 	End If
+	Xray oDialog.getControl (&quot;lstPokemon&quot;)
 	
 	With aQuery
 		.sPokemon = oDialog.getControl (&quot;lstPokemon&quot;).getSelectedItem
@@ -1033,6 +1050,34 @@ End Function
 &apos; fnFloor: Returns the floor of the number
 Function fnFloor (fNumber As Double) As Integer
 	fnFloor = CInt (fNumber - 0.5)
+End Function
+
+&apos; fnMapPokemonNameToId: Maps the English Pokémon names to their IDs.
+Function fnMapPokemonNameToId (sName As String) As String
+	Dim sId As String
+	
+	sId = &quot;&quot;
+	If sName = &quot;Farfetch&apos;d&quot; Then
+		sId = &quot;Farfetchd&quot;
+	End If
+	If sName = &quot;Nidoran♀&quot; Then
+		sId = &quot;NidoranFemale&quot;
+	End If
+	If sName = &quot;Nidoran♂&quot; Then
+		sId = &quot;NidoranMale&quot;
+	End If
+	If sName = &quot;Mr. Mime&quot; Then
+		sId = &quot;MrMime&quot;
+	End If
+	If sId = &quot;&quot; Then
+		sId = sName
+	End If
+	fnMapPokemonNameToId = sId
+End Function
+
+&apos; fnMapPokemonIdToName: Maps the Pokémon IDs to their localized names.
+Function fnMapPokemonIdToName (sId As String) As String
+	fnMapPokemonIdToName = fnGetResString (&quot;Pokemon&quot; &amp; sId)
 End Function
 
 &apos; subReadBaseStats: Reads the base stats table.

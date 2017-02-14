@@ -113,7 +113,8 @@ Function fnReadBaseStatsSheet As String
 	For nI = 1 To UBound (mData) - 1
 		sEvolveForms = fnFindEvolveForms (mData (nI))
 		sOutput = sOutput _
-			&amp; Chr (9) &amp; Chr (9) &amp; &quot;Array (&quot;&quot;&quot; &amp; mData (nI) (0) _
+			&amp; Chr (9) &amp; Chr (9) &amp; &quot;Array (&quot;&quot;&quot; _
+				&amp; fnMapPokemonNameToId (mData (nI) (0)) _
 				&amp; &quot;&quot;&quot;, &quot;&quot;&quot; &amp; mData (nI) (1) _
 				&amp; &quot;&quot;&quot;, &quot; &amp; mData (nI) (3) _
 				&amp; &quot;, &quot; &amp; mData (nI) (4) _
@@ -123,7 +124,8 @@ Function fnReadBaseStatsSheet As String
 	nI = UBound (mData)
 	sEvolveForms = fnFindEvolveForms (mData (nI))
 	sOutput = sOutput _
-		&amp; Chr (9) &amp; Chr (9) &amp; &quot;Array (&quot;&quot;&quot; &amp; mData (nI) (0) _
+		&amp; Chr (9) &amp; Chr (9) &amp; &quot;Array (&quot;&quot;&quot; _
+			&amp; fnMapPokemonNameToId (mData (nI) (0)) _
 			&amp; &quot;&quot;&quot;, &quot;&quot;&quot; &amp; mData (nI) (1) _
 			&amp; &quot;&quot;&quot;, &quot; &amp; mData (nI) (3) _
 			&amp; &quot;, &quot; &amp; mData (nI) (4) _
@@ -133,6 +135,7 @@ Function fnReadBaseStatsSheet As String
 	fnReadBaseStatsSheet = sOutput
 End Function
 
+&apos; fnFindEvolveForms: Finds the evolved forms of the Pokémons.
 Function fnFindEvolveForms (mData () As Variant) As String
 	Dim nJ As Integer, nStart As Integer, nEnd As Integer
 	Dim sEvolveForms As String
@@ -164,10 +167,12 @@ Function fnFindEvolveForms (mData () As Variant) As String
 		If nEnd = nStart - 1 Then
 			sEvolveForms = &quot;Array ()&quot;
 		Else
-			sEvolveForms = &quot;&quot;&quot;&quot; &amp; mData (nStart) &amp; &quot;&quot;&quot;&quot;
+			sEvolveForms = &quot;&quot;&quot;&quot; _
+				&amp; fnMapPokemonNameToId (mData (nStart)) &amp; &quot;&quot;&quot;&quot;
 			For nJ = nStart + 1 To nEnd
 				sEvolveForms = sEvolveForms _
-					&amp; &quot;, &quot;&quot;&quot; &amp; mData (nJ) &amp; &quot;&quot;&quot;&quot;
+					&amp; &quot;, &quot;&quot;&quot; _
+					&amp; fnMapPokemonNameToId (mData (nJ)) &amp; &quot;&quot;&quot;&quot;
 			Next nJ
 			sEvolveForms = &quot;Array (&quot; &amp; sEvolveForms &amp; &quot;)&quot;
 		End If

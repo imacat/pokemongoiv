@@ -112,7 +112,7 @@ Function fnReadBaseStatsSheet As String
 		sEvolveForms = fnFindEvolveForms (mData (nI))
 		sOutput = sOutput _
 			& Chr (9) & Chr (9) & "Array (""" _
-				& fnMapNameToId (mData (nI) (0)) _
+				& fnMapPokemonNameToId (mData (nI) (0)) _
 				& """, """ & mData (nI) (1) _
 				& """, " & mData (nI) (3) _
 				& ", " & mData (nI) (4) _
@@ -123,7 +123,7 @@ Function fnReadBaseStatsSheet As String
 	sEvolveForms = fnFindEvolveForms (mData (nI))
 	sOutput = sOutput _
 		& Chr (9) & Chr (9) & "Array (""" _
-			& fnMapNameToId (mData (nI) (0)) _
+			& fnMapPokemonNameToId (mData (nI) (0)) _
 			& """, """ & mData (nI) (1) _
 			& """, " & mData (nI) (3) _
 			& ", " & mData (nI) (4) _
@@ -131,29 +131,6 @@ Function fnReadBaseStatsSheet As String
 			& ", " & sEvolveForms & "))" & Chr (10) _
 		& "End Function"
 	fnReadBaseStatsSheet = sOutput
-End Function
-
-' fnMapNameToId: Maps the English Pokémon names to their IDs.
-Function fnMapNameToId (sName As String) As String
-	Dim sId As String
-	
-	sId = ""
-	If sName = "Farfetch'd" Then
-		sId = "Farfetchd"
-	End If
-	If sName = "Nidoran♀" Then
-		sId = "NidoranFemale"
-	End If
-	If sName = "Nidoran♂" Then
-		sId = "NidoranMale"
-	End If
-	If sName = "Mr. Mime" Then
-		sId = "MrMime"
-	End If
-	If sId = "" Then
-		sId = sName
-	End If
-	fnMapNameToId = sId
 End Function
 
 ' fnFindEvolveForms: Finds the evolved forms of the Pokémons.
@@ -188,10 +165,12 @@ Function fnFindEvolveForms (mData () As Variant) As String
 		If nEnd = nStart - 1 Then
 			sEvolveForms = "Array ()"
 		Else
-			sEvolveForms = """" & fnMapNameToId (mData (nStart)) & """"
+			sEvolveForms = """" _
+				& fnMapPokemonNameToId (mData (nStart)) & """"
 			For nJ = nStart + 1 To nEnd
 				sEvolveForms = sEvolveForms _
-					& ", """ & fnMapNameToId (mData (nJ)) & """"
+					& ", """ _
+					& fnMapPokemonNameToId (mData (nJ)) & """"
 			Next nJ
 			sEvolveForms = "Array (" & sEvolveForms & ")"
 		End If

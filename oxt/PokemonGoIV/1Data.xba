@@ -15,7 +15,7 @@
 &apos; limitations under the License.
 
 &apos; 1Data: The Pokémon GO data for IV calculation
-&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2017-01-03
+&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2017-02-14
 &apos;   Generated with 9Load.subReadDataSheets ()
 
 Option Explicit
@@ -51,10 +51,10 @@ Function fnGetBaseStatsData As Variant
 		Array (&quot;Raichu&quot;, &quot;026&quot;, 120, 193, 165, Array ()), _
 		Array (&quot;Sandshrew&quot;, &quot;027&quot;, 100, 126, 145, Array (&quot;Sandslash&quot;)), _
 		Array (&quot;Sandslash&quot;, &quot;028&quot;, 150, 182, 202, Array ()), _
-		Array (&quot;Nidoran♀&quot;, &quot;029&quot;, 110, 86, 94, Array (&quot;Nidorina&quot;, &quot;Nidoqueen&quot;)), _
+		Array (&quot;NidoranFemale&quot;, &quot;029&quot;, 110, 86, 94, Array (&quot;Nidorina&quot;, &quot;Nidoqueen&quot;)), _
 		Array (&quot;Nidorina&quot;, &quot;030&quot;, 140, 117, 126, Array (&quot;Nidoqueen&quot;)), _
 		Array (&quot;Nidoqueen&quot;, &quot;031&quot;, 180, 180, 174, Array ()), _
-		Array (&quot;Nidoran♂&quot;, &quot;032&quot;, 92, 105, 76, Array (&quot;Nidorino&quot;, &quot;Nidoking&quot;)), _
+		Array (&quot;NidoranMale&quot;, &quot;032&quot;, 92, 105, 76, Array (&quot;Nidorino&quot;, &quot;Nidoking&quot;)), _
 		Array (&quot;Nidorino&quot;, &quot;033&quot;, 122, 137, 112, Array (&quot;Nidoking&quot;)), _
 		Array (&quot;Nidoking&quot;, &quot;034&quot;, 162, 204, 157, Array ()), _
 		Array (&quot;Clefairy&quot;, &quot;035&quot;, 140, 107, 116, Array (&quot;Clefable&quot;)), _
@@ -105,7 +105,7 @@ Function fnGetBaseStatsData As Variant
 		Array (&quot;Slowbro&quot;, &quot;080&quot;, 190, 177, 194, Array ()), _
 		Array (&quot;Magnemite&quot;, &quot;081&quot;, 50, 165, 128, Array (&quot;Magneton&quot;)), _
 		Array (&quot;Magneton&quot;, &quot;082&quot;, 100, 223, 182, Array ()), _
-		Array (&quot;Farfetch&apos;d&quot;, &quot;083&quot;, 104, 124, 118, Array ()), _
+		Array (&quot;Farfetchd&quot;, &quot;083&quot;, 104, 124, 118, Array ()), _
 		Array (&quot;Doduo&quot;, &quot;084&quot;, 70, 158, 88, Array (&quot;Dodrio&quot;)), _
 		Array (&quot;Dodrio&quot;, &quot;085&quot;, 120, 218, 145, Array ()), _
 		Array (&quot;Seel&quot;, &quot;086&quot;, 130, 85, 128, Array (&quot;Dewgong&quot;)), _
@@ -144,7 +144,7 @@ Function fnGetBaseStatsData As Variant
 		Array (&quot;Seaking&quot;, &quot;119&quot;, 160, 175, 154, Array ()), _
 		Array (&quot;Staryu&quot;, &quot;120&quot;, 60, 137, 112, Array (&quot;Starmie&quot;)), _
 		Array (&quot;Starmie&quot;, &quot;121&quot;, 120, 210, 184, Array ()), _
-		Array (&quot;Mr. Mime&quot;, &quot;122&quot;, 80, 192, 233, Array ()), _
+		Array (&quot;MrMime&quot;, &quot;122&quot;, 80, 192, 233, Array ()), _
 		Array (&quot;Scyther&quot;, &quot;123&quot;, 140, 218, 170, Array ()), _
 		Array (&quot;Jynx&quot;, &quot;124&quot;, 130, 223, 182, Array ()), _
 		Array (&quot;Electabuzz&quot;, &quot;125&quot;, 130, 198, 173, Array ()), _

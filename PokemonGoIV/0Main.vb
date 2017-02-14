@@ -81,13 +81,26 @@ End Sub
 
 ' fnAskParam: Asks the users for the parameters for the Pokémon.
 Function fnAskParam As aFindIVParam
-	Dim oDialog As Object, oDialogModel As Object
+	Dim oDialog As Object
+	Dim oListPokemons As Object, mPokemons () As String, nI As Integer
 	Dim bIsBestAttack As Boolean, bIsBestDefense As Boolean
 	Dim bIsBestHP As Boolean
 	Dim aQuery As New aFindIVParam
 	
 	DialogLibraries.loadLibrary "PokemonGoIV"
 	oDialog = CreateUnoDialog (DialogLibraries.PokemonGoIV.DlgMain)
+	
+	' Sets the Pokémons list
+	oListPokemons = oDialog.getControl ("lstPokemon")
+	oListPokemons.removeItems (0, oListPokemons.getItemCount)
+	subReadBaseStats
+	ReDim mPokemons (UBound (maBaseStats)) As String
+	For nI = 0 To UBound (maBaseStats)
+		mPokemons (nI) = _
+			fnMapPokemonIdToName (maBaseStats (nI).sPokemon)
+	Next nI
+	oListPokemons.addItems (mPokemons, 0)
+	
 	oDialog.getControl ("lstTotal").setVisible (False)
 	oDialog.getControl ("txtBestBefore").setVisible (False)
 	oDialog.getControl ("lstBest").setVisible (False)
@@ -106,6 +119,7 @@ Function fnAskParam As aFindIVParam
 		fnAskParam = aQuery
 		Exit Function
 	End If
+	Xray oDialog.getControl ("lstPokemon")
 	
 	With aQuery
 		.sPokemon = oDialog.getControl ("lstPokemon").getSelectedItem
@@ -1031,6 +1045,34 @@ End Function
 ' fnFloor: Returns the floor of the number
 Function fnFloor (fNumber As Double) As Integer
 	fnFloor = CInt (fNumber - 0.5)
+End Function
+
+' fnMapPokemonNameToId: Maps the English Pokémon names to their IDs.
+Function fnMapPokemonNameToId (sName As String) As String
+	Dim sId As String
+	
+	sId = ""
+	If sName = "Farfetch'd" Then
+		sId = "Farfetchd"
+	End If
+	If sName = "Nidoran♀" Then
+		sId = "NidoranFemale"
+	End If
+	If sName = "Nidoran♂" Then
+		sId = "NidoranMale"
+	End If
+	If sName = "Mr. Mime" Then
+		sId = "MrMime"
+	End If
+	If sId = "" Then
+		sId = sName
+	End If
+	fnMapPokemonNameToId = sId
+End Function
+
+' fnMapPokemonIdToName: Maps the Pokémon IDs to their localized names.
+Function fnMapPokemonIdToName (sId As String) As String
+	fnMapPokemonIdToName = fnGetResString ("Pokemon" & sId)
 End Function
 
 ' subReadBaseStats: Reads the base stats table.
