@@ -40,834 +40,175 @@
 				<value xml:lang="zh-TW">找不出符合的 IV 值。</value>
 			</prop>
 		</node>
-		<!-- The team leader appraisals -->
-		<node oor:name="TeamValor" oor:op="replace">		
+		<node oor:name="StatAttack" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
-				<value>Team Valor</value>
+				<value>Attack</value>
 			</prop>
 		</node>
+		<node oor:name="StatDefense" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Defense</value>
+			</prop>
+		</node>
+		<node oor:name="StatHP" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>HP</value>
+			</prop>
+		</node>
+		<!-- Team Valor (red) -->
 		<node oor:name="AppraiseFromCandela" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Candela, leader of Team Valor, says:</value>
 				<value xml:lang="zh-TW">Valor 隊隊長 Candela 說：</value>
 			</prop>
 		</node>
-		<node oor:name="TeamMystic" oor:op="replace">		
+		<node oor:name="AppraisalValorTotal37OrHigher" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
-				<value>Team Mystic</value>
+				<value>Overall, your [Pokémon] simply amazes me. It can accomplish anything!</value>
 			</prop>
 		</node>
+		<node oor:name="AppraisalValorTotal30To36" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Overall, your [Pokémon] is a strong Pokémon. You should be proud!</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalValorTotal23To29" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Overall, your [Pokémon] is a decent Pokémon.</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalValorTotalUpTo22" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Overall, your [Pokémon] may not be great in battle, but I still like it!</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalValorBestToo" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>I'm just as impressed with its [Stat].</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalValorMax15" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>I'm blown away by its stats. WOW!</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalValorMax13Or14" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>It's got excellent stats! How exciting!</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalValorMax8To12" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Its stats indicate that in battle, it'll get the job done.</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalValorMaxUpTo7" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Its stats don't point to greatness in battle.</value>
+			</prop>
+		</node>
+		<!-- Team Mystic (blue) -->
 		<node oor:name="AppraiseFromBlanche" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Blanche, leader of Team Mystic, says:</value>
 				<value xml:lang="zh-TW">Mystic 隊隊長 Blanche 說：</value>
 			</prop>
 		</node>
-		<node oor:name="TeamInstinct" oor:op="replace">		
+		<node oor:name="AppraisalMysticTotal37OrHigher" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
-				<value>Team Instinct</value>
+				<value>Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!</value>
 			</prop>
 		</node>
+		<node oor:name="AppraisalMysticTotal30To36" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Overall, your [Pokémon] has certainly caught my attention.</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalMysticTotal23To29" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Overall, your [Pokémon] is above average.</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalMysticTotalUpTo22" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Overall, your [Pokémon] is not likely to make much headway in battle.</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalMysticBestToo" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>It is matched equally by its [Stat].</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalMysticMax15" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Its stats exceed my calculations. It's incredible!</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalMysticMax13Or14" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>I am certainly impressed by its stats, I must say.</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalMysticMax8To12" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Its stats are noticeably trending to the positive.</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalMysticMaxUpTo7" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Its stats are not out of the norm, in my opinion.</value>
+			</prop>
+		</node>
+		<!-- Team Instinct (yellow) -->
 		<node oor:name="AppraiseFromSpark" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Spark, leader of Team Instinct, says:</value>
 				<value xml:lang="zh-TW">Instinct 隊隊長 Spark 說：</value>
 			</prop>
 		</node>
-		<!-- The localized Pokémon names -->
-		<node oor:name="PokemonBulbasaur" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Bulbasaur</value>
+		<node oor:name="AppraisalInstinctTotal37OrHigher" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Overall, your [Pokémon] is not likely to make much headway in battle.</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonIvysaur" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Ivysaur</value>
+		<node oor:name="AppraisalInstinctTotal30To36" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Overall, your [Pokémon] is really strong!</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonVenusaur" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Venusaur</value>
+		<node oor:name="AppraisalInstinctTotal23To29" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Overall, your [Pokémon] is pretty decent!</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonCharmander" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Charmander</value>
+		<node oor:name="AppraisalInstinctTotalUpTo22" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Overall, your [Pokémon] has room for improvement as far as battling goes.</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonCharmeleon" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Charmeleon</value>
+		<node oor:name="AppraisalInstinctBestToo" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Its [Stat] is great, too!</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonCharizard" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Charizard</value>
+		<node oor:name="AppraisalInstinctMax15" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Its stats are the best I've ever seen! No doubt about it!</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonSquirtle" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Squirtle</value>
+		<node oor:name="AppraisalInstinctMax13Or14" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Its stats are really strong! Impressive.</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonWartortle" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Wartortle</value>
+		<node oor:name="AppraisalInstinctMax8To12" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>It's definitely got some good stats. Definitely!</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonBlastoise" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Blastoise</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonCaterpie" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Caterpie</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMetapod" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Metapod</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonButterfree" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Butterfree</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonWeedle" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Weedle</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonKakuna" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Kakuna</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonBeedrill" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Beedrill</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonPidgey" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Pidgey</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonPidgeotto" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Pidgeotto</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonPidgeot" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Pidgeot</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonRattata" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Rattata</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonRaticate" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Raticate</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonSpearow" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Spearow</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonFearow" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Fearow</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonEkans" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Ekans</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonArbok" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Arbok</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonPikachu" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Pikachu</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonRaichu" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Raichu</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonSandshrew" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Sandshrew</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonSandslash" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Sandslash</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonNidoranFemale" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Nidoran♀</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonNidorina" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Nidorina</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonNidoqueen" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Nidoqueen</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonNidoranMale" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Nidoran♂</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonNidorino" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Nidorino</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonNidoking" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Nidoking</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonClefairy" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Clefairy</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonClefable" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Clefable</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonVulpix" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Vulpix</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonNinetales" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Ninetales</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonJigglypuff" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Jigglypuff</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonWigglytuff" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Wigglytuff</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonZubat" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Zubat</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonGolbat" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Golbat</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonOddish" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Oddish</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonGloom" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Gloom</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonVileplume" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Vileplume</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonParas" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Paras</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonParasect" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Parasect</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonVenonat" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Venonat</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonVenomoth" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Venomoth</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonDiglett" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Diglett</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonDugtrio" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Dugtrio</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMeowth" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Meowth</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonPersian" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Persian</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonPsyduck" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Psyduck</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonGolduck" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Golduck</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMankey" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Mankey</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonPrimeape" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Primeape</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonGrowlithe" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Growlithe</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonArcanine" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Arcanine</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonPoliwag" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Poliwag</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonPoliwhirl" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Poliwhirl</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonPoliwrath" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Poliwrath</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonAbra" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Abra</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonKadabra" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Kadabra</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonAlakazam" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Alakazam</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMachop" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Machop</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMachoke" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Machoke</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMachamp" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Machamp</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonBellsprout" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Bellsprout</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonWeepinbell" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Weepinbell</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonVictreebel" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Victreebel</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonTentacool" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Tentacool</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonTentacruel" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Tentacruel</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonGeodude" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Geodude</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonGraveler" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Graveler</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonGolem" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Golem</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonPonyta" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Ponyta</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonRapidash" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Rapidash</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonSlowpoke" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Slowpoke</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonSlowbro" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Slowbro</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMagnemite" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Magnemite</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMagneton" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Magneton</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonFarfetchd" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Farfetch'd</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonDoduo" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Doduo</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonDodrio" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Dodrio</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonSeel" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Seel</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonDewgong" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Dewgong</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonGrimer" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Grimer</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMuk" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Muk</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonShellder" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Shellder</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonCloyster" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Cloyster</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonGastly" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Gastly</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonHaunter" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Haunter</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonGengar" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Gengar</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonOnix" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Onix</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonDrowzee" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Drowzee</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonHypno" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Hypno</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonKrabby" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Krabby</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonKingler" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Kingler</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonVoltorb" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Voltorb</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonElectrode" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Electrode</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonExeggcute" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Exeggcute</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonExeggutor" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Exeggutor</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonCubone" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Cubone</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMarowak" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Marowak</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonHitmonlee" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Hitmonlee</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonHitmonchan" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Hitmonchan</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonLickitung" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Lickitung</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonKoffing" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Koffing</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonWeezing" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Weezing</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonRhyhorn" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Rhyhorn</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonRhydon" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Rhydon</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonChansey" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Chansey</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonTangela" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Tangela</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonKangaskhan" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Kangaskhan</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonHorsea" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Horsea</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonSeadra" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Seadra</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonGoldeen" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Goldeen</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonSeaking" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Seaking</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonStaryu" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Staryu</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonStarmie" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Starmie</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMrMime" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Mr. Mime</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonScyther" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Scyther</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonJynx" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Jynx</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonElectabuzz" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Electabuzz</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMagmar" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Magmar</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonPinsir" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Pinsir</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonTauros" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Tauros</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMagikarp" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Magikarp</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonGyarados" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Gyarados</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonLapras" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Lapras</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonDitto" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Ditto</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonEevee" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Eevee</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonVaporeon" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Vaporeon</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonJolteon" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Jolteon</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonFlareon" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Flareon</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonPorygon" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Porygon</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonOmanyte" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Omanyte</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonOmastar" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Omastar</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonKabuto" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Kabuto</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonKabutops" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Kabutops</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonAerodactyl" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Aerodactyl</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonSnorlax" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Snorlax</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonArticuno" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Articuno</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonZapdos" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Zapdos</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMoltres" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Moltres</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonDratini" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Dratini</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonDragonair" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Dragonair</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonDragonite" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Dragonite</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMewtwo" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Mewtwo</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMew" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Mew</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonPichu" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Pichu</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonCleffa" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Cleffa</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonIgglybuff" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Igglybuff</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonTogepi" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Togepi</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonTogetic" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Togetic</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonSmoochum" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Smoochum</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonElekid" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Elekid</value>
-			</prop>
-		</node>
-		<node oor:name="PokemonMagby" oor:op="replace">
-			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">
-				<value>Magby</value>
+		<node oor:name="AppraisalInstinctMaxUpTo7" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Its stats are all right, but kinda basic, as far as I can see.</value>
 			</prop>
 		</node>
 	</node>

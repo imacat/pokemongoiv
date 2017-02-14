@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE dlg:window PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "dialog.dtd">
-<dlg:window xmlns:dlg="http://openoffice.org/2000/dialog" xmlns:script="http://openoffice.org/2000/script" dlg:id="DlgMain" dlg:left="100" dlg:top="100" dlg:width="235" dlg:height="235" dlg:closeable="true" dlg:moveable="true" dlg:title="&amp;3.DlgMain.Title">
+<dlg:window xmlns:dlg="http://openoffice.org/2000/dialog" xmlns:script="http://openoffice.org/2000/script" dlg:id="DlgMain" dlg:left="100" dlg:top="100" dlg:width="235" dlg:height="235" dlg:closeable="true" dlg:moveable="true" dlg:title="&amp;1.DlgMain.Title">
  <dlg:styles>
   <dlg:style dlg:style-id="0" dlg:border="none"/>
   <dlg:style dlg:style-id="1" dlg:background-color="0xff0000" dlg:text-color="0xffffff" dlg:font-weight="100"/>
@@ -8,20 +8,180 @@
   <dlg:style dlg:style-id="3" dlg:background-color="0xffff00"/>
  </dlg:styles>
  <dlg:bulletinboard>
-  <dlg:text dlg:id="txtPokemon" dlg:tab-index="16" dlg:left="5" dlg:top="26" dlg:width="30" dlg:height="8" dlg:value="&amp;23.DlgMain.txtPokemon.Label"/>
+  <dlg:text dlg:id="txtPokemon" dlg:tab-index="16" dlg:left="5" dlg:top="26" dlg:width="30" dlg:height="8" dlg:value="&amp;2.DlgMain.txtPokemon.Label"/>
   <dlg:menulist dlg:id="lstPokemon" dlg:tab-index="0" dlg:left="35" dlg:top="24" dlg:width="55" dlg:height="12" dlg:spin="true">
+   <dlg:menupopup>
+    <dlg:menuitem dlg:value="&amp;1001.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1002.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1003.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1004.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1005.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1006.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1007.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1008.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1009.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1010.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1011.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1012.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1013.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1014.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1015.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1016.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1017.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1018.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1019.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1020.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1021.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1022.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1023.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1024.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1025.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1026.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1027.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1028.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1029.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1030.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1031.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1032.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1033.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1034.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1035.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1036.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1037.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1038.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1039.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1040.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1041.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1042.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1043.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1044.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1045.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1046.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1047.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1048.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1049.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1050.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1051.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1052.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1053.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1054.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1055.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1056.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1057.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1058.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1059.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1060.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1061.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1062.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1063.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1064.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1065.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1066.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1067.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1068.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1069.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1070.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1071.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1072.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1073.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1074.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1075.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1076.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1077.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1078.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1079.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1080.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1081.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1082.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1083.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1084.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1085.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1086.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1087.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1088.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1089.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1090.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1091.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1092.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1093.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1094.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1095.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1096.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1097.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1098.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1099.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1100.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1101.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1102.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1103.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1104.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1105.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1106.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1107.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1108.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1109.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1110.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1111.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1112.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1113.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1114.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1115.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1116.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1117.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1118.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1119.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1120.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1121.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1122.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1123.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1124.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1125.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1126.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1127.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1128.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1129.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1130.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1131.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1132.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1133.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1134.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1135.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1136.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1137.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1138.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1139.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1140.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1141.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1142.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1143.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1144.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1145.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1146.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1147.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1148.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1149.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1150.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1151.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1172.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1173.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1174.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1175.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1176.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1238.lstPokemon.StringItemList"/>
+    <dlg:menuitem dlg:value="&amp;1239.lstPokemon.StringItemList"/>
+   </dlg:menupopup>
    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subLstPokemonSelected?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:menulist>
   <dlg:img dlg:style-id="0" dlg:id="imgPokemon" dlg:tab-index="26" dlg:left="95" dlg:top="5" dlg:width="30" dlg:height="30"/>
-  <dlg:text dlg:id="txtCP" dlg:tab-index="17" dlg:left="5" dlg:top="41" dlg:width="15" dlg:height="8" dlg:value="&amp;27.DlgMain.txtCP.Label"/>
+  <dlg:text dlg:id="txtCP" dlg:tab-index="17" dlg:left="5" dlg:top="41" dlg:width="15" dlg:height="8" dlg:value="&amp;3.DlgMain.txtCP.Label"/>
   <dlg:numericfield dlg:id="numCP" dlg:tab-index="1" dlg:left="20" dlg:top="39" dlg:width="20" dlg:height="12" dlg:decimal-accuracy="0" dlg:value-min="10" dlg:value-max="5000">
    <script:event script:event-name="on-textchange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subBtnOKCheck?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:numericfield>
-  <dlg:text dlg:id="txtHP" dlg:tab-index="18" dlg:left="50" dlg:top="41" dlg:width="15" dlg:height="8" dlg:value="&amp;30.DlgMain.txtHP.Label"/>
+  <dlg:text dlg:id="txtHP" dlg:tab-index="18" dlg:left="50" dlg:top="41" dlg:width="15" dlg:height="8" dlg:value="&amp;4.DlgMain.txtHP.Label"/>
   <dlg:numericfield dlg:id="numHP" dlg:tab-index="2" dlg:left="65" dlg:top="39" dlg:width="15" dlg:height="12" dlg:decimal-accuracy="0" dlg:value-min="10" dlg:value-max="500">
    <script:event script:event-name="on-textchange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subBtnOKCheck?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:numericfield>
-  <dlg:text dlg:id="txtStarDust" dlg:tab-index="19" dlg:left="90" dlg:top="41" dlg:width="30" dlg:height="8" dlg:value="&amp;33.DlgMain.txtStarDust.Label"/>
+  <dlg:text dlg:id="txtStarDust" dlg:tab-index="19" dlg:left="90" dlg:top="41" dlg:width="30" dlg:height="8" dlg:value="&amp;5.DlgMain.txtStarDust.Label"/>
   <dlg:menulist dlg:id="lstStarDust" dlg:tab-index="3" dlg:left="120" dlg:top="39" dlg:width="35" dlg:height="12" dlg:spin="true">
    <dlg:menupopup>
     <dlg:menuitem dlg:value="200"/>
@@ -47,7 +207,7 @@
    </dlg:menupopup>
    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subBtnOKCheck?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:menulist>
-  <dlg:text dlg:id="txtPlayerLevel" dlg:tab-index="20" dlg:left="165" dlg:top="41" dlg:width="35" dlg:height="8" dlg:value="&amp;41.DlgMain.txtPlayerLevel.Label"/>
+  <dlg:text dlg:id="txtPlayerLevel" dlg:tab-index="20" dlg:left="165" dlg:top="41" dlg:width="35" dlg:height="8" dlg:value="&amp;6.DlgMain.txtPlayerLevel.Label"/>
   <dlg:menulist dlg:id="lstPlayerLevel" dlg:tab-index="4" dlg:left="200" dlg:top="39" dlg:width="30" dlg:height="12" dlg:spin="true">
    <dlg:menupopup>
     <dlg:menuitem dlg:value="1"/>
@@ -92,19 +252,19 @@
     <dlg:menuitem dlg:value="40"/>
    </dlg:menupopup>
   </dlg:menulist>
-  <dlg:checkbox dlg:id="cbxIsNew" dlg:tab-index="5" dlg:left="5" dlg:top="56" dlg:width="225" dlg:height="8" dlg:value="&amp;47.DlgMain.cbxIsNew.Label" dlg:checked="true"/>
+  <dlg:checkbox dlg:id="cbxIsNew" dlg:tab-index="5" dlg:left="5" dlg:top="56" dlg:width="225" dlg:height="8" dlg:value="&amp;7.DlgMain.cbxIsNew.Label" dlg:checked="true"/>
   <dlg:titledbox dlg:id="grpAppraisals" dlg:tab-index="21" dlg:left="5" dlg:top="70" dlg:width="225" dlg:height="140">
-   <dlg:title dlg:value="&amp;51.DlgMain.grpAppraisals.Label"/>
+   <dlg:title dlg:value="&amp;8.DlgMain.grpAppraisals.Label"/>
   </dlg:titledbox>
   <dlg:img dlg:style-id="0" dlg:id="imgTeamLogo" dlg:tab-index="25" dlg:left="10" dlg:top="80" dlg:width="30" dlg:height="30"/>
   <dlg:radiogroup>
-   <dlg:radio dlg:style-id="1" dlg:id="rdoTeamValor" dlg:tab-index="6" dlg:left="45" dlg:top="101" dlg:width="50" dlg:height="8" dlg:value="&amp;183.DlgMain.rdoTeamValor.Label">
+   <dlg:radio dlg:style-id="1" dlg:id="rdoTeamValor" dlg:tab-index="6" dlg:left="45" dlg:top="101" dlg:width="50" dlg:height="8" dlg:value="&amp;9.DlgMain.rdoTeamValor.Label">
     <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subRdoTeamValorItemChanged?language=Basic&amp;location=application" script:language="Script"/>
    </dlg:radio>
-   <dlg:radio dlg:style-id="2" dlg:id="rdoTeamMystic" dlg:tab-index="7" dlg:left="100" dlg:top="101" dlg:width="50" dlg:height="8" dlg:value="&amp;185.DlgMain.rdoTeamMystic.Label">
+   <dlg:radio dlg:style-id="2" dlg:id="rdoTeamMystic" dlg:tab-index="7" dlg:left="100" dlg:top="101" dlg:width="50" dlg:height="8" dlg:value="&amp;10.DlgMain.rdoTeamMystic.Label">
     <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subRdoTeamMysticItemChanged?language=Basic&amp;location=application" script:language="Script"/>
    </dlg:radio>
-   <dlg:radio dlg:style-id="3" dlg:id="rdoTeamInstinct" dlg:tab-index="8" dlg:left="155" dlg:top="101" dlg:width="50" dlg:height="8" dlg:value="&amp;187.DlgMain.rdoTeamInstinct.Label">
+   <dlg:radio dlg:style-id="3" dlg:id="rdoTeamInstinct" dlg:tab-index="8" dlg:left="155" dlg:top="101" dlg:width="50" dlg:height="8" dlg:value="&amp;11.DlgMain.rdoTeamInstinct.Label">
     <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subRdoTeamInstinctItemChanged?language=Basic&amp;location=application" script:language="Script"/>
    </dlg:radio>
   </dlg:radiogroup>

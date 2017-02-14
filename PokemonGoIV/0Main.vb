@@ -82,25 +82,13 @@ End Sub
 ' fnAskParam: Asks the users for the parameters for the Pokémon.
 Function fnAskParam As aFindIVParam
 	Dim oDialog As Object
-	Dim oListPokemons As Object, mPokemons () As String, nI As Integer
+	Dim oList As Object, mPokemons () As String, nI As Integer
 	Dim bIsBestAttack As Boolean, bIsBestDefense As Boolean
 	Dim bIsBestHP As Boolean
 	Dim aQuery As New aFindIVParam
 	
 	DialogLibraries.loadLibrary "PokemonGoIV"
 	oDialog = CreateUnoDialog (DialogLibraries.PokemonGoIV.DlgMain)
-	
-	' Sets the Pokémons list
-	oListPokemons = oDialog.getControl ("lstPokemon")
-	oListPokemons.removeItems (0, oListPokemons.getItemCount)
-	subReadBaseStats
-	ReDim mPokemons (UBound (maBaseStats)) As String
-	For nI = 0 To UBound (maBaseStats)
-		mPokemons (nI) = _
-			fnMapPokemonIdToName (maBaseStats (nI).sPokemon)
-	Next nI
-	oListPokemons.addItems (mPokemons, 0)
-	
 	oDialog.getControl ("lstTotal").setVisible (False)
 	oDialog.getControl ("txtBestBefore").setVisible (False)
 	oDialog.getControl ("lstBest").setVisible (False)
@@ -253,10 +241,10 @@ Sub subRdoTeamValorItemChanged (oEvent As object)
 		"Its", 8, "is its strongest feature.", 65)
 	
 	mItems = Array ( _
-		"I'm blown away by its stats. WOW!", _
-		"It's got excellent stats! How exciting!", _
-		"Its stats indicate that in battle, it'll get the job done.", _
-		"Its stats don't point to greatness in battle.")
+		fnGetResString ("AppraisalValorMax15"), _
+		fnGetResString ("AppraisalValorMax13Or14"), _
+		fnGetResString ("AppraisalValorMax8To12"), _
+		fnGetResString ("AppraisalValorMaxUpTo7"))
 	oList = oDialog.getControl ("lstMax")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
@@ -290,10 +278,10 @@ Sub subRdoTeamMysticItemChanged (oEvent As object)
 		"I see that its best attribute is its", 85, ".", 5)
 	
 	mItems = Array ( _
-		"Its stats exceed my calculations. It's incredible!", _
-		"I am certainly impressed by its stats, I must say.", _
-		"Its stats are noticeably trending to the positive.", _
-		"Its stats are not out of the norm, in my opinion.")
+		fnGetResString ("AppraisalMysticMax15"), _
+		fnGetResString ("AppraisalMysticMax13Or14"), _
+		fnGetResString ("AppraisalMysticMax8To12"), _
+		fnGetResString ("AppraisalMysticMaxUpTo7"))
 	oList = oDialog.getControl ("lstMax")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
@@ -327,10 +315,10 @@ Sub subRdoTeamInstinctItemChanged (oEvent As object)
 		"Its best quality is", 45, ".", 5)
 	
 	mItems = Array ( _
-		"Its stats are the best I've ever seen! No doubt about it!", _
-		"Its stats are really strong! Impressive.", _
-		"It's definitely got some good stats. Definitely!", _
-		"Its stats are all right, but kinda basic, as far as I can see.")
+		fnGetResString ("AppraisalInstinctMax15"), _
+		fnGetResString ("AppraisalInstinctMax13Or14"), _
+		fnGetResString ("AppraisalInstinctMax8To12"), _
+		fnGetResString ("AppraisalInstinctMaxUpTo7"))
 	oList = oDialog.getControl ("lstMax")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
@@ -350,7 +338,10 @@ Sub subUpdateBestStatAppraisal (oDialog As Object, _
 	oText.setText (sBefore)
 	nX = oText.getModel.getPropertyValue ("PositionX") + nBeforeWidth
 	
-	mItems = Array ("Attack", "Defense", "HP")
+	mItems = Array ( _
+		fnGetResString ("StatAttack"), _
+		fnGetResString ("StatDefense"), _
+		fnGetResString ("StatHP"))
 	oList = oDialog.getControl ("lstBest")
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
@@ -373,99 +364,120 @@ End Sub
 
 ' subLstBestItemChanged: When the best stat is selected.
 Sub subLstBestItemChanged (oEvent As object)
-	Dim oDialog As Object, oCheckBox As Object
+	Dim oDialog As Object, oCheckBox As Object, sBestToo As String
 	
 	oDialog = oEvent.Source.getContext
 	If oDialog.getControl ("rdoTeamValor").getState Then
-		If oDialog.getControl ("lstBest").getSelectedItem = "Attack" Then
+		sBestToo = fnGetResString ("AppraisalValorBestToo")
+		If oDialog.getControl ("lstBest").getSelectedItemPos = 0 Then
 			oCheckBox = oDialog.getControl ("cbxBest2")
-			oCheckBox.setLabel ("I'm just as impressed with its Defense.")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatDefense")))
 			oCheckBox.setVisible (True)
 			oCheckBox.setState (0)
 			oCheckBox = oDialog.getControl ("cbxBest3")
-			oCheckBox.setLabel ("I'm just as impressed with its HP.")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatHP")))
 			oCheckBox.setVisible (True)
 			oCheckBox.setState (0)
 		End If
-		If oDialog.getControl ("lstBest").getSelectedItem = "Defense" Then
+		If oDialog.getControl ("lstBest").getSelectedItemPos = 1 Then
 			oCheckBox = oDialog.getControl ("cbxBest2")
-			oCheckBox.setLabel ("I'm just as impressed with its Attack.")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatAttack")))
 			oCheckBox.setVisible (True)
 			oCheckBox.setState (0)
 			oCheckBox = oDialog.getControl ("cbxBest3")
-			oCheckBox.setLabel ("I'm just as impressed with its HP.")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatHP")))
 			oCheckBox.setVisible (True)
 			oCheckBox.setState (0)
 		End If
-		If oDialog.getControl ("lstBest").getSelectedItem = "HP" Then
+		If oDialog.getControl ("lstBest").getSelectedItemPos = 2 Then
 			oCheckBox = oDialog.getControl ("cbxBest2")
-			oCheckBox.setLabel ("I'm just as impressed with its Attack.")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatAttack")))
 			oCheckBox.setVisible (True)
 			oCheckBox.setState (0)
 			oCheckBox = oDialog.getControl ("cbxBest3")
-			oCheckBox.setLabel ("I'm just as impressed with its Defense.")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatDefense")))
 			oCheckBox.setVisible (True)
 			oCheckBox.setState (0)
 		End If
 	End If
 	If oDialog.getControl ("rdoTeamMystic").getState Then
-		If oDialog.getControl ("lstBest").getSelectedItem = "Attack" Then
+		sBestToo = fnGetResString ("AppraisalMysticBestToo")
+		If oDialog.getControl ("lstBest").getSelectedItemPos = 0 Then
 			oCheckBox = oDialog.getControl ("cbxBest2")
-			oCheckBox.setLabel ("It is matched equally by its Defense.")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatDefense")))
 			oCheckBox.setVisible (True)
 			oCheckBox.setState (0)
 			oCheckBox = oDialog.getControl ("cbxBest3")
-			oCheckBox.setLabel ("It is matched equally by its HP.")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatHP")))
 			oCheckBox.setVisible (True)
 			oCheckBox.setState (0)
 		End If
-		If oDialog.getControl ("lstBest").getSelectedItem = "Defense" Then
+		If oDialog.getControl ("lstBest").getSelectedItemPos = 1 Then
 			oCheckBox = oDialog.getControl ("cbxBest2")
-			oCheckBox.setLabel ("It is matched equally by its Attack.")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatAttack")))
 			oCheckBox.setVisible (True)
 			oCheckBox.setState (0)
 			oCheckBox = oDialog.getControl ("cbxBest3")
-			oCheckBox.setLabel ("It is matched equally by its HP.")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatHP")))
 			oCheckBox.setVisible (True)
 			oCheckBox.setState (0)
 		End If
-		If oDialog.getControl ("lstBest").getSelectedItem = "HP" Then
+		If oDialog.getControl ("lstBest").getSelectedItemPos = 2 Then
 			oCheckBox = oDialog.getControl ("cbxBest2")
-			oCheckBox.setLabel ("It is matched equally by its Attack.")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatAttack")))
 			oCheckBox.setVisible (True)
 			oCheckBox.setState (0)
 			oCheckBox = oDialog.getControl ("cbxBest3")
-			oCheckBox.setLabel ("It is matched equally by its Defense.")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatDefense")))
 			oCheckBox.setVisible (True)
 			oCheckBox.setState (0)
 		End If
 	End If
 	If oDialog.getControl ("rdoTeamInstinct").getState Then
-		If oDialog.getControl ("lstBest").getSelectedItem = "Attack" Then
+		sBestToo = fnGetResString ("AppraisalInstinctBestToo")
+		If oDialog.getControl ("lstBest").getSelectedItemPos = 0 Then
 			oCheckBox = oDialog.getControl ("cbxBest2")
-			oCheckBox.setLabel ("Its Defense is great, too!")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatDefense")))
 			oCheckBox.setVisible (True)
 			oCheckBox = oDialog.getControl ("cbxBest3")
-			oCheckBox.setLabel ("Its HP is great, too!")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatHP")))
 			oCheckBox.setVisible (True)
 		End If
-		If oDialog.getControl ("lstBest").getSelectedItem = "Defense" Then
+		If oDialog.getControl ("lstBest").getSelectedItemPos = 1 Then
 			oCheckBox = oDialog.getControl ("cbxBest2")
-			oCheckBox.setLabel ("Its Attack is great, too!")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatAttack")))
 			oCheckBox.setVisible (True)
 			oCheckBox.setState (0)
 			oCheckBox = oDialog.getControl ("cbxBest3")
-			oCheckBox.setLabel ("Its HP is great, too!")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatHP")))
 			oCheckBox.setVisible (True)
 			oCheckBox.setState (0)
 		End If
-		If oDialog.getControl ("lstBest").getSelectedItem = "HP" Then
+		If oDialog.getControl ("lstBest").getSelectedItemPos = 2 Then
 			oCheckBox = oDialog.getControl ("cbxBest2")
-			oCheckBox.setLabel ("Its Attack is great, too!")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatAttack")))
 			oCheckBox.setVisible (True)
 			oCheckBox.setState (0)
 			oCheckBox = oDialog.getControl ("cbxBest3")
-			oCheckBox.setLabel ("Its Defense is great, too!")
+			oCheckBox.setLabel (fnReplace ( _
+				sBestToo, "[Stat]", fnGetResString ("StatDefense")))
 			oCheckBox.setVisible (True)
 			oCheckBox.setState (0)
 		End If
@@ -481,24 +493,24 @@ Sub subUpdateTotalAppraisal ( _
 	
 	If oDialog.getControl ("rdoTeamValor").getState Then
 		mItems = Array ( _
-			"Overall, your [Pokémon] simply amazes me. It can accomplish anything!", _
-			"Overall, your [Pokémon] is a strong Pokémon. You should be proud!", _
-			"Overall, your [Pokémon] is a decent Pokémon.", _
-			"Overall, your [Pokémon] may not be great in battle, but I still like it!")
+			fnGetResString ("AppraisalValorTotal37OrHigher"), _
+			fnGetResString ("AppraisalValorTotal30To36"), _
+			fnGetResString ("AppraisalValorTotal23To29"), _
+			fnGetResString ("AppraisalValorTotalUpTo22"))
 	End If
 	If oDialog.getControl ("rdoTeamMystic").getState Then
 		mItems = Array ( _
-			"Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!", _
-			"Overall, your [Pokémon] has certainly caught my attention.", _
-			"Overall, your [Pokémon] is above average.", _
-			"Overall, your [Pokémon] is not likely to make much headway in battle.")
+			fnGetResString ("AppraisalMysticTotal37OrHigher"), _
+			fnGetResString ("AppraisalMysticTotal30To36"), _
+			fnGetResString ("AppraisalMysticTotal23To29"), _
+			fnGetResString ("AppraisalMysticTotalUpTo22"))
 	End If
 	If oDialog.getControl ("rdoTeamInstinct").getState Then
 		mItems = Array ( _
-			"Overall, your [Pokémon] looks like it can really battle with the best of them!", _
-			"Overall, your [Pokémon] is really strong!", _
-			"Overall, your [Pokémon] is pretty decent!", _
-			"Overall, your [Pokémon] has room for improvement as far as battling goes.")
+			fnGetResString ("AppraisalInstinctTotal37OrHigher"), _
+			fnGetResString ("AppraisalInstinctTotal30To36"), _
+			fnGetResString ("AppraisalInstinctTotal23To29"), _
+			fnGetResString ("AppraisalInstinctTotalUpTo22"))
 	End If
 	' The team was not selected yet.
 	If UBound (mItems) = -1 Then
@@ -1109,15 +1121,16 @@ End Function
 ' fnReplace: Replaces all occurrances of a term to another.
 Function fnReplace ( _
 		sText As String, sFrom As String, sTo As String) As String
-	Dim nPos As Integer
+	Dim sResult As String, nPos As Integer
 	
-	nPos = InStr (sText, sFrom)
+	sResult = sText
+	nPos = InStr (sResult, sFrom)
 	Do While nPos <> 0
-		sText = Left (sText, nPos - 1) & sTo _
-			& Right (sText, Len (sText) - nPos - Len (sFrom) + 1)
-		nPos = InStr (nPos + Len (sTo), sText, sFrom)
+		sResult = Left (sResult, nPos - 1) & sTo _
+			& Right (sResult, Len (sResult) - nPos - Len (sFrom) + 1)
+		nPos = InStr (nPos + Len (sTo), sResult, sFrom)
 	Loop
-	fnReplace = sText
+	fnReplace = sResult
 End Function
 
 ' subReadCPM: Reads the CPM table.
