@@ -111,7 +111,8 @@ Function fnReadBaseStatsSheet As String
 	For nI = 1 To UBound (mData) - 1
 		sEvolveForms = fnFindEvolveForms (mData (nI))
 		sOutput = sOutput _
-			& Chr (9) & Chr (9) & "Array (""" & mData (nI) (0) _
+			& Chr (9) & Chr (9) & "Array (""" _
+				& fnMapNameToId (mData (nI) (0)) _
 				& """, """ & mData (nI) (1) _
 				& """, " & mData (nI) (3) _
 				& ", " & mData (nI) (4) _
@@ -121,7 +122,8 @@ Function fnReadBaseStatsSheet As String
 	nI = UBound (mData)
 	sEvolveForms = fnFindEvolveForms (mData (nI))
 	sOutput = sOutput _
-		& Chr (9) & Chr (9) & "Array (""" & mData (nI) (0) _
+		& Chr (9) & Chr (9) & "Array (""" _
+			& fnMapNameToId (mData (nI) (0)) _
 			& """, """ & mData (nI) (1) _
 			& """, " & mData (nI) (3) _
 			& ", " & mData (nI) (4) _
@@ -131,6 +133,30 @@ Function fnReadBaseStatsSheet As String
 	fnReadBaseStatsSheet = sOutput
 End Function
 
+' fnMapNameToId: Maps the English Pokémon names to their IDs.
+Function fnMapNameToId (sName As String) As String
+	Dim sId As String
+	
+	sId = ""
+	If sName = "Farfetch'd" Then
+		sId = "Farfetchd"
+	End If
+	If sName = "Nidoran♀" Then
+		sId = "NidoranFemale"
+	End If
+	If sName = "Nidoran♂" Then
+		sId = "NidoranMale"
+	End If
+	If sName = "Mr. Mime" Then
+		sId = "MrMime"
+	End If
+	If sId = "" Then
+		sId = sName
+	End If
+	fnMapNameToId = sId
+End Function
+
+' fnFindEvolveForms: Finds the evolved forms of the Pokémons.
 Function fnFindEvolveForms (mData () As Variant) As String
 	Dim nJ As Integer, nStart As Integer, nEnd As Integer
 	Dim sEvolveForms As String
@@ -162,10 +188,10 @@ Function fnFindEvolveForms (mData () As Variant) As String
 		If nEnd = nStart - 1 Then
 			sEvolveForms = "Array ()"
 		Else
-			sEvolveForms = """" & mData (nStart) & """"
+			sEvolveForms = """" & fnMapNameToId (mData (nStart)) & """"
 			For nJ = nStart + 1 To nEnd
 				sEvolveForms = sEvolveForms _
-					& ", """ & mData (nJ) & """"
+					& ", """ & fnMapNameToId (mData (nJ)) & """"
 			Next nJ
 			sEvolveForms = "Array (" & sEvolveForms & ")"
 		End If

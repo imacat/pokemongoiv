@@ -13,7 +13,7 @@
 ' limitations under the License.
 
 ' 1Data: The Pokémon GO data for IV calculation
-'   by imacat <imacat@mail.imacat.idv.tw>, 2017-01-03
+'   by imacat <imacat@mail.imacat.idv.tw>, 2017-02-14
 '   Generated with 9Load.subReadDataSheets ()
 
 Option Explicit
@@ -49,10 +49,10 @@ Function fnGetBaseStatsData As Variant
 		Array ("Raichu", "026", 120, 193, 165, Array ()), _
 		Array ("Sandshrew", "027", 100, 126, 145, Array ("Sandslash")), _
 		Array ("Sandslash", "028", 150, 182, 202, Array ()), _
-		Array ("Nidoran♀", "029", 110, 86, 94, Array ("Nidorina", "Nidoqueen")), _
+		Array ("NidoranFemale", "029", 110, 86, 94, Array ("Nidorina", "Nidoqueen")), _
 		Array ("Nidorina", "030", 140, 117, 126, Array ("Nidoqueen")), _
 		Array ("Nidoqueen", "031", 180, 180, 174, Array ()), _
-		Array ("Nidoran♂", "032", 92, 105, 76, Array ("Nidorino", "Nidoking")), _
+		Array ("NidoranMale", "032", 92, 105, 76, Array ("Nidorino", "Nidoking")), _
 		Array ("Nidorino", "033", 122, 137, 112, Array ("Nidoking")), _
 		Array ("Nidoking", "034", 162, 204, 157, Array ()), _
 		Array ("Clefairy", "035", 140, 107, 116, Array ("Clefable")), _
@@ -103,7 +103,7 @@ Function fnGetBaseStatsData As Variant
 		Array ("Slowbro", "080", 190, 177, 194, Array ()), _
 		Array ("Magnemite", "081", 50, 165, 128, Array ("Magneton")), _
 		Array ("Magneton", "082", 100, 223, 182, Array ()), _
-		Array ("Farfetch'd", "083", 104, 124, 118, Array ()), _
+		Array ("Farfetchd", "083", 104, 124, 118, Array ()), _
 		Array ("Doduo", "084", 70, 158, 88, Array ("Dodrio")), _
 		Array ("Dodrio", "085", 120, 218, 145, Array ()), _
 		Array ("Seel", "086", 130, 85, 128, Array ("Dewgong")), _
@@ -142,7 +142,7 @@ Function fnGetBaseStatsData As Variant
 		Array ("Seaking", "119", 160, 175, 154, Array ()), _
 		Array ("Staryu", "120", 60, 137, 112, Array ("Starmie")), _
 		Array ("Starmie", "121", 120, 210, 184, Array ()), _
-		Array ("Mr. Mime", "122", 80, 192, 233, Array ()), _
+		Array ("MrMime", "122", 80, 192, 233, Array ()), _
 		Array ("Scyther", "123", 140, 218, 170, Array ()), _
 		Array ("Jynx", "124", 130, 223, 182, Array ()), _
 		Array ("Electabuzz", "125", 130, 198, 173, Array ()), _
