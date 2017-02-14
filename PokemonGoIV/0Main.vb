@@ -207,29 +207,15 @@ End Sub
 
 ' subLstPokemonSelected: When the Pokémon is selected.
 Sub subLstPokemonSelected (oEvent As object)
-	Dim oDialog As Object, sPokemon As String
+	Dim oDialog As Object, nSelected As Integer
 	Dim oImageModel As Object, sImageId As String
 	
 	oDialog = oEvent.Source.getContext
 	
 	' Updates the Pokémon image.
-	sPokemon = oDialog.getControl ("lstPokemon").getSelectedItem
-	sImageId = ""
-	If sPokemon = "Farfetch'd" Then
-		sImageId = "PokemonFarfetchd"
-	End If
-	If sPokemon = "Nidoran♀" Then
-		sImageId = "PokemonNidoranFemale"
-	End If
-	If sPokemon = "Nidoran♂" Then
-		sImageId = "PokemonNidoranMale"
-	End If
-	If sPokemon = "Mr. Mime" Then
-		sImageId = "PokemonMrMime"
-	End If
-	If sImageId = "" Then
-		sImageId = "Pokemon" & sPokemon
-	End If
+	nSelected = oDialog.getControl ("lstPokemon").getSelectedItemPos
+	subReadBaseStats
+	sImageId = "Pokemon" & maBaseStats (nSelected).sPokemon
 	oImageModel = oDialog.getControl ("imgPokemon").getModel
 	oImageModel.setPropertyValue ("ImageURL", _
 		fnGetImageUrl (sImageId))

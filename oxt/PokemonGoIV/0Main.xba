@@ -68,9 +68,6 @@ Sub subMain
 	Dim aBaseStats As New aStats, maIVs As Variant, nI As Integer
 	Dim aQuery As New aFindIVParam
 	
-	&apos; TODO: To be removed.
-	BasicLibraries.loadLibrary &quot;XrayTool&quot;
-	
 	aQuery = fnAskParam
 	If aQuery.bIsCancelled Then
 		Exit Sub
@@ -212,29 +209,15 @@ End Sub
 
 &apos; subLstPokemonSelected: When the Pokémon is selected.
 Sub subLstPokemonSelected (oEvent As object)
-	Dim oDialog As Object, sPokemon As String
+	Dim oDialog As Object, nSelected As Integer
 	Dim oImageModel As Object, sImageId As String
 	
 	oDialog = oEvent.Source.getContext
 	
 	&apos; Updates the Pokémon image.
-	sPokemon = oDialog.getControl (&quot;lstPokemon&quot;).getSelectedItem
-	sImageId = &quot;&quot;
-	If sPokemon = &quot;Farfetch&apos;d&quot; Then
-		sImageId = &quot;PokemonFarfetchd&quot;
-	End If
-	If sPokemon = &quot;Nidoran♀&quot; Then
-		sImageId = &quot;PokemonNidoranFemale&quot;
-	End If
-	If sPokemon = &quot;Nidoran♂&quot; Then
-		sImageId = &quot;PokemonNidoranMale&quot;
-	End If
-	If sPokemon = &quot;Mr. Mime&quot; Then
-		sImageId = &quot;PokemonMrMime&quot;
-	End If
-	If sImageId = &quot;&quot; Then
-		sImageId = &quot;Pokemon&quot; &amp; sPokemon
-	End If
+	nSelected = oDialog.getControl (&quot;lstPokemon&quot;).getSelectedItemPos
+	subReadBaseStats
+	sImageId = &quot;Pokemon&quot; &amp; maBaseStats (nSelected).sPokemon
 	oImageModel = oDialog.getControl (&quot;imgPokemon&quot;).getModel
 	oImageModel.setPropertyValue (&quot;ImageURL&quot;, _
 		fnGetImageUrl (sImageId))
