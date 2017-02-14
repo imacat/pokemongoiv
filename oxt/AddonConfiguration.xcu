@@ -40,16 +40,32 @@
 				<value xml:lang="zh-TW">找不出符合的 IV 值。</value>
 			</prop>
 		</node>
+		<!-- The team leader appraisals -->
+		<node oor:name="TeamValor" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Team Valor</value>
+			</prop>
+		</node>
 		<node oor:name="AppraiseFromCandela" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Candela, leader of Team Valor, says:</value>
 				<value xml:lang="zh-TW">Valor 隊隊長 Candela 說：</value>
 			</prop>
 		</node>
+		<node oor:name="TeamMystic" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Team Mystic</value>
+			</prop>
+		</node>
 		<node oor:name="AppraiseFromBlanche" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Blanche, leader of Team Mystic, says:</value>
 				<value xml:lang="zh-TW">Mystic 隊隊長 Blanche 說：</value>
+			</prop>
+		</node>
+		<node oor:name="TeamInstinct" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Team Instinct</value>
 			</prop>
 		</node>
 		<node oor:name="AppraiseFromSpark" oor:op="replace">		
