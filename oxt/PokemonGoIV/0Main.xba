@@ -131,7 +131,7 @@ Function fnAskParam As aFindIVParam
 	bIsBestAttack = False
 	bIsBestDefense = False
 	bIsBestHP = False
-	If oDialog.getControl (&quot;lstBest&quot;).getSelectedItem = &quot;Attack&quot; Then
+	If oDialog.getControl (&quot;lstBest&quot;).getSelectedItemPos = 0 Then
 		bIsBestAttack = True
 		If oDialog.getControl (&quot;cbxBest2&quot;).getState = 1 Then
 			bIsBestDefense = True
@@ -140,7 +140,7 @@ Function fnAskParam As aFindIVParam
 			bIsBestHP = True
 		End If
 	End If
-	If oDialog.getControl (&quot;lstBest&quot;).getSelectedItem = &quot;Defense&quot; Then
+	If oDialog.getControl (&quot;lstBest&quot;).getSelectedItemPos = 1 Then
 		bIsBestDefense = True
 		If oDialog.getControl (&quot;cbxBest2&quot;).getState = 1 Then
 			bIsBestAttack = True
@@ -149,7 +149,7 @@ Function fnAskParam As aFindIVParam
 			bIsBestHP = True
 		End If
 	End If
-	If oDialog.getControl (&quot;lstBest&quot;).getSelectedItem = &quot;HP&quot; Then
+	If oDialog.getControl (&quot;lstBest&quot;).getSelectedItemPos = 2 Then
 		bIsBestHP = True
 		If oDialog.getControl (&quot;cbxBest2&quot;).getState = 1 Then
 			bIsBestAttack = True
@@ -240,7 +240,7 @@ Sub subRdoTeamValorItemChanged (oEvent As object)
 	
 	&apos; Updates the text of the best stat appraisal.
 	subUpdateBestStatAppraisal (oDialog, _
-		&quot;Its&quot;, 8, &quot;is its strongest feature.&quot;, 65)
+		fnGetResString (&quot;AppraisalValorBest&quot;))
 	
 	mItems = Array ( _
 		fnGetResString (&quot;AppraisalValorMax15&quot;), _
@@ -277,7 +277,7 @@ Sub subRdoTeamMysticItemChanged (oEvent As object)
 	
 	&apos; Updates the text of the best stat appraisal.
 	subUpdateBestStatAppraisal (oDialog, _
-		&quot;I see that its best attribute is its&quot;, 85, &quot;.&quot;, 5)
+		fnGetResString (&quot;AppraisalMysticBest&quot;))
 	
 	mItems = Array ( _
 		fnGetResString (&quot;AppraisalMysticMax15&quot;), _
@@ -314,7 +314,7 @@ Sub subRdoTeamInstinctItemChanged (oEvent As object)
 	
 	&apos; Updates the text of the best stat appraisal.
 	subUpdateBestStatAppraisal (oDialog, _
-		&quot;Its best quality is&quot;, 45, &quot;.&quot;, 5)
+		fnGetResString (&quot;AppraisalInstinctBest&quot;))
 	
 	mItems = Array ( _
 		fnGetResString (&quot;AppraisalInstinctMax15&quot;), _
@@ -328,11 +328,25 @@ Sub subRdoTeamInstinctItemChanged (oEvent As object)
 End Sub
 
 &apos; subUpdateBestStatAppraisal: Updates the text of the best stat appraisal.
-Sub subUpdateBestStatAppraisal (oDialog As Object, _
-		sBefore As String, nBeforeWidth As Integer, _
-		sAfter As String, nAfterWidth As Integer)
+Sub subUpdateBestStatAppraisal (oDialog As Object, sAppraisal)
 	Dim oText As Object, oList As Object, nX As Integer
+	Dim sBefore As String, nBeforeWidth As Integer
+	Dim sAfter As String, nAfterWidth As Integer
+	Dim nPos As Integer
 	Dim mItems () As String
+	
+	nPos = InStr (sAppraisal, &quot;[Stat]&quot;)
+	sBefore = Left (sAppraisal, nPos - 1)
+	If Right (sBefore, 1) &lt;&gt; &quot; &quot; Then
+	    sBefore = sBefore &amp; &quot; &quot;
+	End If
+	nBeforeWidth = CInt (Len (sBefore) * 2.3)
+	sAfter = Right (sAppraisal, _
+	    Len (sAppraisal) - nPos - Len (&quot;[Stat]&quot;) + 1)
+	If Left (sAfter, 1) &lt;&gt; &quot; &quot; Then
+	    sAfter = &quot; &quot; &amp; sAfter
+	End If
+	nAfterWidth = CInt (Len (sAfter) * 2.3)
 	
 	oText = oDialog.getControl (&quot;txtBestBefore&quot;)
 	oText.getModel.setPropertyValue (&quot;Width&quot;, nBeforeWidth)

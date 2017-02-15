@@ -129,7 +129,7 @@ Function fnAskParam As aFindIVParam
 	bIsBestAttack = False
 	bIsBestDefense = False
 	bIsBestHP = False
-	If oDialog.getControl ("lstBest").getSelectedItem = "Attack" Then
+	If oDialog.getControl ("lstBest").getSelectedItemPos = 0 Then
 		bIsBestAttack = True
 		If oDialog.getControl ("cbxBest2").getState = 1 Then
 			bIsBestDefense = True
@@ -138,7 +138,7 @@ Function fnAskParam As aFindIVParam
 			bIsBestHP = True
 		End If
 	End If
-	If oDialog.getControl ("lstBest").getSelectedItem = "Defense" Then
+	If oDialog.getControl ("lstBest").getSelectedItemPos = 1 Then
 		bIsBestDefense = True
 		If oDialog.getControl ("cbxBest2").getState = 1 Then
 			bIsBestAttack = True
@@ -147,7 +147,7 @@ Function fnAskParam As aFindIVParam
 			bIsBestHP = True
 		End If
 	End If
-	If oDialog.getControl ("lstBest").getSelectedItem = "HP" Then
+	If oDialog.getControl ("lstBest").getSelectedItemPos = 2 Then
 		bIsBestHP = True
 		If oDialog.getControl ("cbxBest2").getState = 1 Then
 			bIsBestAttack = True
@@ -238,7 +238,7 @@ Sub subRdoTeamValorItemChanged (oEvent As object)
 	
 	' Updates the text of the best stat appraisal.
 	subUpdateBestStatAppraisal (oDialog, _
-		"Its", 8, "is its strongest feature.", 65)
+		fnGetResString ("AppraisalValorBest"))
 	
 	mItems = Array ( _
 		fnGetResString ("AppraisalValorMax15"), _
@@ -275,7 +275,7 @@ Sub subRdoTeamMysticItemChanged (oEvent As object)
 	
 	' Updates the text of the best stat appraisal.
 	subUpdateBestStatAppraisal (oDialog, _
-		"I see that its best attribute is its", 85, ".", 5)
+		fnGetResString ("AppraisalMysticBest"))
 	
 	mItems = Array ( _
 		fnGetResString ("AppraisalMysticMax15"), _
@@ -312,7 +312,7 @@ Sub subRdoTeamInstinctItemChanged (oEvent As object)
 	
 	' Updates the text of the best stat appraisal.
 	subUpdateBestStatAppraisal (oDialog, _
-		"Its best quality is", 45, ".", 5)
+		fnGetResString ("AppraisalInstinctBest"))
 	
 	mItems = Array ( _
 		fnGetResString ("AppraisalInstinctMax15"), _
@@ -326,11 +326,25 @@ Sub subRdoTeamInstinctItemChanged (oEvent As object)
 End Sub
 
 ' subUpdateBestStatAppraisal: Updates the text of the best stat appraisal.
-Sub subUpdateBestStatAppraisal (oDialog As Object, _
-		sBefore As String, nBeforeWidth As Integer, _
-		sAfter As String, nAfterWidth As Integer)
+Sub subUpdateBestStatAppraisal (oDialog As Object, sAppraisal)
 	Dim oText As Object, oList As Object, nX As Integer
+	Dim sBefore As String, nBeforeWidth As Integer
+	Dim sAfter As String, nAfterWidth As Integer
+	Dim nPos As Integer
 	Dim mItems () As String
+	
+	nPos = InStr (sAppraisal, "[Stat]")
+	sBefore = Left (sAppraisal, nPos - 1)
+	If Right (sBefore, 1) <> " " Then
+	    sBefore = sBefore & " "
+	End If
+	nBeforeWidth = CInt (Len (sBefore) * 2.3)
+	sAfter = Right (sAppraisal, _
+	    Len (sAppraisal) - nPos - Len ("[Stat]") + 1)
+	If Left (sAfter, 1) <> " " Then
+	    sAfter = " " & sAfter
+	End If
+	nAfterWidth = CInt (Len (sAfter) * 2.3)
 	
 	oText = oDialog.getControl ("txtBestBefore")
 	oText.getModel.setPropertyValue ("Width", nBeforeWidth)

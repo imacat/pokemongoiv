@@ -82,6 +82,11 @@
 				<value>Overall, your [Pokémon] may not be great in battle, but I still like it!</value>
 			</prop>
 		</node>
+		<node oor:name="AppraisalValorBest" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Its [Stat] is its strongest feature.</value>
+			</prop>
+		</node>
 		<node oor:name="AppraisalValorBestToo" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>I'm just as impressed with its [Stat].</value>
@@ -134,6 +139,11 @@
 				<value>Overall, your [Pokémon] is not likely to make much headway in battle.</value>
 			</prop>
 		</node>
+		<node oor:name="AppraisalMysticBest" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>I see that its best attribute is its [Stat].</value>
+			</prop>
+		</node>
 		<node oor:name="AppraisalMysticBestToo" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>It is matched equally by its [Stat].</value>
@@ -184,6 +194,11 @@
 		<node oor:name="AppraisalInstinctTotalUpTo22" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] has room for improvement as far as battling goes.</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalInstinctBest" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Its best quality is [Stat].</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctBestToo" oor:op="replace">		
