@@ -20,6 +20,7 @@
 	<display-name>
 		<name>Pokémon GO IV Calculator</name>
 		<name lang="zh-TW">寶可夢 GO IV 計算機</name>
+		<name lang="de-DE">Pokémon GO IV Calculator</name>
 	</display-name>
 	<icon>
 		<default xlink:href="icons/pokemongoiv.png" />

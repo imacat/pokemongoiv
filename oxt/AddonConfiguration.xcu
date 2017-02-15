@@ -10,6 +10,7 @@
 		<prop oor:name="Description" oor:type="xs:string" oor:localized="true">
 			<value>Calculates the individual values (IVs) of the Pokémon.</value>
 			<value xml:lang="zh-TW">計算寶可夢的 IV 值。</value>
+			<value xml:lang="de-DE">Calculates the individual values (IVs) of the Pokémon.</value>
 		</prop>
 		<prop oor:name="Version" oor:type="xs:string">
 			<value>@VERSION@</value>
@@ -25,11 +26,24 @@
 			<value>imacat@mail.imacat.idv.tw</value>
 		</prop>
 		<prop oor:name="Copyright" oor:type="xs:string" oor:localized="true">
-			<value>Copyright &#169; 2016 imacat</value>
-			<value xml:lang="zh-TW">版權所有 &#169; 2016 依瑪貓</value>
+			<value>Copyright &#169; 2016-2017 imacat</value>
+			<value xml:lang="zh-TW">版權所有 &#169; 2016-2017 依瑪貓</value>
+			<value xml:lang="de-DE">Copyright &#169; 2016-2017 imacat</value>
 		</prop>
 		<node oor:name="Contributors"/>
-		<node oor:name="Translators"/>
+		<node oor:name="Translators">
+			<node oor:name="t1" oor:op="replace">
+				<prop oor:name="TranslatorName" oor:type="xs:string">
+					<value>Andreas Frisch</value>
+				</prop>
+				<prop oor:name="Email" oor:type="xs:string">
+					<value>andreas@repairfox.de</value>
+				</prop>
+				<prop oor:name="Language" oor:type="xs:string">
+					<value>German</value>
+				</prop>
+			</node>
+		</node>
 	</node>
 	
 <!--  Localized messages -->
@@ -38,21 +52,25 @@
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Found no matching IV.</value>
 				<value xml:lang="zh-TW">找不出符合的 IV 值。</value>
+			    <value xml:lang="de-DE">Found no matching IV.</value>
 			</prop>
 		</node>
 		<node oor:name="StatAttack" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Attack</value>
+			    <value xml:lang="de-DE">Attack</value>
 			</prop>
 		</node>
 		<node oor:name="StatDefense" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Defense</value>
+			    <value xml:lang="de-DE">Defense</value>
 			</prop>
 		</node>
 		<node oor:name="StatHP" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>HP</value>
+			    <value xml:lang="de-DE">HP</value>
 			</prop>
 		</node>
 		<!-- Team Valor (red) -->
@@ -60,56 +78,67 @@
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Candela, leader of Team Valor, says:</value>
 				<value xml:lang="zh-TW">Valor 隊隊長 Candela 說：</value>
+			    <value xml:lang="de-DE">Candela, leader of Team Valor, says:</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorTotal37OrHigher" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] simply amazes me. It can accomplish anything!</value>
+			    <value xml:lang="de-DE">Overall, your [Pokémon] simply amazes me. It can accomplish anything!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorTotal30To36" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] is a strong Pokémon. You should be proud!</value>
+			    <value xml:lang="de-DE">Overall, your [Pokémon] is a strong Pokémon. You should be proud!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorTotal23To29" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] is a decent Pokémon.</value>
+			    <value xml:lang="de-DE">Overall, your [Pokémon] is a decent Pokémon.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorTotalUpTo22" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] may not be great in battle, but I still like it!</value>
+			    <value xml:lang="de-DE">Overall, your [Pokémon] may not be great in battle, but I still like it!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorBest" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its [Stat] is its strongest feature.</value>
+			    <value xml:lang="de-DE">Its [Stat] is its strongest feature.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorBestToo" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>I'm just as impressed with its [Stat].</value>
+			    <value xml:lang="de-DE">I'm just as impressed with its [Stat].</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorMax15" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>I'm blown away by its stats. WOW!</value>
+			    <value xml:lang="de-DE">I'm blown away by its stats. WOW!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorMax13Or14" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>It's got excellent stats! How exciting!</value>
+			    <value xml:lang="de-DE">It's got excellent stats! How exciting!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorMax8To12" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its stats indicate that in battle, it'll get the job done.</value>
+			    <value xml:lang="de-DE">Its stats indicate that in battle, it'll get the job done.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorMaxUpTo7" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its stats don't point to greatness in battle.</value>
+			    <value xml:lang="de-DE">Its stats don't point to greatness in battle.</value>
 			</prop>
 		</node>
 		<!-- Team Mystic (blue) -->
@@ -117,56 +146,67 @@
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Blanche, leader of Team Mystic, says:</value>
 				<value xml:lang="zh-TW">Mystic 隊隊長 Blanche 說：</value>
+			    <value xml:lang="de-DE">Blanche, leader of Team Mystic, says:</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticTotal37OrHigher" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!</value>
+			    <value xml:lang="de-DE">Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticTotal30To36" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] has certainly caught my attention.</value>
+			    <value xml:lang="de-DE">Overall, your [Pokémon] has certainly caught my attention.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticTotal23To29" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] is above average.</value>
+			    <value xml:lang="de-DE">Overall, your [Pokémon] is above average.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticTotalUpTo22" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] is not likely to make much headway in battle.</value>
+			    <value xml:lang="de-DE">Overall, your [Pokémon] is not likely to make much headway in battle.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticBest" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>I see that its best attribute is its [Stat].</value>
+			    <value xml:lang="de-DE">I see that its best attribute is its [Stat].</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticBestToo" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>It is matched equally by its [Stat].</value>
+			    <value xml:lang="de-DE">It is matched equally by its [Stat].</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticMax15" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its stats exceed my calculations. It's incredible!</value>
+			    <value xml:lang="de-DE">Its stats exceed my calculations. It's incredible!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticMax13Or14" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>I am certainly impressed by its stats, I must say.</value>
+			    <value xml:lang="de-DE">I am certainly impressed by its stats, I must say.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticMax8To12" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its stats are noticeably trending to the positive.</value>
+			    <value xml:lang="de-DE">Its stats are noticeably trending to the positive.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticMaxUpTo7" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its stats are not out of the norm, in my opinion.</value>
+			    <value xml:lang="de-DE">Its stats are not out of the norm, in my opinion.</value>
 			</prop>
 		</node>
 		<!-- Team Instinct (yellow) -->
@@ -174,56 +214,67 @@
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Spark, leader of Team Instinct, says:</value>
 				<value xml:lang="zh-TW">Instinct 隊隊長 Spark 說：</value>
+			    <value xml:lang="de-DE">Spark, leader of Team Instinct, says:</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctTotal37OrHigher" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] is not likely to make much headway in battle.</value>
+			    <value xml:lang="de-DE">Overall, your [Pokémon] is not likely to make much headway in battle.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctTotal30To36" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] is really strong!</value>
+			    <value xml:lang="de-DE">Overall, your [Pokémon] is really strong!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctTotal23To29" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] is pretty decent!</value>
+			    <value xml:lang="de-DE">Overall, your [Pokémon] is pretty decent!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctTotalUpTo22" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] has room for improvement as far as battling goes.</value>
+			    <value xml:lang="de-DE">Overall, your [Pokémon] has room for improvement as far as battling goes.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctBest" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its best quality is [Stat].</value>
+			    <value xml:lang="de-DE">Its best quality is [Stat].</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctBestToo" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its [Stat] is great, too!</value>
+			    <value xml:lang="de-DE">Its [Stat] is great, too!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctMax15" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its stats are the best I've ever seen! No doubt about it!</value>
+			    <value xml:lang="de-DE">Its stats are the best I've ever seen! No doubt about it!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctMax13Or14" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its stats are really strong! Impressive.</value>
+			    <value xml:lang="de-DE">Its stats are really strong! Impressive.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctMax8To12" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>It's definitely got some good stats. Definitely!</value>
+			    <value xml:lang="de-DE">It's definitely got some good stats. Definitely!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctMaxUpTo7" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its stats are all right, but kinda basic, as far as I can see.</value>
+			    <value xml:lang="de-DE">Its stats are all right, but kinda basic, as far as I can see.</value>
 			</prop>
 		</node>
 	</node>
