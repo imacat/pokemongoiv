@@ -11,7 +11,7 @@
 				<prop oor:name="Title">
 					<value>Pokémon GO IV Calculator</value>
 					<value xml:lang="zh-TW">寶可夢 GO IV 計算機</value>
-			        <value xml:lang="de-DE">Pokémon GO IV Calculator</value>
+					<value xml:lang="de-DE">Pokémon GO IV Rechner</value>
 				</prop>
 				<node oor:name="ToolBarItems">
 					<node oor:name="m001" oor:op="replace">
@@ -27,7 +27,7 @@
 						<prop oor:name="Title" oor:type="xs:string">
 							<value>Calculates Pokémon IV</value>
 							<value xml:lang="zh-TW">計算寶可夢 IV</value>
-			                <value xml:lang="de-DE">Calculates Pokémon IV</value>
+							<value xml:lang="de-DE">Berechnet IV von Pokémon</value>
 						</prop>
 						<prop oor:name="Target" oor:type="xs:string">
 							<value>_self</value>
@@ -49,7 +49,7 @@
 					<prop oor:name="Title" oor:type="xs:string">
 						<value>Calculates Pokémon IV</value>
 						<value xml:lang="zh-TW">計算寶可夢 IV</value>
-			            <value xml:lang="de-DE">Calculates Pokémon IV</value>
+						<value xml:lang="de-DE">Berechnet IV von Pokémon</value>
 					</prop>
 					<prop oor:name="Target" oor:type="xs:string">
 						<value>_self</value>
