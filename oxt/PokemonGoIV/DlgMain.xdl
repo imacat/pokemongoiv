@@ -181,8 +181,8 @@
   <dlg:numericfield dlg:id="numHP" dlg:tab-index="2" dlg:left="65" dlg:top="39" dlg:width="15" dlg:height="12" dlg:decimal-accuracy="0" dlg:value-min="10" dlg:value-max="500">
    <script:event script:event-name="on-textchange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subBtnOKCheck?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:numericfield>
-  <dlg:text dlg:id="txtStarDust" dlg:tab-index="19" dlg:left="90" dlg:top="41" dlg:width="30" dlg:height="8" dlg:value="&amp;5.DlgMain.txtStarDust.Label"/>
-  <dlg:menulist dlg:id="lstStarDust" dlg:tab-index="3" dlg:left="120" dlg:top="39" dlg:width="35" dlg:height="12" dlg:spin="true">
+  <dlg:text dlg:id="txtStardust" dlg:tab-index="19" dlg:left="90" dlg:top="41" dlg:width="30" dlg:height="8" dlg:value="&amp;5.DlgMain.txtStardust.Label"/>
+  <dlg:menulist dlg:id="lstStardust" dlg:tab-index="3" dlg:left="120" dlg:top="39" dlg:width="35" dlg:height="12" dlg:spin="true">
    <dlg:menupopup>
     <dlg:menuitem dlg:value="200"/>
     <dlg:menuitem dlg:value="400"/>
