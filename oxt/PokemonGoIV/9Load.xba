@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
-<script:module xmlns:script="http://openoffice.org/2000/script" script:name="9Load" script:language="StarBasic">&apos; Copyright (c) 2016 imacat.
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="9Load" script:language="StarBasic">&apos; Copyright (c) 2016-2017 imacat.
 &apos; 
 &apos; Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
 &apos; you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ Sub subReadDataSheets
 	Dim sOutput as String, mData As Variant
 	
 	sOutput = &quot;&quot; _
-		&amp; &quot;&apos; Copyright (c) 2016 imacat.&quot; &amp; Chr (10) _
+		&amp; &quot;&apos; Copyright (c) 2016-&quot; &amp; Year (Now) &amp; &quot; imacat.&quot; &amp; Chr (10) _
 		&amp; &quot;&apos; &quot; &amp; Chr (10) _
 		&amp; &quot;&apos; Licensed under the Apache License, Version 2.0 (the &quot;&quot;License&quot;&quot;);&quot; &amp; Chr (10) _
 		&amp; &quot;&apos; you may not use this file except in compliance with the License.&quot; &amp; Chr (10) _
@@ -46,7 +46,7 @@ Sub subReadDataSheets
 		&amp; &quot;Option Explicit&quot;
 	sOutput = sOutput &amp; Chr (10) &amp; Chr (10) &amp; fnReadBaseStatsSheet
 	sOutput = sOutput &amp; Chr (10) &amp; Chr (10) &amp; fnReadCPMSheet
-	sOutput = sOutput &amp; Chr (10) &amp; Chr (10) &amp; fnReadStarDustSheet
+	sOutput = sOutput &amp; Chr (10) &amp; Chr (10) &amp; fnReadStardustSheet
 	subShowBasicData (sOutput)
 End Sub
 
@@ -205,8 +205,8 @@ Function fnReadCPMSheet As String
 	fnReadCPMSheet = sOutput
 End Function
 
-&apos; fnReadStarDustSheet: Reads the star dust sheet.
-Function fnReadStarDustSheet As String
+&apos; fnReadStardustSheet: Reads the stardust sheet.
+Function fnReadStardustSheet As String
 	Dim oSheet As Object, oRange As Object, mData As Variant
 	Dim nI As Integer, sOutput As String
 	
@@ -215,9 +215,9 @@ Function fnReadStarDustSheet As String
 	mData = oRange.getDataArray
 	
 	sOutput = &quot;&quot; _
-		&amp; &quot;&apos; fnGetStarDustData: Returns the star dust data.&quot; &amp; Chr (10) _
-		&amp; &quot;Function fnGetStarDustData As Variant&quot; &amp; Chr (10) _
-		&amp; Chr (9) &amp; &quot;fnGetStarDustData = Array( _&quot; &amp; Chr (10) _
+		&amp; &quot;&apos; fnGetStardustData: Returns the stardust data.&quot; &amp; Chr (10) _
+		&amp; &quot;Function fnGetStardustData As Variant&quot; &amp; Chr (10) _
+		&amp; Chr (9) &amp; &quot;fnGetStardustData = Array( _&quot; &amp; Chr (10) _
 		&amp; Chr (9) &amp; Chr (9) &amp; &quot;-1, _&quot; &amp; Chr (10)
 	For nI = 1 To UBound (mData) - 1 Step 2
 		sOutput = sOutput _
@@ -227,6 +227,6 @@ Function fnReadStarDustSheet As String
 	sOutput = sOutput _
 		&amp; Chr (9) &amp; Chr (9) &amp; mData (nI) (2) &amp; &quot;)&quot; &amp; Chr (10) _
 		&amp; &quot;End Function&quot;
-	fnReadStarDustSheet = sOutput
+	fnReadStardustSheet = sOutput
 End Function
 </script:module>

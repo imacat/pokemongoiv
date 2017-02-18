@@ -1,4 +1,4 @@
-' Copyright (c) 2016 imacat.
+' Copyright (c) 2016-2017 imacat.
 ' 
 ' Licensed under the Apache License, Version 2.0 (the "License");
 ' you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ Sub subReadDataSheets
 	Dim sOutput as String, mData As Variant
 	
 	sOutput = "" _
-		& "' Copyright (c) 2016 imacat." & Chr (10) _
+		& "' Copyright (c) 2016-" & Year (Now) & " imacat." & Chr (10) _
 		& "' " & Chr (10) _
 		& "' Licensed under the Apache License, Version 2.0 (the ""License"");" & Chr (10) _
 		& "' you may not use this file except in compliance with the License." & Chr (10) _
@@ -44,7 +44,7 @@ Sub subReadDataSheets
 		& "Option Explicit"
 	sOutput = sOutput & Chr (10) & Chr (10) & fnReadBaseStatsSheet
 	sOutput = sOutput & Chr (10) & Chr (10) & fnReadCPMSheet
-	sOutput = sOutput & Chr (10) & Chr (10) & fnReadStarDustSheet
+	sOutput = sOutput & Chr (10) & Chr (10) & fnReadStardustSheet
 	subShowBasicData (sOutput)
 End Sub
 
@@ -203,8 +203,8 @@ Function fnReadCPMSheet As String
 	fnReadCPMSheet = sOutput
 End Function
 
-' fnReadStarDustSheet: Reads the star dust sheet.
-Function fnReadStarDustSheet As String
+' fnReadStardustSheet: Reads the stardust sheet.
+Function fnReadStardustSheet As String
 	Dim oSheet As Object, oRange As Object, mData As Variant
 	Dim nI As Integer, sOutput As String
 	
@@ -213,9 +213,9 @@ Function fnReadStarDustSheet As String
 	mData = oRange.getDataArray
 	
 	sOutput = "" _
-		& "' fnGetStarDustData: Returns the star dust data." & Chr (10) _
-		& "Function fnGetStarDustData As Variant" & Chr (10) _
-		& Chr (9) & "fnGetStarDustData = Array( _" & Chr (10) _
+		& "' fnGetStardustData: Returns the stardust data." & Chr (10) _
+		& "Function fnGetStardustData As Variant" & Chr (10) _
+		& Chr (9) & "fnGetStardustData = Array( _" & Chr (10) _
 		& Chr (9) & Chr (9) & "-1, _" & Chr (10)
 	For nI = 1 To UBound (mData) - 1 Step 2
 		sOutput = sOutput _
@@ -225,5 +225,5 @@ Function fnReadStarDustSheet As String
 	sOutput = sOutput _
 		& Chr (9) & Chr (9) & mData (nI) (2) & ")" & Chr (10) _
 		& "End Function"
-	fnReadStarDustSheet = sOutput
+	fnReadStardustSheet = sOutput
 End Function

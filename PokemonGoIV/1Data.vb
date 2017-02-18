@@ -1,4 +1,4 @@
-' Copyright (c) 2016 imacat.
+' Copyright (c) 2016-2017 imacat.
 ' 
 ' Licensed under the Apache License, Version 2.0 (the "License");
 ' you may not use this file except in compliance with the License.
@@ -228,9 +228,9 @@ Function fnGetCPMData As Variant
 		0.78463697)
 End Function
 
-' fnGetStarDustData: Returns the star dust data.
-Function fnGetStarDustData As Variant
-	fnGetStarDustData = Array( _
+' fnGetStardustData: Returns the stardust data.
+Function fnGetStardustData As Variant
+	fnGetStardustData = Array( _
 		-1, _
 		200, _
 		200, _

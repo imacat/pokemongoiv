@@ -1,4 +1,4 @@
-' Copyright (c) 2016 imacat.
+' Copyright (c) 2016-2017 imacat.
 ' 
 ' Licensed under the Apache License, Version 2.0 (the "License");
 ' you may not use this file except in compliance with the License.
@@ -49,7 +49,7 @@ Type aFindIVParam
 	sPokemon As String
 	nCP As Integer
 	nHP As Integer
-	nStarDust As Integer
+	nStardust As Integer
 	nPlayerLevel As Integer
 	bIsNew As Boolean
 	nTotal As Integer
@@ -59,7 +59,7 @@ Type aFindIVParam
 End Type
 
 Private maBaseStats () As New aStats
-Private mCPM () As Double, mStarDust () As Integer
+Private mCPM () As Double, mStardust () As Integer
 
 ' subMain: The main program
 Sub subMain
@@ -113,7 +113,7 @@ Function fnAskParam As aFindIVParam
 		.sPokemon = oDialog.getControl ("lstPokemon").getSelectedItem
 		.nCP = oDialog.getControl ("numCP").getValue
 		.nHP = oDialog.getControl ("numHP").getValue
-		.nStarDust = CInt (oDialog.getControl ("lstStarDust").getSelectedItem)
+		.nStardust = CInt (oDialog.getControl ("lstStardust").getSelectedItem)
 		.nPlayerLevel = CInt (oDialog.getControl ("lstPlayerLevel").getSelectedItem)
 		.nTotal = oDialog.getControl ("lstTotal").getSelectedItemPos + 1
 		.nMax = oDialog.getControl ("lstMax").getSelectedItemPos + 1
@@ -174,19 +174,19 @@ End Function
 Sub subBtnOKCheck (oEvent As object)
 	Dim oDialog As Object
 	Dim oPokemon As Object, oCP As Object
-	Dim oHP As Object, oStarDust As Object, oOK As Object
+	Dim oHP As Object, oStardust As Object, oOK As Object
 	
 	oDialog = oEvent.Source.getContext
 	oPokemon = oDialog.getControl ("lstPokemon")
 	oCP = oDialog.getControl ("numCP")
 	oHP = oDialog.getControl ("numHP")
-	oStarDust = oDialog.getControl ("lstStarDust")
+	oStardust = oDialog.getControl ("lstStardust")
 	oOK = oDialog.getControl ("btnOK")
 	
 	If oPokemon.getSelectedItemPos <> -1 _
 			And oCP.getText <> "" _
 			And oHP.getText <> "" _
-			And oStarDust.getSelectedItemPos <> -1 Then
+			And oStardust.getSelectedItemPos <> -1 Then
 		oOK.setEnable (True)
 	Else
 		oOK.setEnable (False)
@@ -330,21 +330,16 @@ Sub subUpdateBestStatAppraisal (oDialog As Object, sAppraisal)
 	Dim oText As Object, oList As Object, nX As Integer
 	Dim sBefore As String, nBeforeWidth As Integer
 	Dim sAfter As String, nAfterWidth As Integer
+	Dim nDialogWidth As Integer
 	Dim nPos As Integer
 	Dim mItems () As String
 	
 	nPos = InStr (sAppraisal, "[Stat]")
 	sBefore = Left (sAppraisal, nPos - 1)
-	If Right (sBefore, 1) <> " " Then
-	    sBefore = sBefore & " "
-	End If
-	nBeforeWidth = CInt (Len (sBefore) * 2.3)
+	nBeforeWidth = CInt (Len (sBefore) * 2.8)
 	sAfter = Right (sAppraisal, _
 	    Len (sAppraisal) - nPos - Len ("[Stat]") + 1)
-	If Left (sAfter, 1) <> " " Then
-	    sAfter = " " & sAfter
-	End If
-	nAfterWidth = CInt (Len (sAfter) * 2.3)
+	nDialogWidth = oDialog.getModel.getPropertyValue ("Width")
 	
 	oText = oDialog.getControl ("txtBestBefore")
 	oText.getModel.setPropertyValue ("Width", nBeforeWidth)
@@ -361,8 +356,9 @@ Sub subUpdateBestStatAppraisal (oDialog As Object, sAppraisal)
 	oList.addItems (mItems, 0)
 	oList.getModel.setPropertyValue ("PositionX", nX)
 	oList.setVisible (True)
-	nX = nX + oList.getModel.getPropertyValue ("Width") + 2
+	nX = nX + oList.getModel.getPropertyValue ("Width")
 	
+	nAfterWidth = nDialogWidth - nX - 10
 	oText = oDialog.getControl ("txtBestAfter")
 	oText.getModel.setPropertyValue ("PositionX", nX)
 	oText.getModel.setPropertyValue ("Width", nAfterWidth)
@@ -571,7 +567,7 @@ Function fnFindIV ( _
 	Else
 		fStep = 0.5
 	End If
-	subReadStarDust
+	subReadStardust
 	nEvolved = UBound (aBaseStats.mEvolved)
 	If nEvolved > -1 Then
 		ReDim Preserve maEvBaseStats (nEvolved) As New aStats
@@ -585,8 +581,8 @@ Function fnFindIV ( _
 		Next nI
 	End If
 	nN = -1
-	For fLevel = 1 To UBound (mStarDust) Step fStep
-		If mStarDust (CInt (fLevel - 0.5)) = aQuery.nStarDust Then
+	For fLevel = 1 To UBound (mStardust) Step fStep
+		If mStardust (CInt (fLevel - 0.5)) = aQuery.nStardust Then
 			For nStamina = 0 To 15
 				If fnCalcHP (aBaseStats, fLevel, nStamina) = aQuery.nHP Then
 					For nAttack = 0 To 15
@@ -740,7 +736,7 @@ Sub subSaveIV ( _
 	nEvolved = UBound (maIVs (0).maEvolved) + 1
 	
 	mRow = Array ( _
-		"No", "Pokemon", "CP", "HP", "Star dust", _
+		"No", "Pokemon", "CP", "HP", "Stardust", _
 		"Lv", "Atk", "Def", "Sta", "IV")
 	nFront = UBound (mRow)
 	If aQuery.sPokemon = "Eevee" Then
@@ -843,7 +839,7 @@ Sub subSaveIV ( _
 	mData (1) (1) = aQuery.sPokemon
 	mData (1) (2) = aQuery.nCP
 	mData (1) (3) = aQuery.nHP
-	mData (1) (4) = aQuery.nStarDust
+	mData (1) (4) = aQuery.nStardust
 	
 	oRange = oSheet.getCellRangeByPosition ( _
 		0, 0, UBound (mData (0)), UBound (mData))
@@ -1154,9 +1150,9 @@ Sub subReadCPM
 	End If
 End Sub
 
-' subReadStarDust: Reads the star dust table.
-Sub subReadStarDust
-	If UBound (mStarDust) = -1 Then
-		mStarDust = fnGetStarDustData
+' subReadStardust: Reads the stardust table.
+Sub subReadStardust
+	If UBound (mStardust) = -1 Then
+		mStardust = fnGetStardustData
 	End If
 End Sub
