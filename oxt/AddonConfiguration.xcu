@@ -25,8 +25,8 @@
 			<value>imacat@mail.imacat.idv.tw</value>
 		</prop>
 		<prop oor:name="Copyright" oor:type="xs:string" oor:localized="true">
-			<value>Copyright &#169; 2016-2017 imacat</value>
-			<value xml:lang="zh-TW">版權所有 &#169; 2016-2017 依瑪貓</value>
+			<value>Copyright &#169; 2016 imacat</value>
+			<value xml:lang="zh-TW">版權所有 &#169; 2016 依瑪貓</value>
 		</prop>
 		<node oor:name="Contributors"/>
 		<node oor:name="Translators"/>

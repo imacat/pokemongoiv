@@ -1,4 +1,4 @@
-' Copyright (c) 2016-2017 imacat.
+' Copyright (c) 2016 imacat.
 ' 
 ' Licensed under the Apache License, Version 2.0 (the "License");
 ' you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ Sub subReadDataSheets
 	Dim sOutput as String, mData As Variant
 	
 	sOutput = "" _
-		& "' Copyright (c) 2016-" & Year (Now) & " imacat." & Chr (10) _
+		& "' Copyright (c) 2016 imacat." & Chr (10) _
 		& "' " & Chr (10) _
 		& "' Licensed under the Apache License, Version 2.0 (the ""License"");" & Chr (10) _
 		& "' you may not use this file except in compliance with the License." & Chr (10) _
