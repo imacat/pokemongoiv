@@ -169,7 +169,6 @@
     <dlg:menuitem dlg:value="&amp;1176.lstPokemon.StringItemList"/>
     <dlg:menuitem dlg:value="&amp;1238.lstPokemon.StringItemList"/>
     <dlg:menuitem dlg:value="&amp;1239.lstPokemon.StringItemList"/>
-    <dlg:menuitem dlg:value="&amp;1240.lstPokemon.StringItemList"/>
    </dlg:menupopup>
    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subLstPokemonSelected?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:menulist>
