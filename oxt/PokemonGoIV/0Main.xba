@@ -332,21 +332,16 @@ Sub subUpdateBestStatAppraisal (oDialog As Object, sAppraisal)
 	Dim oText As Object, oList As Object, nX As Integer
 	Dim sBefore As String, nBeforeWidth As Integer
 	Dim sAfter As String, nAfterWidth As Integer
+	Dim nDialogWidth As Integer
 	Dim nPos As Integer
 	Dim mItems () As String
 	
 	nPos = InStr (sAppraisal, &quot;[Stat]&quot;)
 	sBefore = Left (sAppraisal, nPos - 1)
-	If Right (sBefore, 1) &lt;&gt; &quot; &quot; Then
-	    sBefore = sBefore &amp; &quot; &quot;
-	End If
-	nBeforeWidth = CInt (Len (sBefore) * 2.3)
+	nBeforeWidth = CInt (Len (sBefore) * 2.8)
 	sAfter = Right (sAppraisal, _
 	    Len (sAppraisal) - nPos - Len (&quot;[Stat]&quot;) + 1)
-	If Left (sAfter, 1) &lt;&gt; &quot; &quot; Then
-	    sAfter = &quot; &quot; &amp; sAfter
-	End If
-	nAfterWidth = CInt (Len (sAfter) * 2.3)
+	nDialogWidth = oDialog.getModel.getPropertyValue (&quot;Width&quot;)
 	
 	oText = oDialog.getControl (&quot;txtBestBefore&quot;)
 	oText.getModel.setPropertyValue (&quot;Width&quot;, nBeforeWidth)
@@ -363,8 +358,9 @@ Sub subUpdateBestStatAppraisal (oDialog As Object, sAppraisal)
 	oList.addItems (mItems, 0)
 	oList.getModel.setPropertyValue (&quot;PositionX&quot;, nX)
 	oList.setVisible (True)
-	nX = nX + oList.getModel.getPropertyValue (&quot;Width&quot;) + 2
+	nX = nX + oList.getModel.getPropertyValue (&quot;Width&quot;)
 	
+	nAfterWidth = nDialogWidth - nX - 10
 	oText = oDialog.getControl (&quot;txtBestAfter&quot;)
 	oText.getModel.setPropertyValue (&quot;PositionX&quot;, nX)
 	oText.getModel.setPropertyValue (&quot;Width&quot;, nAfterWidth)
