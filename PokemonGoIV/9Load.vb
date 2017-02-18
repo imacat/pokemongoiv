@@ -44,7 +44,7 @@ Sub subReadDataSheets
 		& "Option Explicit"
 	sOutput = sOutput & Chr (10) & Chr (10) & fnReadBaseStatsSheet
 	sOutput = sOutput & Chr (10) & Chr (10) & fnReadCPMSheet
-	sOutput = sOutput & Chr (10) & Chr (10) & fnReadStardustSheet
+	sOutput = sOutput & Chr (10) & Chr (10) & fnReadStarDustSheet
 	subShowBasicData (sOutput)
 End Sub
 
@@ -203,8 +203,8 @@ Function fnReadCPMSheet As String
 	fnReadCPMSheet = sOutput
 End Function
 
-' fnReadStardustSheet: Reads the stardust sheet.
-Function fnReadStardustSheet As String
+' fnReadStarDustSheet: Reads the star dust sheet.
+Function fnReadStarDustSheet As String
 	Dim oSheet As Object, oRange As Object, mData As Variant
 	Dim nI As Integer, sOutput As String
 	
@@ -213,9 +213,9 @@ Function fnReadStardustSheet As String
 	mData = oRange.getDataArray
 	
 	sOutput = "" _
-		& "' fnGetStardustData: Returns the stardust data." & Chr (10) _
-		& "Function fnGetStardustData As Variant" & Chr (10) _
-		& Chr (9) & "fnGetStardustData = Array( _" & Chr (10) _
+		& "' fnGetStarDustData: Returns the star dust data." & Chr (10) _
+		& "Function fnGetStarDustData As Variant" & Chr (10) _
+		& Chr (9) & "fnGetStarDustData = Array( _" & Chr (10) _
 		& Chr (9) & Chr (9) & "-1, _" & Chr (10)
 	For nI = 1 To UBound (mData) - 1 Step 2
 		sOutput = sOutput _
@@ -225,5 +225,5 @@ Function fnReadStardustSheet As String
 	sOutput = sOutput _
 		& Chr (9) & Chr (9) & mData (nI) (2) & ")" & Chr (10) _
 		& "End Function"
-	fnReadStardustSheet = sOutput
+	fnReadStarDustSheet = sOutput
 End Function

@@ -49,7 +49,7 @@ Type aFindIVParam
 	sPokemon As String
 	nCP As Integer
 	nHP As Integer
-	nStardust As Integer
+	nStarDust As Integer
 	nPlayerLevel As Integer
 	bIsNew As Boolean
 	nTotal As Integer
@@ -59,7 +59,7 @@ Type aFindIVParam
 End Type
 
 Private maBaseStats () As New aStats
-Private mCPM () As Double, mStardust () As Integer
+Private mCPM () As Double, mStarDust () As Integer
 
 ' subMain: The main program
 Sub subMain
@@ -113,7 +113,7 @@ Function fnAskParam As aFindIVParam
 		.sPokemon = oDialog.getControl ("lstPokemon").getSelectedItem
 		.nCP = oDialog.getControl ("numCP").getValue
 		.nHP = oDialog.getControl ("numHP").getValue
-		.nStardust = CInt (oDialog.getControl ("lstStardust").getSelectedItem)
+		.nStarDust = CInt (oDialog.getControl ("lstStarDust").getSelectedItem)
 		.nPlayerLevel = CInt (oDialog.getControl ("lstPlayerLevel").getSelectedItem)
 		.nTotal = oDialog.getControl ("lstTotal").getSelectedItemPos + 1
 		.nMax = oDialog.getControl ("lstMax").getSelectedItemPos + 1
@@ -174,19 +174,19 @@ End Function
 Sub subBtnOKCheck (oEvent As object)
 	Dim oDialog As Object
 	Dim oPokemon As Object, oCP As Object
-	Dim oHP As Object, oStardust As Object, oOK As Object
+	Dim oHP As Object, oStarDust As Object, oOK As Object
 	
 	oDialog = oEvent.Source.getContext
 	oPokemon = oDialog.getControl ("lstPokemon")
 	oCP = oDialog.getControl ("numCP")
 	oHP = oDialog.getControl ("numHP")
-	oStardust = oDialog.getControl ("lstStardust")
+	oStarDust = oDialog.getControl ("lstStarDust")
 	oOK = oDialog.getControl ("btnOK")
 	
 	If oPokemon.getSelectedItemPos <> -1 _
 			And oCP.getText <> "" _
 			And oHP.getText <> "" _
-			And oStardust.getSelectedItemPos <> -1 Then
+			And oStarDust.getSelectedItemPos <> -1 Then
 		oOK.setEnable (True)
 	Else
 		oOK.setEnable (False)
@@ -571,7 +571,7 @@ Function fnFindIV ( _
 	Else
 		fStep = 0.5
 	End If
-	subReadStardust
+	subReadStarDust
 	nEvolved = UBound (aBaseStats.mEvolved)
 	If nEvolved > -1 Then
 		ReDim Preserve maEvBaseStats (nEvolved) As New aStats
@@ -585,8 +585,8 @@ Function fnFindIV ( _
 		Next nI
 	End If
 	nN = -1
-	For fLevel = 1 To UBound (mStardust) Step fStep
-		If mStardust (CInt (fLevel - 0.5)) = aQuery.nStardust Then
+	For fLevel = 1 To UBound (mStarDust) Step fStep
+		If mStarDust (CInt (fLevel - 0.5)) = aQuery.nStarDust Then
 			For nStamina = 0 To 15
 				If fnCalcHP (aBaseStats, fLevel, nStamina) = aQuery.nHP Then
 					For nAttack = 0 To 15
@@ -740,7 +740,7 @@ Sub subSaveIV ( _
 	nEvolved = UBound (maIVs (0).maEvolved) + 1
 	
 	mRow = Array ( _
-		"No", "Pokemon", "CP", "HP", "Stardust", _
+		"No", "Pokemon", "CP", "HP", "Star dust", _
 		"Lv", "Atk", "Def", "Sta", "IV")
 	nFront = UBound (mRow)
 	If aQuery.sPokemon = "Eevee" Then
@@ -843,7 +843,7 @@ Sub subSaveIV ( _
 	mData (1) (1) = aQuery.sPokemon
 	mData (1) (2) = aQuery.nCP
 	mData (1) (3) = aQuery.nHP
-	mData (1) (4) = aQuery.nStardust
+	mData (1) (4) = aQuery.nStarDust
 	
 	oRange = oSheet.getCellRangeByPosition ( _
 		0, 0, UBound (mData (0)), UBound (mData))
@@ -1154,9 +1154,9 @@ Sub subReadCPM
 	End If
 End Sub
 
-' subReadStardust: Reads the stardust table.
-Sub subReadStardust
-	If UBound (mStardust) = -1 Then
-		mStardust = fnGetStardustData
+' subReadStarDust: Reads the star dust table.
+Sub subReadStarDust
+	If UBound (mStarDust) = -1 Then
+		mStarDust = fnGetStarDustData
 	End If
 End Sub

@@ -46,7 +46,7 @@ Sub subReadDataSheets
 		&amp; &quot;Option Explicit&quot;
 	sOutput = sOutput &amp; Chr (10) &amp; Chr (10) &amp; fnReadBaseStatsSheet
 	sOutput = sOutput &amp; Chr (10) &amp; Chr (10) &amp; fnReadCPMSheet
-	sOutput = sOutput &amp; Chr (10) &amp; Chr (10) &amp; fnReadStardustSheet
+	sOutput = sOutput &amp; Chr (10) &amp; Chr (10) &amp; fnReadStarDustSheet
 	subShowBasicData (sOutput)
 End Sub
 
@@ -205,8 +205,8 @@ Function fnReadCPMSheet As String
 	fnReadCPMSheet = sOutput
 End Function
 
-&apos; fnReadStardustSheet: Reads the stardust sheet.
-Function fnReadStardustSheet As String
+&apos; fnReadStarDustSheet: Reads the star dust sheet.
+Function fnReadStarDustSheet As String
 	Dim oSheet As Object, oRange As Object, mData As Variant
 	Dim nI As Integer, sOutput As String
 	
@@ -215,9 +215,9 @@ Function fnReadStardustSheet As String
 	mData = oRange.getDataArray
 	
 	sOutput = &quot;&quot; _
-		&amp; &quot;&apos; fnGetStardustData: Returns the stardust data.&quot; &amp; Chr (10) _
-		&amp; &quot;Function fnGetStardustData As Variant&quot; &amp; Chr (10) _
-		&amp; Chr (9) &amp; &quot;fnGetStardustData = Array( _&quot; &amp; Chr (10) _
+		&amp; &quot;&apos; fnGetStarDustData: Returns the star dust data.&quot; &amp; Chr (10) _
+		&amp; &quot;Function fnGetStarDustData As Variant&quot; &amp; Chr (10) _
+		&amp; Chr (9) &amp; &quot;fnGetStarDustData = Array( _&quot; &amp; Chr (10) _
 		&amp; Chr (9) &amp; Chr (9) &amp; &quot;-1, _&quot; &amp; Chr (10)
 	For nI = 1 To UBound (mData) - 1 Step 2
 		sOutput = sOutput _
@@ -227,6 +227,6 @@ Function fnReadStardustSheet As String
 	sOutput = sOutput _
 		&amp; Chr (9) &amp; Chr (9) &amp; mData (nI) (2) &amp; &quot;)&quot; &amp; Chr (10) _
 		&amp; &quot;End Function&quot;
-	fnReadStardustSheet = sOutput
+	fnReadStarDustSheet = sOutput
 End Function
 </script:module>
