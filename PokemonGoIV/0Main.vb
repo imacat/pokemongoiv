@@ -107,7 +107,6 @@ Function fnAskParam As aFindIVParam
 		fnAskParam = aQuery
 		Exit Function
 	End If
-	Xray oDialog.getControl ("lstPokemon")
 	
 	With aQuery
 		.sPokemon = oDialog.getControl ("lstPokemon").getSelectedItem
