@@ -171,16 +171,16 @@
     <dlg:menuitem dlg:value="&amp;1239.lstPokemon.StringItemList"/>
     <dlg:menuitem dlg:value="&amp;1240.lstPokemon.StringItemList"/>
    </dlg:menupopup>
-   <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subLstPokemonSelected?language=Basic&amp;location=application" script:language="Script"/>
+   <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.1Dialog.subLstPokemonSelected?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:menulist>
   <dlg:img dlg:style-id="0" dlg:id="imgPokemon" dlg:tab-index="26" dlg:left="95" dlg:top="5" dlg:width="30" dlg:height="30"/>
   <dlg:text dlg:id="txtCP" dlg:tab-index="17" dlg:left="5" dlg:top="41" dlg:width="15" dlg:height="8" dlg:value="&amp;3.DlgMain.txtCP.Label"/>
   <dlg:numericfield dlg:id="numCP" dlg:tab-index="1" dlg:left="20" dlg:top="39" dlg:width="20" dlg:height="12" dlg:decimal-accuracy="0" dlg:value-min="10" dlg:value-max="5000">
-   <script:event script:event-name="on-textchange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subBtnOKCheck?language=Basic&amp;location=application" script:language="Script"/>
+   <script:event script:event-name="on-textchange" script:macro-name="vnd.sun.star.script:PokemonGoIV.1Dialog.subBtnOKCheck?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:numericfield>
   <dlg:text dlg:id="txtHP" dlg:tab-index="18" dlg:left="50" dlg:top="41" dlg:width="15" dlg:height="8" dlg:value="&amp;4.DlgMain.txtHP.Label"/>
   <dlg:numericfield dlg:id="numHP" dlg:tab-index="2" dlg:left="65" dlg:top="39" dlg:width="15" dlg:height="12" dlg:decimal-accuracy="0" dlg:value-min="10" dlg:value-max="500">
-   <script:event script:event-name="on-textchange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subBtnOKCheck?language=Basic&amp;location=application" script:language="Script"/>
+   <script:event script:event-name="on-textchange" script:macro-name="vnd.sun.star.script:PokemonGoIV.1Dialog.subBtnOKCheck?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:numericfield>
   <dlg:text dlg:id="txtStardust" dlg:tab-index="19" dlg:left="90" dlg:top="41" dlg:width="45" dlg:height="8" dlg:value="&amp;5.DlgMain.txtStardust.Label"/>
   <dlg:menulist dlg:id="lstStardust" dlg:tab-index="3" dlg:left="135" dlg:top="39" dlg:width="40" dlg:height="12" dlg:spin="true" dlg:linecount="20">
@@ -206,7 +206,7 @@
     <dlg:menuitem dlg:value="9000"/>
     <dlg:menuitem dlg:value="10000"/>
    </dlg:menupopup>
-   <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subBtnOKCheck?language=Basic&amp;location=application" script:language="Script"/>
+   <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.1Dialog.subBtnOKCheck?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:menulist>
   <dlg:text dlg:id="txtPlayerLevel" dlg:tab-index="20" dlg:left="185" dlg:top="41" dlg:width="45" dlg:height="8" dlg:value="&amp;6.DlgMain.txtPlayerLevel.Label"/>
   <dlg:menulist dlg:id="lstPlayerLevel" dlg:tab-index="4" dlg:left="230" dlg:top="39" dlg:width="30" dlg:height="12" dlg:spin="true" dlg:linecount="20">
@@ -260,13 +260,13 @@
   <dlg:img dlg:style-id="0" dlg:id="imgTeamLogo" dlg:tab-index="25" dlg:left="10" dlg:top="80" dlg:width="30" dlg:height="30"/>
   <dlg:radiogroup>
    <dlg:radio dlg:style-id="1" dlg:id="rdoTeamValor" dlg:tab-index="6" dlg:left="45" dlg:top="100" dlg:width="60" dlg:height="10" dlg:value="&amp;9.DlgMain.rdoTeamValor.Label" dlg:valign="center">
-    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subRdoTeamValorItemChanged?language=Basic&amp;location=application" script:language="Script"/>
+    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.1Dialog.subRdoTeamValorItemChanged?language=Basic&amp;location=application" script:language="Script"/>
    </dlg:radio>
    <dlg:radio dlg:style-id="2" dlg:id="rdoTeamMystic" dlg:tab-index="7" dlg:left="120" dlg:top="100" dlg:width="60" dlg:height="10" dlg:value="&amp;10.DlgMain.rdoTeamMystic.Label" dlg:valign="center">
-    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subRdoTeamMysticItemChanged?language=Basic&amp;location=application" script:language="Script"/>
+    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.1Dialog.subRdoTeamMysticItemChanged?language=Basic&amp;location=application" script:language="Script"/>
    </dlg:radio>
    <dlg:radio dlg:style-id="3" dlg:id="rdoTeamInstinct" dlg:tab-index="8" dlg:left="195" dlg:top="100" dlg:width="60" dlg:height="10" dlg:value="&amp;11.DlgMain.rdoTeamInstinct.Label" dlg:valign="center">
-    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subRdoTeamInstinctItemChanged?language=Basic&amp;location=application" script:language="Script"/>
+    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.1Dialog.subRdoTeamInstinctItemChanged?language=Basic&amp;location=application" script:language="Script"/>
    </dlg:radio>
   </dlg:radiogroup>
   <dlg:img dlg:style-id="0" dlg:id="imgTeamLeader" dlg:tab-index="28" dlg:left="10" dlg:top="110" dlg:width="30" dlg:height="35"/>
@@ -274,7 +274,7 @@
   <dlg:menulist dlg:id="lstTotal" dlg:tab-index="9" dlg:left="45" dlg:top="129" dlg:width="210" dlg:height="12" dlg:spin="true"/>
   <dlg:text dlg:id="txtBestHead" dlg:tab-index="23" dlg:left="45" dlg:top="146" dlg:width="20" dlg:height="8"/>
   <dlg:menulist dlg:id="lstBest" dlg:tab-index="10" dlg:left="65" dlg:top="144" dlg:width="58" dlg:height="12" dlg:spin="true">
-   <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.0Main.subLstBestItemChanged?language=Basic&amp;location=application" script:language="Script"/>
+   <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.1Dialog.subLstBestItemChanged?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:menulist>
   <dlg:text dlg:id="txtBestTail" dlg:tab-index="24" dlg:left="110" dlg:top="146" dlg:width="100" dlg:height="8"/>
   <dlg:checkbox dlg:id="cbxBest2" dlg:tab-index="11" dlg:left="45" dlg:top="161" dlg:width="210" dlg:height="8" dlg:checked="false"/>
