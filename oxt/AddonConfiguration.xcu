@@ -73,6 +73,12 @@
 				<value xml:lang="de">KP</value>
 			</prop>
 		</node>
+		<node oor:name="BestStatWidth" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>42</value>
+				<value xml:lang="de">58</value>
+			</prop>
+		</node>
 		<!-- Team Valor (red) -->
 		<node oor:name="AppraiseFromCandela" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
@@ -109,6 +115,12 @@
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its [Stat] is its strongest feature.</value>
 				<value xml:lang="de">Sein [Stat]-Wert ist seine stärkste Eigenschaft.</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalValorBestHeadWidth" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>8</value>
+				<value xml:lang="de">14</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorBestToo" oor:op="replace">		
@@ -179,6 +191,12 @@
 				<value xml:lang="de">Seine beste Eigenschaft ist offensichtlich sein [Stat]-Wert.</value>
 			</prop>
 		</node>
+		<node oor:name="AppraisalMysticBestHeadWidth" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>86</value>
+				<value xml:lang="de">129</value>
+			</prop>
+		</node>
 		<node oor:name="AppraisalMysticBestToo" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>It is matched equally by its [Stat].</value>
@@ -245,6 +263,12 @@
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its best quality is [Stat].</value>
 				<value xml:lang="de">Sein [Stat]-Wert ist seine beste Eigenschaft!</value>
+			</prop>
+		</node>
+		<node oor:name="AppraisalInstinctBestHeadWidth" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>46</value>
+				<value xml:lang="de">14</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctBestToo" oor:op="replace">		

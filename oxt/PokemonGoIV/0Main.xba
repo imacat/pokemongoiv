@@ -92,9 +92,9 @@ Function fnAskParam As aFindIVParam
 	DialogLibraries.loadLibrary &quot;PokemonGoIV&quot;
 	oDialog = CreateUnoDialog (DialogLibraries.PokemonGoIV.DlgMain)
 	oDialog.getControl (&quot;lstTotal&quot;).setVisible (False)
-	oDialog.getControl (&quot;txtBestBefore&quot;).setVisible (False)
+	oDialog.getControl (&quot;txtBestHead&quot;).setVisible (False)
 	oDialog.getControl (&quot;lstBest&quot;).setVisible (False)
-	oDialog.getControl (&quot;txtBestAfter&quot;).setVisible (False)
+	oDialog.getControl (&quot;txtBestTail&quot;).setVisible (False)
 	oDialog.getControl (&quot;cbxBest2&quot;).setVisible (False)
 	oDialog.getControl (&quot;cbxBest3&quot;).setVisible (False)
 	oDialog.getControl (&quot;lstMax&quot;).setVisible (False)
@@ -239,7 +239,8 @@ Sub subRdoTeamValorItemChanged (oEvent As object)
 	
 	&apos; Updates the text of the best stat appraisal.
 	subUpdateBestStatAppraisal (oDialog, _
-		fnGetResString (&quot;AppraisalValorBest&quot;))
+		fnGetResString (&quot;AppraisalValorBest&quot;), _
+		CInt (fnGetResString (&quot;AppraisalValorBestHeadWidth&quot;)))
 	
 	mItems = Array ( _
 		fnGetResString (&quot;AppraisalValorMax15&quot;), _
@@ -276,7 +277,8 @@ Sub subRdoTeamMysticItemChanged (oEvent As object)
 	
 	&apos; Updates the text of the best stat appraisal.
 	subUpdateBestStatAppraisal (oDialog, _
-		fnGetResString (&quot;AppraisalMysticBest&quot;))
+		fnGetResString (&quot;AppraisalMysticBest&quot;), _
+		CInt (fnGetResString (&quot;AppraisalMysticBestHeadWidth&quot;)))
 	
 	mItems = Array ( _
 		fnGetResString (&quot;AppraisalMysticMax15&quot;), _
@@ -313,7 +315,8 @@ Sub subRdoTeamInstinctItemChanged (oEvent As object)
 	
 	&apos; Updates the text of the best stat appraisal.
 	subUpdateBestStatAppraisal (oDialog, _
-		fnGetResString (&quot;AppraisalInstinctBest&quot;))
+		fnGetResString (&quot;AppraisalInstinctBest&quot;), _
+		CInt (fnGetResString (&quot;AppraisalInstinctBestHeadWidth&quot;)))
 	
 	mItems = Array ( _
 		fnGetResString (&quot;AppraisalInstinctMax15&quot;), _
@@ -327,26 +330,25 @@ Sub subRdoTeamInstinctItemChanged (oEvent As object)
 End Sub
 
 &apos; subUpdateBestStatAppraisal: Updates the text of the best stat appraisal.
-Sub subUpdateBestStatAppraisal (oDialog As Object, sAppraisal)
+Sub subUpdateBestStatAppraisal (oDialog As Object, _
+        sAppraisal As String, nHeadWidth As Integer)
 	Dim oText As Object, oList As Object, nX As Integer
-	Dim sBefore As String, nBeforeWidth As Integer
-	Dim sAfter As String, nAfterWidth As Integer
+	Dim sHead As String, sTail As String, nTailWidth As Integer
 	Dim nDialogWidth As Integer
 	Dim nPos As Integer
 	Dim mItems () As String
 	
 	nPos = InStr (sAppraisal, &quot;[Stat]&quot;)
-	sBefore = Left (sAppraisal, nPos - 1)
-	nBeforeWidth = CInt (Len (sBefore) * 2.8)
-	sAfter = Right (sAppraisal, _
+	sHead = Left (sAppraisal, nPos - 1)
+	sTail = Right (sAppraisal, _
 	    Len (sAppraisal) - nPos - Len (&quot;[Stat]&quot;) + 1)
 	nDialogWidth = oDialog.getModel.getPropertyValue (&quot;Width&quot;)
 	
-	oText = oDialog.getControl (&quot;txtBestBefore&quot;)
-	oText.getModel.setPropertyValue (&quot;Width&quot;, nBeforeWidth)
+	oText = oDialog.getControl (&quot;txtBestHead&quot;)
+	oText.getModel.setPropertyValue (&quot;Width&quot;, nHeadWidth)
 	oText.setVisible (True)
-	oText.setText (sBefore)
-	nX = oText.getModel.getPropertyValue (&quot;PositionX&quot;) + nBeforeWidth
+	oText.setText (sHead)
+	nX = oText.getModel.getPropertyValue (&quot;PositionX&quot;) + nHeadWidth
 	
 	mItems = Array ( _
 		fnGetResString (&quot;StatAttack&quot;), _
@@ -356,15 +358,17 @@ Sub subUpdateBestStatAppraisal (oDialog As Object, sAppraisal)
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
 	oList.getModel.setPropertyValue (&quot;PositionX&quot;, nX)
+	oList.getModel.setPropertyValue (&quot;Width&quot;, _
+	    CInt (fnGetResString (&quot;BestStatWidth&quot;)))
 	oList.setVisible (True)
 	nX = nX + oList.getModel.getPropertyValue (&quot;Width&quot;)
 	
-	nAfterWidth = nDialogWidth - nX - 10
-	oText = oDialog.getControl (&quot;txtBestAfter&quot;)
+	nTailWidth = nDialogWidth - nX - 10
+	oText = oDialog.getControl (&quot;txtBestTail&quot;)
 	oText.getModel.setPropertyValue (&quot;PositionX&quot;, nX)
-	oText.getModel.setPropertyValue (&quot;Width&quot;, nAfterWidth)
+	oText.getModel.setPropertyValue (&quot;Width&quot;, nTailWidth)
 	oText.setVisible (True)
-	oText.setText (sAfter)
+	oText.setText (sTail)
 	
 	oList = oDialog.getControl (&quot;cbxBest2&quot;)
 	oList.setVisible (False)

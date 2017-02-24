@@ -90,9 +90,9 @@ Function fnAskParam As aFindIVParam
 	DialogLibraries.loadLibrary "PokemonGoIV"
 	oDialog = CreateUnoDialog (DialogLibraries.PokemonGoIV.DlgMain)
 	oDialog.getControl ("lstTotal").setVisible (False)
-	oDialog.getControl ("txtBestBefore").setVisible (False)
+	oDialog.getControl ("txtBestHead").setVisible (False)
 	oDialog.getControl ("lstBest").setVisible (False)
-	oDialog.getControl ("txtBestAfter").setVisible (False)
+	oDialog.getControl ("txtBestTail").setVisible (False)
 	oDialog.getControl ("cbxBest2").setVisible (False)
 	oDialog.getControl ("cbxBest3").setVisible (False)
 	oDialog.getControl ("lstMax").setVisible (False)
@@ -237,7 +237,8 @@ Sub subRdoTeamValorItemChanged (oEvent As object)
 	
 	' Updates the text of the best stat appraisal.
 	subUpdateBestStatAppraisal (oDialog, _
-		fnGetResString ("AppraisalValorBest"))
+		fnGetResString ("AppraisalValorBest"), _
+		CInt (fnGetResString ("AppraisalValorBestHeadWidth")))
 	
 	mItems = Array ( _
 		fnGetResString ("AppraisalValorMax15"), _
@@ -274,7 +275,8 @@ Sub subRdoTeamMysticItemChanged (oEvent As object)
 	
 	' Updates the text of the best stat appraisal.
 	subUpdateBestStatAppraisal (oDialog, _
-		fnGetResString ("AppraisalMysticBest"))
+		fnGetResString ("AppraisalMysticBest"), _
+		CInt (fnGetResString ("AppraisalMysticBestHeadWidth")))
 	
 	mItems = Array ( _
 		fnGetResString ("AppraisalMysticMax15"), _
@@ -311,7 +313,8 @@ Sub subRdoTeamInstinctItemChanged (oEvent As object)
 	
 	' Updates the text of the best stat appraisal.
 	subUpdateBestStatAppraisal (oDialog, _
-		fnGetResString ("AppraisalInstinctBest"))
+		fnGetResString ("AppraisalInstinctBest"), _
+		CInt (fnGetResString ("AppraisalInstinctBestHeadWidth")))
 	
 	mItems = Array ( _
 		fnGetResString ("AppraisalInstinctMax15"), _
@@ -325,26 +328,25 @@ Sub subRdoTeamInstinctItemChanged (oEvent As object)
 End Sub
 
 ' subUpdateBestStatAppraisal: Updates the text of the best stat appraisal.
-Sub subUpdateBestStatAppraisal (oDialog As Object, sAppraisal)
+Sub subUpdateBestStatAppraisal (oDialog As Object, _
+        sAppraisal As String, nHeadWidth As Integer)
 	Dim oText As Object, oList As Object, nX As Integer
-	Dim sBefore As String, nBeforeWidth As Integer
-	Dim sAfter As String, nAfterWidth As Integer
+	Dim sHead As String, sTail As String, nTailWidth As Integer
 	Dim nDialogWidth As Integer
 	Dim nPos As Integer
 	Dim mItems () As String
 	
 	nPos = InStr (sAppraisal, "[Stat]")
-	sBefore = Left (sAppraisal, nPos - 1)
-	nBeforeWidth = CInt (Len (sBefore) * 2.8)
-	sAfter = Right (sAppraisal, _
+	sHead = Left (sAppraisal, nPos - 1)
+	sTail = Right (sAppraisal, _
 	    Len (sAppraisal) - nPos - Len ("[Stat]") + 1)
 	nDialogWidth = oDialog.getModel.getPropertyValue ("Width")
 	
-	oText = oDialog.getControl ("txtBestBefore")
-	oText.getModel.setPropertyValue ("Width", nBeforeWidth)
+	oText = oDialog.getControl ("txtBestHead")
+	oText.getModel.setPropertyValue ("Width", nHeadWidth)
 	oText.setVisible (True)
-	oText.setText (sBefore)
-	nX = oText.getModel.getPropertyValue ("PositionX") + nBeforeWidth
+	oText.setText (sHead)
+	nX = oText.getModel.getPropertyValue ("PositionX") + nHeadWidth
 	
 	mItems = Array ( _
 		fnGetResString ("StatAttack"), _
@@ -354,15 +356,17 @@ Sub subUpdateBestStatAppraisal (oDialog As Object, sAppraisal)
 	oList.removeItems (0, oList.getItemCount())
 	oList.addItems (mItems, 0)
 	oList.getModel.setPropertyValue ("PositionX", nX)
+	oList.getModel.setPropertyValue ("Width", _
+	    CInt (fnGetResString ("BestStatWidth")))
 	oList.setVisible (True)
 	nX = nX + oList.getModel.getPropertyValue ("Width")
 	
-	nAfterWidth = nDialogWidth - nX - 10
-	oText = oDialog.getControl ("txtBestAfter")
+	nTailWidth = nDialogWidth - nX - 10
+	oText = oDialog.getControl ("txtBestTail")
 	oText.getModel.setPropertyValue ("PositionX", nX)
-	oText.getModel.setPropertyValue ("Width", nAfterWidth)
+	oText.getModel.setPropertyValue ("Width", nTailWidth)
 	oText.setVisible (True)
-	oText.setText (sAfter)
+	oText.setText (sTail)
 	
 	oList = oDialog.getControl ("cbxBest2")
 	oList.setVisible (False)
