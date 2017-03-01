@@ -8,7 +8,7 @@ Const BASE_KEY As String = "/org.openoffice.Office.Addons.PokemonGoIV.AddonConfi
 ' fnGetImageUrl: Returns the image URL for the UNO image controls.
 Function fnGetImageUrl (sName As String) As String
 	BasicLibraries.loadLibrary "Tools"
-    Dim oRegKey As Object
+	Dim oRegKey As Object
 	
 	oRegKey = GetRegistryKeyContent (BASE_KEY & "FileResources/" & sName)
 	fnGetImageUrl = fnExpandMacroFieldExpression (oRegKey.Url)
@@ -25,15 +25,15 @@ End Function
 
 ' fnExpandMacroFieldExpression
 Function fnExpandMacroFieldExpression (sURL As String) As String
-    Dim sTemp As String
-    Dim oSM As Object
-    Dim oMacroExpander As Object
+	Dim sTemp As String
+	Dim oSM As Object
+	Dim oMacroExpander As Object
 	
 	' Gets the service manager
 	oSM = getProcessServiceManager
 	' Gets the macro expander
 	oMacroExpander = oSM.DefaultContext.getValueByName ( _
-	    "/singletons/com.sun.star.util.theMacroExpander")
+		"/singletons/com.sun.star.util.theMacroExpander")
 	
 	'cut the vnd.sun.star.expand: part
 	sTemp = Join (Split (sURL, "vnd.sun.star.expand:"))

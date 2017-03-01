@@ -19,8 +19,8 @@ Option Explicit
 
 ' fnLoadParamDialog: Loads the parameter dialog.
 Function fnLoadParamDialog As Object
-    Dim oDialog As Object
-    
+	Dim oDialog As Object
+	
 	DialogLibraries.loadLibrary "PokemonGoIV"
 	oDialog = CreateUnoDialog (DialogLibraries.PokemonGoIV.DlgMain)
 	oDialog.getControl ("lstTotal").setVisible (False)
@@ -199,7 +199,7 @@ End Sub
 
 ' subUpdateBestStatAppraisal: Updates the text of the best stat appraisal.
 Sub subUpdateBestStatAppraisal (oDialog As Object, _
-        sAppraisal As String, nHeadWidth As Integer)
+		sAppraisal As String, nHeadWidth As Integer)
 	Dim oText As Object, oList As Object, nX As Integer
 	Dim sHead As String, sTail As String, nTailWidth As Integer
 	Dim nDialogWidth As Integer
@@ -209,7 +209,7 @@ Sub subUpdateBestStatAppraisal (oDialog As Object, _
 	nPos = InStr (sAppraisal, "[Stat]")
 	sHead = Left (sAppraisal, nPos - 1)
 	sTail = Right (sAppraisal, _
-	    Len (sAppraisal) - nPos - Len ("[Stat]") + 1)
+		Len (sAppraisal) - nPos - Len ("[Stat]") + 1)
 	nDialogWidth = oDialog.getModel.getPropertyValue ("Width")
 	
 	oText = oDialog.getControl ("txtBestHead")
@@ -227,7 +227,7 @@ Sub subUpdateBestStatAppraisal (oDialog As Object, _
 	oList.addItems (mItems, 0)
 	oList.getModel.setPropertyValue ("PositionX", nX)
 	oList.getModel.setPropertyValue ("Width", _
-	    CInt (fnGetResString ("BestStatWidth")))
+		CInt (fnGetResString ("BestStatWidth")))
 	oList.setVisible (True)
 	nX = nX + oList.getModel.getPropertyValue ("Width")
 	
