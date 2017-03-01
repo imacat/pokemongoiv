@@ -74,7 +74,7 @@ Sub subLstPokemonSelected (oEvent As object)
 	&apos; Updates the Pokémon image.
 	nSelected = oDialog.getControl (&quot;lstPokemon&quot;).getSelectedItemPos
 	subReadBaseStats
-	sImageId = &quot;Pokemon&quot; &amp; maBaseStats (nSelected).sPokemon
+	sImageId = &quot;Pokemon&quot; &amp; maBaseStats (nSelected).sPokemonId
 	oImageModel = oDialog.getControl (&quot;imgPokemon&quot;).getModel
 	oImageModel.setPropertyValue (&quot;ImageURL&quot;, _
 		fnGetImageUrl (sImageId))

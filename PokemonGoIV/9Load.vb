@@ -178,6 +178,32 @@ Function fnFindEvolveForms (mData () As Variant) As String
 	fnFindEvolveForms = sEvolveForms
 End Function
 
+' fnMapPokemonNameToId: Maps the English Pokémon names to their IDs.
+Function fnMapPokemonNameToId (sName As String) As String
+	Dim sId As String
+	
+	sId = ""
+	If sName = "Farfetch'd" Then
+		sId = "Farfetchd"
+	End If
+	If sName = "Nidoran♀" Then
+		sId = "NidoranFemale"
+	End If
+	If sName = "Nidoran♂" Then
+		sId = "NidoranMale"
+	End If
+	If sName = "Mr. Mime" Then
+		sId = "MrMime"
+	End If
+	If sName = "Ho-Oh" Then
+		sId = "HoOh"
+	End If
+	If sId = "" Then
+		sId = sName
+	End If
+	fnMapPokemonNameToId = sId
+End Function
+
 ' fnReadCPMSheet: Reads the combat power multiplier sheet.
 Function fnReadCPMSheet As String
 	Dim oSheet As Object, oRange As Object, mData As Variant

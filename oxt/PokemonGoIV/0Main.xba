@@ -22,7 +22,7 @@ Option Explicit
 &apos; The base stats of a Pokémon.
 Type aStats
 	sNo As String
-	sPokemon As String
+	sPokemonId As String
 	nStamina As Integer
 	nAttack As Integer
 	nDefense As Integer
@@ -48,7 +48,8 @@ End Type
 
 &apos; The parameters to find the individual values.
 Type aFindIVParam
-	sPokemon As String
+	sPokemonId As String
+	sPokemonName As String
 	nCP As Integer
 	nHP As Integer
 	nStardust As Integer
@@ -72,7 +73,7 @@ Sub subMain
 	If aQuery.bIsCancelled Then
 		Exit Sub
 	End If
-	aBaseStats = fnGetBaseStats (aQuery.sPokemon)
+	aBaseStats = fnGetBaseStats (aQuery.sPokemonId)
 	maIVs = fnFindIV (aBaseStats, aQuery)
 	If UBound (maIVs) = -1 Then
 		MsgBox fnGetResString (&quot;ErrorNotFound&quot;)
@@ -87,7 +88,7 @@ Function fnAskParam As aFindIVParam
 	Dim oList As Object, mPokemons () As String, nI As Integer
 	Dim bIsBestAttack As Boolean, bIsBestDefense As Boolean
 	Dim bIsBestHP As Boolean
-	Dim aQuery As New aFindIVParam
+	Dim aQuery As New aFindIVParam, nSelected As Integer
 	
 	oDialog = fnLoadParamDialog
 	If oDialog.execute = 0 Then
@@ -96,8 +97,11 @@ Function fnAskParam As aFindIVParam
 		Exit Function
 	End If
 	
+	subReadBaseStats
+	nSelected = oDialog.getControl (&quot;lstPokemon&quot;).getSelectedItemPos
 	With aQuery
-		.sPokemon = oDialog.getControl (&quot;lstPokemon&quot;).getSelectedItem
+		.sPokemonId = maBaseStats (nSelected).sPokemonId
+		.sPokemonName = oDialog.getControl (&quot;lstPokemon&quot;).getSelectedItem
 		.nCP = oDialog.getControl (&quot;numCP&quot;).getValue
 		.nHP = oDialog.getControl (&quot;numHP&quot;).getValue
 		.nStardust = CInt (oDialog.getControl (&quot;lstStardust&quot;).getSelectedItem)
@@ -168,7 +172,7 @@ Function fnFindIV ( _
 	Dim nI As Integer, nJ As Integer
 	Dim fStep As Double, nN As Integer
 	
-	If aQuery.sPokemon = &quot;&quot; Then
+	If aQuery.sPokemonId = &quot;&quot; Then
 		fnFindIV = maIV
 		Exit Function
 	End If
@@ -349,7 +353,7 @@ Sub subSaveIV ( _
 		&quot;No&quot;, &quot;Pokemon&quot;, &quot;CP&quot;, &quot;HP&quot;, &quot;Stardust&quot;, _
 		&quot;Lv&quot;, &quot;Atk&quot;, &quot;Def&quot;, &quot;Sta&quot;, &quot;IV&quot;)
 	nFront = UBound (mRow)
-	If aQuery.sPokemon = &quot;Eevee&quot; Then
+	If aQuery.sPokemonId = &quot;Eevee&quot; Then
 		If aQuery.nPlayerLevel &lt;&gt; 0 Then
 			ReDim Preserve mRow (nFront + 6) As Variant
 			mRow (nFront + 1) = &quot;CP as &quot; _
@@ -405,7 +409,7 @@ Sub subSaveIV ( _
 			maIVs (nI).fLevel, maIVs (nI).nAttack, _
 			maIVs (nI).nDefense, maIVs (nI).nStamina, _
 			maIVs (nI).nTotal / 45)
-		If aQuery.sPokemon = &quot;Eevee&quot; Then
+		If aQuery.sPokemonId = &quot;Eevee&quot; Then
 			If aQuery.nPlayerLevel &lt;&gt; 0 Then
 				ReDim Preserve mRow (nFront + 6) As Variant
 				mRow (nFront + 1) = maIVs (nI).maEvolved (0).nCP
@@ -446,7 +450,7 @@ Sub subSaveIV ( _
 	
 	&apos; Fills the query information at the first row
 	mData (1) (0) = aBaseStats.sNo
-	mData (1) (1) = aQuery.sPokemon
+	mData (1) (1) = aQuery.sPokemonName
 	mData (1) (2) = aQuery.nCP
 	mData (1) (3) = aQuery.nHP
 	mData (1) (4) = aQuery.nStardust
@@ -476,7 +480,7 @@ Sub subSaveIV ( _
 		9, 1, 9, UBound (mData))
 	oRange.setPropertyValue (&quot;NumberFormat&quot;, 10)
 	
-	If aQuery.sPokemon = &quot;Eevee&quot; Then
+	If aQuery.sPokemonId = &quot;Eevee&quot; Then
 		oRange = oSheet.getCellRangeByPosition ( _
 			10, 0, 15, 0)
 	Else
@@ -503,7 +507,7 @@ Sub subSaveIV ( _
 	oColumns.getByIndex (7).setPropertyValue (&quot;Width&quot;, 860)
 	oColumns.getByIndex (8).setPropertyValue (&quot;Width&quot;, 860)
 	oColumns.getByIndex (9).setPropertyValue (&quot;Width&quot;, 1030)
-	If aQuery.sPokemon = &quot;Eevee&quot; Then
+	If aQuery.sPokemonId = &quot;Eevee&quot; Then
 		If aQuery.nPlayerLevel &lt;&gt; 0 Then
 			For nI = 0 To 5 Step 2
 				oColumns.getByIndex (10 + nI).setPropertyValue ( _
@@ -635,12 +639,12 @@ Function fnCalcHP (aBaseStats As aStats, _
 End Function
 
 &apos; fnGetBaseStats: Returns the base stats of the Pokémon.
-Function fnGetBaseStats (sPokemon As String) As aStats
+Function fnGetBaseStats (sPokemonId As String) As aStats
 	Dim nI As Integer
 	
 	subReadBaseStats
 	For nI = 0 To UBound (maBaseStats)
-		If maBaseStats (nI).sPokemon = sPokemon Then
+		If maBaseStats (nI).sPokemonId = sPokemonId Then
 			fnGetBaseStats = maBaseStats (nI)
 			Exit Function
 		End If
@@ -665,29 +669,6 @@ Function fnFloor (fNumber As Double) As Integer
 	fnFloor = CInt (fNumber - 0.5)
 End Function
 
-&apos; fnMapPokemonNameToId: Maps the English Pokémon names to their IDs.
-Function fnMapPokemonNameToId (sName As String) As String
-	Dim sId As String
-	
-	sId = &quot;&quot;
-	If sName = &quot;Farfetch&apos;d&quot; Then
-		sId = &quot;Farfetchd&quot;
-	End If
-	If sName = &quot;Nidoran♀&quot; Then
-		sId = &quot;NidoranFemale&quot;
-	End If
-	If sName = &quot;Nidoran♂&quot; Then
-		sId = &quot;NidoranMale&quot;
-	End If
-	If sName = &quot;Mr. Mime&quot; Then
-		sId = &quot;MrMime&quot;
-	End If
-	If sId = &quot;&quot; Then
-		sId = sName
-	End If
-	fnMapPokemonNameToId = sId
-End Function
-
 &apos; fnMapPokemonIdToName: Maps the Pokémon IDs to their localized names.
 Function fnMapPokemonIdToName (sId As String) As String
 	fnMapPokemonIdToName = fnGetResString (&quot;Pokemon&quot; &amp; sId)
@@ -704,7 +685,7 @@ Sub subReadBaseStats
 		For nI = 0 To UBound (mData)
 			With maBaseStats (nI)
 				.sNo = mData (nI) (1)
-				.sPokemon = mData (nI) (0)
+				.sPokemonId = mData (nI) (0)
 				.nStamina = mData (nI) (2)
 				.nAttack = mData (nI) (3)
 				.nDefense = mData (nI) (4)

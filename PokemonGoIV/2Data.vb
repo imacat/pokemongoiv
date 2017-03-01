@@ -13,7 +13,7 @@
 ' limitations under the License.
 
 ' 2Data: The Pokémon GO data for IV calculation
-'   by imacat <imacat@mail.imacat.idv.tw>, 2017-02-14
+'   by imacat <imacat@mail.imacat.idv.tw>, 2017-03-01
 '   Generated with 9Load.subReadDataSheets ()
 
 Option Explicit
@@ -61,8 +61,8 @@ Function fnGetBaseStatsData As Variant
 		Array ("Ninetales", "038", 146, 169, 204, Array ()), _
 		Array ("Jigglypuff", "039", 230, 80, 44, Array ("Wigglytuff")), _
 		Array ("Wigglytuff", "040", 280, 156, 93, Array ()), _
-		Array ("Zubat", "041", 80, 83, 76, Array ("Golbat")), _
-		Array ("Golbat", "042", 150, 161, 153, Array ()), _
+		Array ("Zubat", "041", 80, 83, 76, Array ("Golbat", "Crobat")), _
+		Array ("Golbat", "042", 150, 161, 153, Array ("Crobat")), _
 		Array ("Oddish", "043", 90, 131, 116, Array ("Gloom", "Vileplume")), _
 		Array ("Gloom", "044", 120, 153, 139, Array ("Vileplume")), _
 		Array ("Vileplume", "045", 150, 202, 170, Array ()), _
@@ -115,7 +115,7 @@ Function fnGetBaseStatsData As Variant
 		Array ("Gastly", "092", 60, 186, 70, Array ("Haunter", "Gengar")), _
 		Array ("Haunter", "093", 90, 223, 112, Array ("Gengar")), _
 		Array ("Gengar", "094", 120, 261, 156, Array ()), _
-		Array ("Onix", "095", 70, 85, 288, Array ()), _
+		Array ("Onix", "095", 70, 85, 288, Array ("Steelix")), _
 		Array ("Drowzee", "096", 120, 89, 158, Array ("Hypno")), _
 		Array ("Hypno", "097", 170, 144, 215, Array ()), _
 		Array ("Krabby", "098", 60, 181, 156, Array ("Kingler")), _
@@ -133,17 +133,17 @@ Function fnGetBaseStatsData As Variant
 		Array ("Weezing", "110", 130, 174, 221, Array ()), _
 		Array ("Rhyhorn", "111", 160, 140, 157, Array ("Rhydon")), _
 		Array ("Rhydon", "112", 210, 222, 206, Array ()), _
-		Array ("Chansey", "113", 500, 60, 176, Array ()), _
+		Array ("Chansey", "113", 500, 60, 176, Array ("Blissey")), _
 		Array ("Tangela", "114", 130, 183, 205, Array ()), _
 		Array ("Kangaskhan", "115", 210, 181, 165, Array ()), _
-		Array ("Horsea", "116", 60, 129, 125, Array ("Seadra")), _
-		Array ("Seadra", "117", 110, 187, 182, Array ()), _
+		Array ("Horsea", "116", 60, 129, 125, Array ("Seadra", "Kingdra")), _
+		Array ("Seadra", "117", 110, 187, 182, Array ("Kingdra")), _
 		Array ("Goldeen", "118", 90, 123, 115, Array ("Seaking")), _
 		Array ("Seaking", "119", 160, 175, 154, Array ()), _
 		Array ("Staryu", "120", 60, 137, 112, Array ("Starmie")), _
 		Array ("Starmie", "121", 120, 210, 184, Array ()), _
 		Array ("MrMime", "122", 80, 192, 233, Array ()), _
-		Array ("Scyther", "123", 140, 218, 170, Array ()), _
+		Array ("Scyther", "123", 140, 218, 170, Array ("Scizor")), _
 		Array ("Jynx", "124", 130, 223, 182, Array ()), _
 		Array ("Electabuzz", "125", 130, 198, 173, Array ()), _
 		Array ("Magmar", "126", 130, 206, 169, Array ()), _
@@ -157,7 +157,7 @@ Function fnGetBaseStatsData As Variant
 		Array ("Vaporeon", "134", 260, 205, 177, Array ()), _
 		Array ("Jolteon", "135", 130, 232, 201, Array ()), _
 		Array ("Flareon", "136", 130, 246, 204, Array ()), _
-		Array ("Porygon", "137", 130, 153, 139, Array ()), _
+		Array ("Porygon", "137", 130, 153, 139, Array ("Porygon2")), _
 		Array ("Omanyte", "138", 70, 155, 174, Array ("Omastar")), _
 		Array ("Omastar", "139", 140, 207, 227, Array ()), _
 		Array ("Kabuto", "140", 60, 148, 162, Array ("Kabutops")), _
@@ -172,14 +172,106 @@ Function fnGetBaseStatsData As Variant
 		Array ("Dragonite", "149", 182, 263, 201, Array ()), _
 		Array ("Mewtwo", "150", 212, 330, 200, Array ()), _
 		Array ("Mew", "151", 200, 210, 209, Array ()), _
+		Array ("Chikorita", "152", 90, 92, 122, Array ("Bayleef", "Meganium")), _
+		Array ("Bayleef", "153", 120, 122, 155, Array ("Meganium")), _
+		Array ("Meganium", "154", 160, 168, 202, Array ()), _
+		Array ("Cyndaquil", "155", 78, 116, 96, Array ("Quilava", "Typhlosion")), _
+		Array ("Quilava", "156", 116, 158, 129, Array ("Typhlosion")), _
+		Array ("Typhlosion", "157", 156, 223, 176, Array ()), _
+		Array ("Totodile", "158", 100, 117, 116, Array ("Croconaw", "Feraligatr")), _
+		Array ("Croconaw", "159", 130, 150, 151, Array ("Feraligatr")), _
+		Array ("Feraligatr", "160", 170, 205, 197, Array ()), _
+		Array ("Sentret", "161", 70, 79, 77, Array ("Furret")), _
+		Array ("Furret", "162", 170, 148, 130, Array ()), _
+		Array ("Hoothoot", "163", 120, 67, 101, Array ("Noctowl")), _
+		Array ("Noctowl", "164", 200, 145, 179, Array ()), _
+		Array ("Ledyba", "165", 80, 72, 142, Array ("Ledian")), _
+		Array ("Ledian", "166", 110, 107, 209, Array ()), _
+		Array ("Spinarak", "167", 80, 105, 73, Array ("Ariados")), _
+		Array ("Ariados", "168", 140, 161, 128, Array ()), _
+		Array ("Crobat", "169", 170, 194, 178, Array ()), _
+		Array ("Chinchou", "170", 150, 106, 106, Array ("Lanturn")), _
+		Array ("Lanturn", "171", 250, 146, 146, Array ()), _
 		Array ("Pichu", "172", 40, 77, 63, Array ("Pikachu", "Raichu")), _
 		Array ("Cleffa", "173", 100, 75, 91, Array ("Clefairy", "Clefable")), _
 		Array ("Igglybuff", "174", 180, 69, 34, Array ("Jigglypuff", "Wigglytuff")), _
 		Array ("Togepi", "175", 70, 67, 116, Array ("Togetic")), _
-		Array ("Togetic", "176", 110, 140, 191, Array ()), _
+		Array ("Togetic", "176", 110, 139, 191, Array ()), _
+		Array ("Natu", "177", 80, 134, 89, Array ("Xatu")), _
+		Array ("Xatu", "178", 130, 192, 146, Array ()), _
+		Array ("Mareep", "179", 110, 114, 82, Array ("Flaaffy", "Ampharos")), _
+		Array ("Flaaffy", "180", 140, 145, 112, Array ("Ampharos")), _
+		Array ("Ampharos", "181", 180, 211, 172, Array ()), _
+		Array ("Bellossom", "182", 150, 169, 189, Array ()), _
+		Array ("Marill", "183", 140, 37, 93, Array ("Azumarill")), _
+		Array ("Azumarill", "184", 200, 112, 152, Array ()), _
+		Array ("Sudowoodo", "185", 140, 167, 198, Array ()), _
+		Array ("Politoed", "186", 180, 174, 192, Array ()), _
+		Array ("Hoppip", "187", 70, 67, 101, Array ("Skiploom", "Jumpluff")), _
+		Array ("Skiploom", "188", 110, 91, 127, Array ("Jumpluff")), _
+		Array ("Jumpluff", "189", 150, 118, 197, Array ()), _
+		Array ("Aipom", "190", 110, 136, 112, Array ()), _
+		Array ("Sunkern", "191", 60, 55, 55, Array ("Sunflora")), _
+		Array ("Sunflora", "192", 150, 185, 148, Array ()), _
+		Array ("Yanma", "193", 130, 154, 94, Array ()), _
+		Array ("Wooper", "194", 110, 75, 75, Array ("Quagsire")), _
+		Array ("Quagsire", "195", 190, 152, 152, Array ()), _
+		Array ("Espeon", "196", 130, 261, 194, Array ()), _
+		Array ("Umbreon", "197", 190, 126, 250, Array ()), _
+		Array ("Murkrow", "198", 120, 175, 87, Array ()), _
+		Array ("Slowking", "199", 190, 177, 194, Array ()), _
+		Array ("Misdreavus", "200", 120, 167, 167, Array ()), _
+		Array ("Unown", "201", 96, 136, 91, Array ()), _
+		Array ("Wobbuffet", "202", 380, 60, 106, Array ()), _
+		Array ("Girafarig", "203", 140, 182, 133, Array ()), _
+		Array ("Pineco", "204", 100, 108, 146, Array ("Forretress")), _
+		Array ("Forretress", "205", 150, 161, 242, Array ()), _
+		Array ("Dunsparce", "206", 200, 131, 131, Array ()), _
+		Array ("Gligar", "207", 130, 143, 204, Array ()), _
+		Array ("Steelix", "208", 150, 148, 333, Array ()), _
+		Array ("Snubbull", "209", 120, 137, 89, Array ("Granbull")), _
+		Array ("Granbull", "210", 180, 212, 137, Array ()), _
+		Array ("Qwilfish", "211", 130, 184, 148, Array ()), _
+		Array ("Scizor", "212", 140, 236, 191, Array ()), _
+		Array ("Shuckle", "213", 40, 17, 396, Array ()), _
+		Array ("Heracross", "214", 160, 234, 189, Array ()), _
+		Array ("Sneasel", "215", 110, 189, 157, Array ()), _
+		Array ("Teddiursa", "216", 120, 142, 93, Array ("Ursaring")), _
+		Array ("Ursaring", "217", 180, 236, 144, Array ()), _
+		Array ("Slugma", "218", 80, 118, 71, Array ("Magcargo")), _
+		Array ("Magcargo", "219", 100, 139, 209, Array ()), _
+		Array ("Swinub", "220", 100, 90, 74, Array ("Piloswine")), _
+		Array ("Piloswine", "221", 200, 181, 147, Array ()), _
+		Array ("Corsola", "222", 110, 118, 156, Array ()), _
+		Array ("Remoraid", "223", 70, 127, 69, Array ("Octillery")), _
+		Array ("Octillery", "224", 150, 197, 141, Array ()), _
+		Array ("Delibird", "225", 90, 128, 90, Array ()), _
+		Array ("Mantine", "226", 130, 148, 260, Array ()), _
+		Array ("Skarmory", "227", 130, 148, 260, Array ()), _
+		Array ("Houndour", "228", 90, 152, 93, Array ("Houndoom")), _
+		Array ("Houndoom", "229", 150, 224, 159, Array ()), _
+		Array ("Kingdra", "230", 150, 194, 194, Array ()), _
+		Array ("Phanpy", "231", 180, 107, 107, Array ("Donphan")), _
+		Array ("Donphan", "232", 180, 214, 214, Array ()), _
+		Array ("Porygon2", "233", 170, 198, 183, Array ()), _
+		Array ("Stantler", "234", 146, 192, 132, Array ()), _
+		Array ("Smeargle", "235", 110, 40, 88, Array ()), _
+		Array ("Tyrogue", "236", 70, 64, 64, Array ("Hitmonlee")), _
+		Array ("Hitmontop", "237", 100, 173, 214, Array ()), _
 		Array ("Smoochum", "238", 90, 153, 116, Array ("Jynx")), _
 		Array ("Elekid", "239", 90, 135, 110, Array ("Electabuzz")), _
-		Array ("Magby", "240", 90, 151, 108, Array ("Magmar")))
+		Array ("Magby", "240", 90, 151, 108, Array ("Magmar")), _
+		Array ("Miltank", "241", 190, 157, 211, Array ()), _
+		Array ("Blissey", "242", 510, 129, 229, Array ()), _
+		Array ("Raikou", "243", 180, 241, 210, Array ()), _
+		Array ("Entei", "244", 230, 235, 176, Array ()), _
+		Array ("Suicune", "245", 200, 180, 235, Array ()), _
+		Array ("Larvitar", "246", 100, 115, 93, Array ("Pupitar", "Tyranitar")), _
+		Array ("Pupitar", "247", 140, 155, 133, Array ("Tyranitar")), _
+		Array ("Tyranitar", "248", 200, 251, 212, Array ()), _
+		Array ("Lugia", "249", 212, 193, 323, Array ()), _
+		Array ("HoOh", "250", 212, 263, 301, Array ()), _
+		Array ("Celebi", "251", 200, 210, 210, Array ()))
 End Function
 
 ' fnGetCPMData: Returns the combat power multiplier data.
