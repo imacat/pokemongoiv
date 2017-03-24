@@ -17,9 +17,28 @@
 
 Option Explicit
 
-' fnLoadParamDialog: Loads the parameter dialog.
-Function fnLoadParamDialog As Object
+' The parameters to find the individual values.
+Type aFindIVParam
+	sPokemonId As String
+	sPokemonName As String
+	nCP As Integer
+	nHP As Integer
+	nStardust As Integer
+	nPlayerLevel As Integer
+	bIsNew As Boolean
+	nTotal As Integer
+	sBest As String
+	nMax As Integer
+	bIsCancelled As Boolean
+End Type
+
+' fnAskParam: Asks the users for the parameters for the Pokémon.
+Function fnAskParam As aFindIVParam
 	Dim oDialog As Object
+	Dim oList As Object, mPokemons () As String, nI As Integer
+	Dim bIsBestAttack As Boolean, bIsBestDefense As Boolean
+	Dim bIsBestHP As Boolean
+	Dim aQuery As New aFindIVParam, nSelected As Integer
 	
 	DialogLibraries.loadLibrary "PokemonGoIV"
 	oDialog = CreateUnoDialog (DialogLibraries.PokemonGoIV.DlgMain)
@@ -36,7 +55,74 @@ Function fnLoadParamDialog As Object
 	oDialog.getControl ("imgTeamLogo").getModel.setPropertyValue ( _
 		"ImageURL", fnGetImageUrl ("Unknown"))
 	
-	fnLoadParamDialog = oDialog
+	If oDialog.execute = 0 Then
+		aQuery.bIsCancelled = True
+		fnAskParam = aQuery
+		Exit Function
+	End If
+	
+	subReadBaseStats
+	nSelected = oDialog.getControl ("lstPokemon").getSelectedItemPos
+	With aQuery
+		.sPokemonId = maBaseStats (nSelected).sPokemonId
+		.sPokemonName = oDialog.getControl ("lstPokemon").getSelectedItem
+		.nCP = oDialog.getControl ("numCP").getValue
+		.nHP = oDialog.getControl ("numHP").getValue
+		.nStardust = CInt (oDialog.getControl ("lstStardust").getSelectedItem)
+		.nPlayerLevel = CInt (oDialog.getControl ("lstPlayerLevel").getSelectedItem)
+		.nTotal = oDialog.getControl ("lstTotal").getSelectedItemPos + 1
+		.nMax = oDialog.getControl ("lstMax").getSelectedItemPos + 1
+		.bIsCancelled = False
+	End With
+	If oDialog.getControl ("cbxIsNew").getState = 1 Then
+		aQuery.bIsNew = True
+	Else
+		aQuery.bIsNew = False
+	End If
+	
+	' The best stats
+	bIsBestAttack = False
+	bIsBestDefense = False
+	bIsBestHP = False
+	If oDialog.getControl ("lstBest").getSelectedItemPos = 0 Then
+		bIsBestAttack = True
+		If oDialog.getControl ("cbxBest2").getState = 1 Then
+			bIsBestDefense = True
+		End If
+		If oDialog.getControl ("cbxBest3").getState = 1 Then
+			bIsBestHP = True
+		End If
+	End If
+	If oDialog.getControl ("lstBest").getSelectedItemPos = 1 Then
+		bIsBestDefense = True
+		If oDialog.getControl ("cbxBest2").getState = 1 Then
+			bIsBestAttack = True
+		End If
+		If oDialog.getControl ("cbxBest3").getState = 1 Then
+			bIsBestHP = True
+		End If
+	End If
+	If oDialog.getControl ("lstBest").getSelectedItemPos = 2 Then
+		bIsBestHP = True
+		If oDialog.getControl ("cbxBest2").getState = 1 Then
+			bIsBestAttack = True
+		End If
+		If oDialog.getControl ("cbxBest3").getState = 1 Then
+			bIsBestDefense = True
+		End If
+	End If
+	aQuery.sBest = ""
+	If bIsBestAttack Then
+		aQuery.sBest = aQuery.sBest & "Atk "
+	End If
+	If bIsBestDefense Then
+		aQuery.sBest = aQuery.sBest & "Def "
+	End If
+	If bIsBestHP Then
+		aQuery.sBest = aQuery.sBest & "Sta "
+	End If
+	
+	fnAskParam = aQuery
 End Function
 
 ' subBtnOKCheck: Checks whether the required columns are filled.
