@@ -89,7 +89,7 @@ Function fnFindIV ( _
 	Dim fLevel As Double, nStamina As Integer
 	Dim nAttack As Integer, nDefense As integer
 	Dim nI As Integer, nJ As Integer
-	Dim fStep As Double, nN As Integer
+	Dim fStep As Double, nN As Integer, nMaxLevel As Integer
 	
 	If aQuery.sPokemonId = "" Then
 		fnFindIV = maIV
@@ -114,6 +114,10 @@ Function fnFindIV ( _
 		Next nI
 	End If
 	nN = -1
+	nMaxLevel = aQuery.nPlayerLevel + 1.5
+	If nMaxLevel > 40 Then
+	    nMaxLevel = 40
+	End If
 	For fLevel = 1 To UBound (mStardust) Step fStep
 		If mStardust (CInt (fLevel - 0.5)) = aQuery.nStardust Then
 			For nStamina = 0 To 15
@@ -134,8 +138,7 @@ Function fnFindIV ( _
 								End With
 								If aQuery.nPlayerLevel <> 0 Then
 									maIV (nN).nMaxCP = fnCalcCP ( _
-										aBaseStats, _
-										aQuery.nPlayerLevel + 1.5, _
+										aBaseStats, nMaxLevel, _
 										nAttack, nDefense, nStamina)
 								End If
 								maIV (nN).maEvolved _
@@ -147,7 +150,11 @@ Function fnFindIV ( _
 											fLevel, nAttack, _
 											nDefense, nStamina)
 									If aQuery.nPlayerLevel <> 0 Then
-										maIV (nN).maEvolved (nI).nMaxCP = fnCalcCP (maEvBaseStats (nI), aQuery.nPlayerLevel + 1.5, nAttack, nDefense, nStamina)
+										maIV (nN).maEvolved (nI).nMaxCP _
+										    = fnCalcCP ( _
+										    maEvBaseStats (nI), _
+										    nMaxLevel, nAttack, _
+										    nDefense, nStamina)
 									End If
 								Next nI
 							End If
