@@ -58,18 +58,21 @@
 		<node oor:name="StatAttack" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Attack</value>
+				<value xml:lang="zh-TW">攻擊</value>
 				<value xml:lang="de">Angriff</value>
 			</prop>
 		</node>
 		<node oor:name="StatDefense" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Defense</value>
+				<value xml:lang="zh-TW">防禦</value>
 				<value xml:lang="de">Verteidigung</value>
 			</prop>
 		</node>
 		<node oor:name="StatHP" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>HP</value>
+				<value xml:lang="zh-TW">HP</value>
 				<value xml:lang="de">KP</value>
 			</prop>
 		</node>
@@ -83,37 +86,42 @@
 		<node oor:name="AppraiseFromCandela" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Candela, leader of Team Valor, says:</value>
-				<value xml:lang="zh-TW">Valor 隊隊長 Candela 說：</value>
+				<value xml:lang="zh-TW">武勇隊隊長坎迪拉說：</value>
 				<value xml:lang="de">Candela, Leiter von Team Wagemut, sagt:</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorTotal37OrHigher" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] simply amazes me. It can accomplish anything!</value>
+				<value xml:lang="zh-TW">整體而言，你的 [Pokémon] 實在太有魅力了。牠一定是所向無敵啊！</value>
 				<value xml:lang="de">Von deinem [Pokémon] bin ich insgesamt total beeindruckt. Es kann einfach alles!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorTotal30To36" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] is a strong Pokémon. You should be proud!</value>
+				<value xml:lang="zh-TW">整體而言，你的 [Pokémon] 是一隻很強的寶可夢。你應該引以為傲！</value>
 				<value xml:lang="de">Dein [Pokémon] ist insgesamt sehr stark. Du kannst stolz sein!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorTotal23To29" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] is a decent Pokémon.</value>
+				<value xml:lang="zh-TW">整體而言，你的 [Pokémon] 算是一隻不錯的寶可夢。</value>
 				<value xml:lang="de">Dein [Pokémon] ist insgesamt ganz gut!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorTotalUpTo22" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] may not be great in battle, but I still like it!</value>
+				<value xml:lang="zh-TW">整體而言，你的 [Pokémon] 可能不太適合對戰。但我蠻喜歡牠的！</value>
 				<value xml:lang="de">Dein [Pokémon] ist zwar insgesamt im Kampf nicht allzu beeindruckend, aber ich mag es trotzdem!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorBest" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its [Stat] is its strongest feature.</value>
+				<value xml:lang="zh-TW">[Stat] 是牠最強大的武器。</value>
 				<value xml:lang="de">Sein [Stat]-Wert ist seine stärkste Eigenschaft.</value>
 			</prop>
 		</node>
@@ -126,30 +134,35 @@
 		<node oor:name="AppraisalValorBestToo" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>I'm just as impressed with its [Stat].</value>
+				<value xml:lang="zh-TW">牠的 [Stat] 也讓我印象深刻。</value>
 				<value xml:lang="de">Ich bin genauso beeindruckt durch seinen [Stat]-Wert.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorMax15" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>I'm blown away by its stats. WOW!</value>
+				<value xml:lang="zh-TW">哇！牠的能力太驚人了！</value>
 				<value xml:lang="de">Seine Werte hauen mich um. WOW!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorMax13Or14" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>It's got excellent stats! How exciting!</value>
+				<value xml:lang="zh-TW">牠的能力真是優秀！真叫人興奮！</value>
 				<value xml:lang="de">Es hat hervorragende Werte! Wie aufregend!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorMax8To12" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its stats indicate that in battle, it'll get the job done.</value>
+				<value xml:lang="zh-TW">就牠的能力來看，牠在對戰中應該會有不錯的表現。</value>
 				<value xml:lang="de">Seine Werte sind nicht von schlechten Eltern.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalValorMaxUpTo7" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its stats don't point to greatness in battle.</value>
+				<value xml:lang="zh-TW">牠的能力不太適合對戰。</value>
 				<value xml:lang="de">Seine Werte werden dir im Kampf nicht viel bringen.</value>
 			</prop>
 		</node>
@@ -157,37 +170,42 @@
 		<node oor:name="AppraiseFromBlanche" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Blanche, leader of Team Mystic, says:</value>
-				<value xml:lang="zh-TW">Mystic 隊隊長 Blanche 說：</value>
+				<value xml:lang="zh-TW">叡智隊隊長布蘭雪說：</value>
 				<value xml:lang="de">Blanche, Leiter von Team Weisheit, sagt:</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticTotal37OrHigher" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] is a wonder! What a breathtaking Pokémon!</value>
+				<value xml:lang="zh-TW">整體而言，你的 [Pokémon] 實在是太棒了！牠是隻讓人驚豔的寶可夢！</value>
 				<value xml:lang="de">Dein [Pokémon] ist insgesamt einfach erstaunlich. Wirklich ein atemberaubendes Exemplar!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticTotal30To36" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] has certainly caught my attention.</value>
+				<value xml:lang="zh-TW">整體而言，你的 [Pokémon] 吸引了我的注意力。</value>
 				<value xml:lang="de">Dein [Pokémon] ist mir insgesamt wirklich aufgefallen.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticTotal23To29" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] is above average.</value>
+				<value xml:lang="zh-TW">整體而言，你的 [Pokémon] 比平均值好一些。</value>
 				<value xml:lang="de">Dein [Pokémon] ist insgesamt ein gutes Pokémon.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticTotalUpTo22" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] is not likely to make much headway in battle.</value>
+				<value xml:lang="zh-TW">整體而言，你的 [Pokémon] 應該很難在對戰中派上用場。</value>
 				<value xml:lang="de">Dein [Pokémon] wird im Kampf insgesamt wahrscheinlich keine großen Fortschritte machen.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticBest" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>I see that its best attribute is its [Stat].</value>
+				<value xml:lang="zh-TW">牠的 [Stat] 非常值得期待。</value>
 				<value xml:lang="de">Seine beste Eigenschaft ist offensichtlich sein [Stat]-Wert.</value>
 			</prop>
 		</node>
@@ -200,30 +218,35 @@
 		<node oor:name="AppraisalMysticBestToo" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>It is matched equally by its [Stat].</value>
+				<value xml:lang="zh-TW">而且牠的 [Stat] 也不遑多讓。</value>
 				<value xml:lang="de">Sein [Stat]-Wert ist genauso gut!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticMax15" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its stats exceed my calculations. It's incredible!</value>
+				<value xml:lang="zh-TW">牠的能力完全超出我的預測，太不可思議了！</value>
 				<value xml:lang="de">Seine Werte sind so hoch, dass ich sie gar nicht berechnen kann! Unglaublich!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticMax13Or14" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>I am certainly impressed by its stats, I must say.</value>
+				<value xml:lang="zh-TW">我必須說，牠的能力讓人驚豔。</value>
 				<value xml:lang="de">Ich muss sagen, dass ich von seinen Werten sehr beeindruckt bin.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticMax8To12" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its stats are noticeably trending to the positive.</value>
+				<value xml:lang="zh-TW">牠十分地強大，能力仍在成長中。</value>
 				<value xml:lang="de">Seine Werte sind recht beeindruckend.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalMysticMaxUpTo7" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its stats are not out of the norm, in my opinion.</value>
+				<value xml:lang="zh-TW">就我個人而言，我覺得牠算是蠻普通的。</value>
 				<value xml:lang="de">Seine Werte sind insgesamt ganz ok.</value>
 			</prop>
 		</node>
@@ -231,37 +254,42 @@
 		<node oor:name="AppraiseFromSpark" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Spark, leader of Team Instinct, says:</value>
-				<value xml:lang="zh-TW">Instinct 隊隊長 Spark 說：</value>
+				<value xml:lang="zh-TW">靈犀隊隊長史帕克說：</value>
 				<value xml:lang="de">Spark, Leiter von Team Intuition, sagt:</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctTotal37OrHigher" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
-				<value>Overall, your [Pokémon] is not likely to make much headway in battle.</value>
+				<value>Overall, your [Pokémon] looks like it can really battle with the best of them!</value>
+				<value xml:lang="zh-TW">整體而言，你的 [Pokémon] 在對戰中應該是所向披靡！</value>
 				<value xml:lang="de">Dein [Pokémon] kann es im Kampf mit allen aufnehmen!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctTotal30To36" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] is really strong!</value>
+				<value xml:lang="zh-TW">整體而言，你的 [Pokémon] 真的蠻強的！</value>
 				<value xml:lang="de">Dein [Pokémon] ist insgesamt wirklich stark!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctTotal23To29" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] is pretty decent!</value>
+				<value xml:lang="zh-TW">整體而言，你的 [Pokémon] 還算不錯！</value>
 				<value xml:lang="de">Dein [Pokémon] ist insgesamt ganz gut.</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctTotalUpTo22" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Overall, your [Pokémon] has room for improvement as far as battling goes.</value>
+				<value xml:lang="zh-TW">整體而言，你的 [Pokémon] 還有很多進步的空間。</value>
 				<value xml:lang="de">Dein [Pokémon] kann sich im Kampf noch verbessern!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctBest" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its best quality is [Stat].</value>
+				<value xml:lang="zh-TW">牠的 [Stat] 極為強大。</value>
 				<value xml:lang="de">Sein [Stat]-Wert ist seine beste Eigenschaft!</value>
 			</prop>
 		</node>
@@ -274,30 +302,35 @@
 		<node oor:name="AppraisalInstinctBestToo" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its [Stat] is great, too!</value>
+				<value xml:lang="zh-TW">[Stat] 也非常不錯。</value>
 				<value xml:lang="de">Auch sein [Stat]-Wert ist klasse!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctMax15" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its stats are the best I've ever seen! No doubt about it!</value>
+				<value xml:lang="zh-TW">這是我見過最強的等級了！無庸置疑！</value>
 				<value xml:lang="de">Seine Werte sind die besten, die ich je gesehen habe!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctMax13Or14" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its stats are really strong! Impressive.</value>
+				<value xml:lang="zh-TW">牠實在是太強了！讓人印象深刻！</value>
 				<value xml:lang="de">Seine Werte sind wirklich hoch! Hut ab!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctMax8To12" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>It's definitely got some good stats. Definitely!</value>
+				<value xml:lang="zh-TW">相信我！牠看起來真的蠻強的！</value>
 				<value xml:lang="de">Seine Werte können sich sehen lassen!</value>
 			</prop>
 		</node>
 		<node oor:name="AppraisalInstinctMaxUpTo7" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Its stats are all right, but kinda basic, as far as I can see.</value>
+				<value xml:lang="zh-TW">牠看起來很OK，但感覺就普通了些。</value>
 				<value xml:lang="de">Seine Werte sind okay.</value>
 			</prop>
 		</node>
