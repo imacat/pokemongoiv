@@ -45,11 +45,11 @@ Sub subReadDataSheets
 	sOutput = sOutput & Chr (10) & Chr (10) & fnReadBaseStatsSheet
 	sOutput = sOutput & Chr (10) & Chr (10) & fnReadCPMSheet
 	sOutput = sOutput & Chr (10) & Chr (10) & fnReadStardustSheet
-	subShowBasicData (sOutput)
+	subShowText (sOutput)
 End Sub
 
-' subShowBasicData: Shows the data table as Basic arrays
-Sub subShowBasicData (sContent As String)
+' subShowText: Shows the text in a text box for copy and paste.
+Sub subShowText (sContent As String)
 	Dim oDialog As Object, oDialogModel As Object
 	Dim oEditModel As Object, oButtonModel As Object
 	
