@@ -47,11 +47,48 @@ Sub subReadDataSheets
 	sOutput = sOutput &amp; Chr (10) &amp; Chr (10) &amp; fnReadBaseStatsSheet
 	sOutput = sOutput &amp; Chr (10) &amp; Chr (10) &amp; fnReadCPMSheet
 	sOutput = sOutput &amp; Chr (10) &amp; Chr (10) &amp; fnReadStardustSheet
-	subShowBasicData (sOutput)
+	subShowText (sOutput)
 End Sub
 
-&apos; subShowBasicData: Shows the data table as Basic arrays
-Sub subShowBasicData (sContent As String)
+&apos; subShowChinesePokemonNames: Shows the Chinese names of Pokémons as
+&apos;                             resource properties.
+Sub subShowChinesePokemonNames
+	Dim oSheet As Object, oRange As Object
+	Dim mData As Variant, nI As Integer
+	Dim sNo As String, sName As String, sNewName As String
+	Dim nJ As Integer, sChar As String, nCharCode As Long
+	Dim sResult As String
+
+	oSheet = ThisComponent.getSheets.getByName (&quot;basestat&quot;)
+	oRange = oSheet.getCellRangeByName (&quot;BaseStats&quot;)
+	mData = oRange.getDataArray
+	sResult = &quot;&quot;
+	For nI = 1 To UBound (mData)
+		sNo = mData (nI) (1)
+		sName = mData (nI) (2)
+		If sName = &quot;&quot; Then
+			sName = mData (nI) (0)
+		Else
+			sNewName = &quot;&quot;
+			For nJ = 1 To Len (sName)
+				sChar = Mid (sName, nJ, 1)
+				nCharCode = Asc (sChar)
+				If nCharCode &gt; 255 Then
+					sNewName = sNewName &amp; &quot;\u&quot; &amp; LCase (Hex (nCharCode))
+				Else
+					sNewName = sNewName &amp; sChar
+				End If
+			Next nJ
+			sName = sNewName
+		End If
+		sResult = sResult &amp; &quot;1&quot; &amp; sNo &amp; &quot;.lstPokemon.StringItemList=&quot; _
+			&amp; sName &amp; Chr (10)
+	Next nI
+	subShowText (sResult)
+End Sub
+
+&apos; subShowText: Shows the text in a text box for copy and paste.
+Sub subShowText (sContent As String)
 	Dim oDialog As Object, oDialogModel As Object
 	Dim oEditModel As Object, oButtonModel As Object
 	
