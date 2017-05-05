@@ -4,6 +4,7 @@
  <library:element library:name="0Main"/>
  <library:element library:name="2Data"/>
  <library:element library:name="9Load"/>
- <library:element library:name="8Registry"/>
+ <library:element library:name="8Width"/>
  <library:element library:name="1Dialog"/>
+ <library:element library:name="7Registry"/>
 </library:library>

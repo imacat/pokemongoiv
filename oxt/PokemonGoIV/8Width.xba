@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="8Width" script:language="StarBasic">&apos; Copyright (c) 2017 imacat.
+&apos; 
+&apos; Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+&apos; you may not use this file except in compliance with the License.
+&apos; You may obtain a copy of the License at
+&apos; 
+&apos;     http://www.apache.org/licenses/LICENSE-2.0
+&apos; 
+&apos; Unless required by applicable law or agreed to in writing, software
+&apos; distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+&apos; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+&apos; See the License for the specific language governing permissions and
+&apos; limitations under the License.
+
+&apos; 8Width: The dialog text width tester.
+&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2017-02-22
+
+Option Explicit
+
+&apos; subTestWidth: Tests the width of the dialog text
+Sub subTestWidth
+	Dim oDialog As Object, oDialogModel As Object
+	Dim oTextModel As Object, oListModel As Object
+	Dim oEditModel As Object, oNumModel As Object
+	Dim oButtonModel As Object
+	Dim mItems () As String, oListener As Object
+	
+	&apos; Creates a dialog
+	oDialogModel = CreateUnoService ( _
+		&quot;com.sun.star.awt.UnoControlDialogModel&quot;)
+	oDialogModel.setPropertyValue (&quot;PositionX&quot;, 100)
+	oDialogModel.setPropertyValue (&quot;PositionY&quot;, 100)
+	oDialogModel.setPropertyValue (&quot;Height&quot;, 65)
+	oDialogModel.setPropertyValue (&quot;Width&quot;, 200)
+	oDialogModel.setPropertyValue (&quot;Title&quot;, _
+	    &quot;Localization Text Width Test&quot;)
+	
+	&apos; Adds a text label.
+	oTextModel = oDialogModel.createInstance ( _
+		&quot;com.sun.star.awt.UnoControlFixedTextModel&quot;)
+	oTextModel.setPropertyValue (&quot;PositionX&quot;, 5)
+	oTextModel.setPropertyValue (&quot;PositionY&quot;, 6)
+	oTextModel.setPropertyValue (&quot;Height&quot;, 8)
+	oTextModel.setPropertyValue (&quot;Width&quot;, 190)
+	oTextModel.setPropertyValue (&quot;BackgroundColor&quot;, RGB (0, 255, 0))
+	oDialogModel.insertByName (&quot;txtText&quot;, oTextModel)
+	
+	&apos; Adds a drop down list.
+	oListModel = oDialogModel.createInstance ( _
+		&quot;com.sun.star.awt.UnoControlListBoxModel&quot;)
+	oListModel.setPropertyValue (&quot;PositionX&quot;, 5)
+	oListModel.setPropertyValue (&quot;PositionY&quot;, 19)
+	oListModel.setPropertyValue (&quot;Height&quot;, 12)
+	oListModel.setPropertyValue (&quot;Width&quot;, 50)
+	oListModel.setPropertyValue (&quot;TabIndex&quot;, 0)
+	oListModel.setPropertyValue (&quot;Dropdown&quot;, True)
+	oDialogModel.insertByName (&quot;lstStat&quot;, oListModel)
+		
+	&apos; Adds a text input field.
+	oEditModel = oDialogModel.createInstance ( _
+		&quot;com.sun.star.awt.UnoControlEditModel&quot;)
+	oEditModel.setPropertyValue (&quot;PositionX&quot;, 5)
+	oEditModel.setPropertyValue (&quot;PositionY&quot;, 34)
+	oEditModel.setPropertyValue (&quot;Height&quot;, 12)
+	oEditModel.setPropertyValue (&quot;Width&quot;, 150)
+	oEditModel.setPropertyValue (&quot;TabIndex&quot;, 1)
+	oDialogModel.insertByName (&quot;edtText&quot;, oEditModel)
+	
+	&apos; Adds a numeric input field.
+	oNumModel = oDialogModel.createInstance ( _
+		&quot;com.sun.star.awt.UnoControlNumericFieldModel&quot;)
+	oNumModel.setPropertyValue (&quot;PositionX&quot;, 160)
+	oNumModel.setPropertyValue (&quot;PositionY&quot;, 34)
+	oNumModel.setPropertyValue (&quot;Height&quot;, 12)
+	oNumModel.setPropertyValue (&quot;Width&quot;, 35)
+	oNumModel.setPropertyValue (&quot;TabIndex&quot;, 2)
+	oNumModel.setPropertyValue (&quot;Value&quot;, _
+		oTextModel.getPropertyValue (&quot;Width&quot;))
+	oNumModel.setPropertyValue (&quot;ValueMax&quot;, 190)
+	oNumModel.setPropertyValue (&quot;ValueMin&quot;, 1)
+	oNumModel.setPropertyValue (&quot;DecimalAccuracy&quot;, 0)
+	oNumModel.setPropertyValue (&quot;Spin&quot;, True)
+	oDialogModel.insertByName (&quot;numWidth&quot;, oNumModel)
+	
+	&apos; Adds a button.
+	oButtonModel = oDialogModel.createInstance ( _
+		&quot;com.sun.star.awt.UnoControlButtonModel&quot;)
+	oButtonModel.setPropertyValue (&quot;PositionX&quot;, 5)
+	oButtonModel.setPropertyValue (&quot;PositionY&quot;, 49)
+	oButtonModel.setPropertyValue (&quot;Height&quot;, 12)
+	oButtonModel.setPropertyValue (&quot;Width&quot;, 50)
+	oButtonModel.setPropertyValue (&quot;PushButtonType&quot;, _
+		com.sun.star.awt.PushButtonType.OK)
+	oButtonModel.setPropertyValue (&quot;DefaultButton&quot;, True)
+	oDialogModel.insertByName (&quot;btnClose&quot;, oButtonModel)
+	
+	&apos; Adds the dialog model to the control and runs it.
+	oDialog = CreateUnoService (&quot;com.sun.star.awt.UnoControlDialog&quot;)
+	oDialog.setModel (oDialogModel)
+	oDialog.setVisible (True)
+	
+	oListener = CreateUnoListener (&quot;subTextChanged_&quot;, &quot;com.sun.star.awt.XTextListener&quot;)
+	oDialog.getControl (&quot;edtText&quot;).addTextListener (oListener)
+	oDialog.getControl (&quot;edtText&quot;).setFocus
+	
+	oListener = CreateUnoListener (&quot;subWidthChanged_&quot;, &quot;com.sun.star.awt.XTextListener&quot;)
+	oDialog.getControl (&quot;numWidth&quot;).addTextListener (oListener)
+	
+	oDialog.execute
+End Sub
+
+&apos; subTextChanged_disposing: When the text input box is disposed.
+Sub subTextChanged_disposing (oEvent As object)
+End Sub
+
+&apos; subTextChanged_textChanged: When the text is changed.
+Sub subTextChanged_textChanged (oEvent As object)
+	Dim oEdit As Object, oText As Object, oDropdown As Object
+	
+	oEdit = oEvent.Source
+	oText = oEdit.getContext.getControl (&quot;txtText&quot;)
+	oText.setText (oEdit.getText)
+	oDropdown = oEdit.getContext.getControl (&quot;lstStat&quot;)
+	oDropdown.removeItems (0, oDropdown.getItemCount)
+	oDropdown.addItem (oEdit.getText, 0)
+	oDropdown.selectItemPos (0, True)
+End Sub
+
+&apos; subWidthChanged_disposing: When the width input box is disposed.
+Sub subWidthChanged_disposing (oEvent As object)
+End Sub
+
+&apos; subWidthChanged_textChanged: When the width is changed.
+Sub subWidthChanged_textChanged (oEvent As object)
+	Dim oEdit As Object, oText As Object, oDropdown As Object
+	
+	oEdit = oEvent.Source
+	oText = oEdit.getContext.getControl (&quot;txtText&quot;)
+	oText.getModel.setPropertyValue (&quot;Width&quot;, oEdit.getValue)
+	oDropdown = oEdit.getContext.getControl (&quot;lstStat&quot;)
+	oDropdown.getModel.setPropertyValue (&quot;Width&quot;, oEdit.getValue)
+End Sub
+</script:module>

@@ -1,4 +1,4 @@
-' 8Registry: Utilities used from other modules to access to PokemonGoIV private configuration
+' 7Registry: Utilities used from other modules to access to PokemonGoIV private configuration
 '   Taken from TextToColumns, 2016-12-07
 
 Option Explicit

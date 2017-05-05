@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
-<script:module xmlns:script="http://openoffice.org/2000/script" script:name="8Registry" script:language="StarBasic">&apos; 8Registry: Utilities used from other modules to access to PokemonGoIV private configuration
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="7Registry" script:language="StarBasic">&apos; 7Registry: Utilities used from other modules to access to PokemonGoIV private configuration
 &apos;   Taken from TextToColumns, 2016-12-07
 
 Option Explicit
