@@ -48,6 +48,43 @@ Sub subReadDataSheets
 	subShowText (sOutput)
 End Sub
 
+' subShowChinesePokemonNames: Shows the Chinese names of Pokémons as
+'                             resource properties.
+Sub subShowChinesePokemonNames
+	Dim oSheet As Object, oRange As Object
+	Dim mData As Variant, nI As Integer
+	Dim sNo As String, sName As String, sNewName As String
+	Dim nJ As Integer, sChar As String, nCharCode As Long
+	Dim sResult As String
+
+	oSheet = ThisComponent.getSheets.getByName ("basestat")
+	oRange = oSheet.getCellRangeByName ("BaseStats")
+	mData = oRange.getDataArray
+	sResult = ""
+	For nI = 1 To UBound (mData)
+		sNo = mData (nI) (1)
+		sName = mData (nI) (2)
+		If sName = "" Then
+			sName = mData (nI) (0)
+		Else
+			sNewName = ""
+			For nJ = 1 To Len (sName)
+				sChar = Mid (sName, nJ, 1)
+				nCharCode = Asc (sChar)
+				If nCharCode > 255 Then
+					sNewName = sNewName & "\u" & LCase (Hex (nCharCode))
+				Else
+					sNewName = sNewName & sChar
+				End If
+			Next nJ
+			sName = sNewName
+		End If
+		sResult = sResult & "1" & sNo & ".lstPokemon.StringItemList=" _
+			& sName & Chr (10)
+	Next nI
+	subShowText (sResult)
+End Sub
+
 ' subShowText: Shows the text in a text box for copy and paste.
 Sub subShowText (sContent As String)
 	Dim oDialog As Object, oDialogModel As Object
