@@ -79,6 +79,7 @@
 		<node oor:name="BestStatWidth" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>42</value>
+				<value xml:lang="zh-TW">26</value>
 				<value xml:lang="de">58</value>
 			</prop>
 		</node>
@@ -128,6 +129,7 @@
 		<node oor:name="AppraisalValorBestHeadWidth" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>8</value>
+				<value xml:lang="zh-TW">0</value>
 				<value xml:lang="de">14</value>
 			</prop>
 		</node>
@@ -212,6 +214,7 @@
 		<node oor:name="AppraisalMysticBestHeadWidth" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>86</value>
+				<value xml:lang="zh-TW">12</value>
 				<value xml:lang="de">129</value>
 			</prop>
 		</node>
@@ -296,6 +299,7 @@
 		<node oor:name="AppraisalInstinctBestHeadWidth" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>46</value>
+				<value xml:lang="zh-TW">12</value>
 				<value xml:lang="de">14</value>
 			</prop>
 		</node>
