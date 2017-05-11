@@ -1604,17 +1604,17 @@
 		</node>
 		<node oor:name="PokemonLarvitar" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/unknown.png</value>
+				<value>%origin%/icons/pokemons/246-larvitar.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonPupitar" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/unknown.png</value>
+				<value>%origin%/icons/pokemons/247-pupitar.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonTyranitar" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/unknown.png</value>
+				<value>%origin%/icons/pokemons/248-tyranitar.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonLugia" oor:op="replace">
