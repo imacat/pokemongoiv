@@ -19,7 +19,7 @@
 
 Option Explicit
 
-&apos; subTestWidth: Tests the width of the dialog text
+&apos; subTestWidth: Tests the width of the dialog text.
 Sub subTestWidth
 	Dim oDialog As Object, oDialogModel As Object
 	Dim oTextModel As Object, oListModel As Object
