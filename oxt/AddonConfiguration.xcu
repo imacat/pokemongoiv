@@ -1444,7 +1444,7 @@
 		</node>
 		<node oor:name="PokemonHeracross" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/unknown.png</value>
+				<value>%origin%/icons/pokemons/214-heracross.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonSneasel" oor:op="replace">
