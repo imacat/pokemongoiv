@@ -1,9 +1,8 @@
 PokemonGoIV TODO
 
 * Center the dialog.
-* Pokémons that are still missing images:
- - 106 Hitmonlee 飛腿郎 - foreign - evolve
-* Pokémons that are not released in the game yet
+* Pokémons that are not released in the game yet, so their image
+  icons are missing.
  - 144 Articuno 急凍鳥 - foreign
  - 145 Zapdos 閃電鳥 - foreign
  - 146 Moltres 火焰鳥 - foreign
