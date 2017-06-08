@@ -175,42 +175,60 @@ Function fnFindEvolveForms (mData () As Variant) As String
 	Dim nJ As Integer, nStart As Integer, nEnd As Integer
 	Dim sEvolveForms As String
 	
+	' Special cases
+	If mData (0) = "Oddish" Then
+		fnFindEvolveForms = "Array (""Gloom"", ""Vileplume"", ""Bellossom"")"
+		Exit Function
+	End If
+	If mData (0) = "Gloom" Then
+		fnFindEvolveForms = "Array (""Vileplume"", ""Bellossom"")"
+		Exit Function
+	End If
+	If mData (0) = "Slowpoke" Then
+		fnFindEvolveForms = "Array (""Slowbro"", ""Slowking"")"
+		Exit Function
+	End If
+	If mData (0) = "Tyrogue" Then
+		fnFindEvolveForms = "Array (""Hitmonlee"", ""Hitmonchan"", ""Hitmontop"")"
+		Exit Function
+	End If
 	If mData (0) = "Eevee" Then
-		sEvolveForms = "Array (""Vaporeon"", ""Jolteon"", ""Flareon"")"
+		fnFindEvolveForms = "Array (""Vaporeon"", ""Jolteon"", ""Flareon"", ""Espeon"", ""Umbreon"")"
+		Exit Function
+	End If
+	
+	For nJ = 6 To 8
+		If mData (nJ) = mData (0) Then
+			nStart = nJ + 1
+			nJ = 9
+		End If
+	Next nJ
+	If nStart = 9 Then
+		nEnd = 8
 	Else
-		For nJ = 6 To 8
-			If mData (nJ) = mData (0) Then
-				nStart = nJ + 1
+		For nJ = nStart To 8
+			If mData (nJ) = "" Then
+				nEnd = nJ - 1
 				nJ = 9
+			Else
+				If nJ = 8 Then
+					nEnd = 8
+					nJ = 9
+				End If
 			End If
 		Next nJ
-		If nStart = 9 Then
-			nEnd = 8
-		Else
-			For nJ = nStart To 8
-				If mData (nJ) = "" Then
-					nEnd = nJ - 1
-					nJ = 9
-				Else
-					If nJ = 8 Then
-						nEnd = 8
-						nJ = 9
-					End If
-				End If
-			Next nJ
-		End If
-		If nEnd = nStart - 1 Then
-			sEvolveForms = "Array ()"
-		Else
-			sEvolveForms = """" _
-				& fnMapPokemonNameToId (mData (nStart)) & """"
-			For nJ = nStart + 1 To nEnd
-				sEvolveForms = sEvolveForms _
-					& ", """ _
-					& fnMapPokemonNameToId (mData (nJ)) & """"
-			Next nJ
-			sEvolveForms = "Array (" & sEvolveForms & ")"
-		End If
+	End If
+	If nEnd = nStart - 1 Then
+		sEvolveForms = "Array ()"
+	Else
+		sEvolveForms = """" _
+			& fnMapPokemonNameToId (mData (nStart)) & """"
+		For nJ = nStart + 1 To nEnd
+			sEvolveForms = sEvolveForms _
+				& ", """ _
+				& fnMapPokemonNameToId (mData (nJ)) & """"
+		Next nJ
+		sEvolveForms = "Array (" & sEvolveForms & ")"
 	End If
 	fnFindEvolveForms = sEvolveForms
 End Function

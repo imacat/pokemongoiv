@@ -13,7 +13,7 @@
 ' limitations under the License.
 
 ' 3Data: The Pokémon GO data for IV calculation
-'   by imacat <imacat@mail.imacat.idv.tw>, 2017-03-01
+'   by imacat <imacat@mail.imacat.idv.tw>, 2017-06-08
 '   Generated with 9Load.subReadDataSheets ()
 
 Option Explicit
@@ -63,8 +63,8 @@ Function fnGetBaseStatsData As Variant
 		Array ("Wigglytuff", "040", 280, 156, 93, Array ()), _
 		Array ("Zubat", "041", 80, 83, 76, Array ("Golbat", "Crobat")), _
 		Array ("Golbat", "042", 150, 161, 153, Array ("Crobat")), _
-		Array ("Oddish", "043", 90, 131, 116, Array ("Gloom", "Vileplume")), _
-		Array ("Gloom", "044", 120, 153, 139, Array ("Vileplume")), _
+		Array ("Oddish", "043", 90, 131, 116, Array ("Gloom", "Vileplume", "Bellossom")), _
+		Array ("Gloom", "044", 120, 153, 139, Array ("Vileplume", "Bellossom")), _
 		Array ("Vileplume", "045", 150, 202, 170, Array ()), _
 		Array ("Paras", "046", 70, 121, 99, Array ("Parasect")), _
 		Array ("Parasect", "047", 120, 165, 146, Array ()), _
@@ -99,7 +99,7 @@ Function fnGetBaseStatsData As Variant
 		Array ("Golem", "076", 160, 211, 229, Array ()), _
 		Array ("Ponyta", "077", 100, 170, 132, Array ("Rapidash")), _
 		Array ("Rapidash", "078", 130, 207, 167, Array ()), _
-		Array ("Slowpoke", "079", 180, 109, 109, Array ("Slowbro")), _
+		Array ("Slowpoke", "079", 180, 109, 109, Array ("Slowbro", "Slowking")), _
 		Array ("Slowbro", "080", 190, 177, 194, Array ()), _
 		Array ("Magnemite", "081", 50, 165, 128, Array ("Magneton")), _
 		Array ("Magneton", "082", 100, 223, 182, Array ()), _
@@ -153,7 +153,7 @@ Function fnGetBaseStatsData As Variant
 		Array ("Gyarados", "130", 190, 237, 197, Array ()), _
 		Array ("Lapras", "131", 260, 186, 190, Array ()), _
 		Array ("Ditto", "132", 96, 91, 91, Array ()), _
-		Array ("Eevee", "133", 110, 104, 121, Array ("Vaporeon", "Jolteon", "Flareon")), _
+		Array ("Eevee", "133", 110, 104, 121, Array ("Vaporeon", "Jolteon", "Flareon", "Espeon", "Umbreon")), _
 		Array ("Vaporeon", "134", 260, 205, 177, Array ()), _
 		Array ("Jolteon", "135", 130, 232, 201, Array ()), _
 		Array ("Flareon", "136", 130, 246, 204, Array ()), _
@@ -256,7 +256,7 @@ Function fnGetBaseStatsData As Variant
 		Array ("Porygon2", "233", 170, 198, 183, Array ()), _
 		Array ("Stantler", "234", 146, 192, 132, Array ()), _
 		Array ("Smeargle", "235", 110, 40, 88, Array ()), _
-		Array ("Tyrogue", "236", 70, 64, 64, Array ("Hitmonlee")), _
+		Array ("Tyrogue", "236", 70, 64, 64, Array ("Hitmonlee", "Hitmonchan", "Hitmontop")), _
 		Array ("Hitmontop", "237", 100, 173, 214, Array ()), _
 		Array ("Smoochum", "238", 90, 153, 116, Array ("Jynx")), _
 		Array ("Elekid", "239", 90, 135, 110, Array ("Electabuzz")), _

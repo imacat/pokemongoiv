@@ -15,7 +15,7 @@
 &apos; limitations under the License.
 
 &apos; 3Data: The Pokémon GO data for IV calculation
-&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2017-03-01
+&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2017-06-08
 &apos;   Generated with 9Load.subReadDataSheets ()
 
 Option Explicit
@@ -65,8 +65,8 @@ Function fnGetBaseStatsData As Variant
 		Array (&quot;Wigglytuff&quot;, &quot;040&quot;, 280, 156, 93, Array ()), _
 		Array (&quot;Zubat&quot;, &quot;041&quot;, 80, 83, 76, Array (&quot;Golbat&quot;, &quot;Crobat&quot;)), _
 		Array (&quot;Golbat&quot;, &quot;042&quot;, 150, 161, 153, Array (&quot;Crobat&quot;)), _
-		Array (&quot;Oddish&quot;, &quot;043&quot;, 90, 131, 116, Array (&quot;Gloom&quot;, &quot;Vileplume&quot;)), _
-		Array (&quot;Gloom&quot;, &quot;044&quot;, 120, 153, 139, Array (&quot;Vileplume&quot;)), _
+		Array (&quot;Oddish&quot;, &quot;043&quot;, 90, 131, 116, Array (&quot;Gloom&quot;, &quot;Vileplume&quot;, &quot;Bellossom&quot;)), _
+		Array (&quot;Gloom&quot;, &quot;044&quot;, 120, 153, 139, Array (&quot;Vileplume&quot;, &quot;Bellossom&quot;)), _
 		Array (&quot;Vileplume&quot;, &quot;045&quot;, 150, 202, 170, Array ()), _
 		Array (&quot;Paras&quot;, &quot;046&quot;, 70, 121, 99, Array (&quot;Parasect&quot;)), _
 		Array (&quot;Parasect&quot;, &quot;047&quot;, 120, 165, 146, Array ()), _
@@ -101,7 +101,7 @@ Function fnGetBaseStatsData As Variant
 		Array (&quot;Golem&quot;, &quot;076&quot;, 160, 211, 229, Array ()), _
 		Array (&quot;Ponyta&quot;, &quot;077&quot;, 100, 170, 132, Array (&quot;Rapidash&quot;)), _
 		Array (&quot;Rapidash&quot;, &quot;078&quot;, 130, 207, 167, Array ()), _
-		Array (&quot;Slowpoke&quot;, &quot;079&quot;, 180, 109, 109, Array (&quot;Slowbro&quot;)), _
+		Array (&quot;Slowpoke&quot;, &quot;079&quot;, 180, 109, 109, Array (&quot;Slowbro&quot;, &quot;Slowking&quot;)), _
 		Array (&quot;Slowbro&quot;, &quot;080&quot;, 190, 177, 194, Array ()), _
 		Array (&quot;Magnemite&quot;, &quot;081&quot;, 50, 165, 128, Array (&quot;Magneton&quot;)), _
 		Array (&quot;Magneton&quot;, &quot;082&quot;, 100, 223, 182, Array ()), _
@@ -155,7 +155,7 @@ Function fnGetBaseStatsData As Variant
 		Array (&quot;Gyarados&quot;, &quot;130&quot;, 190, 237, 197, Array ()), _
 		Array (&quot;Lapras&quot;, &quot;131&quot;, 260, 186, 190, Array ()), _
 		Array (&quot;Ditto&quot;, &quot;132&quot;, 96, 91, 91, Array ()), _
-		Array (&quot;Eevee&quot;, &quot;133&quot;, 110, 104, 121, Array (&quot;Vaporeon&quot;, &quot;Jolteon&quot;, &quot;Flareon&quot;)), _
+		Array (&quot;Eevee&quot;, &quot;133&quot;, 110, 104, 121, Array (&quot;Vaporeon&quot;, &quot;Jolteon&quot;, &quot;Flareon&quot;, &quot;Espeon&quot;, &quot;Umbreon&quot;)), _
 		Array (&quot;Vaporeon&quot;, &quot;134&quot;, 260, 205, 177, Array ()), _
 		Array (&quot;Jolteon&quot;, &quot;135&quot;, 130, 232, 201, Array ()), _
 		Array (&quot;Flareon&quot;, &quot;136&quot;, 130, 246, 204, Array ()), _
@@ -258,7 +258,7 @@ Function fnGetBaseStatsData As Variant
 		Array (&quot;Porygon2&quot;, &quot;233&quot;, 170, 198, 183, Array ()), _
 		Array (&quot;Stantler&quot;, &quot;234&quot;, 146, 192, 132, Array ()), _
 		Array (&quot;Smeargle&quot;, &quot;235&quot;, 110, 40, 88, Array ()), _
-		Array (&quot;Tyrogue&quot;, &quot;236&quot;, 70, 64, 64, Array (&quot;Hitmonlee&quot;)), _
+		Array (&quot;Tyrogue&quot;, &quot;236&quot;, 70, 64, 64, Array (&quot;Hitmonlee&quot;, &quot;Hitmonchan&quot;, &quot;Hitmontop&quot;)), _
 		Array (&quot;Hitmontop&quot;, &quot;237&quot;, 100, 173, 214, Array ()), _
 		Array (&quot;Smoochum&quot;, &quot;238&quot;, 90, 153, 116, Array (&quot;Jynx&quot;)), _
 		Array (&quot;Elekid&quot;, &quot;239&quot;, 90, 135, 110, Array (&quot;Electabuzz&quot;)), _
