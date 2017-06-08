@@ -83,6 +83,111 @@
 				<value xml:lang="de">58</value>
 			</prop>
 		</node>
+		<!-- IV report -->
+		<node oor:name="ReportNo" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>No.</value>
+				<value xml:lang="zh-TW">號</value>
+				<!-- TODO: To be translated into Deutsch. -->
+				<value xml:lang="de">No.</value>
+			</prop>
+		</node>
+		<node oor:name="ReportPokemon" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Pokémon</value>
+				<value xml:lang="zh-TW">寶可夢</value>
+				<!-- TODO: To be translated into Deutsch. -->
+				<value xml:lang="de">Pokémon</value>
+			</prop>
+		</node>
+		<node oor:name="ReportCP" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>CP</value>
+				<value xml:lang="zh-TW">CP</value>
+				<!-- TODO: To be translated into Deutsch. -->
+				<value xml:lang="de">WP</value>
+			</prop>
+		</node>
+		<node oor:name="ReportHP" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>HP</value>
+				<value xml:lang="zh-TW">HP</value>
+				<!-- TODO: To be translated into Deutsch. -->
+				<value xml:lang="de">KP</value>
+			</prop>
+		</node>
+		<node oor:name="ReportStardust" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Stardust</value>
+				<value xml:lang="zh-TW">星星沙子</value>
+				<!-- TODO: To be translated into Deutsch. -->
+				<value xml:lang="de">Sternenstaub</value>
+			</prop>
+		</node>
+		<node oor:name="ReportLevel" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Lv</value>
+				<value xml:lang="zh-TW">級</value>
+				<!-- TODO: To be translated into Deutsch. -->
+				<value xml:lang="de">Lv</value>
+			</prop>
+		</node>
+		<node oor:name="ReportAttack" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Atk</value>
+				<value xml:lang="zh-TW">攻</value>
+				<!-- TODO: To be translated into Deutsch. -->
+				<value xml:lang="de">Atk</value>
+			</prop>
+		</node>
+		<node oor:name="ReportDefense" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Def</value>
+				<value xml:lang="zh-TW">防</value>
+				<!-- TODO: To be translated into Deutsch. -->
+				<value xml:lang="de">Def</value>
+			</prop>
+		</node>
+		<node oor:name="ReportStamina" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Sta</value>
+				<value xml:lang="zh-TW">體</value>
+				<!-- TODO: To be translated into Deutsch. -->
+				<value xml:lang="de">Sta</value>
+			</prop>
+		</node>
+		<node oor:name="ReportIVPercent" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>IV%</value>
+				<value xml:lang="zh-TW">IV%</value>
+				<!-- TODO: To be translated into Deutsch. -->
+				<value xml:lang="de">IV%</value>
+			</prop>
+		</node>
+		<node oor:name="ReportCPPowerUp" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>CP when powered-up to level [Level]</value>
+				<value xml:lang="zh-TW">強化到[Level]級後的CP</value>
+				<!-- TODO: To be translated into Deutsch. -->
+				<value xml:lang="de">CP when powered-up to level [Level]</value>
+			</prop>
+		</node>
+		<node oor:name="ReportCPEvolve" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>CP when evolved to [Pokémon]</value>
+				<value xml:lang="zh-TW">進化為[Pokémon]後的CP</value>
+				<!-- TODO: To be translated into Deutsch. -->
+				<value xml:lang="de">CP when evolved to [Pokémon]</value>
+			</prop>
+		</node>
+		<node oor:name="ReportCPEvolvePowerUp" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>CP when evolved to [Pokémon] and powered-up to level [Level]</value>
+				<value xml:lang="zh-TW">進化為[Pokémon]並強化到[Level]級後的CP</value>
+				<!-- TODO: To be translated into Deutsch. -->
+				<value xml:lang="de">CP when evolved to [Pokémon] and powered-up to level [Level]</value>
+			</prop>
+		</node>
 		<!-- Team Valor (red) -->
 		<node oor:name="AppraiseFromCandela" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
@@ -336,6 +441,1764 @@
 				<value>Its stats are all right, but kinda basic, as far as I can see.</value>
 				<value xml:lang="zh-TW">牠看起來很OK，但感覺就普通了些。</value>
 				<value xml:lang="de">Seine Werte sind okay.</value>
+			</prop>
+		</node>
+		<!-- Pokémon names -->
+		<node oor:name="PokemonBulbasaur" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Bulbasaur</value>
+				<value xml:lang="zh-TW">妙蛙種子</value>
+				<value xml:lang="de">Bisasam</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonIvysaur" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Ivysaur</value>
+				<value xml:lang="zh-TW">妙蛙草</value>
+				<value xml:lang="de">Bisaknosp</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonVenusaur" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Venusaur</value>
+				<value xml:lang="zh-TW">妙蛙花</value>
+				<value xml:lang="de">Bisaflor</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonCharmander" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Charmander</value>
+				<value xml:lang="zh-TW">小火龍</value>
+				<value xml:lang="de">Glumanda</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonCharmeleon" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Charmeleon</value>
+				<value xml:lang="zh-TW">火恐龍</value>
+				<value xml:lang="de">Glutexo</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonCharizard" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Charizard</value>
+				<value xml:lang="zh-TW">噴火龍</value>
+				<value xml:lang="de">Glurak</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSquirtle" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Squirtle</value>
+				<value xml:lang="zh-TW">傑尼龜</value>
+				<value xml:lang="de">Schiggy</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonWartortle" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Wartortle</value>
+				<value xml:lang="zh-TW">卡咪龜</value>
+				<value xml:lang="de">Schillok</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonBlastoise" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Blastoise</value>
+				<value xml:lang="zh-TW">水箭龜</value>
+				<value xml:lang="de">Turtok</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonCaterpie" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Caterpie</value>
+				<value xml:lang="zh-TW">綠毛蟲</value>
+				<value xml:lang="de">Raupy</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMetapod" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Metapod</value>
+				<value xml:lang="zh-TW">鐵甲蛹</value>
+				<value xml:lang="de">Safcon</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonButterfree" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Butterfree</value>
+				<value xml:lang="zh-TW">巴大蝶</value>
+				<value xml:lang="de">Smettbo</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonWeedle" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Weedle</value>
+				<value xml:lang="zh-TW">獨角蟲</value>
+				<value xml:lang="de">Hornliu</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonKakuna" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Kakuna</value>
+				<value xml:lang="zh-TW">鐵殼蛹</value>
+				<value xml:lang="de">Kokuna</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonBeedrill" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Beedrill</value>
+				<value xml:lang="zh-TW">大針蜂</value>
+				<value xml:lang="de">Bibor</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPidgey" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Pidgey</value>
+				<value xml:lang="zh-TW">波波</value>
+				<value xml:lang="de">Taubsi</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPidgeotto" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Pidgeotto</value>
+				<value xml:lang="zh-TW">比比鳥</value>
+				<value xml:lang="de">Tauboga</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPidgeot" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Pidgeot</value>
+				<value xml:lang="zh-TW">大比鳥</value>
+				<value xml:lang="de">Tauboss</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonRattata" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Rattata</value>
+				<value xml:lang="zh-TW">小拉達</value>
+				<value xml:lang="de">Rattfratz</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonRaticate" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Raticate</value>
+				<value xml:lang="zh-TW">拉達</value>
+				<value xml:lang="de">Rattikarl</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSpearow" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Spearow</value>
+				<value xml:lang="zh-TW">烈雀</value>
+				<value xml:lang="de">Habitak</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonFearow" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Fearow</value>
+				<value xml:lang="zh-TW">大嘴雀</value>
+				<value xml:lang="de">Ibitak</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonEkans" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Ekans</value>
+				<value xml:lang="zh-TW">阿柏蛇</value>
+				<value xml:lang="de">Rettan</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonArbok" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Arbok</value>
+				<value xml:lang="zh-TW">阿柏怪</value>
+				<value xml:lang="de">Arbok</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPikachu" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Pikachu</value>
+				<value xml:lang="zh-TW">皮卡丘</value>
+				<value xml:lang="de">Pikachu</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonRaichu" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Raichu</value>
+				<value xml:lang="zh-TW">雷丘</value>
+				<value xml:lang="de">Raichu</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSandshrew" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Sandshrew</value>
+				<value xml:lang="zh-TW">穿山鼠</value>
+				<value xml:lang="de">Sandan</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSandslash" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Sandslash</value>
+				<value xml:lang="zh-TW">穿山王</value>
+				<value xml:lang="de">Sandamer</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonNidoranFemale" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Nidoran♀</value>
+				<value xml:lang="zh-TW">尼多蘭</value>
+				<value xml:lang="de">Nidoran♀</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonNidorina" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Nidorina</value>
+				<value xml:lang="zh-TW">尼多娜</value>
+				<value xml:lang="de">Nidorina</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonNidoqueen" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Nidoqueen</value>
+				<value xml:lang="zh-TW">尼多后</value>
+				<value xml:lang="de">Nidoqueen</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonNidoranMale" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Nidoran♂</value>
+				<value xml:lang="zh-TW">尼多朗</value>
+				<value xml:lang="de">Nidoran♂</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonNidorino" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Nidorino</value>
+				<value xml:lang="zh-TW">尼多利諾</value>
+				<value xml:lang="de">Nidorino</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonNidoking" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Nidoking</value>
+				<value xml:lang="zh-TW">尼多王</value>
+				<value xml:lang="de">Nidoking</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonClefairy" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Clefairy</value>
+				<value xml:lang="zh-TW">皮皮</value>
+				<value xml:lang="de">Piepi</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonClefable" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Clefable</value>
+				<value xml:lang="zh-TW">皮可西</value>
+				<value xml:lang="de">Pixi</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonVulpix" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Vulpix</value>
+				<value xml:lang="zh-TW">六尾</value>
+				<value xml:lang="de">Vulpix</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonNinetales" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Ninetales</value>
+				<value xml:lang="zh-TW">九尾</value>
+				<value xml:lang="de">Vulnona</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonJigglypuff" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Jigglypuff</value>
+				<value xml:lang="zh-TW">胖丁</value>
+				<value xml:lang="de">Pummeluff</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonWigglytuff" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Wigglytuff</value>
+				<value xml:lang="zh-TW">胖可丁</value>
+				<value xml:lang="de">Knuddeluff</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonZubat" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Zubat</value>
+				<value xml:lang="zh-TW">超音蝠</value>
+				<value xml:lang="de">Zubat</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonGolbat" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Golbat</value>
+				<value xml:lang="zh-TW">大嘴蝠</value>
+				<value xml:lang="de">Golbat</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonOddish" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Oddish</value>
+				<value xml:lang="zh-TW">走路草</value>
+				<value xml:lang="de">Myrapla</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonGloom" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Gloom</value>
+				<value xml:lang="zh-TW">臭臭花</value>
+				<value xml:lang="de">Duflor</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonVileplume" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Vileplume</value>
+				<value xml:lang="zh-TW">霸王花</value>
+				<value xml:lang="de">Giflor</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonParas" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Paras</value>
+				<value xml:lang="zh-TW">派拉斯</value>
+				<value xml:lang="de">Paras</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonParasect" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Parasect</value>
+				<value xml:lang="zh-TW">派拉斯特</value>
+				<value xml:lang="de">Parasek</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonVenonat" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Venonat</value>
+				<value xml:lang="zh-TW">毛球</value>
+				<value xml:lang="de">Bluzuk</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonVenomoth" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Venomoth</value>
+				<value xml:lang="zh-TW">摩魯蛾</value>
+				<value xml:lang="de">Omot</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDiglett" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Diglett</value>
+				<value xml:lang="zh-TW">地鼠</value>
+				<value xml:lang="de">Digda</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDugtrio" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Dugtrio</value>
+				<value xml:lang="zh-TW">三地鼠</value>
+				<value xml:lang="de">Digdri</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMeowth" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Meowth</value>
+				<value xml:lang="zh-TW">喵喵</value>
+				<value xml:lang="de">Mauzi</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPersian" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Persian</value>
+				<value xml:lang="zh-TW">貓老大</value>
+				<value xml:lang="de">Snobilikat</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPsyduck" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Psyduck</value>
+				<value xml:lang="zh-TW">可達鴨</value>
+				<value xml:lang="de">Enton</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonGolduck" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Golduck</value>
+				<value xml:lang="zh-TW">哥達鴨</value>
+				<value xml:lang="de">Entoron</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMankey" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Mankey</value>
+				<value xml:lang="zh-TW">猴怪</value>
+				<value xml:lang="de">Menki</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPrimeape" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Primeape</value>
+				<value xml:lang="zh-TW">火爆猴</value>
+				<value xml:lang="de">Rasaff</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonGrowlithe" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Growlithe</value>
+				<value xml:lang="zh-TW">卡蒂狗</value>
+				<value xml:lang="de">Fukano</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonArcanine" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Arcanine</value>
+				<value xml:lang="zh-TW">風速狗</value>
+				<value xml:lang="de">Arkani</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPoliwag" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Poliwag</value>
+				<value xml:lang="zh-TW">蚊香蝌蚪</value>
+				<value xml:lang="de">Quapsel</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPoliwhirl" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Poliwhirl</value>
+				<value xml:lang="zh-TW">蚊香君</value>
+				<value xml:lang="de">Quaputzi</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPoliwrath" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Poliwrath</value>
+				<value xml:lang="zh-TW">蚊香泳士</value>
+				<value xml:lang="de">Quappo</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonAbra" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Abra</value>
+				<value xml:lang="zh-TW">凱西</value>
+				<value xml:lang="de">Abra</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonKadabra" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Kadabra</value>
+				<value xml:lang="zh-TW">勇基拉</value>
+				<value xml:lang="de">Kadabra</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonAlakazam" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Alakazam</value>
+				<value xml:lang="zh-TW">胡地</value>
+				<value xml:lang="de">Simsala</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMachop" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Machop</value>
+				<value xml:lang="zh-TW">腕力</value>
+				<value xml:lang="de">Machollo</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMachoke" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Machoke</value>
+				<value xml:lang="zh-TW">豪力</value>
+				<value xml:lang="de">Maschock</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMachamp" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Machamp</value>
+				<value xml:lang="zh-TW">怪力</value>
+				<value xml:lang="de">Machomei</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonBellsprout" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Bellsprout</value>
+				<value xml:lang="zh-TW">喇叭芽</value>
+				<value xml:lang="de">Knofensa</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonWeepinbell" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Weepinbell</value>
+				<value xml:lang="zh-TW">口呆花</value>
+				<value xml:lang="de">Ultrigaria</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonVictreebel" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Victreebel</value>
+				<value xml:lang="zh-TW">大食花</value>
+				<value xml:lang="de">Sarzenia</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonTentacool" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Tentacool</value>
+				<value xml:lang="zh-TW">瑪瑙水母</value>
+				<value xml:lang="de">Tentacha</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonTentacruel" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Tentacruel</value>
+				<value xml:lang="zh-TW">毒刺水母</value>
+				<value xml:lang="de">Tentoxa</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonGeodude" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Geodude</value>
+				<value xml:lang="zh-TW">小拳石</value>
+				<value xml:lang="de">Kleinstein</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonGraveler" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Graveler</value>
+				<value xml:lang="zh-TW">隆隆石</value>
+				<value xml:lang="de">Georok</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonGolem" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Golem</value>
+				<value xml:lang="zh-TW">隆隆岩</value>
+				<value xml:lang="de">Geowaz</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPonyta" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Ponyta</value>
+				<value xml:lang="zh-TW">小火馬</value>
+				<value xml:lang="de">Ponita</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonRapidash" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Rapidash</value>
+				<value xml:lang="zh-TW">烈焰馬</value>
+				<value xml:lang="de">Gallopa</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSlowpoke" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Slowpoke</value>
+				<value xml:lang="zh-TW">呆呆獸</value>
+				<value xml:lang="de">Flegmon</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSlowbro" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Slowbro</value>
+				<value xml:lang="zh-TW">呆殼獸</value>
+				<value xml:lang="de">Lahmus</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMagnemite" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Magnemite</value>
+				<value xml:lang="zh-TW">小磁怪</value>
+				<value xml:lang="de">Magnetilo</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMagneton" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Magneton</value>
+				<value xml:lang="zh-TW">三合一磁怪</value>
+				<value xml:lang="de">Magneton</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonFarfetchd" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Farfetch'd</value>
+				<value xml:lang="zh-TW">大蔥鴨</value>
+				<value xml:lang="de">Porenta</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDoduo" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Doduo</value>
+				<value xml:lang="zh-TW">嘟嘟</value>
+				<value xml:lang="de">Dodu</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDodrio" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Dodrio</value>
+				<value xml:lang="zh-TW">嘟嘟利</value>
+				<value xml:lang="de">Dodri</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSeel" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Seel</value>
+				<value xml:lang="zh-TW">小海獅</value>
+				<value xml:lang="de">Jurob</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDewgong" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Dewgong</value>
+				<value xml:lang="zh-TW">白海獅</value>
+				<value xml:lang="de">Jugong</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonGrimer" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Grimer</value>
+				<value xml:lang="zh-TW">臭泥</value>
+				<value xml:lang="de">Sleima</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMuk" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Muk</value>
+				<value xml:lang="zh-TW">臭臭泥</value>
+				<value xml:lang="de">Sleimok</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonShellder" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Shellder</value>
+				<value xml:lang="zh-TW">大舌貝</value>
+				<value xml:lang="de">Muschas</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonCloyster" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Cloyster</value>
+				<value xml:lang="zh-TW">刺甲貝</value>
+				<value xml:lang="de">Austos</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonGastly" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Gastly</value>
+				<value xml:lang="zh-TW">鬼斯</value>
+				<value xml:lang="de">Nebulak</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonHaunter" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Haunter</value>
+				<value xml:lang="zh-TW">鬼斯通</value>
+				<value xml:lang="de">Alpollo</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonGengar" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Gengar</value>
+				<value xml:lang="zh-TW">耿鬼</value>
+				<value xml:lang="de">Gengar</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonOnix" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Onix</value>
+				<value xml:lang="zh-TW">大岩蛇</value>
+				<value xml:lang="de">Onix</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDrowzee" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Drowzee</value>
+				<value xml:lang="zh-TW">催眠貘</value>
+				<value xml:lang="de">Traumato</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonHypno" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Hypno</value>
+				<value xml:lang="zh-TW">引夢貘人</value>
+				<value xml:lang="de">Hypno</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonKrabby" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Krabby</value>
+				<value xml:lang="zh-TW">大鉗蟹</value>
+				<value xml:lang="de">Krabby</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonKingler" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Kingler</value>
+				<value xml:lang="zh-TW">巨鉗蟹</value>
+				<value xml:lang="de">Kingler</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonVoltorb" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Voltorb</value>
+				<value xml:lang="zh-TW">霹靂電球</value>
+				<value xml:lang="de">Voltobal</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonElectrode" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Electrode</value>
+				<value xml:lang="zh-TW">頑皮雷彈</value>
+				<value xml:lang="de">Lektrobal</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonExeggcute" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Exeggcute</value>
+				<value xml:lang="zh-TW">蛋蛋</value>
+				<value xml:lang="de">Owei</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonExeggutor" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Exeggutor</value>
+				<value xml:lang="zh-TW">椰蛋樹</value>
+				<value xml:lang="de">Kokowei</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonCubone" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Cubone</value>
+				<value xml:lang="zh-TW">卡拉卡拉</value>
+				<value xml:lang="de">Tragosso</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMarowak" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Marowak</value>
+				<value xml:lang="zh-TW">嘎啦嘎啦</value>
+				<value xml:lang="de">Knogga</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonHitmonlee" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Hitmonlee</value>
+				<value xml:lang="zh-TW">飛腿郎</value>
+				<value xml:lang="de">Kicklee</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonHitmonchan" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Hitmonchan</value>
+				<value xml:lang="zh-TW">快拳郎</value>
+				<value xml:lang="de">Nockchan</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonLickitung" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Lickitung</value>
+				<value xml:lang="zh-TW">大舌頭</value>
+				<value xml:lang="de">Schlurp</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonKoffing" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Koffing</value>
+				<value xml:lang="zh-TW">瓦斯蛋</value>
+				<value xml:lang="de">Smogon</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonWeezing" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Weezing</value>
+				<value xml:lang="zh-TW">雙彈瓦斯</value>
+				<value xml:lang="de">Smogmog</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonRhyhorn" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Rhyhorn</value>
+				<value xml:lang="zh-TW">獨角犀牛</value>
+				<value xml:lang="de">Rihorn</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonRhydon" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Rhydon</value>
+				<value xml:lang="zh-TW">鑽角犀獸</value>
+				<value xml:lang="de">Rizeros</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonChansey" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Chansey</value>
+				<value xml:lang="zh-TW">吉利蛋</value>
+				<value xml:lang="de">Chaneira</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonTangela" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Tangela</value>
+				<value xml:lang="zh-TW">蔓藤怪</value>
+				<value xml:lang="de">Tangela</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonKangaskhan" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Kangaskhan</value>
+				<value xml:lang="zh-TW">袋獸</value>
+				<value xml:lang="de">Kangama</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonHorsea" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Horsea</value>
+				<value xml:lang="zh-TW">墨海馬</value>
+				<value xml:lang="de">Seeper</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSeadra" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Seadra</value>
+				<value xml:lang="zh-TW">海刺龍</value>
+				<value xml:lang="de">Seemon</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonGoldeen" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Goldeen</value>
+				<value xml:lang="zh-TW">角金魚</value>
+				<value xml:lang="de">Goldini</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSeaking" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Seaking</value>
+				<value xml:lang="zh-TW">金魚王</value>
+				<value xml:lang="de">Golking</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonStaryu" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Staryu</value>
+				<value xml:lang="zh-TW">海星星</value>
+				<value xml:lang="de">Sterndu</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonStarmie" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Starmie</value>
+				<value xml:lang="zh-TW">寶石海星</value>
+				<value xml:lang="de">Starmie</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMrMime" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Mr. Mime</value>
+				<value xml:lang="zh-TW">魔牆人偶</value>
+				<value xml:lang="de">Pantimos</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonScyther" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Scyther</value>
+				<value xml:lang="zh-TW">飛天螳螂</value>
+				<value xml:lang="de">Sichlor</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonJynx" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Jynx</value>
+				<value xml:lang="zh-TW">迷唇姐</value>
+				<value xml:lang="de">Rossana</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonElectabuzz" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Electabuzz</value>
+				<value xml:lang="zh-TW">電擊獸</value>
+				<value xml:lang="de">Elektek</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMagmar" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Magmar</value>
+				<value xml:lang="zh-TW">鴨嘴火獸</value>
+				<value xml:lang="de">Magmar</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPinsir" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Pinsir</value>
+				<value xml:lang="zh-TW">凱羅斯</value>
+				<value xml:lang="de">Pinsir</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonTauros" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Tauros</value>
+				<value xml:lang="zh-TW">肯泰羅</value>
+				<value xml:lang="de">Tauros</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMagikarp" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Magikarp</value>
+				<value xml:lang="zh-TW">鯉魚王</value>
+				<value xml:lang="de">Karpador</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonGyarados" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Gyarados</value>
+				<value xml:lang="zh-TW">暴鯉龍</value>
+				<value xml:lang="de">Garados</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonLapras" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Lapras</value>
+				<value xml:lang="zh-TW">拉普拉斯</value>
+				<value xml:lang="de">Lapras</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDitto" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Ditto</value>
+				<value xml:lang="zh-TW">百變怪</value>
+				<value xml:lang="de">Ditto</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonEevee" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Eevee</value>
+				<value xml:lang="zh-TW">伊布</value>
+				<value xml:lang="de">Evoli</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonVaporeon" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Vaporeon</value>
+				<value xml:lang="zh-TW">水伊布</value>
+				<value xml:lang="de">Aquana</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonJolteon" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Jolteon</value>
+				<value xml:lang="zh-TW">雷伊布</value>
+				<value xml:lang="de">Blitza</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonFlareon" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Flareon</value>
+				<value xml:lang="zh-TW">火伊布</value>
+				<value xml:lang="de">Flamara</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPorygon" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Porygon</value>
+				<value xml:lang="zh-TW">多邊獸</value>
+				<value xml:lang="de">Porygon</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonOmanyte" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Omanyte</value>
+				<value xml:lang="zh-TW">菊石獸</value>
+				<value xml:lang="de">Amonitas</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonOmastar" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Omastar</value>
+				<value xml:lang="zh-TW">多刺菊石獸</value>
+				<value xml:lang="de">Amoroso</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonKabuto" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Kabuto</value>
+				<value xml:lang="zh-TW">化石盔</value>
+				<value xml:lang="de">Kabuto</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonKabutops" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Kabutops</value>
+				<value xml:lang="zh-TW">鐮刀盔</value>
+				<value xml:lang="de">Kabutops</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonAerodactyl" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Aerodactyl</value>
+				<value xml:lang="zh-TW">化石翼龍</value>
+				<value xml:lang="de">Aerodactyl</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSnorlax" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Snorlax</value>
+				<value xml:lang="zh-TW">卡比獸</value>
+				<value xml:lang="de">Relaxo</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonArticuno" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Articuno</value>
+				<value xml:lang="zh-TW">急凍鳥</value>
+				<value xml:lang="de">Arktos</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonZapdos" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Zapdos</value>
+				<value xml:lang="zh-TW">閃電鳥</value>
+				<value xml:lang="de">Zapdos</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMoltres" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Moltres</value>
+				<value xml:lang="zh-TW">火焰鳥</value>
+				<value xml:lang="de">Lavados</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDratini" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Dratini</value>
+				<value xml:lang="zh-TW">迷你龍</value>
+				<value xml:lang="de">Dratini</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDragonair" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Dragonair</value>
+				<value xml:lang="zh-TW">哈克龍</value>
+				<value xml:lang="de">Dragonir</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDragonite" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Dragonite</value>
+				<value xml:lang="zh-TW">快龍</value>
+				<value xml:lang="de">Dragoran</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMewtwo" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Mewtwo</value>
+				<value xml:lang="zh-TW">超夢</value>
+				<value xml:lang="de">Mewtu</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMew" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Mew</value>
+				<value xml:lang="zh-TW">夢幻</value>
+				<value xml:lang="de">Mew</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonChikorita" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Chikorita</value>
+				<value xml:lang="zh-TW">菊草葉</value>
+				<value xml:lang="de">Endivie</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonBayleef" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Bayleef</value>
+				<value xml:lang="zh-TW">月桂葉</value>
+				<value xml:lang="de">Lorblatt</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMeganium" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Meganium</value>
+				<value xml:lang="zh-TW">大竺葵</value>
+				<value xml:lang="de">Meganie</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonCyndaquil" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Cyndaquil</value>
+				<value xml:lang="zh-TW">火球鼠</value>
+				<value xml:lang="de">Feurigel</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonQuilava" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Quilava</value>
+				<value xml:lang="zh-TW">火岩鼠</value>
+				<value xml:lang="de">Igelavar</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonTyphlosion" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Typhlosion</value>
+				<value xml:lang="zh-TW">火爆獸</value>
+				<value xml:lang="de">Tornupto</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonTotodile" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Totodile</value>
+				<value xml:lang="zh-TW">小鋸鱷</value>
+				<value xml:lang="de">Karnimani</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonCroconaw" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Croconaw</value>
+				<value xml:lang="zh-TW">藍鱷</value>
+				<value xml:lang="de">Tyracroc</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonFeraligatr" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Feraligatr</value>
+				<value xml:lang="zh-TW">大力鱷</value>
+				<value xml:lang="de">Impergator</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSentret" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Sentret</value>
+				<value xml:lang="zh-TW">尾立</value>
+				<value xml:lang="de">Wiesor</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonFurret" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Furret</value>
+				<value xml:lang="zh-TW">大尾立</value>
+				<value xml:lang="de">Wiesenior</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonHoothoot" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Hoothoot</value>
+				<value xml:lang="zh-TW">咕咕</value>
+				<value xml:lang="de">Hoothoot</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonNoctowl" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Noctowl</value>
+				<value xml:lang="zh-TW">貓頭夜鷹</value>
+				<value xml:lang="de">Noctuh</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonLedyba" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Ledyba</value>
+				<value xml:lang="zh-TW">芭瓢蟲</value>
+				<value xml:lang="de">Ledyba</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonLedian" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Ledian</value>
+				<value xml:lang="zh-TW">安瓢蟲</value>
+				<value xml:lang="de">Ledian</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSpinarak" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Spinarak</value>
+				<value xml:lang="zh-TW">圓絲蛛</value>
+				<value xml:lang="de">Webarak</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonAriados" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Ariados</value>
+				<value xml:lang="zh-TW">阿利多斯</value>
+				<value xml:lang="de">Ariados</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonCrobat" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Crobat</value>
+				<value xml:lang="zh-TW">叉字蝠</value>
+				<value xml:lang="de">Iksbat</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonChinchou" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Chinchou</value>
+				<value xml:lang="zh-TW">燈籠魚</value>
+				<value xml:lang="de">Lampi</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonLanturn" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Lanturn</value>
+				<value xml:lang="zh-TW">電燈怪</value>
+				<value xml:lang="de">Lanturn</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPichu" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Pichu</value>
+				<value xml:lang="zh-TW">皮丘</value>
+				<value xml:lang="de">Pichu</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonCleffa" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Cleffa</value>
+				<value xml:lang="zh-TW">皮寶寶</value>
+				<value xml:lang="de">Pii</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonIgglybuff" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Igglybuff</value>
+				<value xml:lang="zh-TW">寶寶丁</value>
+				<value xml:lang="de">Fluffeluff</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonTogepi" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Togepi</value>
+				<value xml:lang="zh-TW">波克比</value>
+				<value xml:lang="de">Togepi</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonTogetic" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Togetic</value>
+				<value xml:lang="zh-TW">波克基古</value>
+				<value xml:lang="de">Togetic</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonNatu" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Natu</value>
+				<value xml:lang="zh-TW">天然雀</value>
+				<value xml:lang="de">Natu</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonXatu" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Xatu</value>
+				<value xml:lang="zh-TW">天然鳥</value>
+				<value xml:lang="de">Xatu</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMareep" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Mareep</value>
+				<value xml:lang="zh-TW">咩利羊</value>
+				<value xml:lang="de">Voltilamm</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonFlaaffy" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Flaaffy</value>
+				<value xml:lang="zh-TW">茸茸羊</value>
+				<value xml:lang="de">Waaty</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonAmpharos" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Ampharos</value>
+				<value xml:lang="zh-TW">電龍</value>
+				<value xml:lang="de">Ampharos</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonBellossom" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Bellossom</value>
+				<value xml:lang="zh-TW">美麗花</value>
+				<value xml:lang="de">Blubella</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMarill" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Marill</value>
+				<value xml:lang="zh-TW">瑪力露</value>
+				<value xml:lang="de">Marill</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonAzumarill" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Azumarill</value>
+				<value xml:lang="zh-TW">瑪力露麗</value>
+				<value xml:lang="de">Azumarill</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSudowoodo" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Sudowoodo</value>
+				<value xml:lang="zh-TW">樹才怪</value>
+				<value xml:lang="de">Mogelbaum</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPolitoed" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Politoed</value>
+				<value xml:lang="zh-TW">蚊香蛙皇</value>
+				<value xml:lang="de">Quaxo</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonHoppip" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Hoppip</value>
+				<value xml:lang="zh-TW">毽子草</value>
+				<value xml:lang="de">Hoppspross</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSkiploom" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Skiploom</value>
+				<value xml:lang="zh-TW">毽子花</value>
+				<value xml:lang="de">Hubelupf</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonJumpluff" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Jumpluff</value>
+				<value xml:lang="zh-TW">毽子棉</value>
+				<value xml:lang="de">Papungha</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonAipom" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Aipom</value>
+				<value xml:lang="zh-TW">長尾怪手</value>
+				<value xml:lang="de">Griffel</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSunkern" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Sunkern</value>
+				<value xml:lang="zh-TW">向日種子</value>
+				<value xml:lang="de">Sonnkern</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSunflora" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Sunflora</value>
+				<value xml:lang="zh-TW">向日花怪</value>
+				<value xml:lang="de">Sonnflora</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonYanma" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Yanma</value>
+				<value xml:lang="zh-TW">蜻蜻蜓</value>
+				<value xml:lang="de">Yanma</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonWooper" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Wooper</value>
+				<value xml:lang="zh-TW">烏波</value>
+				<value xml:lang="de">Felino</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonQuagsire" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Quagsire</value>
+				<value xml:lang="zh-TW">沼王</value>
+				<value xml:lang="de">Morlord</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonEspeon" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Espeon</value>
+				<value xml:lang="zh-TW">太陽伊布</value>
+				<value xml:lang="de">Psiana</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonUmbreon" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Umbreon</value>
+				<value xml:lang="zh-TW">月亮伊布</value>
+				<value xml:lang="de">Nachtara</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMurkrow" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Murkrow</value>
+				<value xml:lang="zh-TW">黑暗鴉</value>
+				<value xml:lang="de">Kramurx</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSlowking" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Slowking</value>
+				<value xml:lang="zh-TW">呆呆王</value>
+				<value xml:lang="de">Laschoking</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMisdreavus" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Misdreavus</value>
+				<value xml:lang="zh-TW">夢妖</value>
+				<value xml:lang="de">Traunfugil</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonUnown" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Unown</value>
+				<value xml:lang="zh-TW">未知圖騰</value>
+				<value xml:lang="de">Icognito</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonWobbuffet" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Wobbuffet</value>
+				<value xml:lang="zh-TW">果然翁</value>
+				<value xml:lang="de">Woingenau</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonGirafarig" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Girafarig</value>
+				<value xml:lang="zh-TW">麒麟奇</value>
+				<value xml:lang="de">Girafarig</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPineco" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Pineco</value>
+				<value xml:lang="zh-TW">榛果球</value>
+				<value xml:lang="de">Tannza</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonForretress" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Forretress</value>
+				<value xml:lang="zh-TW">佛烈托斯</value>
+				<value xml:lang="de">Forstellka</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDunsparce" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Dunsparce</value>
+				<value xml:lang="zh-TW">土龍弟弟</value>
+				<value xml:lang="de">Dummisel</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonGligar" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Gligar</value>
+				<value xml:lang="zh-TW">天蠍</value>
+				<value xml:lang="de">Skorgla</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSteelix" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Steelix</value>
+				<value xml:lang="zh-TW">大鋼蛇</value>
+				<value xml:lang="de">Stahlos</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSnubbull" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Snubbull</value>
+				<value xml:lang="zh-TW">布魯</value>
+				<value xml:lang="de">Snubbull</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonGranbull" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Granbull</value>
+				<value xml:lang="zh-TW">布魯皇</value>
+				<value xml:lang="de">Granbull</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonQwilfish" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Qwilfish</value>
+				<value xml:lang="zh-TW">千針魚</value>
+				<value xml:lang="de">Baldorfish</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonScizor" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Scizor</value>
+				<value xml:lang="zh-TW">巨鉗螳螂</value>
+				<value xml:lang="de">Scherox</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonShuckle" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Shuckle</value>
+				<value xml:lang="zh-TW">壺壺</value>
+				<value xml:lang="de">Pottrott</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonHeracross" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Heracross</value>
+				<value xml:lang="zh-TW">赫拉克羅斯</value>
+				<value xml:lang="de">Skaraborn</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSneasel" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Sneasel</value>
+				<value xml:lang="zh-TW">狃拉</value>
+				<value xml:lang="de">Sniebel</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonTeddiursa" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Teddiursa</value>
+				<value xml:lang="zh-TW">熊寶寶</value>
+				<value xml:lang="de">Teddiursa</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonUrsaring" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Ursaring</value>
+				<value xml:lang="zh-TW">圈圈熊</value>
+				<value xml:lang="de">Ursaring</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSlugma" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Slugma</value>
+				<value xml:lang="zh-TW">熔岩蟲</value>
+				<value xml:lang="de">Schneckmag</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMagcargo" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Magcargo</value>
+				<value xml:lang="zh-TW">熔岩蝸牛</value>
+				<value xml:lang="de">Magcargo</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSwinub" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Swinub</value>
+				<value xml:lang="zh-TW">小山豬</value>
+				<value xml:lang="de">Quiekel</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPiloswine" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Piloswine</value>
+				<value xml:lang="zh-TW">長毛豬</value>
+				<value xml:lang="de">Keifel</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonCorsola" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Corsola</value>
+				<value xml:lang="zh-TW">太陽珊瑚</value>
+				<value xml:lang="de">Corasonn</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonRemoraid" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Remoraid</value>
+				<value xml:lang="zh-TW">鐵炮魚</value>
+				<value xml:lang="de">Remoraid</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonOctillery" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Octillery</value>
+				<value xml:lang="zh-TW">章魚桶</value>
+				<value xml:lang="de">Octillery</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDelibird" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Delibird</value>
+				<value xml:lang="zh-TW">信使鳥</value>
+				<value xml:lang="de">Botogel</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMantine" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Mantine</value>
+				<value xml:lang="zh-TW">巨翅飛魚</value>
+				<value xml:lang="de">Mantax</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSkarmory" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Skarmory</value>
+				<value xml:lang="zh-TW">盔甲鳥</value>
+				<value xml:lang="de">Panzaeron</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonHoundour" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Houndour</value>
+				<value xml:lang="zh-TW">戴魯比</value>
+				<value xml:lang="de">Hunduster</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonHoundoom" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Houndoom</value>
+				<value xml:lang="zh-TW">黑魯加</value>
+				<value xml:lang="de">Hundemon</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonKingdra" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Kingdra</value>
+				<value xml:lang="zh-TW">刺龍王</value>
+				<value xml:lang="de">Seedraking</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPhanpy" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Phanpy</value>
+				<value xml:lang="zh-TW">小小象</value>
+				<value xml:lang="de">Phanpy</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDonphan" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Donphan</value>
+				<value xml:lang="zh-TW">頓甲</value>
+				<value xml:lang="de">Donphan</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPorygon2" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Porygon2</value>
+				<value xml:lang="zh-TW">多邊獸Ⅱ</value>
+				<value xml:lang="de">Porygon2</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonStantler" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Stantler</value>
+				<value xml:lang="zh-TW">驚角鹿</value>
+				<value xml:lang="de">Damhirplex</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSmeargle" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Smeargle</value>
+				<value xml:lang="zh-TW">圖圖犬</value>
+				<value xml:lang="de">Farbeagle</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonTyrogue" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Tyrogue</value>
+				<value xml:lang="zh-TW">無畏小子</value>
+				<value xml:lang="de">Rabauz</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonHitmontop" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Hitmontop</value>
+				<value xml:lang="zh-TW">戰舞郎</value>
+				<value xml:lang="de">Kapoera</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSmoochum" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Smoochum</value>
+				<value xml:lang="zh-TW">迷唇娃</value>
+				<value xml:lang="de">Kussilla</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonElekid" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Elekid</value>
+				<value xml:lang="zh-TW">電擊怪</value>
+				<value xml:lang="de">Elekid</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMagby" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Magby</value>
+				<value xml:lang="zh-TW">鴨嘴寶寶</value>
+				<value xml:lang="de">Magby</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonMiltank" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Miltank</value>
+				<value xml:lang="zh-TW">大奶罐</value>
+				<value xml:lang="de">Miltank</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonBlissey" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Blissey</value>
+				<value xml:lang="zh-TW">幸福蛋</value>
+				<value xml:lang="de">Heiteira</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonRaikou" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Raikou</value>
+				<value xml:lang="zh-TW">雷公</value>
+				<value xml:lang="de">Raikou</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonEntei" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Entei</value>
+				<value xml:lang="zh-TW">炎帝</value>
+				<value xml:lang="de">Entei</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSuicune" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Suicune</value>
+				<value xml:lang="zh-TW">水君</value>
+				<value xml:lang="de">Suicune</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonLarvitar" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Larvitar</value>
+				<value xml:lang="zh-TW">幼基拉斯</value>
+				<value xml:lang="de">Larvitar</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonPupitar" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Pupitar</value>
+				<value xml:lang="zh-TW">沙基拉斯</value>
+				<value xml:lang="de">Pupitar</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonTyranitar" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Tyranitar</value>
+				<value xml:lang="zh-TW">班基拉斯</value>
+				<value xml:lang="de">Despotar</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonLugia" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Lugia</value>
+				<value xml:lang="zh-TW">洛奇亞</value>
+				<value xml:lang="de">Lugia</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonHoOh" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Ho-Oh</value>
+				<value xml:lang="zh-TW">鳳王</value>
+				<value xml:lang="de">Ho-Oh</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonCelebi" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Celebi</value>
+				<value xml:lang="zh-TW">時拉比</value>
+				<value xml:lang="de">Celebi</value>
 			</prop>
 		</node>
 	</node>

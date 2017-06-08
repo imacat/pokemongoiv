@@ -50,6 +50,19 @@ Function fnAskParam As aFindIVParam
 	oDialog.getControl ("cbxBest3").setVisible (False)
 	oDialog.getControl ("lstMax").setVisible (False)
 	
+	' Adds the Pokémons by their localized names.
+	subReadBaseStats
+	ReDim mPokemons (UBound (maBaseStats)) As String
+	For nI = 0 To UBound (maBaseStats)
+		mPokemons (nI) = fnGetResString ( _
+			"Pokemon" & maBaseStats (nI).sPokemonId)
+	Next nI
+	oList = oDialog.getControl ("lstPokemon")
+	If oList.getItemCount > 0 Then
+		getItemCount.removeItems (0, oList.getItemCount)
+	End If
+	oList.addItems (mPokemons, 0)
+	
 	oDialog.getControl ("imgPokemon").getModel.setPropertyValue ( _
 		"ImageURL", fnGetImageUrl ("Unknown"))
 	oDialog.getControl ("imgTeamLogo").getModel.setPropertyValue ( _

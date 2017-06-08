@@ -39,7 +39,7 @@ Sub subReadDataSheets
 		&amp; &quot;&apos; See the License for the specific language governing permissions and&quot; &amp; Chr (10) _
 		&amp; &quot;&apos; limitations under the License.&quot; &amp; Chr (10) _
 		&amp; Chr (10) _
-		&amp; &quot;&apos; 2Data: The Pokémon GO data for IV calculation&quot; &amp; Chr (10) _
+		&amp; &quot;&apos; 3Data: The Pokémon GO data for IV calculation&quot; &amp; Chr (10) _
 		&amp; &quot;&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, &quot; &amp; Format (Date (), &quot;yyyy-mm-dd&quot;) &amp; Chr (10) _
 		&amp; &quot;&apos;   Generated with 9Load.subReadDataSheets ()&quot; &amp; Chr (10) _
 		&amp; Chr (10) _

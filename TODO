@@ -1,5 +1,7 @@
 PokemonGoIV TODO
 
+* Update the Pokémon database for the complex evolution forms
+  like Eevee, Slowpoke, etc.
 * Center the dialog.
 * Pokémons that are not released in the game yet, so their image
   icons are missing.

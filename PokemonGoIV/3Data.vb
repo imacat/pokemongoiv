@@ -12,7 +12,7 @@
 ' See the License for the specific language governing permissions and
 ' limitations under the License.
 
-' 2Data: The Pokémon GO data for IV calculation
+' 3Data: The Pokémon GO data for IV calculation
 '   by imacat <imacat@mail.imacat.idv.tw>, 2017-03-01
 '   Generated with 9Load.subReadDataSheets ()
 
