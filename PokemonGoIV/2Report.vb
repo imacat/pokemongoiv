@@ -139,6 +139,7 @@ Sub subCreateReport ( _
 				fnGetResString ("ReportCPEvolvePowerUp"), _
 				"[Pokémon]", sPokemonName), _
 				"[Level]", fMaxLevel)
+			nCol = nCol + 1
 		End If
 	Next nJ
 	mData (0) = mRow
