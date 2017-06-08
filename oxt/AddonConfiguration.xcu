@@ -87,7 +87,7 @@
 		<node oor:name="ReportNo" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>No.</value>
-				<value xml:lang="zh-TW">號</value>
+				<value xml:lang="zh-TW">編號</value>
 				<!-- TODO: To be translated into Deutsch. -->
 				<value xml:lang="de">No.</value>
 			</prop>
@@ -127,7 +127,7 @@
 		<node oor:name="ReportLevel" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Lv</value>
-				<value xml:lang="zh-TW">級</value>
+				<value xml:lang="zh-TW">等級</value>
 				<!-- TODO: To be translated into Deutsch. -->
 				<value xml:lang="de">Lv</value>
 			</prop>
@@ -135,7 +135,7 @@
 		<node oor:name="ReportAttack" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Atk</value>
-				<value xml:lang="zh-TW">攻</value>
+				<value xml:lang="zh-TW">攻擊</value>
 				<!-- TODO: To be translated into Deutsch. -->
 				<value xml:lang="de">Atk</value>
 			</prop>
@@ -143,7 +143,7 @@
 		<node oor:name="ReportDefense" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Def</value>
-				<value xml:lang="zh-TW">防</value>
+				<value xml:lang="zh-TW">防禦</value>
 				<!-- TODO: To be translated into Deutsch. -->
 				<value xml:lang="de">Def</value>
 			</prop>
@@ -151,7 +151,7 @@
 		<node oor:name="ReportStamina" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Sta</value>
-				<value xml:lang="zh-TW">體</value>
+				<value xml:lang="zh-TW">體力</value>
 				<!-- TODO: To be translated into Deutsch. -->
 				<value xml:lang="de">Sta</value>
 			</prop>
@@ -166,26 +166,26 @@
 		</node>
 		<node oor:name="ReportCPPowerUp" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
-				<value>CP when powered-up to level [Level]</value>
-				<value xml:lang="zh-TW">強化到[Level]級後的CP</value>
+				<value>CP when powered-up to the limit (level [Level])</value>
+				<value xml:lang="zh-TW">強化到底（[Level]級）的CP</value>
 				<!-- TODO: To be translated into Deutsch. -->
-				<value xml:lang="de">CP when powered-up to level [Level]</value>
+				<value xml:lang="de">CP when powered-up to the limit (level [Level])</value>
 			</prop>
 		</node>
 		<node oor:name="ReportCPEvolve" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>CP when evolved to [Pokémon]</value>
-				<value xml:lang="zh-TW">進化為[Pokémon]後的CP</value>
+				<value xml:lang="zh-TW">進化為[Pokémon]的CP</value>
 				<!-- TODO: To be translated into Deutsch. -->
 				<value xml:lang="de">CP when evolved to [Pokémon]</value>
 			</prop>
 		</node>
 		<node oor:name="ReportCPEvolvePowerUp" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
-				<value>CP when evolved to [Pokémon] and powered-up to level [Level]</value>
-				<value xml:lang="zh-TW">進化為[Pokémon]並強化到[Level]級後的CP</value>
+				<value>CP when evolved to [Pokémon] and powered-up to the limit (level [Level])</value>
+				<value xml:lang="zh-TW">進化為[Pokémon]並強化到底（[Level]級）的CP</value>
 				<!-- TODO: To be translated into Deutsch. -->
-				<value xml:lang="de">CP when evolved to [Pokémon] and powered-up to level [Level]</value>
+				<value xml:lang="de">CP when evolved to [Pokémon] and powered-up to the limit (level [Level])</value>
 			</prop>
 		</node>
 		<!-- Team Valor (red) -->
