@@ -254,7 +254,7 @@ Sub subSortIVs ( _
 	Dim nCP As Integer
 	
 	' Calculate the sorting keys.
-	For nI = 0 To UBound (maIVs) - 1
+	For nI = 0 To UBound (maIVs)
 		maIVs (nI).nTotal = maIVs (nI).nAttack + maIVs (nI).nDefense _
 			+ maIVs (nI).nStamina
 		maIVs (nI).nMaxCP = fnCalcCP (aBaseStats, _
@@ -330,6 +330,7 @@ Function subSwapIV (aIVa As aIV, aIVb As aIV) As Double
 	Dim aTempIV As New aIV
 	
 	With aTempIV
+		.fLevel = aIVa.fLevel
 		.nAttack = aIVa.nAttack
 		.nDefense = aIVa.nDefense
 		.nStamina = aIVa.nStamina
@@ -338,6 +339,7 @@ Function subSwapIV (aIVa As aIV, aIVb As aIV) As Double
 		.nMaxMaxCP = aIVa.nMaxMaxCP
 	End With
 	With aIVa
+		.fLevel = aIVb.fLevel
 		.nAttack = aIVb.nAttack
 		.nDefense = aIVb.nDefense
 		.nStamina = aIVb.nStamina
@@ -346,6 +348,7 @@ Function subSwapIV (aIVa As aIV, aIVb As aIV) As Double
 		.nMaxMaxCP = aIVb.nMaxMaxCP
 	End With
 	With aIVb
+		.fLevel = aTempIV.fLevel
 		.nAttack = aTempIV.nAttack
 		.nDefense = aTempIV.nDefense
 		.nStamina = aTempIV.nStamina
