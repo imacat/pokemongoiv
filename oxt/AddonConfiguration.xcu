@@ -88,15 +88,13 @@
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>No.</value>
 				<value xml:lang="zh-TW">編號</value>
-				<!-- TODO: To be translated into Deutsch. -->
-				<value xml:lang="de">No.</value>
+				<value xml:lang="de">Nein.</value>
 			</prop>
 		</node>
 		<node oor:name="ReportPokemon" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Pokémon</value>
 				<value xml:lang="zh-TW">寶可夢</value>
-				<!-- TODO: To be translated into Deutsch. -->
 				<value xml:lang="de">Pokémon</value>
 			</prop>
 		</node>
@@ -104,7 +102,6 @@
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>CP</value>
 				<value xml:lang="zh-TW">CP</value>
-				<!-- TODO: To be translated into Deutsch. -->
 				<value xml:lang="de">WP</value>
 			</prop>
 		</node>
@@ -112,7 +109,6 @@
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>HP</value>
 				<value xml:lang="zh-TW">HP</value>
-				<!-- TODO: To be translated into Deutsch. -->
 				<value xml:lang="de">KP</value>
 			</prop>
 		</node>
@@ -120,7 +116,6 @@
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Stardust</value>
 				<value xml:lang="zh-TW">星星沙子</value>
-				<!-- TODO: To be translated into Deutsch. -->
 				<value xml:lang="de">Sternenstaub</value>
 			</prop>
 		</node>
@@ -128,7 +123,6 @@
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Lv</value>
 				<value xml:lang="zh-TW">等級</value>
-				<!-- TODO: To be translated into Deutsch. -->
 				<value xml:lang="de">Lv</value>
 			</prop>
 		</node>
@@ -136,31 +130,27 @@
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Atk</value>
 				<value xml:lang="zh-TW">攻擊</value>
-				<!-- TODO: To be translated into Deutsch. -->
-				<value xml:lang="de">Atk</value>
+				<value xml:lang="de">Angr</value>
 			</prop>
 		</node>
 		<node oor:name="ReportDefense" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Def</value>
 				<value xml:lang="zh-TW">防禦</value>
-				<!-- TODO: To be translated into Deutsch. -->
-				<value xml:lang="de">Def</value>
+				<value xml:lang="de">Vert</value>
 			</prop>
 		</node>
 		<node oor:name="ReportStamina" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Sta</value>
 				<value xml:lang="zh-TW">體力</value>
-				<!-- TODO: To be translated into Deutsch. -->
-				<value xml:lang="de">Sta</value>
+				<value xml:lang="de">Ausd</value>
 			</prop>
 		</node>
 		<node oor:name="ReportIVPercent" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>IV%</value>
 				<value xml:lang="zh-TW">IV%</value>
-				<!-- TODO: To be translated into Deutsch. -->
 				<value xml:lang="de">IV%</value>
 			</prop>
 		</node>
@@ -168,24 +158,21 @@
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>CP when powered-up to the limit (level [Level])</value>
 				<value xml:lang="zh-TW">強化到底（[Level]級）的CP</value>
-				<!-- TODO: To be translated into Deutsch. -->
-				<value xml:lang="de">CP when powered-up to the limit (level [Level])</value>
+				<value xml:lang="de">WP nach maximaler Aufwertung bis (Level [Level])</value>
 			</prop>
 		</node>
 		<node oor:name="ReportCPEvolve" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>CP when evolved to [Pokémon]</value>
 				<value xml:lang="zh-TW">進化為[Pokémon]的CP</value>
-				<!-- TODO: To be translated into Deutsch. -->
-				<value xml:lang="de">CP when evolved to [Pokémon]</value>
+				<value xml:lang="de">WP nach Entwicklung zu [Pokémon]</value>
 			</prop>
 		</node>
 		<node oor:name="ReportCPEvolvePowerUp" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>CP when evolved to [Pokémon] and powered-up to the limit (level [Level])</value>
 				<value xml:lang="zh-TW">進化為[Pokémon]並強化到底（[Level]級）的CP</value>
-				<!-- TODO: To be translated into Deutsch. -->
-				<value xml:lang="de">CP when evolved to [Pokémon] and powered-up to the limit (level [Level])</value>
+				<value xml:lang="de">WP nach Entwicklung zu [Pokémon] und maximaler Aufwertung bis (Level [Level])</value>
 			</prop>
 		</node>
 		<!-- Team Valor (red) -->
