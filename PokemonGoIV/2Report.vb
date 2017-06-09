@@ -241,7 +241,7 @@ Sub subCreateReport ( _
 	oColumns.getByIndex (9).setPropertyValue ("Width", 1030)
 	For nJ = nLeadCols To nTotalCols - 1
 		oColumns.getByIndex (nJ).setPropertyValue ( _
-			"Width", 2810)
+			"Width", 2500)
 	Next nJ
 	oRows = oSheet.getRows
 	oRows.getByIndex (0).setPropertyValue ("OptimalHeight", True)
