@@ -180,6 +180,8 @@ Sub subCreateReport ( _
 		sFormula = "=(" & sColIVAttack & "+" & sColIVDefense _
 			& "+" & sColIVStamina & ")/45"
 		oCell.setFormula (sFormula)
+		sFormula = oCell.getPropertyValue ("FormulaLocal")
+		oCell.setPropertyValue ("FormulaLocal", sFormula)
 		
 		nCol = nLeadCols
 		If aBaseStats.bIsLastForm Then
@@ -187,6 +189,8 @@ Sub subCreateReport ( _
 			sFormula = fnGetCPFormula (aBaseStats, _
 				sColIVAttack, sColIVDefense, sColIVStamina, sMaxCPM)
 			oCell.setFormula (sFormula)
+			sFormula = oCell.getPropertyValue ("FormulaLocal")
+			oCell.setPropertyValue ("FormulaLocal", sFormula)
 			nCol = nCol + 1
 		End If
 		For nJ = 0 To nEvolved - 1
@@ -194,12 +198,16 @@ Sub subCreateReport ( _
 			sFormula = fnGetCPFormula (maEvBaseStats (nJ), _
 				sColIVAttack, sColIVDefense, sColIVStamina, sCPM)
 			oCell.setFormula (sFormula)
+			sFormula = oCell.getPropertyValue ("FormulaLocal")
+			oCell.setPropertyValue ("FormulaLocal", sFormula)
 			nCol = nCol + 1
 			If maEvBaseStats (nJ).bIsLastForm Then
 				oCell = oSheet.getCellByPosition (nCol, nI + 1)
 				sFormula = fnGetCPFormula (maEvBaseStats (nJ), _
 					sColIVAttack, sColIVDefense, sColIVStamina, sMaxCPM)
 				oCell.setFormula (sFormula)
+				sFormula = oCell.getPropertyValue ("FormulaLocal")
+				oCell.setPropertyValue ("FormulaLocal", sFormula)
 				nCol = nCol + 1
 			End If
 		Next nJ
