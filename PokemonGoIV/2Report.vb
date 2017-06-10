@@ -59,7 +59,7 @@ Sub subCreateReport ( _
 		aBaseStats As aStats, aQuery As aFindIVParam, maIVs () As aIV)
 	Dim oDoc As Object, oSheet As Object
 	Dim oRange As Object, oColumns As Object, oRows As Object
-	Dim oCell As Object, sFormula As String
+	Dim oCell As Object, sFormula As String, sFormulaLocal As String
 	Dim nI As Integer, nJ As Integer, nCol As Integer
 	Dim nLeadCols As Integer, nTotalCols As Integer
 	Dim nEvolved As Integer, fMaxLevel As Double
@@ -180,8 +180,10 @@ Sub subCreateReport ( _
 		sFormula = "=(" & sColIVAttack & "+" & sColIVDefense _
 			& "+" & sColIVStamina & ")/45"
 		oCell.setFormula (sFormula)
-		sFormula = oCell.getPropertyValue ("FormulaLocal")
-		oCell.setPropertyValue ("FormulaLocal", sFormula)
+		sFormulaLocal = oCell.getPropertyValue ("FormulaLocal")
+		If sFormulaLocal <> sFormula Then
+			oCell.setPropertyValue ("FormulaLocal", sFormulaLocal)
+		End If
 		
 		nCol = nLeadCols
 		If aBaseStats.bIsLastForm Then
@@ -189,8 +191,10 @@ Sub subCreateReport ( _
 			sFormula = fnGetCPFormula (aBaseStats, _
 				sColIVAttack, sColIVDefense, sColIVStamina, sMaxCPM)
 			oCell.setFormula (sFormula)
-			sFormula = oCell.getPropertyValue ("FormulaLocal")
-			oCell.setPropertyValue ("FormulaLocal", sFormula)
+			sFormulaLocal = oCell.getPropertyValue ("FormulaLocal")
+			If sFormulaLocal <> sFormula Then
+				oCell.setPropertyValue ("FormulaLocal", sFormulaLocal)
+			End If
 			nCol = nCol + 1
 		End If
 		For nJ = 0 To nEvolved - 1
@@ -198,16 +202,23 @@ Sub subCreateReport ( _
 			sFormula = fnGetCPFormula (maEvBaseStats (nJ), _
 				sColIVAttack, sColIVDefense, sColIVStamina, sCPM)
 			oCell.setFormula (sFormula)
-			sFormula = oCell.getPropertyValue ("FormulaLocal")
-			oCell.setPropertyValue ("FormulaLocal", sFormula)
+			sFormulaLocal = oCell.getPropertyValue ("FormulaLocal")
+			If sFormulaLocal <> sFormula Then
+				oCell.setPropertyValue ("FormulaLocal", sFormulaLocal)
+			End If
 			nCol = nCol + 1
 			If maEvBaseStats (nJ).bIsLastForm Then
 				oCell = oSheet.getCellByPosition (nCol, nI + 1)
 				sFormula = fnGetCPFormula (maEvBaseStats (nJ), _
-					sColIVAttack, sColIVDefense, sColIVStamina, sMaxCPM)
+					sColIVAttack, sColIVDefense, _
+					sColIVStamina, sMaxCPM)
 				oCell.setFormula (sFormula)
-				sFormula = oCell.getPropertyValue ("FormulaLocal")
-				oCell.setPropertyValue ("FormulaLocal", sFormula)
+				sFormulaLocal = oCell.getPropertyValue ( _
+					"FormulaLocal")
+				If sFormulaLocal <> sFormula Then
+					oCell.setPropertyValue ( _
+						"FormulaLocal", sFormulaLocal)
+				End If
 				nCol = nCol + 1
 			End If
 		Next nJ
