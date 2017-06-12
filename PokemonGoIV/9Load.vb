@@ -63,9 +63,9 @@ Sub subShowChinesePokemonNames
 	sResult = ""
 	For nI = 1 To UBound (mData)
 		sNo = mData (nI) (1)
-		sName = mData (nI) (2)
+		sName = mData (nI) (0)
 		If sName = "" Then
-			sName = mData (nI) (0)
+			sName = mData (nI) (2)
 		Else
 			sNewName = ""
 			For nJ = 1 To Len (sName)
@@ -146,10 +146,10 @@ Function fnReadBaseStatsSheet As String
 		& "Function fnGetBaseStatsData As Variant" & Chr (10) _
 		& Chr (9) & "fnGetBaseStatsData = Array( _" & Chr (10)
 	For nI = 1 To UBound (mData) - 1
-		sEvolveForms = fnFindEvolveForms (mData (nI))
+		sEvolveForms = fnFindEvolveForms (mData, nI)
 		sOutput = sOutput _
 			& Chr (9) & Chr (9) & "Array (""" _
-				& fnMapPokemonNameToId (mData (nI) (0)) _
+				& fnMapPokemonNameToId (mData (nI) (2)) _
 				& """, """ & mData (nI) (1) _
 				& """, " & mData (nI) (3) _
 				& ", " & mData (nI) (4) _
@@ -157,10 +157,10 @@ Function fnReadBaseStatsSheet As String
 				& ", " & sEvolveForms & "), _" & Chr (10)
 	Next nI
 	nI = UBound (mData)
-	sEvolveForms = fnFindEvolveForms (mData (nI))
+	sEvolveForms = fnFindEvolveForms (mData, nI)
 	sOutput = sOutput _
 		& Chr (9) & Chr (9) & "Array (""" _
-			& fnMapPokemonNameToId (mData (nI) (0)) _
+			& fnMapPokemonNameToId (mData (nI) (2)) _
 			& """, """ & mData (nI) (1) _
 			& """, " & mData (nI) (3) _
 			& ", " & mData (nI) (4) _
@@ -171,34 +171,37 @@ Function fnReadBaseStatsSheet As String
 End Function
 
 ' fnFindEvolveForms: Finds the evolved forms of the Pokémons.
-Function fnFindEvolveForms (mData () As Variant) As String
+Function fnFindEvolveForms (mData As Variant, nI As Integer) As String
 	Dim nJ As Integer, nStart As Integer, nEnd As Integer
 	Dim sEvolveForms As String
 	
 	' Special cases
-	If mData (0) = "Oddish" Then
-		fnFindEvolveForms = "Array (""Gloom"", ""Vileplume"", ""Bellossom"")"
+	If mData (nI) (2) = "Oddish" Then
+		fnFindEvolveForms = "Array (""Gloom"", ""Vileplume"", " _
+			& """Bellossom"")"
 		Exit Function
 	End If
-	If mData (0) = "Gloom" Then
+	If mData (nI) (2) = "Gloom" Then
 		fnFindEvolveForms = "Array (""Vileplume"", ""Bellossom"")"
 		Exit Function
 	End If
-	If mData (0) = "Slowpoke" Then
+	If mData (nI) (2) = "Slowpoke" Then
 		fnFindEvolveForms = "Array (""Slowbro"", ""Slowking"")"
 		Exit Function
 	End If
-	If mData (0) = "Tyrogue" Then
-		fnFindEvolveForms = "Array (""Hitmonlee"", ""Hitmonchan"", ""Hitmontop"")"
+	If mData (nI) (2) = "Tyrogue" Then
+		fnFindEvolveForms = "Array (""Hitmonlee"", ""Hitmonchan"", " _
+			& """Hitmontop"")"
 		Exit Function
 	End If
-	If mData (0) = "Eevee" Then
-		fnFindEvolveForms = "Array (""Vaporeon"", ""Jolteon"", ""Flareon"", ""Espeon"", ""Umbreon"")"
+	If mData (nI) (2) = "Eevee" Then
+		fnFindEvolveForms = "Array (""Vaporeon"", ""Jolteon"", " _
+			& """Flareon"", ""Espeon"", ""Umbreon"")"
 		Exit Function
 	End If
 	
 	For nJ = 6 To 8
-		If mData (nJ) = mData (0) Then
+		If mData (nI) (nJ) = mData (nI) (0) Then
 			nStart = nJ + 1
 			nJ = 9
 		End If
@@ -207,7 +210,7 @@ Function fnFindEvolveForms (mData () As Variant) As String
 		nEnd = 8
 	Else
 		For nJ = nStart To 8
-			If mData (nJ) = "" Then
+			If mData (nI) (nJ) = "" Then
 				nEnd = nJ - 1
 				nJ = 9
 			Else
@@ -222,15 +225,29 @@ Function fnFindEvolveForms (mData () As Variant) As String
 		sEvolveForms = "Array ()"
 	Else
 		sEvolveForms = """" _
-			& fnMapPokemonNameToId (mData (nStart)) & """"
+			& fnMapChineseNameToId (mData, mData (nI) (nStart)) & """"
 		For nJ = nStart + 1 To nEnd
 			sEvolveForms = sEvolveForms _
 				& ", """ _
-				& fnMapPokemonNameToId (mData (nJ)) & """"
+				& fnMapChineseNameToId (mData, mData (nI) (nJ)) & """"
 		Next nJ
 		sEvolveForms = "Array (" & sEvolveForms & ")"
 	End If
 	fnFindEvolveForms = sEvolveForms
+End Function
+
+' fnMapChineseNameToId: Maps the Chinese Pokémon names to their IDs.
+Function fnMapChineseNameToId ( _
+		mData As Variant, sChinese As String) As String
+	Dim nI As Integer
+	
+	For nI = 0 To UBound (mData)
+		If mData (nI) (0) = sChinese Then
+			fnMapChineseNameToId = _
+				fnMapPokemonNameToId (mData (nI) (2))
+			Exit Function
+		End If
+	Next nI
 End Function
 
 ' fnMapPokemonNameToId: Maps the English Pokémon names to their IDs.
