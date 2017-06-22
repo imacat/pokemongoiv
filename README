@@ -1,5 +1,35 @@
 pokemongoiv - The Pokémon GO IV calculator
 
+
+DESCRIPTION
+
+    pokemongoiv is a Pokémon GO IV calculator that finds the
+individual values (IVs) of your Pokémon.  A tool bar is added to
+run the calculator.
+
+
+DOWNLOAD
+
+    The latest version of pokemongoiv can be downloaded at
+http://extensions.openoffice.org/project/pokemon-go-iv-calculator
+
+    The source of pokemongoiv can be downloaded at
+https://github.com/imacat/pokemongoiv
+
+
+PRESENTATION
+
+* FOSDEM 2017 - The Office Pokémon GO IV Calculator
+ * Summary: https://fosdem.org/2017/schedule/event/office_pokemon/
+ * Presentation: https://www.slideshare.net/imacat/pokemongoiv
+ * Video: https://www.youtube.com/watch?v=n_88qtYbYiI
+
+* COSCUP 2017 (in Chinese)
+ * Presentation: https://www.slideshare.net/imacat/pokemongoivzh
+
+
+COPYRIGHT
+
   Copyright (c) 2016-2017 imacat.
   
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,24 +44,6 @@ pokemongoiv - The Pokémon GO IV calculator
   See the License for the specific language governing permissions and
   limitations under the License.
 
-* Downloads the latest version at
-  http://extensions.openoffice.org/en/project/pokemon-go-iv-calculator
-
-
-DESCRIPTION
-
-    pokemongoiv is a Pokémon GO IV calculator that finds the
-individual values (IVs) of your Pokémon.  A tool bar is added to
-run the calculator.
-
-
-DOWNLOAD
-
-    The latest version of pokemongoiv can be downloaded at
-http://extensions.openoffice.org/en/project/pokemon-go-iv-calculator
-
-    The source of pokemongoiv can be downloaded at
-https://github.com/imacat/pokemongoiv
 
 imacat
 imacat@mail.imacat.idv.tw
