@@ -65,9 +65,9 @@ Sub subShowChinesePokemonNames
 	sResult = &quot;&quot;
 	For nI = 1 To UBound (mData)
 		sNo = mData (nI) (1)
-		sName = mData (nI) (2)
+		sName = mData (nI) (0)
 		If sName = &quot;&quot; Then
-			sName = mData (nI) (0)
+			sName = mData (nI) (2)
 		Else
 			sNewName = &quot;&quot;
 			For nJ = 1 To Len (sName)
@@ -148,10 +148,10 @@ Function fnReadBaseStatsSheet As String
 		&amp; &quot;Function fnGetBaseStatsData As Variant&quot; &amp; Chr (10) _
 		&amp; Chr (9) &amp; &quot;fnGetBaseStatsData = Array( _&quot; &amp; Chr (10)
 	For nI = 1 To UBound (mData) - 1
-		sEvolveForms = fnFindEvolveForms (mData (nI))
+		sEvolveForms = fnFindEvolveForms (mData, nI)
 		sOutput = sOutput _
 			&amp; Chr (9) &amp; Chr (9) &amp; &quot;Array (&quot;&quot;&quot; _
-				&amp; fnMapPokemonNameToId (mData (nI) (0)) _
+				&amp; fnMapPokemonNameToId (mData (nI) (2)) _
 				&amp; &quot;&quot;&quot;, &quot;&quot;&quot; &amp; mData (nI) (1) _
 				&amp; &quot;&quot;&quot;, &quot; &amp; mData (nI) (3) _
 				&amp; &quot;, &quot; &amp; mData (nI) (4) _
@@ -159,10 +159,10 @@ Function fnReadBaseStatsSheet As String
 				&amp; &quot;, &quot; &amp; sEvolveForms &amp; &quot;), _&quot; &amp; Chr (10)
 	Next nI
 	nI = UBound (mData)
-	sEvolveForms = fnFindEvolveForms (mData (nI))
+	sEvolveForms = fnFindEvolveForms (mData, nI)
 	sOutput = sOutput _
 		&amp; Chr (9) &amp; Chr (9) &amp; &quot;Array (&quot;&quot;&quot; _
-			&amp; fnMapPokemonNameToId (mData (nI) (0)) _
+			&amp; fnMapPokemonNameToId (mData (nI) (2)) _
 			&amp; &quot;&quot;&quot;, &quot;&quot;&quot; &amp; mData (nI) (1) _
 			&amp; &quot;&quot;&quot;, &quot; &amp; mData (nI) (3) _
 			&amp; &quot;, &quot; &amp; mData (nI) (4) _
@@ -173,34 +173,37 @@ Function fnReadBaseStatsSheet As String
 End Function
 
 &apos; fnFindEvolveForms: Finds the evolved forms of the Pokémons.
-Function fnFindEvolveForms (mData () As Variant) As String
+Function fnFindEvolveForms (mData As Variant, nI As Integer) As String
 	Dim nJ As Integer, nStart As Integer, nEnd As Integer
 	Dim sEvolveForms As String
 	
 	&apos; Special cases
-	If mData (0) = &quot;Oddish&quot; Then
-		fnFindEvolveForms = &quot;Array (&quot;&quot;Gloom&quot;&quot;, &quot;&quot;Vileplume&quot;&quot;, &quot;&quot;Bellossom&quot;&quot;)&quot;
+	If mData (nI) (2) = &quot;Oddish&quot; Then
+		fnFindEvolveForms = &quot;Array (&quot;&quot;Gloom&quot;&quot;, &quot;&quot;Vileplume&quot;&quot;, &quot; _
+			&amp; &quot;&quot;&quot;Bellossom&quot;&quot;)&quot;
 		Exit Function
 	End If
-	If mData (0) = &quot;Gloom&quot; Then
+	If mData (nI) (2) = &quot;Gloom&quot; Then
 		fnFindEvolveForms = &quot;Array (&quot;&quot;Vileplume&quot;&quot;, &quot;&quot;Bellossom&quot;&quot;)&quot;
 		Exit Function
 	End If
-	If mData (0) = &quot;Slowpoke&quot; Then
+	If mData (nI) (2) = &quot;Slowpoke&quot; Then
 		fnFindEvolveForms = &quot;Array (&quot;&quot;Slowbro&quot;&quot;, &quot;&quot;Slowking&quot;&quot;)&quot;
 		Exit Function
 	End If
-	If mData (0) = &quot;Tyrogue&quot; Then
-		fnFindEvolveForms = &quot;Array (&quot;&quot;Hitmonlee&quot;&quot;, &quot;&quot;Hitmonchan&quot;&quot;, &quot;&quot;Hitmontop&quot;&quot;)&quot;
+	If mData (nI) (2) = &quot;Tyrogue&quot; Then
+		fnFindEvolveForms = &quot;Array (&quot;&quot;Hitmonlee&quot;&quot;, &quot;&quot;Hitmonchan&quot;&quot;, &quot; _
+			&amp; &quot;&quot;&quot;Hitmontop&quot;&quot;)&quot;
 		Exit Function
 	End If
-	If mData (0) = &quot;Eevee&quot; Then
-		fnFindEvolveForms = &quot;Array (&quot;&quot;Vaporeon&quot;&quot;, &quot;&quot;Jolteon&quot;&quot;, &quot;&quot;Flareon&quot;&quot;, &quot;&quot;Espeon&quot;&quot;, &quot;&quot;Umbreon&quot;&quot;)&quot;
+	If mData (nI) (2) = &quot;Eevee&quot; Then
+		fnFindEvolveForms = &quot;Array (&quot;&quot;Vaporeon&quot;&quot;, &quot;&quot;Jolteon&quot;&quot;, &quot; _
+			&amp; &quot;&quot;&quot;Flareon&quot;&quot;, &quot;&quot;Espeon&quot;&quot;, &quot;&quot;Umbreon&quot;&quot;)&quot;
 		Exit Function
 	End If
 	
 	For nJ = 6 To 8
-		If mData (nJ) = mData (0) Then
+		If mData (nI) (nJ) = mData (nI) (0) Then
 			nStart = nJ + 1
 			nJ = 9
 		End If
@@ -209,7 +212,7 @@ Function fnFindEvolveForms (mData () As Variant) As String
 		nEnd = 8
 	Else
 		For nJ = nStart To 8
-			If mData (nJ) = &quot;&quot; Then
+			If mData (nI) (nJ) = &quot;&quot; Then
 				nEnd = nJ - 1
 				nJ = 9
 			Else
@@ -224,15 +227,29 @@ Function fnFindEvolveForms (mData () As Variant) As String
 		sEvolveForms = &quot;Array ()&quot;
 	Else
 		sEvolveForms = &quot;&quot;&quot;&quot; _
-			&amp; fnMapPokemonNameToId (mData (nStart)) &amp; &quot;&quot;&quot;&quot;
+			&amp; fnMapChineseNameToId (mData, mData (nI) (nStart)) &amp; &quot;&quot;&quot;&quot;
 		For nJ = nStart + 1 To nEnd
 			sEvolveForms = sEvolveForms _
 				&amp; &quot;, &quot;&quot;&quot; _
-				&amp; fnMapPokemonNameToId (mData (nJ)) &amp; &quot;&quot;&quot;&quot;
+				&amp; fnMapChineseNameToId (mData, mData (nI) (nJ)) &amp; &quot;&quot;&quot;&quot;
 		Next nJ
 		sEvolveForms = &quot;Array (&quot; &amp; sEvolveForms &amp; &quot;)&quot;
 	End If
 	fnFindEvolveForms = sEvolveForms
+End Function
+
+&apos; fnMapChineseNameToId: Maps the Chinese Pokémon names to their IDs.
+Function fnMapChineseNameToId ( _
+		mData As Variant, sChinese As String) As String
+	Dim nI As Integer
+	
+	For nI = 0 To UBound (mData)
+		If mData (nI) (0) = sChinese Then
+			fnMapChineseNameToId = _
+				fnMapPokemonNameToId (mData (nI) (2))
+			Exit Function
+		End If
+	Next nI
 End Function
 
 &apos; fnMapPokemonNameToId: Maps the English Pokémon names to their IDs.

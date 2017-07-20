@@ -15,7 +15,7 @@
 &apos; limitations under the License.
 
 &apos; 3Data: The Pokémon GO data for IV calculation
-&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2017-06-08
+&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2017-07-20
 &apos;   Generated with 9Load.subReadDataSheets ()
 
 Option Explicit
@@ -153,7 +153,7 @@ Function fnGetBaseStatsData As Variant
 		Array (&quot;Tauros&quot;, &quot;128&quot;, 150, 198, 197, Array ()), _
 		Array (&quot;Magikarp&quot;, &quot;129&quot;, 40, 29, 102, Array (&quot;Gyarados&quot;)), _
 		Array (&quot;Gyarados&quot;, &quot;130&quot;, 190, 237, 197, Array ()), _
-		Array (&quot;Lapras&quot;, &quot;131&quot;, 260, 186, 190, Array ()), _
+		Array (&quot;Lapras&quot;, &quot;131&quot;, 260, 165, 180, Array ()), _
 		Array (&quot;Ditto&quot;, &quot;132&quot;, 96, 91, 91, Array ()), _
 		Array (&quot;Eevee&quot;, &quot;133&quot;, 110, 104, 121, Array (&quot;Vaporeon&quot;, &quot;Jolteon&quot;, &quot;Flareon&quot;, &quot;Espeon&quot;, &quot;Umbreon&quot;)), _
 		Array (&quot;Vaporeon&quot;, &quot;134&quot;, 260, 205, 177, Array ()), _
