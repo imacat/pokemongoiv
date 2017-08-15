@@ -1190,7 +1190,7 @@
 		<node oor:name="PokemonKoffing" oor:op="replace">		
 			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
 				<value>Koffing</value>
-				<value xml:lang="zh-TW">瓦斯蛋</value>
+				<value xml:lang="zh-TW">瓦斯彈</value>
 				<value xml:lang="de">Smogon</value>
 			</prop>
 		</node>
