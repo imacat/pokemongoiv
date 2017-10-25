@@ -202,23 +202,23 @@ Function fnFindEvolveForms (mData As Variant, nI As Integer) As String
 		Exit Function
 	End If
 	
-	For nJ = 6 To 8
+	For nJ = 8 To 10
 		If mData (nI) (nJ) = mData (nI) (0) Then
 			nStart = nJ + 1
-			nJ = 9
+			nJ = 11
 		End If
 	Next nJ
-	If nStart = 9 Then
-		nEnd = 8
+	If nStart = 11 Then
+		nEnd = 10
 	Else
-		For nJ = nStart To 8
+		For nJ = nStart To 10
 			If mData (nI) (nJ) = &quot;&quot; Then
 				nEnd = nJ - 1
-				nJ = 9
+				nJ = 11
 			Else
-				If nJ = 8 Then
-					nEnd = 8
-					nJ = 9
+				If nJ = 10 Then
+					nEnd = 10
+					nJ = 11
 				End If
 			End If
 		Next nJ

@@ -2188,6 +2188,41 @@
 				<value xml:lang="de">Celebi</value>
 			</prop>
 		</node>
+		<node oor:name="PokemonSableye" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Sableye</value>
+				<value xml:lang="zh-TW">勾魂眼</value>
+				<value xml:lang="de">Zobiris</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonShuppet" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Shuppet</value>
+				<value xml:lang="zh-TW">怨影娃娃</value>
+				<value xml:lang="de">Shuppet</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonBanette" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Banette</value>
+				<value xml:lang="zh-TW">詛咒娃娃</value>
+				<value xml:lang="de">Banette</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDuskull" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Duskull</value>
+				<value xml:lang="zh-TW">夜巡靈</value>
+				<value xml:lang="de">Zwirrlicht</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDusclops" oor:op="replace">		
+			<prop oor:name="Text" oor:type="xs:string" oor:localized="true">	
+				<value>Dusclops</value>
+				<value xml:lang="zh-TW">彷徨夜靈</value>
+				<value xml:lang="de">Zwirrklop</value>
+			</prop>
+		</node>
 	</node>
 	
 <!--  File resources (supports localization) -->
@@ -3439,7 +3474,7 @@
 		</node>
 		<node oor:name="PokemonRaikou" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/unknown.png</value>
+				<value>%origin%/icons/pokemons/243-raikou.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonEntei" oor:op="replace">
@@ -3480,6 +3515,31 @@
 		<node oor:name="PokemonCelebi" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
 				<value>%origin%/icons/unknown.png</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonSableye" oor:op="replace">
+			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
+				<value>%origin%/icons/pokemons/302-sableye.png</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonShuppet" oor:op="replace">
+			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
+				<value>%origin%/icons/pokemons/353-shuppet.png</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonBanette" oor:op="replace">
+			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
+				<value>%origin%/icons/pokemons/354-banette.png</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDuskull" oor:op="replace">
+			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
+				<value>%origin%/icons/pokemons/355-duskull.png</value>
+			</prop>
+		</node>
+		<node oor:name="PokemonDusclops" oor:op="replace">
+			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
+				<value>%origin%/icons/pokemons/356-dusclops.png</value>
 			</prop>
 		</node>
 	</node>

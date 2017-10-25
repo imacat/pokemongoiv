@@ -13,7 +13,7 @@
 ' limitations under the License.
 
 ' 3Data: The Pokémon GO data for IV calculation
-'   by imacat <imacat@mail.imacat.idv.tw>, 2017-07-20
+'   by imacat <imacat@mail.imacat.idv.tw>, 2017-10-25
 '   Generated with 9Load.subReadDataSheets ()
 
 Option Explicit
@@ -271,7 +271,12 @@ Function fnGetBaseStatsData As Variant
 		Array ("Tyranitar", "248", 200, 251, 212, Array ()), _
 		Array ("Lugia", "249", 212, 193, 323, Array ()), _
 		Array ("HoOh", "250", 212, 263, 301, Array ()), _
-		Array ("Celebi", "251", 200, 210, 210, Array ()))
+		Array ("Celebi", "251", 200, 210, 210, Array ()), _
+		Array ("Sableye", "302", 100, 141, 141, Array ()), _
+		Array ("Shuppet", "353", 88, 138, 66, Array ("Banette")), _
+		Array ("Banette", "354", 128, 218, 127, Array ()), _
+		Array ("Duskull", "355", 40, 70, 162, Array ("Dusclops")), _
+		Array ("Dusclops", "356", 80, 124, 234, Array ()))
 End Function
 
 ' fnGetCPMData: Returns the combat power multiplier data.
