@@ -3479,7 +3479,7 @@
 		</node>
 		<node oor:name="PokemonEntei" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
-				<value>%origin%/icons/unknown.png</value>
+				<value>%origin%/icons/pokemons/244-entei.png</value>
 			</prop>
 		</node>
 		<node oor:name="PokemonSuicune" oor:op="replace">
