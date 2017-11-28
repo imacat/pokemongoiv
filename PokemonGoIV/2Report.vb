@@ -54,6 +54,23 @@ Type aFindIVParam
 	bIsCancelled As Boolean
 End Type
 
+Sub subGetPokemonSheet
+	Dim oDoc As Object
+	Dim oEnum As Object, oComponent As Object, sTitles As String
+	
+	oDoc = fnCreateNewSpreadsheetDocument
+	oDoc.setTitle ("Pokemon GO IV")
+	oEnum = StarDesktop.getComponents.createEnumeration
+	Do While oEnum.hasMoreElements
+		oComponent = oEnum.nextElement
+		If oComponent.supportsService ("com.sun.star.sheet.SpreadsheetDocument") Then
+			If oComponent.getTitle = "Pokemon GO IV" Then
+				Xray oComponent
+			End If
+		End If
+	Loop
+End Sub
+
 ' subCreateReport: Creates the Pokémon GO IV report.
 Sub subCreateReport ( _
 		aBaseStats As aStats, aQuery As aFindIVParam, maIVs () As aIV)
@@ -67,13 +84,12 @@ Sub subCreateReport ( _
 	Dim sColIVAttack As String, sColIVDefense As String
 	Dim sColIVStamina As String
 	Dim sPokemonName As String
-	Dim mData (Ubound (maIVs) + 1) As Variant, mRow () As Variant
+	Dim mLeadHead () As Variant, nStartRow As Integer
+	Dim mData (0) As Variant, mRow () As Variant
 	Dim maEvBaseStats () As Variant
 	Dim mProps () As New com.sun.star.beans.PropertyValue
 	
-	oDoc = StarDesktop.loadComponentFromURL ( _
-		"private:factory/scalc", "_default", 0, mProps)
-	oSheet = oDoc.getSheets.getByIndex (0)
+	oSheet = fnFindPokemonGOIVSheet (aQuery.sPokemonName)
 	
 	nEvolved = UBound (aBaseStats.mEvolved) + 1
 	If nEvolved > 0 Then
@@ -96,8 +112,8 @@ Sub subCreateReport ( _
 	' Sorts the IVs
 	subSortIVs (aBaseStats, maEvBaseStats, maIVs, fMaxLevel)
 	
-	' Fills in the report data.
-	mRow = Array ( _
+	' Gathers the header row.
+	mLeadHead = Array ( _
 		fnGetResString ("ReportNo"), _
 		fnGetResString ("ReportPokemon"), _
 		fnGetResString ("ReportCP"), _
@@ -108,8 +124,10 @@ Sub subCreateReport ( _
 		fnGetResString ("ReportDefense"), _
 		fnGetResString ("ReportStamina"), _
 		fnGetResString ("ReportIVPercent"))
-	nLeadCols = UBound (mRow) + 1
+	nLeadCols = UBound (mLeadHead) + 1
 	
+	' Calculating how many columns do we need to fill in the
+	' CP of the evolved forms.
 	nTotalCols = nLeadCols
 	If aBaseStats.bIsLastForm Then
 		nTotalCols = nTotalCols + 1
@@ -121,29 +139,82 @@ Sub subCreateReport ( _
 		End If
 	Next nJ
 	
-	ReDim Preserve mRow (nTotalCols - 1) As Variant
-	nCol = nLeadCols
-	If aBaseStats.bIsLastForm Then
-		mRow (nCol) = fnReplace (fnGetResString ("ReportCPPowerUp"), _
-			"[Level]", fMaxLevel)
-		nCol = nCol + 1
-	End If
-	For nJ = 0 To nEvolved - 1
-		sPokemonName = fnGetResString ( _
-			"Pokemon" & aBaseStats.mEvolved (nJ))
-		mRow (nCol) = fnReplace (fnGetResString ("ReportCPEvolve"), _
-			"[Pokémon]", sPokemonName)
-		nCol = nCol + 1
-		If maEvBaseStats (nJ).bIsLastForm Then
-			mRow (nCol) = fnReplace (fnReplace ( _
-				fnGetResString ("ReportCPEvolvePowerUp"), _
-				"[Pokémon]", sPokemonName), _
+	' Adds the header row if this is a new spreadsheet
+	oCell = oSheet.getCellByPosition (0, 0)
+	If oCell.getString = "" Then
+		' The leading columns of the header row
+		mRow = mLeadHead
+		' Fill in the header row with the CP of the evolved forms.
+		ReDim Preserve mRow (nTotalCols - 1) As Variant
+		nCol = nLeadCols
+		If aBaseStats.bIsLastForm Then
+			mRow (nCol) = fnReplace ( _
+				fnGetResString ("ReportCPPowerUp"), _
 				"[Level]", fMaxLevel)
 			nCol = nCol + 1
 		End If
-	Next nJ
-	mData (0) = mRow
+		For nJ = 0 To nEvolved - 1
+			sPokemonName = fnGetResString ( _
+				"Pokemon" & aBaseStats.mEvolved (nJ))
+			mRow (nCol) = fnReplace ( _
+				fnGetResString ("ReportCPEvolve"), _
+				"[Pokémon]", sPokemonName)
+			nCol = nCol + 1
+			If maEvBaseStats (nJ).bIsLastForm Then
+				mRow (nCol) = fnReplace (fnReplace ( _
+					fnGetResString ("ReportCPEvolvePowerUp"), _
+					"[Pokémon]", sPokemonName), _
+					"[Level]", fMaxLevel)
+				nCol = nCol + 1
+			End If
+		Next nJ
 	
+		' Fills in the header row
+		ReDim mData (0) As Variant
+		mData (0) = mRow
+		oRange = oSheet.getCellRangeByPosition ( _
+			0, 0, UBound (mData (0)), UBound (mData))
+		oRange.setDataArray (mData)
+		oRange.setPropertyValue ("VertJustify", _
+			com.sun.star.table.CellVertJustify.TOP)
+		oRange = oSheet.getCellRangeByPosition ( _
+			nLeadCols, 0, nTotalCols - 1, 0)
+		oRange.setPropertyValue ("IsTextWrapped", True)
+		
+		' Sets the height of the header row
+		oRows = oSheet.getRows
+		oRows.getByIndex (0).setPropertyValue ("OptimalHeight", True)
+		
+		' Sets the widths of the columns
+		oColumns = oSheet.getColumns
+		oColumns.getByIndex (0).setPropertyValue ("Width", 890)
+		oColumns.getByIndex (1).setPropertyValue ("Width", 2310)
+		oColumns.getByIndex (2).setPropertyValue ("Width", 890)
+		oColumns.getByIndex (3).setPropertyValue ("Width", 890)
+		oColumns.getByIndex (4).setPropertyValue ("Width", 1780)
+		oColumns.getByIndex (5).setPropertyValue ("Width", 860)
+		oColumns.getByIndex (6).setPropertyValue ("Width", 860)
+		oColumns.getByIndex (7).setPropertyValue ("Width", 860)
+		oColumns.getByIndex (8).setPropertyValue ("Width", 860)
+		oColumns.getByIndex (9).setPropertyValue ("Width", 1030)
+		For nJ = nLeadCols To nTotalCols - 1
+			oColumns.getByIndex (nJ).setPropertyValue ( _
+				"Width", 2500)
+		Next nJ
+		
+		nStartRow = 1
+	
+	' Append to the end on an existing spreadsheet
+	Else
+		nStartRow = 0
+		Do
+			nStartRow = nStartRow + 1
+			oCell = oSheet.getCellByPosition (5, nStartRow)
+		Loop While oCell.getString <> ""
+	End If
+	
+	' Gathers the data rows.
+	ReDim mData (Ubound (maIVs)) As Variant
 	For nI = 0 To UBound (maIVs)
 		mRow = Array ( _
 			"", "", "", "", "", _
@@ -153,18 +224,19 @@ Sub subCreateReport ( _
 		For nJ = nLeadCols To nEvolved - 1
 			mRow (nJ) = ""
 		Next nJ
-		mData (nI + 1) = mRow
+		mData (nI) = mRow
 	Next nI
 	
 	' Fills the query information at the first row
-	mData (1) (0) = aBaseStats.sNo
-	mData (1) (1) = aQuery.sPokemonName
-	mData (1) (2) = aQuery.nCP
-	mData (1) (3) = aQuery.nHP
-	mData (1) (4) = aQuery.nStardust
+	mData (0) (0) = aBaseStats.sNo
+	mData (0) (1) = aQuery.sPokemonName
+	mData (0) (2) = aQuery.nCP
+	mData (0) (3) = aQuery.nHP
+	mData (0) (4) = aQuery.nStardust
 	
 	oRange = oSheet.getCellRangeByPosition ( _
-		0, 0, UBound (mData (0)), UBound (mData))
+		0, nStartRow, _
+		UBound (mData (0)), nStartRow + UBound (mData))
 	oRange.setDataArray (mData)
 	oRange.setPropertyValue ("VertJustify", _
 		com.sun.star.table.CellVertJustify.TOP)
@@ -176,7 +248,7 @@ Sub subCreateReport ( _
 		sColIVDefense = "H" & (nI + 2)
 		sColIVStamina = "I" & (nI + 2)
 		
-		oCell = oSheet.getCellByPosition (nLeadCols - 1, nI + 1)
+		oCell = oSheet.getCellByPosition (nLeadCols - 1, nStartRow + nI)
 		sFormula = "=(" & sColIVAttack & "+" & sColIVDefense _
 			& "+" & sColIVStamina & ")/45"
 		oCell.setFormula (sFormula)
@@ -187,7 +259,7 @@ Sub subCreateReport ( _
 		
 		nCol = nLeadCols
 		If aBaseStats.bIsLastForm Then
-			oCell = oSheet.getCellByPosition (nCol, nI + 1)
+			oCell = oSheet.getCellByPosition (nCol, nStartRow + nI)
 			sFormula = fnGetCPFormula (aBaseStats, _
 				sColIVAttack, sColIVDefense, sColIVStamina, sMaxCPM)
 			oCell.setFormula (sFormula)
@@ -198,7 +270,7 @@ Sub subCreateReport ( _
 			nCol = nCol + 1
 		End If
 		For nJ = 0 To nEvolved - 1
-			oCell = oSheet.getCellByPosition (nCol, nI + 1)
+			oCell = oSheet.getCellByPosition (nCol, nStartRow + nI)
 			sFormula = fnGetCPFormula (maEvBaseStats (nJ), _
 				sColIVAttack, sColIVDefense, sColIVStamina, sCPM)
 			oCell.setFormula (sFormula)
@@ -208,7 +280,7 @@ Sub subCreateReport ( _
 			End If
 			nCol = nCol + 1
 			If maEvBaseStats (nJ).bIsLastForm Then
-				oCell = oSheet.getCellByPosition (nCol, nI + 1)
+				oCell = oSheet.getCellByPosition (nCol, nStartRow + nI)
 				sFormula = fnGetCPFormula (maEvBaseStats (nJ), _
 					sColIVAttack, sColIVDefense, _
 					sColIVStamina, sMaxCPM)
@@ -224,46 +296,25 @@ Sub subCreateReport ( _
 		Next nJ
 	Next nI
 	
+	' Merge the lead cells.
 	oRange = oSheet.getCellRangeByPosition ( _
-		0, 1, 0, UBound (mData))
+		0, nStartRow, 0, nStartRow + UBound (mData))
 	oRange.merge (True)
 	oRange = oSheet.getCellRangeByPosition ( _
-		1, 1, 1, UBound (mData))
+		1, nStartRow, 1, nStartRow + UBound (mData))
 	oRange.merge (True)
 	oRange = oSheet.getCellRangeByPosition ( _
-		2, 1, 2, UBound (mData))
+		2, nStartRow, 2, nStartRow + UBound (mData))
 	oRange.merge (True)
 	oRange = oSheet.getCellRangeByPosition ( _
-		3, 1, 3, UBound (mData))
+		3, nStartRow, 3, nStartRow + UBound (mData))
 	oRange.merge (True)
 	oRange = oSheet.getCellRangeByPosition ( _
-		4, 1, 4, UBound (mData))
+		4, nStartRow, 4, nStartRow + UBound (mData))
 	oRange.merge (True)
 	oRange = oSheet.getCellRangeByPosition ( _
-		9, 1, 9, UBound (mData))
+		9, nStartRow, 9, nStartRow + UBound (mData))
 	oRange.setPropertyValue ("NumberFormat", 10)
-	
-	oRange = oSheet.getCellRangeByPosition ( _
-		nLeadCols, 0, nTotalCols - 1, 0)
-	oRange.setPropertyValue ("IsTextWrapped", True)
-	
-	oColumns = oSheet.getColumns
-	oColumns.getByIndex (0).setPropertyValue ("Width", 890)
-	oColumns.getByIndex (1).setPropertyValue ("Width", 2310)
-	oColumns.getByIndex (2).setPropertyValue ("Width", 890)
-	oColumns.getByIndex (3).setPropertyValue ("Width", 890)
-	oColumns.getByIndex (4).setPropertyValue ("Width", 1780)
-	oColumns.getByIndex (5).setPropertyValue ("Width", 860)
-	oColumns.getByIndex (6).setPropertyValue ("Width", 860)
-	oColumns.getByIndex (7).setPropertyValue ("Width", 860)
-	oColumns.getByIndex (8).setPropertyValue ("Width", 860)
-	oColumns.getByIndex (9).setPropertyValue ("Width", 1030)
-	For nJ = nLeadCols To nTotalCols - 1
-		oColumns.getByIndex (nJ).setPropertyValue ( _
-			"Width", 2500)
-	Next nJ
-	oRows = oSheet.getRows
-	oRows.getByIndex (0).setPropertyValue ("OptimalHeight", True)
 End Sub
 
 ' subSortIVs: Sorts the IVs
@@ -399,4 +450,68 @@ Function fnGetCPMFormula (fLevel As Double) As String
 			& "POWER(" & mCPM (fLevel - 0.5) & ";2)" _
 			& "+POWER(" & mCPM (fLevel + 0.5) & ";2))/2)"
 	End If
+End Function
+
+' fnFindPokemonGOIVSheet: Finds the existing sheet for the result.
+Function fnFindPokemonGOIVSheet (sPokemon As String) As Object
+	Dim oDoc As Object, sDocTitle As String
+	Dim oSheets As Object, nCount As Integer, oSheet As Object
+	Dim mNames () As String, nI As Integer
+	Dim mProps () As New com.sun.star.beans.PropertyValue
+	
+	sDocTitle = "Pokémon GO IV"
+	oDoc = fnFindDocByTitle (sDocTitle)
+	If IsNull (oDoc) Then
+		oDoc = StarDesktop.loadComponentFromURL ( _
+			"private:factory/scalc", "_default", 0, mProps)
+		oDoc.setTitle (sDocTitle)
+		oSheets = oDoc.getSheets
+		mNames = oSheets.getElementNames
+		oSheets.insertNewByName (sPokemon, 0)
+		oSheet = oSheets.getByName (sPokemon)
+		For nI = 0 To UBound (mNames)
+			oSheets.removeByName (mNames (nI))
+		Next nI
+	Else
+		oSheet = fnFindSheetByName (oDoc, sPokemon)
+		If IsNull (oSheet) Then
+			oSheets = oDoc.getSheets
+			nCount = oSheets.getCount
+			oSheets.insertNewByName (sPokemon, nCount)
+			oSheet = oSheets.getByName (sPokemon)
+		End If
+		oDoc.getCurrentController.setActiveSheet (oSheet)
+	End If
+	fnFindPokemonGOIVSheet = oSheet
+End Function
+
+' fnFindDocByTitle: Finds the document by its title.
+Function fnFindDocByTitle (sTitle) As Object
+	Dim oEnum As Object, oDoc As Object
+	
+	oEnum = StarDesktop.getComponents.createEnumeration
+	Do While oEnum.hasMoreElements
+		oDoc = oEnum.nextElement
+		If oDoc.supportsService ( _
+				"com.sun.star.sheet.SpreadsheetDocument") Then
+			If oDoc.getTitle = sTitle Then
+				fnFindDocByTitle = oDoc
+				Exit Function
+			End If
+		End If
+	Loop
+End Function
+
+' fnFindSheetByName: Finds the spreadsheet by its name
+Function fnFindSheetByName (oDoc As Object, sName As String) As Object
+	Dim oSheets As Object, mNames () As String, nI As Integer
+	
+	oSheets = oDoc.getSheets
+	mNames = oSheets.getElementNames
+	For nI = 0 To UBound (mNames)
+		If mNames (nI) = sName Then
+			fnFindSheetByName = oSheets.getByIndex (nI)
+			Exit Function
+		End If
+	Next nI
 End Function
