@@ -13,7 +13,7 @@
 ' limitations under the License.
 
 ' 3Data: The Pokémon GO data for IV calculation
-'   by imacat <imacat@mail.imacat.idv.tw>, 2017-10-25
+'   by imacat <imacat@mail.imacat.idv.tw>, 2017-11-29
 '   Generated with 9Load.subReadDataSheets ()
 
 Option Explicit
@@ -270,7 +270,7 @@ Function fnGetBaseStatsData As Variant
 		Array ("Pupitar", "247", 140, 155, 133, Array ("Tyranitar")), _
 		Array ("Tyranitar", "248", 200, 251, 212, Array ()), _
 		Array ("Lugia", "249", 212, 193, 323, Array ()), _
-		Array ("HoOh", "250", 212, 263, 301, Array ()), _
+		Array ("HoOh", "250", 193, 239, 274, Array ()), _
 		Array ("Celebi", "251", 200, 210, 210, Array ()), _
 		Array ("Sableye", "302", 100, 141, 141, Array ()), _
 		Array ("Shuppet", "353", 88, 138, 66, Array ("Banette")), _
