@@ -19,6 +19,9 @@
 
 Option Explicit
 
+&apos; Remembers the selected Pokémon for the next run.
+Global sSelected As String
+
 &apos; The parameters to find the individual values.
 Type aFindIVParam
 	sPokemonId As String
@@ -69,6 +72,9 @@ Function fnAskParam As aFindIVParam
 		&quot;ImageURL&quot;, fnGetImageUrl (&quot;Unknown&quot;))
 	oDialog.getControl (&quot;imgTeamLogo&quot;).getModel.setPropertyValue ( _
 		&quot;ImageURL&quot;, fnGetImageUrl (&quot;Unknown&quot;))
+	
+	&apos; Remembers the previously-selected Pokémon.
+	oDialog.getControl (&quot;lstPokemon&quot;).selectItem (sSelected, True)
 	
 	If oDialog.execute = 0 Then
 		aQuery.bIsCancelled = True
@@ -170,8 +176,15 @@ Sub subLstPokemonSelected (oEvent As object)
 	
 	oDialog = oEvent.Source.getContext
 	
-	&apos; Updates the Pokémon image.
+	&apos; Checks which Pokémon was selected.
+	sSelected = oDialog.getControl (&quot;lstPokemon&quot;).getSelectedItem
 	nSelected = oDialog.getControl (&quot;lstPokemon&quot;).getSelectedItemPos
+	&apos; This happens at the beginning where sSelected is &quot;&quot;.
+	If nSelected = -1 Then
+		Exit Sub
+	End If
+	
+	&apos; Updates the Pokémon image.
 	subReadBaseStats
 	sImageId = &quot;Pokemon&quot; &amp; maBaseStats (nSelected).sPokemonId
 	oImageModel = oDialog.getControl (&quot;imgPokemon&quot;).getModel
