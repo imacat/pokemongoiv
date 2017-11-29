@@ -244,9 +244,9 @@ Sub subCreateReport ( _
 	' Fills in the CP calculation.
 	For nI = 0 To UBound (maIVs)
 		sCPM = fnGetCPMFormula (maIVs (nI).fLevel)
-		sColIVAttack = "G" & (nI + 2)
-		sColIVDefense = "H" & (nI + 2)
-		sColIVStamina = "I" & (nI + 2)
+		sColIVAttack = "G" & (nStartRow + nI + 1)
+		sColIVDefense = "H" & (nStartRow + nI + 1)
+		sColIVStamina = "I" & (nStartRow + nI + 1)
 		
 		oCell = oSheet.getCellByPosition (nLeadCols - 1, nStartRow + nI)
 		sFormula = "=(" & sColIVAttack & "+" & sColIVDefense _
