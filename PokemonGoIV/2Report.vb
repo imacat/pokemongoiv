@@ -464,7 +464,7 @@ Function fnFindPokemonGOIVSheet (sPokemon As String) As Object
 	If IsNull (oDoc) Then
 		oDoc = StarDesktop.loadComponentFromURL ( _
 			"private:factory/scalc", "_default", 0, mProps)
-		oDoc.setTitle (sDocTitle)
+		oDoc.getDocumentProperties.Title = sDocTitle
 		oSheets = oDoc.getSheets
 		mNames = oSheets.getElementNames
 		oSheets.insertNewByName (sPokemon, 0)
@@ -494,7 +494,7 @@ Function fnFindDocByTitle (sTitle) As Object
 		oDoc = oEnum.nextElement
 		If oDoc.supportsService ( _
 				"com.sun.star.sheet.SpreadsheetDocument") Then
-			If oDoc.getTitle = sTitle Then
+			If oDoc.getDocumentProperties.Title = sTitle Then
 				fnFindDocByTitle = oDoc
 				Exit Function
 			End If
