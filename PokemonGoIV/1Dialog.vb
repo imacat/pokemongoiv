@@ -18,7 +18,9 @@
 Option Explicit
 
 ' Remembers the selected Pokémon for the next run.
-Global sSelected As String
+Global sLastSelected As String
+' Remembers the selected player level for the next run.
+Global sLastLevel As Integer
 
 ' The parameters to find the individual values.
 Type aFindIVParam
@@ -72,15 +74,18 @@ Function fnAskParam As aFindIVParam
 		"ImageURL", fnGetImageUrl ("Unknown"))
 	
 	' Remembers the previously-selected Pokémon.
-	oDialog.getControl ("lstPokemon").selectItem (sSelected, True)
+	oDialog.getControl ("lstPokemon").selectItem (sLastSelected, True)
+	oDialog.getControl ("lstPlayerLevel").selectItem (sLastLevel, True)
 	
 	If oDialog.execute = 0 Then
 		aQuery.bIsCancelled = True
+	    sLastLevel = oDialog.getControl ("lstPlayerLevel").getSelectedItem
 		fnAskParam = aQuery
 		Exit Function
 	End If
 	
 	subReadBaseStats
+	sLastLevel = oDialog.getControl ("lstPlayerLevel").getSelectedItem
 	nSelected = oDialog.getControl ("lstPokemon").getSelectedItemPos
 	With aQuery
 		.sPokemonId = maBaseStats (nSelected).sPokemonId
@@ -175,9 +180,9 @@ Sub subLstPokemonSelected (oEvent As object)
 	oDialog = oEvent.Source.getContext
 	
 	' Checks which Pokémon was selected.
-	sSelected = oDialog.getControl ("lstPokemon").getSelectedItem
+	sLastSelected = oDialog.getControl ("lstPokemon").getSelectedItem
 	nSelected = oDialog.getControl ("lstPokemon").getSelectedItemPos
-	' This happens at the beginning where sSelected is "".
+	' This happens at the beginning where sLastSelected is "".
 	If nSelected = -1 Then
 		Exit Sub
 	End If

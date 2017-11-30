@@ -100,7 +100,7 @@ Sub subCreateReport ( _
 	End If
 	
 	If aQuery.nPlayerLevel <> 0 Then
-		fMaxLevel = aQuery.nPlayerLevel + 1.5
+		fMaxLevel = aQuery.nPlayerLevel + 2
 		If fMaxLevel > 40 Then
 			fMaxLevel = 40
 		End If
