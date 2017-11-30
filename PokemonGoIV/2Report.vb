@@ -46,7 +46,7 @@ Type aFindIVParam
 	nCP As Integer
 	nHP As Integer
 	nStardust As Integer
-	nPlayerLevel As Integer
+	nTrainerLevel As Integer
 	bIsNew As Boolean
 	nTotal As Integer
 	sBest As String
@@ -99,8 +99,8 @@ Sub subCreateReport ( _
 		Next nJ
 	End If
 	
-	If aQuery.nPlayerLevel <> 0 Then
-		fMaxLevel = aQuery.nPlayerLevel + 2
+	If aQuery.nTrainerLevel <> 0 Then
+		fMaxLevel = aQuery.nTrainerLevel + 2
 		If fMaxLevel > 40 Then
 			fMaxLevel = 40
 		End If

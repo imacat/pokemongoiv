@@ -21,7 +21,7 @@ Option Explicit
 
 &apos; Remembers the selected Pokémon for the next run.
 Global sLastSelected As String
-&apos; Remembers the selected player level for the next run.
+&apos; Remembers the selected trainer level for the next run.
 Global sLastLevel As Integer
 
 &apos; The parameters to find the individual values.
@@ -31,7 +31,7 @@ Type aFindIVParam
 	nCP As Integer
 	nHP As Integer
 	nStardust As Integer
-	nPlayerLevel As Integer
+	nTrainerLevel As Integer
 	bIsNew As Boolean
 	nTotal As Integer
 	sBest As String
@@ -77,17 +77,17 @@ Function fnAskParam As aFindIVParam
 	
 	&apos; Remembers the previously-selected Pokémon.
 	oDialog.getControl (&quot;lstPokemon&quot;).selectItem (sLastSelected, True)
-	oDialog.getControl (&quot;lstPlayerLevel&quot;).selectItem (sLastLevel, True)
+	oDialog.getControl (&quot;lstTrainerLevel&quot;).selectItem (sLastLevel, True)
 	
 	If oDialog.execute = 0 Then
 		aQuery.bIsCancelled = True
-	    sLastLevel = oDialog.getControl (&quot;lstPlayerLevel&quot;).getSelectedItem
+	    sLastLevel = oDialog.getControl (&quot;lstTrainerLevel&quot;).getSelectedItem
 		fnAskParam = aQuery
 		Exit Function
 	End If
 	
 	subReadBaseStats
-	sLastLevel = oDialog.getControl (&quot;lstPlayerLevel&quot;).getSelectedItem
+	sLastLevel = oDialog.getControl (&quot;lstTrainerLevel&quot;).getSelectedItem
 	nSelected = oDialog.getControl (&quot;lstPokemon&quot;).getSelectedItemPos
 	With aQuery
 		.sPokemonId = maBaseStats (nSelected).sPokemonId
@@ -95,7 +95,7 @@ Function fnAskParam As aFindIVParam
 		.nCP = oDialog.getControl (&quot;numCP&quot;).getValue
 		.nHP = oDialog.getControl (&quot;numHP&quot;).getValue
 		.nStardust = CInt (oDialog.getControl (&quot;lstStardust&quot;).getSelectedItem)
-		.nPlayerLevel = CInt (oDialog.getControl (&quot;lstPlayerLevel&quot;).getSelectedItem)
+		.nTrainerLevel = CInt (oDialog.getControl (&quot;lstTrainerLevel&quot;).getSelectedItem)
 		.nTotal = oDialog.getControl (&quot;lstTotal&quot;).getSelectedItemPos + 1
 		.nMax = oDialog.getControl (&quot;lstMax&quot;).getSelectedItemPos + 1
 		.bIsCancelled = False

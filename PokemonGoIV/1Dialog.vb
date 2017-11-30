@@ -18,9 +18,9 @@
 Option Explicit
 
 ' Remembers the selected Pokémon for the next run.
-Global sLastSelected As String
-' Remembers the selected player level for the next run.
-Global sLastLevel As Integer
+Global sLastPokemon As String
+' Remembers the selected trainer level for the next run.
+Global sLastTrainerLevel As Integer
 
 ' The parameters to find the individual values.
 Type aFindIVParam
@@ -29,7 +29,7 @@ Type aFindIVParam
 	nCP As Integer
 	nHP As Integer
 	nStardust As Integer
-	nPlayerLevel As Integer
+	nTrainerLevel As Integer
 	bIsNew As Boolean
 	nTotal As Integer
 	sBest As String
@@ -74,18 +74,18 @@ Function fnAskParam As aFindIVParam
 		"ImageURL", fnGetImageUrl ("Unknown"))
 	
 	' Remembers the previously-selected Pokémon.
-	oDialog.getControl ("lstPokemon").selectItem (sLastSelected, True)
-	oDialog.getControl ("lstPlayerLevel").selectItem (sLastLevel, True)
+	oDialog.getControl ("lstPokemon").selectItem (sLastPokemon, True)
+	oDialog.getControl ("lstTrainerLevel").selectItem (sLastTrainerLevel, True)
 	
 	If oDialog.execute = 0 Then
 		aQuery.bIsCancelled = True
-	    sLastLevel = oDialog.getControl ("lstPlayerLevel").getSelectedItem
+	    sLastTrainerLevel = oDialog.getControl ("lstTrainerLevel").getSelectedItem
 		fnAskParam = aQuery
 		Exit Function
 	End If
 	
 	subReadBaseStats
-	sLastLevel = oDialog.getControl ("lstPlayerLevel").getSelectedItem
+	sLastTrainerLevel = oDialog.getControl ("lstTrainerLevel").getSelectedItem
 	nSelected = oDialog.getControl ("lstPokemon").getSelectedItemPos
 	With aQuery
 		.sPokemonId = maBaseStats (nSelected).sPokemonId
@@ -93,7 +93,7 @@ Function fnAskParam As aFindIVParam
 		.nCP = oDialog.getControl ("numCP").getValue
 		.nHP = oDialog.getControl ("numHP").getValue
 		.nStardust = CInt (oDialog.getControl ("lstStardust").getSelectedItem)
-		.nPlayerLevel = CInt (oDialog.getControl ("lstPlayerLevel").getSelectedItem)
+		.nTrainerLevel = CInt (oDialog.getControl ("lstTrainerLevel").getSelectedItem)
 		.nTotal = oDialog.getControl ("lstTotal").getSelectedItemPos + 1
 		.nMax = oDialog.getControl ("lstMax").getSelectedItemPos + 1
 		.bIsCancelled = False
@@ -180,9 +180,9 @@ Sub subLstPokemonSelected (oEvent As object)
 	oDialog = oEvent.Source.getContext
 	
 	' Checks which Pokémon was selected.
-	sLastSelected = oDialog.getControl ("lstPokemon").getSelectedItem
+	sLastPokemon = oDialog.getControl ("lstPokemon").getSelectedItem
 	nSelected = oDialog.getControl ("lstPokemon").getSelectedItemPos
-	' This happens at the beginning where sLastSelected is "".
+	' This happens at the beginning where sLastPokemon is "".
 	If nSelected = -1 Then
 		Exit Sub
 	End If

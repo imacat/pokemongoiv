@@ -49,8 +49,8 @@
    </dlg:menupopup>
    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:PokemonGoIV.1Dialog.subBtnOKCheck?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:menulist>
-  <dlg:text dlg:id="txtPlayerLevel" dlg:tab-index="20" dlg:left="185" dlg:top="41" dlg:width="45" dlg:height="8" dlg:value="&amp;6.DlgMain.txtPlayerLevel.Label"/>
-  <dlg:menulist dlg:id="lstPlayerLevel" dlg:tab-index="4" dlg:left="230" dlg:top="39" dlg:width="30" dlg:height="12" dlg:spin="true" dlg:linecount="20">
+  <dlg:text dlg:id="txtTrainerLevel" dlg:tab-index="20" dlg:left="185" dlg:top="41" dlg:width="45" dlg:height="8" dlg:value="&amp;6.DlgMain.txtTrainerLevel.Label"/>
+  <dlg:menulist dlg:id="lstTrainerLevel" dlg:tab-index="4" dlg:left="230" dlg:top="39" dlg:width="30" dlg:height="12" dlg:spin="true" dlg:linecount="20">
    <dlg:menupopup>
     <dlg:menuitem dlg:value="1"/>
     <dlg:menuitem dlg:value="2"/>

@@ -47,7 +47,7 @@ Type aFindIVParam
 	nCP As Integer
 	nHP As Integer
 	nStardust As Integer
-	nPlayerLevel As Integer
+	nTrainerLevel As Integer
 	bIsNew As Boolean
 	nTotal As Integer
 	sBest As String
