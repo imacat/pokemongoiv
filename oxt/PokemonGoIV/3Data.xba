@@ -15,7 +15,7 @@
 &apos; limitations under the License.
 
 &apos; 3Data: The Pokémon GO data for IV calculation
-&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2017-11-29
+&apos;   by imacat &lt;imacat@mail.imacat.idv.tw&gt;, 2017-12-27
 &apos;   Generated with 9Load.subReadDataSheets ()
 
 Option Explicit
@@ -274,11 +274,141 @@ Function fnGetBaseStatsData As Variant
 		Array (&quot;Lugia&quot;, &quot;249&quot;, 212, 193, 323, Array ()), _
 		Array (&quot;HoOh&quot;, &quot;250&quot;, 193, 239, 274, Array ()), _
 		Array (&quot;Celebi&quot;, &quot;251&quot;, 200, 210, 210, Array ()), _
+		Array (&quot;Treecko &quot;, &quot;252&quot;, 80, 124, 104, Array (&quot;Grovyle &quot;, &quot;Sceptile &quot;)), _
+		Array (&quot;Grovyle &quot;, &quot;253&quot;, 100, 172, 130, Array (&quot;Sceptile &quot;)), _
+		Array (&quot;Sceptile &quot;, &quot;254&quot;, 140, 223, 180, Array ()), _
+		Array (&quot;Torchic &quot;, &quot;255&quot;, 90, 130, 92, Array (&quot;Combusken &quot;, &quot;Blaziken &quot;)), _
+		Array (&quot;Combusken &quot;, &quot;256&quot;, 120, 163, 115, Array (&quot;Blaziken &quot;)), _
+		Array (&quot;Blaziken &quot;, &quot;257&quot;, 160, 240, 141, Array ()), _
+		Array (&quot;Mudkip &quot;, &quot;258&quot;, 100, 126, 93, Array (&quot;Marshtomp &quot;, &quot;Swampert &quot;)), _
+		Array (&quot;Marshtomp &quot;, &quot;259&quot;, 140, 156, 133, Array (&quot;Swampert &quot;)), _
+		Array (&quot;Swampert &quot;, &quot;260&quot;, 200, 208, 175, Array ()), _
+		Array (&quot;Poochyena&quot;, &quot;261&quot;, 70, 96, 63, Array (&quot;Mightyena&quot;)), _
+		Array (&quot;Mightyena&quot;, &quot;262&quot;, 140, 171, 137, Array ()), _
+		Array (&quot;Zigzagoon&quot;, &quot;263&quot;, 76, 58, 80, Array (&quot;Linoone&quot;)), _
+		Array (&quot;Linoone&quot;, &quot;264&quot;, 156, 142, 128, Array ()), _
+		Array (&quot;Wurmple&quot;, &quot;265&quot;, 90, 75, 61, Array (&quot;Silcoon&quot;, &quot;Beautifly&quot;)), _
+		Array (&quot;Silcoon&quot;, &quot;266&quot;, 100, 60, 91, Array (&quot;Beautifly&quot;)), _
+		Array (&quot;Beautifly&quot;, &quot;267&quot;, 120, 189, 98, Array ()), _
+		Array (&quot;Cascoon&quot;, &quot;268&quot;, 100, 60, 91, Array (&quot;Dustox&quot;)), _
+		Array (&quot;Dustox&quot;, &quot;269&quot;, 120, 98, 172, Array ()), _
+		Array (&quot;Lotad&quot;, &quot;270&quot;, 80, 71, 86, Array (&quot;Lombre&quot;, &quot;Ludicolo&quot;)), _
+		Array (&quot;Lombre&quot;, &quot;271&quot;, 120, 112, 128, Array (&quot;Ludicolo&quot;)), _
+		Array (&quot;Ludicolo&quot;, &quot;272&quot;, 160, 173, 191, Array ()), _
+		Array (&quot;Seedot&quot;, &quot;273&quot;, 80, 71, 86, Array (&quot;Nuzleaf&quot;, &quot;Shiftry&quot;)), _
+		Array (&quot;Nuzleaf&quot;, &quot;274&quot;, 140, 134, 78, Array (&quot;Shiftry&quot;)), _
+		Array (&quot;Shiftry&quot;, &quot;275&quot;, 180, 200, 121, Array ()), _
+		Array (&quot;Taillow&quot;, &quot;276&quot;, 80, 106, 61, Array (&quot;Swellow&quot;)), _
+		Array (&quot;Swellow&quot;, &quot;277&quot;, 120, 185, 130, Array ()), _
+		Array (&quot;Wingull&quot;, &quot;278&quot;, 80, 106, 61, Array (&quot;Pelipper&quot;)), _
+		Array (&quot;Pelipper&quot;, &quot;279&quot;, 120, 175, 189, Array ()), _
+		Array (&quot;Ralts&quot;, &quot;280&quot;, 56, 79, 63, Array (&quot;Kirlia&quot;, &quot;Gardevoir&quot;)), _
+		Array (&quot;Kirlia&quot;, &quot;281&quot;, 76, 117, 100, Array (&quot;Gardevoir&quot;)), _
+		Array (&quot;Gardevoir&quot;, &quot;282&quot;, 136, 237, 220, Array ()), _
+		Array (&quot;Surskit&quot;, &quot;283&quot;, 80, 93, 97, Array (&quot;Masquerain&quot;)), _
+		Array (&quot;Masquerain&quot;, &quot;284&quot;, 140, 192, 161, Array ()), _
+		Array (&quot;Shroomish&quot;, &quot;285&quot;, 120, 74, 110, Array (&quot;Breloom&quot;)), _
+		Array (&quot;Breloom&quot;, &quot;286&quot;, 120, 241, 153, Array ()), _
+		Array (&quot;Slakoth&quot;, &quot;287&quot;, 120, 104, 104, Array (&quot;Vigoroth&quot;, &quot;Slaking&quot;)), _
+		Array (&quot;Vigoroth&quot;, &quot;288&quot;, 160, 159, 159, Array (&quot;Slaking&quot;)), _
+		Array (&quot;Slaking&quot;, &quot;289&quot;, 273, 290, 183, Array ()), _
+		Array (&quot;Nincada&quot;, &quot;290&quot;, 62, 80, 153, Array (&quot;Ninjask&quot;)), _
+		Array (&quot;Ninjask&quot;, &quot;291&quot;, 122, 196, 114, Array ()), _
+		Array (&quot;Shedinja&quot;, &quot;292&quot;, 2, 153, 80, Array ()), _
+		Array (&quot;Whismur&quot;, &quot;293&quot;, 128, 92, 42, Array (&quot;Loudred&quot;, &quot;Exploud&quot;)), _
+		Array (&quot;Loudred&quot;, &quot;294&quot;, 168, 134, 81, Array (&quot;Exploud&quot;)), _
+		Array (&quot;Exploud&quot;, &quot;295&quot;, 208, 179, 142, Array ()), _
+		Array (&quot;Makuhita&quot;, &quot;296&quot;, 144, 99, 54, Array (&quot;Hariyama&quot;)), _
+		Array (&quot;Hariyama&quot;, &quot;297&quot;, 288, 209, 114, Array ()), _
+		Array (&quot;Azurill&quot;, &quot;298&quot;, 100, 36, 71, Array (&quot;Marill&quot;, &quot;Azumarill&quot;)), _
+		Array (&quot;Nosepass&quot;, &quot;299&quot;, 60, 82, 236, Array ()), _
+		Array (&quot;Skitty&quot;, &quot;300&quot;, 100, 84, 84, Array (&quot;Delcatty&quot;)), _
+		Array (&quot;Delcatty&quot;, &quot;301&quot;, 140, 132, 132, Array ()), _
 		Array (&quot;Sableye&quot;, &quot;302&quot;, 100, 141, 141, Array ()), _
+		Array (&quot;Mawile&quot;, &quot;303&quot;, 100, 155, 155, Array ()), _
+		Array (&quot;Aron&quot;, &quot;304&quot;, 100, 121, 168, Array (&quot;Lairon&quot;, &quot;Aggron&quot;)), _
+		Array (&quot;Lairon&quot;, &quot;305&quot;, 120, 158, 240, Array (&quot;Aggron&quot;)), _
+		Array (&quot;Aggron&quot;, &quot;306&quot;, 140, 198, 314, Array ()), _
+		Array (&quot;Meditite&quot;, &quot;307&quot;, 60, 78, 107, Array (&quot;Medicham&quot;)), _
+		Array (&quot;Medicham&quot;, &quot;308&quot;, 120, 121, 152, Array ()), _
+		Array (&quot;Electrike&quot;, &quot;309&quot;, 80, 123, 78, Array (&quot;Manectric&quot;)), _
+		Array (&quot;Manectric&quot;, &quot;310&quot;, 140, 215, 127, Array ()), _
+		Array (&quot;Plusle&quot;, &quot;311&quot;, 120, 167, 147, Array ()), _
+		Array (&quot;Minun&quot;, &quot;312&quot;, 120, 147, 167, Array ()), _
+		Array (&quot;Volbeat&quot;, &quot;313&quot;, 130, 143, 171, Array ()), _
+		Array (&quot;Illumise&quot;, &quot;314&quot;, 130, 143, 171, Array ()), _
+		Array (&quot;Roselia&quot;, &quot;315&quot;, 100, 186, 148, Array ()), _
+		Array (&quot;Gulpin&quot;, &quot;316&quot;, 140, 80, 99, Array (&quot;Swalot&quot;)), _
+		Array (&quot;Swalot&quot;, &quot;317&quot;, 200, 140, 159, Array ()), _
+		Array (&quot;Carvanha&quot;, &quot;318&quot;, 90, 171, 39, Array (&quot;Sharpedo&quot;)), _
+		Array (&quot;Sharpedo&quot;, &quot;319&quot;, 140, 243, 83, Array ()), _
+		Array (&quot;Wailmer&quot;, &quot;320&quot;, 260, 136, 68, Array (&quot;Wailord&quot;)), _
+		Array (&quot;Wailord&quot;, &quot;321&quot;, 340, 175, 87, Array ()), _
+		Array (&quot;Numel&quot;, &quot;322&quot;, 120, 119, 82, Array (&quot;Camerupt&quot;)), _
+		Array (&quot;Camerupt&quot;, &quot;323&quot;, 140, 194, 139, Array ()), _
+		Array (&quot;Torkoal&quot;, &quot;324&quot;, 140, 151, 234, Array ()), _
+		Array (&quot;Spoink&quot;, &quot;325&quot;, 120, 125, 145, Array (&quot;Grumpig&quot;)), _
+		Array (&quot;Grumpig&quot;, &quot;326&quot;, 160, 171, 211, Array ()), _
+		Array (&quot;Spinda&quot;, &quot;327&quot;, 120, 116, 116, Array ()), _
+		Array (&quot;Trapinch&quot;, &quot;328&quot;, 90, 162, 78, Array (&quot;Vibrava&quot;, &quot;Flygon&quot;)), _
+		Array (&quot;Vibrava&quot;, &quot;329&quot;, 100, 134, 99, Array (&quot;Flygon&quot;)), _
+		Array (&quot;Flygon&quot;, &quot;330&quot;, 160, 205, 168, Array ()), _
+		Array (&quot;Cacnea&quot;, &quot;331&quot;, 100, 156, 74, Array (&quot;Cacturne&quot;)), _
+		Array (&quot;Cacturne&quot;, &quot;332&quot;, 140, 221, 115, Array ()), _
+		Array (&quot;Swablu&quot;, &quot;333&quot;, 90, 76, 139, Array (&quot;Altaria&quot;)), _
+		Array (&quot;Altaria&quot;, &quot;334&quot;, 150, 141, 208, Array ()), _
+		Array (&quot;Zangoose&quot;, &quot;335&quot;, 146, 222, 124, Array ()), _
+		Array (&quot;Seviper&quot;, &quot;336&quot;, 146, 196, 118, Array ()), _
+		Array (&quot;Lunatone&quot;, &quot;337&quot;, 180, 178, 163, Array ()), _
+		Array (&quot;Solrock&quot;, &quot;338&quot;, 180, 178, 163, Array ()), _
+		Array (&quot;Barboach&quot;, &quot;339&quot;, 100, 93, 83, Array (&quot;Whiscash&quot;)), _
+		Array (&quot;Whiscash&quot;, &quot;340&quot;, 220, 151, 142, Array ()), _
+		Array (&quot;Corphish&quot;, &quot;341&quot;, 86, 141, 113, Array (&quot;Crawdaunt&quot;)), _
+		Array (&quot;Crawdaunt&quot;, &quot;342&quot;, 126, 224, 156, Array ()), _
+		Array (&quot;Baltoy&quot;, &quot;343&quot;, 80, 77, 131, Array (&quot;Claydol&quot;)), _
+		Array (&quot;Claydol&quot;, &quot;344&quot;, 120, 140, 236, Array ()), _
+		Array (&quot;Lileep&quot;, &quot;345&quot;, 132, 105, 154, Array (&quot;Cradily&quot;)), _
+		Array (&quot;Cradily&quot;, &quot;346&quot;, 172, 152, 198, Array ()), _
+		Array (&quot;Anorith&quot;, &quot;347&quot;, 90, 176, 100, Array (&quot;Armaldo&quot;)), _
+		Array (&quot;Armaldo&quot;, &quot;348&quot;, 150, 222, 183, Array ()), _
+		Array (&quot;Feebas&quot;, &quot;349&quot;, 40, 29, 102, Array (&quot;Milotic&quot;)), _
+		Array (&quot;Milotic&quot;, &quot;350&quot;, 190, 192, 242, Array ()), _
+		Array (&quot;Castform&quot;, &quot;351&quot;, 140, 139, 139, Array ()), _
+		Array (&quot;Kecleon&quot;, &quot;352&quot;, 120, 161, 212, Array ()), _
 		Array (&quot;Shuppet&quot;, &quot;353&quot;, 88, 138, 66, Array (&quot;Banette&quot;)), _
 		Array (&quot;Banette&quot;, &quot;354&quot;, 128, 218, 127, Array ()), _
 		Array (&quot;Duskull&quot;, &quot;355&quot;, 40, 70, 162, Array (&quot;Dusclops&quot;)), _
-		Array (&quot;Dusclops&quot;, &quot;356&quot;, 80, 124, 234, Array ()))
+		Array (&quot;Dusclops&quot;, &quot;356&quot;, 80, 124, 234, Array ()), _
+		Array (&quot;Tropius&quot;, &quot;357&quot;, 198, 136, 165, Array ()), _
+		Array (&quot;Chimecho&quot;, &quot;358&quot;, 150, 175, 174, Array ()), _
+		Array (&quot;Absol&quot;, &quot;359&quot;, 130, 246, 120, Array ()), _
+		Array (&quot;Wynaut&quot;, &quot;360&quot;, 190, 41, 86, Array (&quot;Wobbuffet&quot;)), _
+		Array (&quot;Snorunt&quot;, &quot;361&quot;, 100, 95, 95, Array (&quot;Glalie&quot;)), _
+		Array (&quot;Glalie&quot;, &quot;362&quot;, 160, 162, 162, Array ()), _
+		Array (&quot;Spheal&quot;, &quot;363&quot;, 140, 95, 90, Array (&quot;Sealeo&quot;, &quot;Walrein&quot;)), _
+		Array (&quot;Sealeo&quot;, &quot;364&quot;, 180, 137, 132, Array (&quot;Walrein&quot;)), _
+		Array (&quot;Walrein&quot;, &quot;365&quot;, 220, 182, 176, Array ()), _
+		Array (&quot;Clamperl&quot;, &quot;366&quot;, 70, 133, 149, Array (&quot;Huntail&quot;)), _
+		Array (&quot;Huntail&quot;, &quot;367&quot;, 110, 197, 194, Array ()), _
+		Array (&quot;Gorebyss&quot;, &quot;368&quot;, 110, 211, 194, Array ()), _
+		Array (&quot;Relicanth&quot;, &quot;369&quot;, 200, 162, 234, Array ()), _
+		Array (&quot;Luvdisc&quot;, &quot;370&quot;, 86, 81, 134, Array ()), _
+		Array (&quot;Bagon&quot;, &quot;371&quot;, 90, 134, 107, Array (&quot;Shelgon&quot;, &quot;Salamence&quot;)), _
+		Array (&quot;Shelgon&quot;, &quot;372&quot;, 130, 172, 179, Array (&quot;Salamence&quot;)), _
+		Array (&quot;Salamence&quot;, &quot;373&quot;, 190, 277, 168, Array ()), _
+		Array (&quot;Beldum&quot;, &quot;374&quot;, 80, 96, 141, Array (&quot;Metang&quot;, &quot;Metagross&quot;)), _
+		Array (&quot;Metang&quot;, &quot;375&quot;, 120, 138, 185, Array (&quot;Metagross&quot;)), _
+		Array (&quot;Metagross&quot;, &quot;376&quot;, 160, 257, 247, Array ()), _
+		Array (&quot;Regirock&quot;, &quot;377&quot;, 160, 179, 356, Array ()), _
+		Array (&quot;Regice&quot;, &quot;378&quot;, 160, 179, 356, Array ()), _
+		Array (&quot;Registeel&quot;, &quot;379&quot;, 160, 143, 285, Array ()), _
+		Array (&quot;Latias&quot;, &quot;380&quot;, 160, 228, 268, Array ()), _
+		Array (&quot;Latios&quot;, &quot;381&quot;, 160, 268, 228, Array ()), _
+		Array (&quot;Kyogre&quot;, &quot;382&quot;, 182, 270, 251, Array ()), _
+		Array (&quot;Groudon&quot;, &quot;383&quot;, 182, 270, 251, Array ()), _
+		Array (&quot;Rayquaza&quot;, &quot;384&quot;, 191, 284, 170, Array ()), _
+		Array (&quot;Jirachi&quot;, &quot;385&quot;, 200, 210, 210, Array ()), _
+		Array (&quot;Deoxys&quot;, &quot;386&quot;, 1, 1, 1, Array ()))
 End Function
 
 &apos; fnGetCPMData: Returns the combat power multiplier data.

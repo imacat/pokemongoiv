@@ -13,7 +13,7 @@
 ' limitations under the License.
 
 ' 3Data: The Pokémon GO data for IV calculation
-'   by imacat <imacat@mail.imacat.idv.tw>, 2017-11-29
+'   by imacat <imacat@mail.imacat.idv.tw>, 2017-12-27
 '   Generated with 9Load.subReadDataSheets ()
 
 Option Explicit
@@ -272,11 +272,141 @@ Function fnGetBaseStatsData As Variant
 		Array ("Lugia", "249", 212, 193, 323, Array ()), _
 		Array ("HoOh", "250", 193, 239, 274, Array ()), _
 		Array ("Celebi", "251", 200, 210, 210, Array ()), _
+		Array ("Treecko ", "252", 80, 124, 104, Array ("Grovyle ", "Sceptile ")), _
+		Array ("Grovyle ", "253", 100, 172, 130, Array ("Sceptile ")), _
+		Array ("Sceptile ", "254", 140, 223, 180, Array ()), _
+		Array ("Torchic ", "255", 90, 130, 92, Array ("Combusken ", "Blaziken ")), _
+		Array ("Combusken ", "256", 120, 163, 115, Array ("Blaziken ")), _
+		Array ("Blaziken ", "257", 160, 240, 141, Array ()), _
+		Array ("Mudkip ", "258", 100, 126, 93, Array ("Marshtomp ", "Swampert ")), _
+		Array ("Marshtomp ", "259", 140, 156, 133, Array ("Swampert ")), _
+		Array ("Swampert ", "260", 200, 208, 175, Array ()), _
+		Array ("Poochyena", "261", 70, 96, 63, Array ("Mightyena")), _
+		Array ("Mightyena", "262", 140, 171, 137, Array ()), _
+		Array ("Zigzagoon", "263", 76, 58, 80, Array ("Linoone")), _
+		Array ("Linoone", "264", 156, 142, 128, Array ()), _
+		Array ("Wurmple", "265", 90, 75, 61, Array ("Silcoon", "Beautifly")), _
+		Array ("Silcoon", "266", 100, 60, 91, Array ("Beautifly")), _
+		Array ("Beautifly", "267", 120, 189, 98, Array ()), _
+		Array ("Cascoon", "268", 100, 60, 91, Array ("Dustox")), _
+		Array ("Dustox", "269", 120, 98, 172, Array ()), _
+		Array ("Lotad", "270", 80, 71, 86, Array ("Lombre", "Ludicolo")), _
+		Array ("Lombre", "271", 120, 112, 128, Array ("Ludicolo")), _
+		Array ("Ludicolo", "272", 160, 173, 191, Array ()), _
+		Array ("Seedot", "273", 80, 71, 86, Array ("Nuzleaf", "Shiftry")), _
+		Array ("Nuzleaf", "274", 140, 134, 78, Array ("Shiftry")), _
+		Array ("Shiftry", "275", 180, 200, 121, Array ()), _
+		Array ("Taillow", "276", 80, 106, 61, Array ("Swellow")), _
+		Array ("Swellow", "277", 120, 185, 130, Array ()), _
+		Array ("Wingull", "278", 80, 106, 61, Array ("Pelipper")), _
+		Array ("Pelipper", "279", 120, 175, 189, Array ()), _
+		Array ("Ralts", "280", 56, 79, 63, Array ("Kirlia", "Gardevoir")), _
+		Array ("Kirlia", "281", 76, 117, 100, Array ("Gardevoir")), _
+		Array ("Gardevoir", "282", 136, 237, 220, Array ()), _
+		Array ("Surskit", "283", 80, 93, 97, Array ("Masquerain")), _
+		Array ("Masquerain", "284", 140, 192, 161, Array ()), _
+		Array ("Shroomish", "285", 120, 74, 110, Array ("Breloom")), _
+		Array ("Breloom", "286", 120, 241, 153, Array ()), _
+		Array ("Slakoth", "287", 120, 104, 104, Array ("Vigoroth", "Slaking")), _
+		Array ("Vigoroth", "288", 160, 159, 159, Array ("Slaking")), _
+		Array ("Slaking", "289", 273, 290, 183, Array ()), _
+		Array ("Nincada", "290", 62, 80, 153, Array ("Ninjask")), _
+		Array ("Ninjask", "291", 122, 196, 114, Array ()), _
+		Array ("Shedinja", "292", 2, 153, 80, Array ()), _
+		Array ("Whismur", "293", 128, 92, 42, Array ("Loudred", "Exploud")), _
+		Array ("Loudred", "294", 168, 134, 81, Array ("Exploud")), _
+		Array ("Exploud", "295", 208, 179, 142, Array ()), _
+		Array ("Makuhita", "296", 144, 99, 54, Array ("Hariyama")), _
+		Array ("Hariyama", "297", 288, 209, 114, Array ()), _
+		Array ("Azurill", "298", 100, 36, 71, Array ("Marill", "Azumarill")), _
+		Array ("Nosepass", "299", 60, 82, 236, Array ()), _
+		Array ("Skitty", "300", 100, 84, 84, Array ("Delcatty")), _
+		Array ("Delcatty", "301", 140, 132, 132, Array ()), _
 		Array ("Sableye", "302", 100, 141, 141, Array ()), _
+		Array ("Mawile", "303", 100, 155, 155, Array ()), _
+		Array ("Aron", "304", 100, 121, 168, Array ("Lairon", "Aggron")), _
+		Array ("Lairon", "305", 120, 158, 240, Array ("Aggron")), _
+		Array ("Aggron", "306", 140, 198, 314, Array ()), _
+		Array ("Meditite", "307", 60, 78, 107, Array ("Medicham")), _
+		Array ("Medicham", "308", 120, 121, 152, Array ()), _
+		Array ("Electrike", "309", 80, 123, 78, Array ("Manectric")), _
+		Array ("Manectric", "310", 140, 215, 127, Array ()), _
+		Array ("Plusle", "311", 120, 167, 147, Array ()), _
+		Array ("Minun", "312", 120, 147, 167, Array ()), _
+		Array ("Volbeat", "313", 130, 143, 171, Array ()), _
+		Array ("Illumise", "314", 130, 143, 171, Array ()), _
+		Array ("Roselia", "315", 100, 186, 148, Array ()), _
+		Array ("Gulpin", "316", 140, 80, 99, Array ("Swalot")), _
+		Array ("Swalot", "317", 200, 140, 159, Array ()), _
+		Array ("Carvanha", "318", 90, 171, 39, Array ("Sharpedo")), _
+		Array ("Sharpedo", "319", 140, 243, 83, Array ()), _
+		Array ("Wailmer", "320", 260, 136, 68, Array ("Wailord")), _
+		Array ("Wailord", "321", 340, 175, 87, Array ()), _
+		Array ("Numel", "322", 120, 119, 82, Array ("Camerupt")), _
+		Array ("Camerupt", "323", 140, 194, 139, Array ()), _
+		Array ("Torkoal", "324", 140, 151, 234, Array ()), _
+		Array ("Spoink", "325", 120, 125, 145, Array ("Grumpig")), _
+		Array ("Grumpig", "326", 160, 171, 211, Array ()), _
+		Array ("Spinda", "327", 120, 116, 116, Array ()), _
+		Array ("Trapinch", "328", 90, 162, 78, Array ("Vibrava", "Flygon")), _
+		Array ("Vibrava", "329", 100, 134, 99, Array ("Flygon")), _
+		Array ("Flygon", "330", 160, 205, 168, Array ()), _
+		Array ("Cacnea", "331", 100, 156, 74, Array ("Cacturne")), _
+		Array ("Cacturne", "332", 140, 221, 115, Array ()), _
+		Array ("Swablu", "333", 90, 76, 139, Array ("Altaria")), _
+		Array ("Altaria", "334", 150, 141, 208, Array ()), _
+		Array ("Zangoose", "335", 146, 222, 124, Array ()), _
+		Array ("Seviper", "336", 146, 196, 118, Array ()), _
+		Array ("Lunatone", "337", 180, 178, 163, Array ()), _
+		Array ("Solrock", "338", 180, 178, 163, Array ()), _
+		Array ("Barboach", "339", 100, 93, 83, Array ("Whiscash")), _
+		Array ("Whiscash", "340", 220, 151, 142, Array ()), _
+		Array ("Corphish", "341", 86, 141, 113, Array ("Crawdaunt")), _
+		Array ("Crawdaunt", "342", 126, 224, 156, Array ()), _
+		Array ("Baltoy", "343", 80, 77, 131, Array ("Claydol")), _
+		Array ("Claydol", "344", 120, 140, 236, Array ()), _
+		Array ("Lileep", "345", 132, 105, 154, Array ("Cradily")), _
+		Array ("Cradily", "346", 172, 152, 198, Array ()), _
+		Array ("Anorith", "347", 90, 176, 100, Array ("Armaldo")), _
+		Array ("Armaldo", "348", 150, 222, 183, Array ()), _
+		Array ("Feebas", "349", 40, 29, 102, Array ("Milotic")), _
+		Array ("Milotic", "350", 190, 192, 242, Array ()), _
+		Array ("Castform", "351", 140, 139, 139, Array ()), _
+		Array ("Kecleon", "352", 120, 161, 212, Array ()), _
 		Array ("Shuppet", "353", 88, 138, 66, Array ("Banette")), _
 		Array ("Banette", "354", 128, 218, 127, Array ()), _
 		Array ("Duskull", "355", 40, 70, 162, Array ("Dusclops")), _
-		Array ("Dusclops", "356", 80, 124, 234, Array ()))
+		Array ("Dusclops", "356", 80, 124, 234, Array ()), _
+		Array ("Tropius", "357", 198, 136, 165, Array ()), _
+		Array ("Chimecho", "358", 150, 175, 174, Array ()), _
+		Array ("Absol", "359", 130, 246, 120, Array ()), _
+		Array ("Wynaut", "360", 190, 41, 86, Array ("Wobbuffet")), _
+		Array ("Snorunt", "361", 100, 95, 95, Array ("Glalie")), _
+		Array ("Glalie", "362", 160, 162, 162, Array ()), _
+		Array ("Spheal", "363", 140, 95, 90, Array ("Sealeo", "Walrein")), _
+		Array ("Sealeo", "364", 180, 137, 132, Array ("Walrein")), _
+		Array ("Walrein", "365", 220, 182, 176, Array ()), _
+		Array ("Clamperl", "366", 70, 133, 149, Array ("Huntail")), _
+		Array ("Huntail", "367", 110, 197, 194, Array ()), _
+		Array ("Gorebyss", "368", 110, 211, 194, Array ()), _
+		Array ("Relicanth", "369", 200, 162, 234, Array ()), _
+		Array ("Luvdisc", "370", 86, 81, 134, Array ()), _
+		Array ("Bagon", "371", 90, 134, 107, Array ("Shelgon", "Salamence")), _
+		Array ("Shelgon", "372", 130, 172, 179, Array ("Salamence")), _
+		Array ("Salamence", "373", 190, 277, 168, Array ()), _
+		Array ("Beldum", "374", 80, 96, 141, Array ("Metang", "Metagross")), _
+		Array ("Metang", "375", 120, 138, 185, Array ("Metagross")), _
+		Array ("Metagross", "376", 160, 257, 247, Array ()), _
+		Array ("Regirock", "377", 160, 179, 356, Array ()), _
+		Array ("Regice", "378", 160, 179, 356, Array ()), _
+		Array ("Registeel", "379", 160, 143, 285, Array ()), _
+		Array ("Latias", "380", 160, 228, 268, Array ()), _
+		Array ("Latios", "381", 160, 268, 228, Array ()), _
+		Array ("Kyogre", "382", 182, 270, 251, Array ()), _
+		Array ("Groudon", "383", 182, 270, 251, Array ()), _
+		Array ("Rayquaza", "384", 191, 284, 170, Array ()), _
+		Array ("Jirachi", "385", 200, 210, 210, Array ()), _
+		Array ("Deoxys", "386", 1, 1, 1, Array ()))
 End Function
 
 ' fnGetCPMData: Returns the combat power multiplier data.
