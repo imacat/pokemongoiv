@@ -20,9 +20,9 @@
 Option Explicit
 
 &apos; Remembers the selected Pokémon for the next run.
-Global sLastSelected As String
+Global sLastPokemon As String
 &apos; Remembers the selected trainer level for the next run.
-Global sLastLevel As Integer
+Global sLastTrainerLevel As Integer
 
 &apos; The parameters to find the individual values.
 Type aFindIVParam
@@ -76,18 +76,18 @@ Function fnAskParam As aFindIVParam
 		&quot;ImageURL&quot;, fnGetImageUrl (&quot;Unknown&quot;))
 	
 	&apos; Remembers the previously-selected Pokémon.
-	oDialog.getControl (&quot;lstPokemon&quot;).selectItem (sLastSelected, True)
-	oDialog.getControl (&quot;lstTrainerLevel&quot;).selectItem (sLastLevel, True)
+	oDialog.getControl (&quot;lstPokemon&quot;).selectItem (sLastPokemon, True)
+	oDialog.getControl (&quot;lstTrainerLevel&quot;).selectItem (sLastTrainerLevel, True)
 	
 	If oDialog.execute = 0 Then
 		aQuery.bIsCancelled = True
-	    sLastLevel = oDialog.getControl (&quot;lstTrainerLevel&quot;).getSelectedItem
+	    sLastTrainerLevel = oDialog.getControl (&quot;lstTrainerLevel&quot;).getSelectedItem
 		fnAskParam = aQuery
 		Exit Function
 	End If
 	
 	subReadBaseStats
-	sLastLevel = oDialog.getControl (&quot;lstTrainerLevel&quot;).getSelectedItem
+	sLastTrainerLevel = oDialog.getControl (&quot;lstTrainerLevel&quot;).getSelectedItem
 	nSelected = oDialog.getControl (&quot;lstPokemon&quot;).getSelectedItemPos
 	With aQuery
 		.sPokemonId = maBaseStats (nSelected).sPokemonId
@@ -182,9 +182,9 @@ Sub subLstPokemonSelected (oEvent As object)
 	oDialog = oEvent.Source.getContext
 	
 	&apos; Checks which Pokémon was selected.
-	sLastSelected = oDialog.getControl (&quot;lstPokemon&quot;).getSelectedItem
+	sLastPokemon = oDialog.getControl (&quot;lstPokemon&quot;).getSelectedItem
 	nSelected = oDialog.getControl (&quot;lstPokemon&quot;).getSelectedItemPos
-	&apos; This happens at the beginning where sLastSelected is &quot;&quot;.
+	&apos; This happens at the beginning where sLastPokemon is &quot;&quot;.
 	If nSelected = -1 Then
 		Exit Sub
 	End If

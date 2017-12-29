@@ -272,15 +272,15 @@ Function fnGetBaseStatsData As Variant
 		Array ("Lugia", "249", 212, 193, 323, Array ()), _
 		Array ("HoOh", "250", 193, 239, 274, Array ()), _
 		Array ("Celebi", "251", 200, 210, 210, Array ()), _
-		Array ("Treecko ", "252", 80, 124, 104, Array ("Grovyle ", "Sceptile ")), _
-		Array ("Grovyle ", "253", 100, 172, 130, Array ("Sceptile ")), _
-		Array ("Sceptile ", "254", 140, 223, 180, Array ()), _
-		Array ("Torchic ", "255", 90, 130, 92, Array ("Combusken ", "Blaziken ")), _
-		Array ("Combusken ", "256", 120, 163, 115, Array ("Blaziken ")), _
-		Array ("Blaziken ", "257", 160, 240, 141, Array ()), _
-		Array ("Mudkip ", "258", 100, 126, 93, Array ("Marshtomp ", "Swampert ")), _
-		Array ("Marshtomp ", "259", 140, 156, 133, Array ("Swampert ")), _
-		Array ("Swampert ", "260", 200, 208, 175, Array ()), _
+		Array ("Treecko", "252", 80, 124, 104, Array ("Grovyle", "Sceptile")), _
+		Array ("Grovyle", "253", 100, 172, 130, Array ("Sceptile")), _
+		Array ("Sceptile", "254", 140, 223, 180, Array ()), _
+		Array ("Torchic", "255", 90, 130, 92, Array ("Combusken", "Blaziken")), _
+		Array ("Combusken", "256", 120, 163, 115, Array ("Blaziken")), _
+		Array ("Blaziken", "257", 160, 240, 141, Array ()), _
+		Array ("Mudkip", "258", 100, 126, 93, Array ("Marshtomp", "Swampert")), _
+		Array ("Marshtomp", "259", 140, 156, 133, Array ("Swampert")), _
+		Array ("Swampert", "260", 200, 208, 175, Array ()), _
 		Array ("Poochyena", "261", 70, 96, 63, Array ("Mightyena")), _
 		Array ("Mightyena", "262", 140, 171, 137, Array ()), _
 		Array ("Zigzagoon", "263", 76, 58, 80, Array ("Linoone")), _

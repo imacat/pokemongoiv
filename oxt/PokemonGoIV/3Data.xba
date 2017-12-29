@@ -274,15 +274,15 @@ Function fnGetBaseStatsData As Variant
 		Array (&quot;Lugia&quot;, &quot;249&quot;, 212, 193, 323, Array ()), _
 		Array (&quot;HoOh&quot;, &quot;250&quot;, 193, 239, 274, Array ()), _
 		Array (&quot;Celebi&quot;, &quot;251&quot;, 200, 210, 210, Array ()), _
-		Array (&quot;Treecko &quot;, &quot;252&quot;, 80, 124, 104, Array (&quot;Grovyle &quot;, &quot;Sceptile &quot;)), _
-		Array (&quot;Grovyle &quot;, &quot;253&quot;, 100, 172, 130, Array (&quot;Sceptile &quot;)), _
-		Array (&quot;Sceptile &quot;, &quot;254&quot;, 140, 223, 180, Array ()), _
-		Array (&quot;Torchic &quot;, &quot;255&quot;, 90, 130, 92, Array (&quot;Combusken &quot;, &quot;Blaziken &quot;)), _
-		Array (&quot;Combusken &quot;, &quot;256&quot;, 120, 163, 115, Array (&quot;Blaziken &quot;)), _
-		Array (&quot;Blaziken &quot;, &quot;257&quot;, 160, 240, 141, Array ()), _
-		Array (&quot;Mudkip &quot;, &quot;258&quot;, 100, 126, 93, Array (&quot;Marshtomp &quot;, &quot;Swampert &quot;)), _
-		Array (&quot;Marshtomp &quot;, &quot;259&quot;, 140, 156, 133, Array (&quot;Swampert &quot;)), _
-		Array (&quot;Swampert &quot;, &quot;260&quot;, 200, 208, 175, Array ()), _
+		Array (&quot;Treecko&quot;, &quot;252&quot;, 80, 124, 104, Array (&quot;Grovyle&quot;, &quot;Sceptile&quot;)), _
+		Array (&quot;Grovyle&quot;, &quot;253&quot;, 100, 172, 130, Array (&quot;Sceptile&quot;)), _
+		Array (&quot;Sceptile&quot;, &quot;254&quot;, 140, 223, 180, Array ()), _
+		Array (&quot;Torchic&quot;, &quot;255&quot;, 90, 130, 92, Array (&quot;Combusken&quot;, &quot;Blaziken&quot;)), _
+		Array (&quot;Combusken&quot;, &quot;256&quot;, 120, 163, 115, Array (&quot;Blaziken&quot;)), _
+		Array (&quot;Blaziken&quot;, &quot;257&quot;, 160, 240, 141, Array ()), _
+		Array (&quot;Mudkip&quot;, &quot;258&quot;, 100, 126, 93, Array (&quot;Marshtomp&quot;, &quot;Swampert&quot;)), _
+		Array (&quot;Marshtomp&quot;, &quot;259&quot;, 140, 156, 133, Array (&quot;Swampert&quot;)), _
+		Array (&quot;Swampert&quot;, &quot;260&quot;, 200, 208, 175, Array ()), _
 		Array (&quot;Poochyena&quot;, &quot;261&quot;, 70, 96, 63, Array (&quot;Mightyena&quot;)), _
 		Array (&quot;Mightyena&quot;, &quot;262&quot;, 140, 171, 137, Array ()), _
 		Array (&quot;Zigzagoon&quot;, &quot;263&quot;, 76, 58, 80, Array (&quot;Linoone&quot;)), _
