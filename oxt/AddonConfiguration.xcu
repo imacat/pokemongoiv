@@ -4427,47 +4427,47 @@
 				<value>%origin%/icons/unknown.png</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonTreecko " oor:op="replace">
+		<node oor:name="PokemonTreecko" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
 				<value>%origin%/icons/unknown.png</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonGrovyle " oor:op="replace">
+		<node oor:name="PokemonGrovyle" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
 				<value>%origin%/icons/unknown.png</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonSceptile " oor:op="replace">
+		<node oor:name="PokemonSceptile" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
 				<value>%origin%/icons/unknown.png</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonTorchic " oor:op="replace">
+		<node oor:name="PokemonTorchic" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
 				<value>%origin%/icons/unknown.png</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonCombusken " oor:op="replace">
+		<node oor:name="PokemonCombusken" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
 				<value>%origin%/icons/unknown.png</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonBlaziken " oor:op="replace">
+		<node oor:name="PokemonBlaziken" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
 				<value>%origin%/icons/unknown.png</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonMudkip " oor:op="replace">
+		<node oor:name="PokemonMudkip" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
 				<value>%origin%/icons/unknown.png</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonMarshtomp " oor:op="replace">
+		<node oor:name="PokemonMarshtomp" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
 				<value>%origin%/icons/unknown.png</value>
 			</prop>
 		</node>
-		<node oor:name="PokemonSwampert " oor:op="replace">
+		<node oor:name="PokemonSwampert" oor:op="replace">
 			<prop oor:name="Url" oor:type="xs:string" oor:localized="true">
 				<value>%origin%/icons/unknown.png</value>
 			</prop>
